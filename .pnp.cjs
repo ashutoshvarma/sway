@@ -21,18 +21,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:."
       },
       {
-        "name": "@sway/events",
-        "reference": "workspace:packages/events"
-      },
-      {
         "name": "@sway/server",
         "reference": "workspace:packages/server"
       }
     ],
     "enableTopLevelFallback": true,
-    "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?)|$))$)",
+    "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?)|$))$)|(^(?:ng-packages(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?)|$))$)",
     "fallbackExclusionList": [
-      ["@sway/events", ["workspace:packages/events"]],
       ["@sway/server", ["workspace:packages/server"]],
       ["sway", ["workspace:."]]
     ],
@@ -143,24 +138,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["fastq", "npm:1.13.0"]
           ],
           "linkType": "HARD",
-        }]
-      ]],
-      ["@sway/events", [
-        ["workspace:packages/events", {
-          "packageLocation": "./packages/events/",
-          "packageDependencies": [
-            ["@sway/events", "workspace:packages/events"],
-            ["@types/node", "npm:16.11.11"],
-            ["@typescript-eslint/eslint-plugin", "virtual:8ac8a977a734713932fb69668562e811890b2f9d1a70073a9b457bbcdc7029cb1ca6a657e9b656ad6297c3b768d37a36b1d129244edf4d6e40274a1c81d3f271#npm:5.5.0"],
-            ["@typescript-eslint/parser", "virtual:8ac8a977a734713932fb69668562e811890b2f9d1a70073a9b457bbcdc7029cb1ca6a657e9b656ad6297c3b768d37a36b1d129244edf4d6e40274a1c81d3f271#npm:5.5.0"],
-            ["eslint", "npm:8.3.0"],
-            ["eslint-config-prettier", "virtual:8ac8a977a734713932fb69668562e811890b2f9d1a70073a9b457bbcdc7029cb1ca6a657e9b656ad6297c3b768d37a36b1d129244edf4d6e40274a1c81d3f271#npm:8.3.0"],
-            ["eslint-plugin-prettier", "virtual:8ac8a977a734713932fb69668562e811890b2f9d1a70073a9b457bbcdc7029cb1ca6a657e9b656ad6297c3b768d37a36b1d129244edf4d6e40274a1c81d3f271#npm:4.0.0"],
-            ["prettier", "npm:2.5.0"],
-            ["ts-node", "virtual:8ac8a977a734713932fb69668562e811890b2f9d1a70073a9b457bbcdc7029cb1ca6a657e9b656ad6297c3b768d37a36b1d129244edf4d6e40274a1c81d3f271#npm:10.4.0"],
-            ["typescript", "patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=493e53"]
-          ],
-          "linkType": "SOFT",
         }]
       ]],
       ["@sway/server", [

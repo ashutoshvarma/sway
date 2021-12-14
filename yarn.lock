@@ -83,22 +83,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sway/events@workspace:packages/events":
-  version: 0.0.0-use.local
-  resolution: "@sway/events@workspace:packages/events"
-  dependencies:
-    "@types/node": ^16.11.10
-    "@typescript-eslint/eslint-plugin": ^5.4.0
-    "@typescript-eslint/parser": ^5.4.0
-    eslint: ^8.3.0
-    eslint-config-prettier: ^8.3.0
-    eslint-plugin-prettier: ^4.0.0
-    prettier: ^2.4.1
-    ts-node: ^10.4.0
-    typescript: ^4.5.2
-  languageName: unknown
-  linkType: soft
-
 "@sway/server@workspace:packages/server":
   version: 0.0.0-use.local
   resolution: "@sway/server@workspace:packages/server"
