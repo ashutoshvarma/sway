@@ -20,10 +20,11 @@ contract SwayAdmin is Initializable, AccessControlEnumerableUpgradeable, Pausabl
 
     mapping(uint256 => bytes32) public eventRoleMapping;
     // Last event id (used to generate new ids)
-    uint256 private lastEventId;
+    uint256 public lastEventId;
 
     // events
     event EventAdded(uint256 indexed eventId, address indexed minter, bytes32 indexed role);
+    event SwayDropAddressUpdated(address indexed drop);
 
     function __SwayAdmin_init(address governor) internal initializer {
         __Context_init_unchained();
@@ -92,6 +93,7 @@ contract SwayAdmin is Initializable, AccessControlEnumerableUpgradeable, Pausabl
 
     function setDrop(address _drop) public onlyGovernor {
         drop = _drop;
+        emit SwayDropAddressUpdated(_drop);
     }
 
     function createEvent(address minter) public onlyGovernor {
@@ -109,5 +111,15 @@ contract SwayAdmin is Initializable, AccessControlEnumerableUpgradeable, Pausabl
     function addEventMinter(uint256 eventId, address account) public onlyGovernor {
         require(eventRoleMapping[eventId] != bytes32(0), "SwayAdmin: eventId not found");
         grantRole(eventRoleMapping[eventId], account);
+    }
+
+    function _removeEventMinter(uint256 eventId, address account) internal {
+        _minters[eventId].remove(account);
+        emit EventMinterRemoved(eventId, account);
+    }
+
+    function _removeAdmin(address account) internal {
+        _admins.remove(account);
+        emit AdminRemoved(account);
     }
 }

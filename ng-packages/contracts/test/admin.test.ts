@@ -82,12 +82,26 @@ describe('SwayAdmin', () => {
     const {governor, matt, josh, sway} = await singleEventFixture();
     const mattAddr = await matt.getAddress();
     const joshAddr = await josh.getAddress();
+    // matt should be event minter
     await expect(await sway.isEventMinter('1', mattAddr)).to.be.true;
+    // josh should not be a event minter
     await expect(await sway.isEventMinter('1', joshAddr)).to.be.false;
+    // add josh as event minter
     await sway.connect(governor).addEventMinter('1', joshAddr);
     await expect(await sway.isEventMinter('1', joshAddr)).to.be.true;
 
     // only governor can add minters
     await expect(sway.addEventMinter('1', mattAddr)).to.reverted;
+  });
+
+  it('should be able to add additional governor', async () => {
+    const {governor, matt, josh, sway} = await singleEventFixture();
+    const GOVERNOR_ROLE = await sway.GOVERNOR_ROLE();
+    const joshAddr = await josh.getAddress();
+    await sway.connect(governor).grantRole(GOVERNOR_ROLE, joshAddr);
+    // josh should now be governor
+    await expect(await sway.isGovernor(joshAddr)).to.be.true;
+    // josh should be able to access governor gaurded functions
+    await sway.connect(josh).pause();
   });
 });
