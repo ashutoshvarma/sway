@@ -5,6 +5,7 @@
     "esbenp.prettier-vscode",
     "editorconfig.editorconfig",
     "hbenl.vscode-mocha-test-adapter",
-    "juanblanco.solidity"
+    "juanblanco.solidity",
+    "graphql.vscode-graphql"
   ]
 }

@@ -35,6 +35,16 @@ dataSources:
           handler: handleEventAdded
         - event: EventToken(uint256,uint256)
           handler: handleEventToken
+        - event: EventMinterAdded(indexed uint256,indexed address)
+          handler: handleEventMinterAdded
+        - event: EventMinterRemoved(indexed uint256,indexed address)
+          handler: handleEventMinterRemoved
+        - event: GovernorAdded(indexed address)
+          handler: handleGovernorAdded
+        - event: GovernorRemoved(indexed address)
+          handler: handleGovernorRemoved
+        - event: SwayDropAddressUpdated(indexed address)
+          handler: handleSwayDropAddressUpdated
         - event: Paused(address)
           handler: handlePaused
         - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)

@@ -7,7 +7,8 @@
     "test:contracts": "cd ./ng-packages/contracts && yarn test",
     "test": "yarn test:contracts && yarn workspaces foreach -pti run test",
     "contracts:compile": "cd ./ng-packages/contracts && yarn compile",
-    "hardhat": "cd ./ng-packages/contracts && yarn hardhat"
+    "hardhat": "cd ./ng-packages/contracts && yarn hardhat",
+    "graph": "cd ./ng-packages/subgraph && yarn graph"
   },
   "private": true,
   "workspaces": [

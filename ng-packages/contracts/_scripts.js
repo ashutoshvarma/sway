@@ -3,6 +3,8 @@
 /* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const {spawn} = require('child_process');
+const fs = require('fs');
+const path = require('path');
 require('dotenv').config();
 
 const commandlineArgs = process.argv.slice(2);
@@ -158,6 +160,37 @@ async function performAction(rawArgs) {
           ? `HARDHAT_DEPLOY_NO_IMPERSONATION=true`
           : ''
       } hardhat node --watch --export contractsInfo.json ${extra.join(' ')}`
+    );
+  } else if (firstArg === 'subgraph:abi') {
+    const {fixedArgs} = parseArgs(args, 1, {});
+    const network = fixedArgs[0] ? fixedArgs[0] : 'localhost';
+    const swayDeployment = JSON.parse(
+      fs.readFileSync(
+        path.resolve(
+          __dirname,
+          'deployments',
+          network,
+          'Sway_Implementation.json'
+        )
+      )
+    );
+    const swayDropDeployment = JSON.parse(
+      fs.readFileSync(
+        path.resolve(
+          __dirname,
+          'deployments',
+          network,
+          'SwayDrop_Implementation.json'
+        )
+      )
+    );
+    fs.writeFileSync(
+      path.resolve(__dirname, '../subgraph/abis/Sway.json'),
+      JSON.stringify(swayDeployment.abi, null, 2)
+    );
+    fs.writeFileSync(
+      path.resolve(__dirname, '../subgraph/abis/SwayDrop.json'),
+      JSON.stringify(swayDropDeployment.abi, null, 2)
     );
   }
 }

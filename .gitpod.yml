@@ -1,5 +1,9 @@
+
 tasks:
-  - init: |
-      echo 'TODO: build project'
+  - init: yarn
     command: |
       echo 'TODO: start app'
+
+vscode:
+  extensions:
+    - graphql.vscode-graphql

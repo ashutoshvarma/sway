@@ -88,6 +88,50 @@ export class EventAdded__Params {
   }
 }
 
+export class EventMinterAdded extends ethereum.Event {
+  get params(): EventMinterAdded__Params {
+    return new EventMinterAdded__Params(this);
+  }
+}
+
+export class EventMinterAdded__Params {
+  _event: EventMinterAdded;
+
+  constructor(event: EventMinterAdded) {
+    this._event = event;
+  }
+
+  get eventId(): BigInt {
+    return this._event.parameters[0].value.toBigInt();
+  }
+
+  get account(): Address {
+    return this._event.parameters[1].value.toAddress();
+  }
+}
+
+export class EventMinterRemoved extends ethereum.Event {
+  get params(): EventMinterRemoved__Params {
+    return new EventMinterRemoved__Params(this);
+  }
+}
+
+export class EventMinterRemoved__Params {
+  _event: EventMinterRemoved;
+
+  constructor(event: EventMinterRemoved) {
+    this._event = event;
+  }
+
+  get eventId(): BigInt {
+    return this._event.parameters[0].value.toBigInt();
+  }
+
+  get account(): Address {
+    return this._event.parameters[1].value.toAddress();
+  }
+}
+
 export class EventToken extends ethereum.Event {
   get params(): EventToken__Params {
     return new EventToken__Params(this);
@@ -107,6 +151,42 @@ export class EventToken__Params {
 
   get tokenId(): BigInt {
     return this._event.parameters[1].value.toBigInt();
+  }
+}
+
+export class GovernorAdded extends ethereum.Event {
+  get params(): GovernorAdded__Params {
+    return new GovernorAdded__Params(this);
+  }
+}
+
+export class GovernorAdded__Params {
+  _event: GovernorAdded;
+
+  constructor(event: GovernorAdded) {
+    this._event = event;
+  }
+
+  get account(): Address {
+    return this._event.parameters[0].value.toAddress();
+  }
+}
+
+export class GovernorRemoved extends ethereum.Event {
+  get params(): GovernorRemoved__Params {
+    return new GovernorRemoved__Params(this);
+  }
+}
+
+export class GovernorRemoved__Params {
+  _event: GovernorRemoved;
+
+  constructor(event: GovernorRemoved) {
+    this._event = event;
+  }
+
+  get account(): Address {
+    return this._event.parameters[0].value.toAddress();
   }
 }
 
@@ -203,6 +283,24 @@ export class RoleRevoked__Params {
 
   get sender(): Address {
     return this._event.parameters[2].value.toAddress();
+  }
+}
+
+export class SwayDropAddressUpdated extends ethereum.Event {
+  get params(): SwayDropAddressUpdated__Params {
+    return new SwayDropAddressUpdated__Params(this);
+  }
+}
+
+export class SwayDropAddressUpdated__Params {
+  _event: SwayDropAddressUpdated;
+
+  constructor(event: SwayDropAddressUpdated) {
+    this._event = event;
+  }
+
+  get drop(): Address {
+    return this._event.parameters[0].value.toAddress();
   }
 }
 
@@ -561,6 +659,21 @@ export class Sway extends ethereum.SmartContract {
     }
     let value = result.value;
     return ethereum.CallResult.fromValue(value[0].toBoolean());
+  }
+
+  lastEventId(): BigInt {
+    let result = super.call("lastEventId", "lastEventId():(uint256)", []);
+
+    return result[0].toBigInt();
+  }
+
+  try_lastEventId(): ethereum.CallResult<BigInt> {
+    let result = super.tryCall("lastEventId", "lastEventId():(uint256)", []);
+    if (result.reverted) {
+      return new ethereum.CallResult();
+    }
+    let value = result.value;
+    return ethereum.CallResult.fromValue(value[0].toBigInt());
   }
 
   mintToken(eventId: BigInt, to: Address): boolean {
@@ -928,6 +1041,36 @@ export class AddEventMinterCall__Outputs {
   }
 }
 
+export class AddGovernorCall extends ethereum.Call {
+  get inputs(): AddGovernorCall__Inputs {
+    return new AddGovernorCall__Inputs(this);
+  }
+
+  get outputs(): AddGovernorCall__Outputs {
+    return new AddGovernorCall__Outputs(this);
+  }
+}
+
+export class AddGovernorCall__Inputs {
+  _call: AddGovernorCall;
+
+  constructor(call: AddGovernorCall) {
+    this._call = call;
+  }
+
+  get account(): Address {
+    return this._call.inputValues[0].value.toAddress();
+  }
+}
+
+export class AddGovernorCall__Outputs {
+  _call: AddGovernorCall;
+
+  constructor(call: AddGovernorCall) {
+    this._call = call;
+  }
+}
+
 export class ApproveCall extends ethereum.Call {
   get inputs(): ApproveCall__Inputs {
     return new ApproveCall__Inputs(this);
@@ -1200,6 +1343,70 @@ export class PauseCall__Outputs {
   _call: PauseCall;
 
   constructor(call: PauseCall) {
+    this._call = call;
+  }
+}
+
+export class RemoveEventMinterCall extends ethereum.Call {
+  get inputs(): RemoveEventMinterCall__Inputs {
+    return new RemoveEventMinterCall__Inputs(this);
+  }
+
+  get outputs(): RemoveEventMinterCall__Outputs {
+    return new RemoveEventMinterCall__Outputs(this);
+  }
+}
+
+export class RemoveEventMinterCall__Inputs {
+  _call: RemoveEventMinterCall;
+
+  constructor(call: RemoveEventMinterCall) {
+    this._call = call;
+  }
+
+  get eventId(): BigInt {
+    return this._call.inputValues[0].value.toBigInt();
+  }
+
+  get account(): Address {
+    return this._call.inputValues[1].value.toAddress();
+  }
+}
+
+export class RemoveEventMinterCall__Outputs {
+  _call: RemoveEventMinterCall;
+
+  constructor(call: RemoveEventMinterCall) {
+    this._call = call;
+  }
+}
+
+export class RemoveGovernorCall extends ethereum.Call {
+  get inputs(): RemoveGovernorCall__Inputs {
+    return new RemoveGovernorCall__Inputs(this);
+  }
+
+  get outputs(): RemoveGovernorCall__Outputs {
+    return new RemoveGovernorCall__Outputs(this);
+  }
+}
+
+export class RemoveGovernorCall__Inputs {
+  _call: RemoveGovernorCall;
+
+  constructor(call: RemoveGovernorCall) {
+    this._call = call;
+  }
+
+  get account(): Address {
+    return this._call.inputValues[0].value.toAddress();
+  }
+}
+
+export class RemoveGovernorCall__Outputs {
+  _call: RemoveGovernorCall;
+
+  constructor(call: RemoveGovernorCall) {
     this._call = call;
   }
 }

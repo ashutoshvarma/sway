@@ -149,4 +149,6 @@ contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
 
         require(!paused(), "Sway: token transfer while paused");
     }
+
+    uint256[50] private __gap;
 }
