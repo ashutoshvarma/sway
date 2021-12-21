@@ -1,10 +1,11 @@
-import { Address, BigInt, ethereum } from '@graphprotocol/graph-ts'
+import { Address, BigInt, ethereum, log } from '@graphprotocol/graph-ts'
 import { Token, Account, Event } from '../../generated/schema'
 import { Sway } from '../../generated/Sway/Sway'
 import { Zero } from './utils'
 
 export function getOrInitToken(tokenId: BigInt, ev: ethereum.Event): Token {
   let token = Token.load(tokenId.toString())
+  log.info('Inniialising Token', [])
   if (!token) {
     const sway = Sway.bind(ev.address)
     token = new Token(tokenId.toString())

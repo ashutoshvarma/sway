@@ -152,6 +152,4 @@ contract SwayAdmin is Initializable, AccessControlEnumerableUpgradeable, Pausabl
         // add SwayDrop as minter
         _addEventMinter(eventId, drop);
     }
-
-    uint256[50] private __gap;
 }

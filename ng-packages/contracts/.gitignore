@@ -1,3 +1,9 @@
+/.yarn/*
+!/.yarn/patches
+!/.yarn/plugins
+!/.yarn/releases
+!/.yarn/sdks
+
 cache/
 artifacts/
 
@@ -18,3 +24,4 @@ yalc.lock
 contractsInfo.json
 deployments/hardhat
 deployments/localhost
+deployments.json

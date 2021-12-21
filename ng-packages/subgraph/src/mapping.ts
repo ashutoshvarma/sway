@@ -1,4 +1,4 @@
-import { Address, BigInt } from '@graphprotocol/graph-ts'
+import { Address, BigInt, log } from '@graphprotocol/graph-ts'
 import {
   Sway,
   Approval,
@@ -20,27 +20,24 @@ import {
 } from './helpers/initializers'
 import { createTransferID, One } from './helpers/utils'
 
-export function handleApproval(event: Approval): void {}
-
-export function handleApprovalForAll(event: ApprovalForAll): void {}
-
 export function handleEventAdded(ev: EventAdded): void {
   getOrInitEvent(ev.params.eventId, ev)
 }
 
 export function handleEventToken(ev: EventToken): void {
-  getOrInitEvent(ev.params.eventId, ev)
+  const event = getOrInitEvent(ev.params.eventId, ev)
+  const token = getOrInitToken(ev.params.tokenId, ev)
+
+  event.tokenCount += One
+  event.transferCount += One
+  token.event = event.id
+
+  event.save()
+  token.save()
 }
 
-export function handlePaused(event: Paused): void {}
-
-export function handleRoleAdminChanged(event: RoleAdminChanged): void {}
-
-export function handleRoleGranted(event: RoleGranted): void {}
-
-export function handleRoleRevoked(event: RoleRevoked): void {}
-
 export function handleTransfer(ev: TransferEvent): void {
+  log.info('handleTransfer', [])
   const token = getOrInitToken(ev.params.tokenId, ev)
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const event = getOrInitEvent(BigInt.fromString(token.event!), ev)
@@ -81,5 +78,3 @@ export function handleTransfer(ev: TransferEvent): void {
   event.save()
   transfer.save()
 }
-
-export function handleUnpaused(event: Unpaused): void {}

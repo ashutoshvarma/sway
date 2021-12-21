@@ -20,6 +20,8 @@ type Event @entity {
   tokenCount: BigInt!
   created: BigInt!
   transferCount: BigInt!
+  role: Bytes!,
+  minters: [Account!]!
   
 }
 

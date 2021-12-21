@@ -9,6 +9,18 @@ require('dotenv').config();
 
 const commandlineArgs = process.argv.slice(2);
 
+const SUBGRAPH_NETWORK_MAPPING = {
+  localhost: 'dev',
+  celo: 'celo',
+  alfajores: 'celo-alfajores',
+};
+const CHAIN_ID_MAPPING = {
+  localhost: '31337',
+  hardhat: '31337',
+  alfajores: '44787',
+  celo: '42220',
+};
+
 function parseArgs(rawArgs, numFixedArgs, expectedOptions) {
   const fixedArgs = [];
   const options = {};
@@ -191,6 +203,34 @@ async function performAction(rawArgs) {
     fs.writeFileSync(
       path.resolve(__dirname, '../subgraph/abis/SwayDrop.json'),
       JSON.stringify(swayDropDeployment.abi, null, 2)
+    );
+  } else if (firstArg === 'subgraph:config') {
+    const {fixedArgs} = parseArgs(args, 1, {});
+    const network = fixedArgs[0] ? fixedArgs[0] : 'localhost';
+    const configPath = path.resolve(
+      __dirname,
+      '../subgraph/config',
+      `${SUBGRAPH_NETWORK_MAPPING[network]}.json`
+    );
+
+    const config = JSON.parse(fs.readFileSync(configPath));
+    const deployments = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, 'deployments.json'))
+    )[CHAIN_ID_MAPPING[network]][network].contracts;
+
+    config.network =
+      network === 'localhost' ? 'celo' : SUBGRAPH_NETWORK_MAPPING[network];
+    config['SwayAddress'] = deployments['Sway'].address;
+    config['SwayDropAddress'] = deployments['SwayDrop'].address;
+    fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
+
+    fs.writeFileSync(
+      path.resolve(__dirname, '../subgraph/abis/Sway.json'),
+      JSON.stringify(deployments['Sway'].abi, null, 2)
+    );
+    fs.writeFileSync(
+      path.resolve(__dirname, '../subgraph/abis/SwayDrop.json'),
+      JSON.stringify(deployments['SwayDrop'].abi, null, 2)
     );
   }
 }

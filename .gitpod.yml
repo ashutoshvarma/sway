@@ -2,8 +2,9 @@
 tasks:
   - init: yarn
     command: |
-      echo 'TODO: start app'
+      cd 
 
 vscode:
   extensions:
     - graphql.vscode-graphql
+    - ms-azuretools.vscode-docker
