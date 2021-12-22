@@ -83,6 +83,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sway/events@workspace:packages/events":
+  version: 0.0.0-use.local
+  resolution: "@sway/events@workspace:packages/events"
+  dependencies:
+    "@types/glob": ^7
+    "@types/node": ^16.11.10
+    "@typescript-eslint/eslint-plugin": ^5.4.0
+    "@typescript-eslint/parser": ^5.4.0
+    class-transformer: ^0.5.1
+    class-validator: ^0.13.2
+    eslint: ^8.3.0
+    eslint-config-prettier: ^8.3.0
+    eslint-plugin-prettier: ^4.0.0
+    glob: ^7.2.0
+    prettier: ^2.4.1
+    reflect-metadata: ^0.1.13
+    ts-node: ^10.4.0
+    typescript: ^4.5.2
+  languageName: unknown
+  linkType: soft
+
 "@sway/server@workspace:packages/server":
   version: 0.0.0-use.local
   resolution: "@sway/server@workspace:packages/server"
@@ -127,10 +148,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/glob@npm:^7":
+  version: 7.2.0
+  resolution: "@types/glob@npm:7.2.0"
+  dependencies:
+    "@types/minimatch": "*"
+    "@types/node": "*"
+  checksum: 6ae717fedfdfdad25f3d5a568323926c64f52ef35897bcac8aca8e19bc50c0bd84630bbd063e5d52078b2137d8e7d3c26eabebd1a2f03ff350fff8a91e79fc19
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:^7.0.9":
   version: 7.0.9
   resolution: "@types/json-schema@npm:7.0.9"
   checksum: 259d0e25f11a21ba5c708f7ea47196bd396e379fddb79c76f9f4f62c945879dc21657904914313ec2754e443c5018ea8372362f323f30e0792897fdb2098a705
+  languageName: node
+  linkType: hard
+
+"@types/minimatch@npm:*":
+  version: 3.0.5
+  resolution: "@types/minimatch@npm:3.0.5"
+  checksum: c41d136f67231c3131cf1d4ca0b06687f4a322918a3a5adddc87ce90ed9dbd175a3610adee36b106ae68c0b92c637c35e02b58c8a56c424f71d30993ea220b92
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:*":
+  version: 17.0.2
+  resolution: "@types/node@npm:17.0.2"
+  checksum: a827d2542ef7adba5c79ba7f85b7c2ba8256d317bd99d77ed7af237cfebae0034dff5c4182e1845e6fbef29ae4c78186c4b4a7dbf236037a04120783aa30ba74
   languageName: node
   linkType: hard
 
@@ -362,6 +407,23 @@ __metadata:
     ansi-styles: ^4.1.0
     supports-color: ^7.1.0
   checksum: fe75c9d5c76a7a98d45495b91b2172fa3b7a09e0cc9370e5c8feb1c567b85c4288e2b3fded7cfdd7359ac28d6b3844feb8b82b8686842e93d23c827c417e83fc
+  languageName: node
+  linkType: hard
+
+"class-transformer@npm:^0.5.1":
+  version: 0.5.1
+  resolution: "class-transformer@npm:0.5.1"
+  checksum: f191c8b4cc4239990f5efdd790cabdd852c243ed66248e39f6616a349c910c6eed2d9fd1fbf7ee6ea89f69b4f1d0b493b27347fe0cd0ae26b47c3745a805b6d3
+  languageName: node
+  linkType: hard
+
+"class-validator@npm:^0.13.2":
+  version: 0.13.2
+  resolution: "class-validator@npm:0.13.2"
+  dependencies:
+    libphonenumber-js: ^1.9.43
+    validator: ^13.7.0
+  checksum: 0deb4c29faa18345f6989fd7eaaaa07b05caae5298603fcd6485531c6daad503e5d2b24cc1342e4fc88ae5ba0acffdc24d0fc333110ef3f21a667cd8a79e1258
   languageName: node
   linkType: hard
 
@@ -752,7 +814,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^7.1.3":
+"glob@npm:^7.1.3, glob@npm:^7.2.0":
   version: 7.2.0
   resolution: "glob@npm:7.2.0"
   dependencies:
@@ -906,6 +968,13 @@ __metadata:
     prelude-ls: ^1.2.1
     type-check: ~0.4.0
   checksum: 12c5021c859bd0f5248561bf139121f0358285ec545ebf48bb3d346820d5c61a4309535c7f387ed7d84361cf821e124ce346c6b7cef8ee09a67c1473b46d0fc4
+  languageName: node
+  linkType: hard
+
+"libphonenumber-js@npm:^1.9.43":
+  version: 1.9.44
+  resolution: "libphonenumber-js@npm:1.9.44"
+  checksum: cac1f8c4d37a35f1763720d5dbd247ce70a2f7a7d045ab2c99d75bdd170ed00ea8a38ddbd68b481fee3f57b9292218e412a20aa8a2a9b871091ed93809f61f95
   languageName: node
   linkType: hard
 
@@ -1075,6 +1144,13 @@ __metadata:
   version: 1.2.3
   resolution: "queue-microtask@npm:1.2.3"
   checksum: b676f8c040cdc5b12723ad2f91414d267605b26419d5c821ff03befa817ddd10e238d22b25d604920340fd73efd8ba795465a0377c4adf45a4a41e4234e42dc4
+  languageName: node
+  linkType: hard
+
+"reflect-metadata@npm:^0.1.13":
+  version: 0.1.13
+  resolution: "reflect-metadata@npm:0.1.13"
+  checksum: 798d379a7b6f6455501145419505c97dd11cbc23857a386add2b9ef15963ccf15a48d9d15507afe01d4cd74116df8a213247200bac00320bd7c11ddeaa5e8fb4
   languageName: node
   linkType: hard
 
@@ -1313,6 +1389,13 @@ __metadata:
   version: 2.3.0
   resolution: "v8-compile-cache@npm:2.3.0"
   checksum: adb0a271eaa2297f2f4c536acbfee872d0dd26ec2d76f66921aa7fc437319132773483344207bdbeee169225f4739016d8d2dbf0553913a52bb34da6d0334f8e
+  languageName: node
+  linkType: hard
+
+"validator@npm:^13.7.0":
+  version: 13.7.0
+  resolution: "validator@npm:13.7.0"
+  checksum: 2b83283de1222ca549a7ef57f46e8d49c6669213348db78b7045bce36a3b5843ff1e9f709ebf74574e06223461ee1f264f8cc9a26a0060a79a27de079d8286ef
   languageName: node
   linkType: hard
 
