@@ -6,7 +6,7 @@ import {
   Length,
   IsEmail,
   IsFQDN,
-  IsDate,
+  IsISO8601,
   Min,
   Max,
   IsUrl,
@@ -51,11 +51,11 @@ export class Event {
   @IsString({ each: true })
   tags!: string[]
 
-  @IsDate()
-  start_date!: Date
+  @IsISO8601()
+  start_date!: string
 
-  @IsDate()
-  end_date!: Date
+  @IsISO8601()
+  end_date!: string
 
   @IsBoolean()
   virtual_event!: boolean
