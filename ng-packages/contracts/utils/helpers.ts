@@ -1,11 +1,11 @@
-import {BigNumber, BigNumberish} from '@ethersproject/bignumber';
-import {ethers, getNamedAccounts} from 'hardhat';
-import {Sway} from '../typechain';
-import {MerkleTree} from 'merkletreejs';
+import { BigNumber, BigNumberish } from '@ethersproject/bignumber';
+import { ethers, getNamedAccounts } from 'hardhat';
+import { Sway } from '../typechain';
+import { MerkleTree } from 'merkletreejs';
 import keccak256 from 'keccak256';
 
 export async function createEvent(minter: string): Promise<BigNumber> {
-  const {governorAddr} = await getNamedAccounts();
+  const { governorAddr } = await getNamedAccounts();
   const governor = await ethers.getSigner(governorAddr);
 
   const cSway = (await ethers.getContract('Sway')) as Sway;
@@ -16,6 +16,16 @@ export async function createEvent(minter: string): Promise<BigNumber> {
   return BigNumber.from(
     reciept.events?.filter((e) => e.event === 'EventAdded')[0].args?.[0]
   );
+}
+
+export async function addEventDrop(eventId: BigNumberish, root: string) {
+  const { governorAddr } = await getNamedAccounts();
+  const governor = await ethers.getSigner(governorAddr);
+
+  const cSway = (await ethers.getContract('Sway')) as Sway;
+  return (
+    await cSway.connect(governor).addEventDrop(eventId, root)
+  ).wait();
 }
 
 export function calculateMerkleLeaf(
@@ -34,7 +44,7 @@ export function getMerkleTree(
   eventId: BigNumberish
 ): [MerkleTree, string[]] {
   const leafs = participants.map((p, i) => calculateMerkleLeaf(i, eventId, p));
-  const tree = new MerkleTree(leafs, keccak256, {sort: true});
+  const tree = new MerkleTree(leafs, keccak256, { sort: true });
   return [tree, leafs];
 }
 
@@ -52,4 +62,10 @@ export function getMerkleRoot(
   eventId: BigNumberish
 ): string {
   return getMerkleTree(participants, eventId)[0].getHexRoot();
+}
+
+
+export async function getLastEventId(): Promise<BigNumber> {
+  const cSway = await ethers.getContract("Sway") as Sway
+  return cSway.lastEventId()
 }
