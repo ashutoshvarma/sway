@@ -1,5 +1,5 @@
-import React, { ReactElement, useState } from 'react'
-import { useContractKit } from '@celo-tools/use-contractkit';
+import React, { ReactElement, useEffect, useState } from 'react'
+import { useContractKit } from '@celo-tools/use-contractkit'
 import styles from './Nav.module.css'
 import walleticon from '../../assets/icons/wallet.svg'
 import hamburger from '../../assets/icons/hamburger.svg'
@@ -10,7 +10,11 @@ interface Props {
 }
 
 function Nav({ dark }: Props): ReactElement {
-  const { connect, address } = useContractKit();
+  const {
+    connect,
+    address,
+    destroy,
+  } = useContractKit()
   const [navOpen, setNavOpen] = useState<Boolean>(false)
   const toggleNav = () => {
     setNavOpen((state) => !state)
@@ -34,7 +38,17 @@ function Nav({ dark }: Props): ReactElement {
           <NavItem to="#">Create</NavItem>
           <NavItem to="#">My Account</NavItem>
           <NavItem to="#" primary>
-            <img src={walleticon} alt="wallet icon" />
+            {address ? (
+              <a onClick={() => destroy().catch(console.log)}>
+                <img src={walleticon} alt="wallet icon" />
+                Disconnect
+              </a>
+            ) : (
+              <a onClick={() => connect().catch(console.log)}>
+                <img src={walleticon} alt="wallet icon" />
+                Connect
+              </a>
+            )}
           </NavItem>
         </div>
       </div>
