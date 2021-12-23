@@ -2410,6 +2410,37 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@json-rpc-tools/provider@npm:^1.4.0, @json-rpc-tools/provider@npm:^1.6.4":
+  version: 1.7.6
+  resolution: "@json-rpc-tools/provider@npm:1.7.6"
+  dependencies:
+    "@json-rpc-tools/utils": ^1.7.6
+    axios: ^0.21.0
+    safe-json-utils: ^1.1.1
+    ws: ^7.4.0
+  checksum: c60d73511db7f743c3844d499df6a7e243d5f5493127c00fbf9aec74c95d2e80a3033eb22369c428c2deec263a47cd1b334cd76c84859e30355a6dace893a589
+  languageName: node
+  linkType: hard
+
+"@json-rpc-tools/types@npm:^1.6.4, @json-rpc-tools/types@npm:^1.7.6":
+  version: 1.7.6
+  resolution: "@json-rpc-tools/types@npm:1.7.6"
+  dependencies:
+    keyvaluestorage-interface: ^1.0.0
+  checksum: f23ec7d79a78aa4e896d1dff506108bd3da38015028afd997034e6498c1f3c7bedee70618b0d1a73adf13b4d2a6a91146c2e9505487280b3c376e74f5790e77c
+  languageName: node
+  linkType: hard
+
+"@json-rpc-tools/utils@npm:^1.4.0, @json-rpc-tools/utils@npm:^1.6.4, @json-rpc-tools/utils@npm:^1.7.6":
+  version: 1.7.6
+  resolution: "@json-rpc-tools/utils@npm:1.7.6"
+  dependencies:
+    "@json-rpc-tools/types": ^1.7.6
+    "@pedrouid/environment": ^1.0.1
+  checksum: 32cac2e8cbf8a15d95415de8ded483c6206e6df392e129ad51acd90a4842511e931156c59cb26036fb9fae8054e8f20b719a35282304f39cd18683a5293cb67d
+  languageName: node
+  linkType: hard
+
 "@ledgerhq/devices@npm:^5.11.0, @ledgerhq/devices@npm:^5.51.1":
   version: 5.51.1
   resolution: "@ledgerhq/devices@npm:5.51.1"
@@ -2531,6 +2562,22 @@ __metadata:
     mkdirp: ^1.0.4
     rimraf: ^3.0.2
   checksum: c96381d4a37448ea280951e46233f7e541058cf57a57d4094dd4bdcaae43fa5872b5f2eb6bfb004591a68e29c5877abe3cdc210cb3588cbf20ab2877f31a7de7
+  languageName: node
+  linkType: hard
+
+"@pedrouid/environment@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@pedrouid/environment@npm:1.0.1"
+  checksum: fd88340ad760f26340a2816c3677f0ca913976e315880891c3de3f028fe64abc9704fb904234dce77a1ff15c22d0b6cbf1d4199a76de6695c2aed8353ce20590
+  languageName: node
+  linkType: hard
+
+"@pedrouid/pino-utils@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@pedrouid/pino-utils@npm:1.0.1"
+  dependencies:
+    pino: ^6.7.0
+  checksum: 2d0efd5ace6c0f58a3ac49b7e34b738ff30cee7035163311e53172648cc5e3084ee16ae98e4187700f3558c3252cf390702a8628404401743b016651dfe0f9e1
   languageName: node
   linkType: hard
 
@@ -3961,23 +4008,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@walletconnect/client@npm:2.0.0-beta.19":
-  version: 2.0.0-beta.19
-  resolution: "@walletconnect/client@npm:2.0.0-beta.19"
+"@walletconnect/client@npm:2.0.0-alpha.35":
+  version: 2.0.0-alpha.35
+  resolution: "@walletconnect/client@npm:2.0.0-alpha.35"
   dependencies:
-    "@walletconnect/encoding": ^1.0.0
-    "@walletconnect/jsonrpc-provider": ^1.0.0
-    "@walletconnect/jsonrpc-utils": ^1.0.0
-    "@walletconnect/jsonrpc-ws-connection": ^1.0.0
-    "@walletconnect/logger": ^1.0.0
-    "@walletconnect/relay-api": ^1.0.0
-    "@walletconnect/safe-json": ^1.0.0
-    "@walletconnect/types": ^2.0.0-beta.19
-    "@walletconnect/utils": ^2.0.0-beta.19
+    "@json-rpc-tools/provider": ^1.6.4
+    "@json-rpc-tools/utils": ^1.6.4
+    "@pedrouid/pino-utils": ^1.0.1
+    "@walletconnect/types": ^2.0.0-alpha.35
+    "@walletconnect/utils": ^2.0.0-alpha.35
+    enc-utils: ^3.0.0
     keyvaluestorage: ^0.7.1
     pino: ^6.7.0
     pino-pretty: ^4.3.0
-  checksum: da25462365a42f824bad257b8b1744ea19606309416a239a84edf902156252292af1b832d2d281f34fa3f1adaa7652aab5450bde8d7c3bf8f5340000d7aac8ea
+    relay-provider: ^1.2.1
+    safe-json-utils: ^1.1.1
+  checksum: de84ec35a732b2900f7c19ab6b6e1c9bcd1998abb5b2274ec34dc8106de47069126281d6efc684ad8175f98f9ebc69abb1bdbb679612ce60530ecfc9760b00ce
   languageName: node
   linkType: hard
 
@@ -4022,16 +4068,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@walletconnect/jsonrpc-provider@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@walletconnect/jsonrpc-provider@npm:1.0.0"
-  dependencies:
-    "@walletconnect/jsonrpc-utils": ^1.0.0
-    "@walletconnect/safe-json": ^1.0.0
-  checksum: 5d8de7fba62a58eb4d7c88d17d0b67e997f3cf9cae4615ffcc8417f14826aeeadf87bf490fd90a0f59593a66e53a29d7401a223467265178f583e557eda5d14a
-  languageName: node
-  linkType: hard
-
 "@walletconnect/jsonrpc-types@npm:^1.0.0":
   version: 1.0.0
   resolution: "@walletconnect/jsonrpc-types@npm:1.0.0"
@@ -4048,17 +4084,6 @@ __metadata:
     "@walletconnect/environment": ^1.0.0
     "@walletconnect/jsonrpc-types": ^1.0.0
   checksum: d760736a3802ba312ced0ba6ffa9763e76319329132904692531d6907a9560d88c81f7e8647ba42d606b610ea81ad669f7aa927d6a615a321acb36f0f08532a9
-  languageName: node
-  linkType: hard
-
-"@walletconnect/jsonrpc-ws-connection@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@walletconnect/jsonrpc-ws-connection@npm:1.0.0"
-  dependencies:
-    "@walletconnect/jsonrpc-utils": ^1.0.0
-    "@walletconnect/safe-json": ^1.0.0
-    ws: ^7.5.1
-  checksum: a92ffd58f8c0eec153ba64a7bd35789a6eedd3d7a1e693c4b41b682259feca0abca17efb0f863785e615418e6a4ef495a0286bf327739d8b6062b8eb9e1f57cd
   languageName: node
   linkType: hard
 
@@ -4082,15 +4107,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@walletconnect/relay-api@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@walletconnect/relay-api@npm:1.0.0"
-  dependencies:
-    "@walletconnect/jsonrpc-types": ^1.0.0
-  checksum: 99172fcd7ab4b2a2dd9f1eb591251b5f7228b4003c7d68fd10a8b2ad3434a0b06ff07eda55420f445cf54b5e31a322eaf2eac0260663574861eaa7a81e223cd5
-  languageName: node
-  linkType: hard
-
 "@walletconnect/safe-json@npm:1.0.0, @walletconnect/safe-json@npm:^1.0.0":
   version: 1.0.0
   resolution: "@walletconnect/safe-json@npm:1.0.0"
@@ -4098,34 +4114,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@walletconnect/types@npm:2.0.0-beta.19":
-  version: 2.0.0-beta.19
-  resolution: "@walletconnect/types@npm:2.0.0-beta.19"
+"@walletconnect/types@npm:2.0.0-alpha.35":
+  version: 2.0.0-alpha.35
+  resolution: "@walletconnect/types@npm:2.0.0-alpha.35"
   dependencies:
-    "@walletconnect/jsonrpc-types": ^1.0.0
+    "@json-rpc-tools/types": ^1.6.4
     keyvaluestorage: ^0.7.1
     pino: ^6.7.0
     pino-pretty: ^4.3.0
-  checksum: 385fedda79edd3f5a14f6349e5178210e60f4f44c6d7ff971cd921522b4723a2d7a088a82f66e6451c8948ff3152a9925ea649481e435ae6d487aaf757f5d7cf
-  languageName: node
-  linkType: hard
-
-"@walletconnect/types@npm:^1.7.0":
-  version: 1.7.0
-  resolution: "@walletconnect/types@npm:1.7.0"
-  checksum: 0f29aac54bd2d3db855d8e0db4fef3a63e4442a4ed015264ebe9f86d3921adfc57360bce08799fda61cc7fe598351a74440876dbe75ebf378713088766e8b33b
-  languageName: node
-  linkType: hard
-
-"@walletconnect/types@npm:^2.0.0-beta.19, @walletconnect/types@npm:^2.0.0-beta.21":
-  version: 2.0.0-beta.21
-  resolution: "@walletconnect/types@npm:2.0.0-beta.21"
-  dependencies:
-    "@walletconnect/jsonrpc-types": ^1.0.0
-    keyvaluestorage: ^0.7.1
-    pino: ^6.7.0
-    pino-pretty: ^4.3.0
-  checksum: c0e2d32dc8f6ca789eb8a7fd0f9e30cbadf0db1fd7de0a8fc0700e042cab5f54f9d63fff9b2378cc3cf7687648446ac2eb1560a333db94a223b941457f1fbf24
+  checksum: d2a597b8d20cc0e2a58daa070ff668a37d9309cc5c3564cfe09c02c19a766141077355615fb2c819e74179b533be0c7f7af6be401d7e979ab8cc040be57ce7ff
   languageName: node
   linkType: hard
 
@@ -4144,7 +4141,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@walletconnect/utils@npm:^2.0.0-beta.19":
+"@walletconnect/utils@npm:^2.0.0-alpha.35":
   version: 2.0.0-beta.21
   resolution: "@walletconnect/utils@npm:2.0.0-beta.21"
   dependencies:
@@ -5112,7 +5109,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.21.1, axios@npm:^0.21.4":
+"axios@npm:^0.21.0, axios@npm:^0.21.1, axios@npm:^0.21.4":
   version: 0.21.4
   resolution: "axios@npm:0.21.4"
   dependencies:
@@ -8196,6 +8193,16 @@ __metadata:
   version: 3.0.0
   resolution: "emojis-list@npm:3.0.0"
   checksum: ddaaa02542e1e9436c03970eeed445f4ed29a5337dfba0fe0c38dfdd2af5da2429c2a0821304e8a8d1cadf27fdd5b22ff793571fa803ae16852a6975c65e8e70
+  languageName: node
+  linkType: hard
+
+"enc-utils@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "enc-utils@npm:3.0.0"
+  dependencies:
+    is-typedarray: 1.0.0
+    typedarray-to-buffer: 3.1.5
+  checksum: b7132c68e2f64a91b9230256683e427d40a056de3ef9a42b32478a80831bda4c05bda6c330e78902af83156773143d9eb73a1301e68546fd7a1a8549f87d010c
   languageName: node
   linkType: hard
 
@@ -17542,6 +17549,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"relay-provider@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "relay-provider@npm:1.2.1"
+  dependencies:
+    "@json-rpc-tools/provider": ^1.4.0
+    "@json-rpc-tools/utils": ^1.4.0
+  checksum: 205eabbe1b3e9fb1a8a49ab7bdd974a0ea69bb220e970c0f2690849e1b194ed6425c6b1587edf9ab5ee007d179070e750f09cfdc209f0a4a3d497fc411d8eeb6
+  languageName: node
+  linkType: hard
+
 "remove-trailing-separator@npm:^1.0.1":
   version: 1.1.0
   resolution: "remove-trailing-separator@npm:1.1.0"
@@ -21812,7 +21829,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:^7.4.5, ws@npm:^7.4.6, ws@npm:^7.5.1":
+"ws@npm:^7.4.0, ws@npm:^7.4.5, ws@npm:^7.4.6":
   version: 7.5.6
   resolution: "ws@npm:7.5.6"
   peerDependencies:

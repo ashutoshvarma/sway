@@ -8,7 +8,8 @@
     "test": "yarn test:contracts && yarn workspaces foreach -pti run test",
     "contracts:compile": "cd ./ng-packages/contracts && yarn compile",
     "hardhat": "cd ./ng-packages/contracts && yarn hardhat",
-    "graph": "cd ./ng-packages/subgraph && yarn graph"
+    "graph": "cd ./ng-packages/subgraph && yarn graph",
+    "dapp:start": "yarn workspace @sway/interface start"
   },
   "private": true,
   "workspaces": [
@@ -28,5 +29,9 @@
   "dependencies": {
     "@sway/contracts": "portal:./ng-packages/contracts",
     "@sway/subgraph": "portal:./ng-packages/subgraph"
+  },
+  "resolutions": {
+    "@walletconnect/client": "2.0.0-alpha.35",
+    "@walletconnect/types": "2.0.0-alpha.35"
   }
 }

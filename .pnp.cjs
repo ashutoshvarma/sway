@@ -3142,8 +3142,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@celo/utils", "npm:1.3.1"],
             ["@celo/wallet-base", "npm:1.3.1"],
             ["@celo/wallet-remote", "npm:1.3.1"],
-            ["@walletconnect/client", "npm:2.0.0-beta.19"],
-            ["@walletconnect/types", "npm:2.0.0-beta.19"],
+            ["@walletconnect/client", "npm:2.0.0-alpha.35"],
+            ["@walletconnect/types", "npm:2.0.0-alpha.35"],
             ["@walletconnect/utils", "npm:1.7.0"],
             ["debug", "virtual:4d5b41b4c144bc0f7c0e4c4c2164d0bc5d527811557a2fd7f2ec3307b1cf1ca97f42a730a90b32caada41091b3e922a1e5a2d8c6ff2841b6857305532c68aca8#npm:4.3.3"],
             ["ethereumjs-util", "npm:7.1.3"]
@@ -3925,6 +3925,43 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@json-rpc-tools/provider", [
+        ["npm:1.7.6", {
+          "packageLocation": "./.yarn/cache/@json-rpc-tools-provider-npm-1.7.6-cc129beab1-c60d73511d.zip/node_modules/@json-rpc-tools/provider/",
+          "packageDependencies": [
+            ["@json-rpc-tools/provider", "npm:1.7.6"],
+            ["@json-rpc-tools/utils", "npm:1.7.6"],
+            ["axios", "npm:0.21.4"],
+            ["safe-json-utils", "npm:1.1.1"],
+            ["tslib", "npm:2.3.1"],
+            ["ws", "virtual:231565fada15e176d16d90a21b0c367c2cd212de526965871c1d6f23ee24eed24776deb02c385a722769bdc182df968fefdc67dbde3b8c8bc8ff194e6fd80a4f#npm:7.5.6"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@json-rpc-tools/types", [
+        ["npm:1.7.6", {
+          "packageLocation": "./.yarn/cache/@json-rpc-tools-types-npm-1.7.6-1c36bdb16d-f23ec7d79a.zip/node_modules/@json-rpc-tools/types/",
+          "packageDependencies": [
+            ["@json-rpc-tools/types", "npm:1.7.6"],
+            ["keyvaluestorage-interface", "npm:1.0.0"],
+            ["tslib", "npm:2.3.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@json-rpc-tools/utils", [
+        ["npm:1.7.6", {
+          "packageLocation": "./.yarn/cache/@json-rpc-tools-utils-npm-1.7.6-3168f282f4-32cac2e8cb.zip/node_modules/@json-rpc-tools/utils/",
+          "packageDependencies": [
+            ["@json-rpc-tools/utils", "npm:1.7.6"],
+            ["@json-rpc-tools/types", "npm:1.7.6"],
+            ["@pedrouid/environment", "npm:1.0.1"],
+            ["tslib", "npm:2.3.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@ledgerhq/devices", [
         ["npm:5.51.1", {
           "packageLocation": "./.yarn/cache/@ledgerhq-devices-npm-5.51.1-8986be31a8-bb63548b4b.zip/node_modules/@ledgerhq/devices/",
@@ -4058,6 +4095,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@npmcli/move-file", "npm:1.1.2"],
             ["mkdirp", "npm:1.0.4"],
             ["rimraf", "npm:3.0.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@pedrouid/environment", [
+        ["npm:1.0.1", {
+          "packageLocation": "./.yarn/cache/@pedrouid-environment-npm-1.0.1-3a1b030297-fd88340ad7.zip/node_modules/@pedrouid/environment/",
+          "packageDependencies": [
+            ["@pedrouid/environment", "npm:1.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@pedrouid/pino-utils", [
+        ["npm:1.0.1", {
+          "packageLocation": "./.yarn/cache/@pedrouid-pino-utils-npm-1.0.1-38f32f417c-2d0efd5ace.zip/node_modules/@pedrouid/pino-utils/",
+          "packageDependencies": [
+            ["@pedrouid/pino-utils", "npm:1.0.1"],
+            ["pino", "npm:6.13.3"]
           ],
           "linkType": "HARD",
         }]
@@ -5952,7 +6008,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@walletconnect/browser-utils", "npm:1.7.0"],
             ["@walletconnect/safe-json", "npm:1.0.0"],
-            ["@walletconnect/types", "npm:1.7.0"],
+            ["@walletconnect/types", "npm:2.0.0-alpha.35"],
             ["@walletconnect/window-getters", "npm:1.0.0"],
             ["@walletconnect/window-metadata", "npm:1.0.0"],
             ["detect-browser", "npm:5.2.0"]
@@ -5961,22 +6017,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@walletconnect/client", [
-        ["npm:2.0.0-beta.19", {
-          "packageLocation": "./.yarn/cache/@walletconnect-client-npm-2.0.0-beta.19-18ec77e33d-da25462365.zip/node_modules/@walletconnect/client/",
+        ["npm:2.0.0-alpha.35", {
+          "packageLocation": "./.yarn/cache/@walletconnect-client-npm-2.0.0-alpha.35-4f97f7cee2-de84ec35a7.zip/node_modules/@walletconnect/client/",
           "packageDependencies": [
-            ["@walletconnect/client", "npm:2.0.0-beta.19"],
-            ["@walletconnect/encoding", "npm:1.0.0"],
-            ["@walletconnect/jsonrpc-provider", "npm:1.0.0"],
-            ["@walletconnect/jsonrpc-utils", "npm:1.0.0"],
-            ["@walletconnect/jsonrpc-ws-connection", "npm:1.0.0"],
-            ["@walletconnect/logger", "npm:1.0.0"],
-            ["@walletconnect/relay-api", "npm:1.0.0"],
-            ["@walletconnect/safe-json", "npm:1.0.0"],
-            ["@walletconnect/types", "npm:2.0.0-beta.21"],
+            ["@walletconnect/client", "npm:2.0.0-alpha.35"],
+            ["@json-rpc-tools/provider", "npm:1.7.6"],
+            ["@json-rpc-tools/utils", "npm:1.7.6"],
+            ["@pedrouid/pino-utils", "npm:1.0.1"],
+            ["@walletconnect/types", "npm:2.0.0-alpha.35"],
             ["@walletconnect/utils", "npm:2.0.0-beta.21"],
+            ["enc-utils", "npm:3.0.0"],
             ["keyvaluestorage", "npm:0.7.1"],
             ["pino", "npm:6.13.3"],
             ["pino-pretty", "npm:4.8.0"],
+            ["relay-provider", "npm:1.2.1"],
+            ["safe-json-utils", "npm:1.1.1"],
             ["tslib", "npm:2.3.1"]
           ],
           "linkType": "HARD",
@@ -6028,17 +6083,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["@walletconnect/jsonrpc-provider", [
-        ["npm:1.0.0", {
-          "packageLocation": "./.yarn/cache/@walletconnect-jsonrpc-provider-npm-1.0.0-d0bfe472ac-5d8de7fba6.zip/node_modules/@walletconnect/jsonrpc-provider/",
-          "packageDependencies": [
-            ["@walletconnect/jsonrpc-provider", "npm:1.0.0"],
-            ["@walletconnect/jsonrpc-utils", "npm:1.0.0"],
-            ["@walletconnect/safe-json", "npm:1.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["@walletconnect/jsonrpc-types", [
         ["npm:1.0.0", {
           "packageLocation": "./.yarn/cache/@walletconnect-jsonrpc-types-npm-1.0.0-a5a7069baa-6f38c5df6b.zip/node_modules/@walletconnect/jsonrpc-types/",
@@ -6056,18 +6100,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@walletconnect/jsonrpc-utils", "npm:1.0.0"],
             ["@walletconnect/environment", "npm:1.0.0"],
             ["@walletconnect/jsonrpc-types", "npm:1.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["@walletconnect/jsonrpc-ws-connection", [
-        ["npm:1.0.0", {
-          "packageLocation": "./.yarn/cache/@walletconnect-jsonrpc-ws-connection-npm-1.0.0-8b54ad3500-a92ffd58f8.zip/node_modules/@walletconnect/jsonrpc-ws-connection/",
-          "packageDependencies": [
-            ["@walletconnect/jsonrpc-ws-connection", "npm:1.0.0"],
-            ["@walletconnect/jsonrpc-utils", "npm:1.0.0"],
-            ["@walletconnect/safe-json", "npm:1.0.0"],
-            ["ws", "virtual:231565fada15e176d16d90a21b0c367c2cd212de526965871c1d6f23ee24eed24776deb02c385a722769bdc182df968fefdc67dbde3b8c8bc8ff194e6fd80a4f#npm:7.5.6"]
           ],
           "linkType": "HARD",
         }]
@@ -6094,16 +6126,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["@walletconnect/relay-api", [
-        ["npm:1.0.0", {
-          "packageLocation": "./.yarn/cache/@walletconnect-relay-api-npm-1.0.0-9dc550c4a8-99172fcd7a.zip/node_modules/@walletconnect/relay-api/",
-          "packageDependencies": [
-            ["@walletconnect/relay-api", "npm:1.0.0"],
-            ["@walletconnect/jsonrpc-types", "npm:1.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["@walletconnect/safe-json", [
         ["npm:1.0.0", {
           "packageLocation": "./.yarn/cache/@walletconnect-safe-json-npm-1.0.0-76114111c6-a8ee161cad.zip/node_modules/@walletconnect/safe-json/",
@@ -6114,32 +6136,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@walletconnect/types", [
-        ["npm:1.7.0", {
-          "packageLocation": "./.yarn/cache/@walletconnect-types-npm-1.7.0-bb93485187-0f29aac54b.zip/node_modules/@walletconnect/types/",
+        ["npm:2.0.0-alpha.35", {
+          "packageLocation": "./.yarn/cache/@walletconnect-types-npm-2.0.0-alpha.35-1f90f6b6b5-d2a597b8d2.zip/node_modules/@walletconnect/types/",
           "packageDependencies": [
-            ["@walletconnect/types", "npm:1.7.0"]
-          ],
-          "linkType": "HARD",
-        }],
-        ["npm:2.0.0-beta.19", {
-          "packageLocation": "./.yarn/cache/@walletconnect-types-npm-2.0.0-beta.19-244b232a4a-385fedda79.zip/node_modules/@walletconnect/types/",
-          "packageDependencies": [
-            ["@walletconnect/types", "npm:2.0.0-beta.19"],
-            ["@walletconnect/jsonrpc-types", "npm:1.0.0"],
+            ["@walletconnect/types", "npm:2.0.0-alpha.35"],
+            ["@json-rpc-tools/types", "npm:1.7.6"],
             ["keyvaluestorage", "npm:0.7.1"],
             ["pino", "npm:6.13.3"],
-            ["pino-pretty", "npm:4.8.0"]
-          ],
-          "linkType": "HARD",
-        }],
-        ["npm:2.0.0-beta.21", {
-          "packageLocation": "./.yarn/cache/@walletconnect-types-npm-2.0.0-beta.21-04a6fbf378-c0e2d32dc8.zip/node_modules/@walletconnect/types/",
-          "packageDependencies": [
-            ["@walletconnect/types", "npm:2.0.0-beta.21"],
-            ["@walletconnect/jsonrpc-types", "npm:1.0.0"],
-            ["keyvaluestorage", "npm:0.7.1"],
-            ["pino", "npm:6.13.3"],
-            ["pino-pretty", "npm:4.8.0"]
+            ["pino-pretty", "npm:4.8.0"],
+            ["tslib", "npm:2.3.1"]
           ],
           "linkType": "HARD",
         }]
@@ -6152,7 +6157,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@walletconnect/browser-utils", "npm:1.7.0"],
             ["@walletconnect/encoding", "npm:1.0.0"],
             ["@walletconnect/jsonrpc-utils", "npm:1.0.0"],
-            ["@walletconnect/types", "npm:1.7.0"],
+            ["@walletconnect/types", "npm:2.0.0-alpha.35"],
             ["bn.js", "npm:4.11.8"],
             ["js-sha3", "npm:0.8.0"],
             ["query-string", "npm:6.13.5"]
@@ -6168,7 +6173,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@walletconnect/jsonrpc-utils", "npm:1.0.0"],
             ["@walletconnect/logger", "npm:1.0.0"],
             ["@walletconnect/safe-json", "npm:1.0.0"],
-            ["@walletconnect/types", "npm:2.0.0-beta.21"],
+            ["@walletconnect/types", "npm:2.0.0-alpha.35"],
             ["@walletconnect/window-getters", "npm:1.0.0"],
             ["@walletconnect/window-metadata", "npm:1.0.0"],
             ["lodash.union", "npm:4.6.0"],
@@ -10951,6 +10956,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/emojis-list-npm-3.0.0-7faa48e6fd-ddaaa02542.zip/node_modules/emojis-list/",
           "packageDependencies": [
             ["emojis-list", "npm:3.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["enc-utils", [
+        ["npm:3.0.0", {
+          "packageLocation": "./.yarn/cache/enc-utils-npm-3.0.0-56c3df7245-b7132c68e2.zip/node_modules/enc-utils/",
+          "packageDependencies": [
+            ["enc-utils", "npm:3.0.0"],
+            ["is-typedarray", "npm:1.0.0"],
+            ["typedarray-to-buffer", "npm:3.1.5"]
           ],
           "linkType": "HARD",
         }]
@@ -21742,6 +21758,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/relateurl-npm-0.2.7-7687cc0a2a-5891e792ea.zip/node_modules/relateurl/",
           "packageDependencies": [
             ["relateurl", "npm:0.2.7"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["relay-provider", [
+        ["npm:1.2.1", {
+          "packageLocation": "./.yarn/cache/relay-provider-npm-1.2.1-a1b08acdbf-205eabbe1b.zip/node_modules/relay-provider/",
+          "packageDependencies": [
+            ["relay-provider", "npm:1.2.1"],
+            ["@json-rpc-tools/provider", "npm:1.7.6"],
+            ["@json-rpc-tools/utils", "npm:1.7.6"]
           ],
           "linkType": "HARD",
         }]
