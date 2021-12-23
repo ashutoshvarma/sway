@@ -1,0 +1,30 @@
+.HeroSection {
+  padding: 150px 0;
+  position: relative;
+  text-align: center;
+  background-position: top;
+  background-size: cover;
+  color: #fff;
+}
+
+.HeroContentDiv {
+}
+
+.HeroSection h2 {
+  font-size: 45px;
+  margin-bottom: 18px;
+  margin-top: 0;
+}
+
+.HeroSection p {
+  max-width: 700px;
+  margin: auto;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+@media (max-width: 800px) {
+  .HeroSection h2 {
+    font-size: 36px;
+  }
+}

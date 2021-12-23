@@ -1,0 +1,76 @@
+.CollectionGrid {
+  display: grid;
+  border-collapse: collapse;
+  text-align: center;
+  margin-bottom: 100px;
+  min-width: 100%;
+  grid-template-columns: minmax(50px, 100px) 3fr 1fr 1fr 1fr;
+}
+
+.CollectionGrid thead,
+.CollectionGrid tbody,
+.CollectionGrid tr {
+  display: contents;
+}
+
+.CollectionGrid th,
+.CollectionGrid td {
+  padding: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.CollectionGrid th {
+  background: #fffbe0;
+}
+
+.CollectionGrid tbody tr:nth-of-type(odd) td {
+  background: #f8f8f8;
+}
+
+.CollectionGrid tbody tr:nth-of-type(even) td {
+  background: #fffef4;
+}
+
+.MobileLabel {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .MobileLabel {
+    display: block;
+  }
+
+  .CollectionGrid thead {
+    display: none;
+  }
+
+  .CollectionGrid {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    border-radius: 20px;
+    overflow: hidden;
+    font-size: 14px;
+  }
+
+  .CollectionGrid tr {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 20px;
+  }
+  .CollectionGrid tbody tr:nth-of-type(odd) {
+    background: #f8f8f8;
+  }
+
+  .CollectionGrid tbody tr:nth-of-type(even) {
+    background: #fffef4;
+  }
+  .CollectionGrid td {
+    padding: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

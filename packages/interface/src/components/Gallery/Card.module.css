@@ -1,0 +1,67 @@
+.Card {
+  padding: 40px 35px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 25px #5859761c;
+  text-align: center;
+}
+
+.CardThumbContainer {
+  padding-top: 150px;
+  position: relative;
+  margin: auto;
+  width: 150px;
+}
+
+.CardThumb {
+  border: 3px solid #fff4a3;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.Label {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.Label span {
+  padding: 8px 26px;
+  border-radius: 24px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #e8cd00;
+}
+
+.Card .Title {
+  font-weight: 500;
+  font-size: 20px;
+  margin: 24px 0px 21px;
+}
+
+.Card .Desc {
+  font-size: 14px;
+  color: #767680;
+  line-height: 21px;
+}
+
+.AdditionalInfoRow {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 12px;
+  color: #767680;
+  margin: 20px;
+}
+
+.AdditionalInfoRow div {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.AdditionalInfoRow:last-of-type {
+  margin-bottom: 5px;
+}

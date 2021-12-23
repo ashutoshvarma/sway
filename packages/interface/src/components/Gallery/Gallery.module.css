@@ -1,0 +1,94 @@
+.Gallery {
+  padding: 60px 0;
+}
+
+.Header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.Header h2 {
+  font-size: 36px;
+}
+
+.GalleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.LoadMoreContainer {
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: -100px;
+}
+
+.LoadMoreContainer button {
+  cursor: pointer;
+  padding: 20px 30px;
+  color: white;
+  background-color: var(--primary-color);
+  font-size: 24px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+}
+
+.DropdownContainer {
+  display: flex;
+}
+.DropdownRoot {
+}
+
+.Dropdown {
+  border: none;
+}
+
+.DropdownPlaceholder {
+  color: #585976;
+}
+.DropdownPlaceholder::before {
+  content: 'Order By: ';
+}
+
+.DropdownMenu {
+  border-radius: 5px;
+  border: 1px solid #eeeeee;
+}
+
+.DropdownMenu > div {
+  padding: 14px 20px;
+}
+
+.SearchInputContainer {
+  justify-self: flex-end;
+}
+
+@media (max-width: 1000px) {
+  .Header {
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 21px;
+  }
+
+  .Gallery h2 {
+    margin: 5px;
+  }
+
+  .SearchInputContainer {
+    justify-self: center;
+  }
+
+  .DropdownContainer {
+    grid-row: 2;
+    justify-content: center;
+  }
+
+  .LoadMoreContainer {
+    margin-bottom: 0px;
+  }
+}

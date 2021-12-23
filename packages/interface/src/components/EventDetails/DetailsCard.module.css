@@ -1,0 +1,177 @@
+.Card {
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0px 0px 25px #5859761c;
+  position: relative;
+  overflow: hidden;
+  padding: 30px;
+  background: #fff;
+  z-index: 1;
+}
+
+.Background {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 351px;
+  object-fit: cover;
+}
+
+.Thumb {
+  border: 10px solid #fff;
+  border-radius: 50%;
+  height: 370px;
+  width: 370px;
+  margin-top: 130px;
+}
+
+.Card h3 {
+  font-size: 36px;
+  max-width: 624px;
+  margin: 40px auto 24px;
+  font-weight: 500;
+  color: #585976;
+}
+
+.Desc {
+  max-width: 624px;
+  line-height: 21px;
+  font-size: 16px;
+  margin: 0 auto;
+  color: #767680;
+}
+
+.AdditionalInfoRow {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  font-size: 18px;
+  color: #767680;
+  margin: 40px;
+}
+
+.AdditionalInfoRow > div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.AdditionalInfoRow img {
+  height: 24px;
+}
+
+.AdditionalInfoRow:last-of-type {
+  margin-bottom: 5px;
+}
+
+.NoNftsLabel {
+  display: block;
+  font-size: 9px;
+  line-height: 1em;
+  margin-bottom: -2px;
+}
+
+.NoNftsValue {
+  text-align: left;
+  display: block;
+  color: black;
+}
+
+.JoinContainer {
+  text-align: center;
+  margin: 30px;
+  /* margin-bottom: -100px; */
+}
+
+.JoinContainer button {
+  cursor: pointer;
+  padding: 24px 40px;
+  color: white;
+  background-color: var(--primary-color);
+  font-size: 24px;
+  font-weight: bold;
+  border: none;
+  line-height: 1em;
+  border-radius: 5px;
+}
+
+@media (max-width: 1600px) {
+  .Background {
+    height: 180px;
+  }
+
+  .Thumb {
+    height: 200px;
+    width: 200px;
+    margin-top: 20px;
+  }
+  .Card {
+    /* max-width: 800px; */
+    margin: auto;
+  }
+
+  .Card h3 {
+    font-size: 30px;
+  }
+
+  .Desc {
+    max-width: 800px;
+  }
+  .AdditionalInfoRow img {
+    height: 20px;
+  }
+  .JoinContainer button {
+    font-size: 20px;
+    padding: 16px 40px;
+  }
+
+  .JoinContainer {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 800px) {
+  .Background {
+    height: 150px;
+  }
+
+  .Thumb {
+    height: 150px;
+    width: 150px;
+    margin-top: 40px;
+  }
+
+  .Card h3 {
+    font-size: 24px;
+    margin: 25px auto 21px;
+  }
+
+  .Desc {
+    font-size: 14px;
+  }
+
+  .AdditionalInfoRow img {
+    height: 16px;
+  }
+
+  .AdditionalInfoRow {
+    gap: 30px;
+    font-size: 12px;
+  }
+  .AdditionalInfoRow > div {
+    gap: 5px;
+  }
+  .JoinContainer button {
+    font-size: 20px;
+    padding: 16px 40px;
+  }
+
+  .JoinContainer {
+    margin: auto;
+    margin-top: 30px;
+  }
+}

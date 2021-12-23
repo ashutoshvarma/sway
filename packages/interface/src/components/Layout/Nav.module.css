@@ -1,0 +1,96 @@
+.NavItem {
+  color: #585976;
+  padding: 10px;
+  display: flex;
+  gap: 5px;
+}
+
+.NavItem.Primary {
+  background-color: #e8cd00;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: white;
+}
+
+.Hamburger {
+  background: var(--primary-color);
+  border: none;
+  padding: 11px 12px;
+  display: none;
+  border-radius: 2px;
+}
+
+.Hamburger.Dark {
+  background-color: #6262626b;
+}
+
+.Hamburger img {
+  display: block;
+}
+
+.NavList {
+}
+.NavListContent {
+  display: flex;
+  gap: 20px;
+}
+
+.NavList.NavOpen {
+}
+
+.Cross {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  padding: 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  opacity: 0.6;
+  display: none;
+}
+
+@media (max-width: 876px) {
+  .Hamburger {
+    display: block;
+  }
+  .NavList {
+    width: 100%;
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: #fffbe6c2;
+    display: none;
+    backdrop-filter: blur(15px);
+  }
+
+  .NavList.NavOpen {
+    display: block;
+  }
+
+  .NavListContent {
+    display: flex;
+    grid-gap: 20px;
+    gap: 40px;
+    flex-direction: column;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+  }
+
+  .Cross {
+    display: block;
+  }
+  .Cross img {
+    display: block;
+  }
+}
+
+@media (max-width: 600px) {
+  .Hamburger {
+    padding: 7px 7px;
+  }
+}

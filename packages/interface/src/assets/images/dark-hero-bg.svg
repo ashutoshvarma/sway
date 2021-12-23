@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1920" height="844" viewBox="0 0 1920 844">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_250" data-name="Rectangle 250" width="1920" height="844"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle_249" data-name="Rectangle 249" width="1920" height="843" transform="translate(375 2097)" fill="#ae3fff"/>
+    </clipPath>
+  </defs>
+  <g id="dark-hero-bg" clip-path="url(#clip-path)">
+    <g id="Group_1163" data-name="Group 1163">
+      <g id="Mask_Group_8" data-name="Mask Group 8" transform="translate(-375 -2097)" clip-path="url(#clip-path-2)">
+        <path id="Rectangle_248" data-name="Rectangle 248" d="M15,0H1920a0,0,0,0,1,0,0V749a15,15,0,0,1-15,15H15A15,15,0,0,1,0,749V15A15,15,0,0,1,15,0Z" transform="translate(375 2097)"/>
+        <path id="Path_1661" data-name="Path 1661" d="M878-4957.217s220.223-216.265,659.211-75.17c356.062,34.078,455.836,41.176,575.79-204.953s94.6-248.951,300.017-257.556,289.577-23.5,353.9-80.185,54.812,205.808,54.812,205.808v612.519H878Z" transform="translate(-503 7696.608)" fill="#1f1f1f"/>
+      </g>
+      <path id="Path_1663" data-name="Path 1663" d="M0,277.929s87.916-88.155,216.516-34.3S314.593,93.58,449.664,152.94c2.629,1.652,168.294-26.4,179.3-180.332.022-.015-548.875-106.69-548.875-106.69L69.28-73.011,70.365-78.6Z" transform="translate(1974.283 697.08) rotate(169)"/>
+    </g>
+  </g>
+</svg>

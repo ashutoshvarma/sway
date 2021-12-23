@@ -1,0 +1,88 @@
+@font-face {
+  font-family: 'CircularStd';
+  font-weight: 500;
+
+  src: url('./assets//fonts/CircularStd-Medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'CircularStd';
+
+  src: url('./assets//fonts/CircularStd-Book.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'CircularStd';
+  font-weight: bold;
+  src: url('./assets//fonts/CircularStd-Bold.woff') format('woff');
+  /* font-weight: bold; */
+}
+
+:root {
+  --primary-color: #e8cd00;
+  --secondary-color: #585976;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'CircularStd', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+main {
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1700px;
+  width: 100%;
+  padding: 0px 60px;
+  transition: all 0.1s ease-in-out;
+}
+
+.wrapper.narrow {
+  margin: 0 auto;
+  max-width: 1400px;
+  width: 100%;
+  padding: 0px 60px;
+}
+
+.primary-color {
+  color: #e8cd00;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+@media (max-width: 1600px) {
+  .wrapper {
+    max-width: 1400px;
+  }
+
+  .wrapper.narrow {
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .wrapper,
+  .wrapper.narrow {
+    padding: 0 30px;
+  }
+}

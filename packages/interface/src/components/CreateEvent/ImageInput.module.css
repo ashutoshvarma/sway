@@ -1,0 +1,131 @@
+.Container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.Label {
+  font-size: 20px;
+  font-weight: 500;
+  color: #585976;
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.Input {
+  display: none;
+}
+
+.Button {
+  font-size: 10px;
+  padding: 12px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  border-radius: 5px;
+  color: #b1b1b1;
+  background-color: #e8e8e870;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.1s ease-in-out;
+}
+
+.Button:hover {
+  background-color: #d3d3d370;
+}
+
+.Button:active {
+  background-color: #b8b8b870;
+}
+
+.Preview {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 1px #e5e5ed solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.Preview::after {
+  content: 'Thumbnail will be shown here';
+  padding: 30px;
+  text-align: center;
+  color: #585976;
+}
+
+.Preview img {
+  width: 102%;
+  height: 102%;
+  object-fit: cover;
+  position: absolute;
+  top: -1%;
+  left: -1%;
+  cursor: pointer;
+}
+
+.Preview.Active::after {
+  display: none;
+}
+
+.FileName {
+  font-size: 14px;
+  margin-top: 10px;
+  font-weight: 100;
+  color: #b1b1b1;
+  /* max-width: 100px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden; */
+}
+
+.FileName button {
+  border: none;
+  background: none;
+}
+
+.FileName img {
+  width: 10px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+@media (max-width: 1600px) {
+  .Label {
+    font-size: 16px;
+  }
+  .Preview {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .Label {
+    flex-direction: column;
+    font-size: 16px;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  .Preview {
+    width: 150px;
+    height: 150px;
+  }
+
+  .Preview::after {
+    font-size: 14px;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .Preview {
+    width: 100px;
+    height: 100px;
+  }
+}

@@ -1,0 +1,86 @@
+.Faq {
+  margin-top: 50px;
+}
+
+.Accordion {
+  display: flex;
+  /* flex-wrap: wrap; */
+  /* flex-direction: column; */
+  gap: 20px;
+}
+
+.Accordion .Col {
+  width: calc(50% - 10px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.AccordionItem {
+  border: 1px solid white;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.AccordionItemButton {
+  /* background-color: #f4f4f4; */
+  color: white;
+  cursor: pointer;
+  padding: 24px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  position: relative;
+  font-size: 18px;
+}
+
+.AccordionItemButton::after {
+  display: block;
+  position: absolute;
+  content: '';
+  background-image: url('../../assets/icons/Arrow.svg');
+  height: 20px;
+  width: 20px;
+  right: 20px;
+  top: 50%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: translateY(-50%);
+  transition: transform 0.2s ease-in-out;
+}
+
+.AccordionItemButton[aria-expanded='true']::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.AccordionPanel {
+  border-top: 1px solid white;
+
+  transition: max-height 0.3s linear, opacity 0.3s linear,
+    border 0.2s ease-in-out;
+  overflow: hidden;
+  max-height: 300px;
+}
+.AccordionPanel p {
+  padding: 24px;
+  margin: 0;
+}
+
+.AccordionPanel[hidden] {
+  max-height: 0px;
+  display: block;
+  opacity: 0;
+  border-top-color: #fff0;
+}
+
+@media (max-width: 1000px) {
+  .Accordion {
+    flex-direction: column;
+  }
+  .Accordion .Col {
+    width: 100%;
+  }
+}

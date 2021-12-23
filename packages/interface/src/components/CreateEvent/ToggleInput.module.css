@@ -1,0 +1,64 @@
+.Input {
+  display: none;
+}
+
+.Toggle {
+  background-color: #fff4a3;
+  border-radius: 80px;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+}
+
+.Toggle span {
+  width: 50%;
+  padding: 15px 70px;
+  position: relative;
+  transition: color 0.2s ease-in-out;
+}
+
+.Toggle span:nth-child(1) {
+  color: white;
+}
+
+.ToggleContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.Toggle::before {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 50%;
+  border-radius: 80px;
+  background-color: var(--primary-color);
+  left: 0;
+  top: 0;
+  height: 100%;
+  transition: left 0.2s ease-in-out;
+}
+
+.Input:checked + .ToggleContainer .Toggle::before {
+  left: 50%;
+}
+
+.Input:checked + .ToggleContainer .Toggle span:nth-child(2) {
+  color: white;
+}
+
+.Input:checked + .ToggleContainer .Toggle span:nth-child(1) {
+  color: black;
+}
+
+@media (max-width: 1600px) {
+  .Toggle span {
+    padding: 15px 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  .Toggle span {
+    padding: 12px 40px;
+  }
+}

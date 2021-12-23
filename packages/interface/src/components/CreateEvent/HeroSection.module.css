@@ -1,0 +1,77 @@
+.HeroSection {
+  padding: 100px 0;
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.HeroSectionBG {
+  background-position: top;
+  background-size: cover;
+
+  color: white;
+  min-height: 550px;
+  height: 80vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.HeroContentDiv {
+}
+
+.HeroSection h2 {
+  font-size: 45px;
+  margin-bottom: 18px;
+  margin-top: 0;
+  color: white;
+}
+
+.HeroSection p {
+  max-width: 700px;
+  margin: auto;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.Progress {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 40px auto;
+  gap: 20px;
+  position: relative;
+}
+
+.Progress > div {
+  padding: 20px 40px;
+  background-color: #fff4a3;
+  color: black;
+  border-radius: 40px;
+  font-size: 14px;
+  position: relative;
+}
+
+.Progress .Active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.Progress::before {
+  position: absolute;
+  content: '';
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: #fff4a3;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 800px) {
+  .HeroSection h2 {
+    font-size: 36px;
+  }
+}

@@ -10,6 +10,7 @@ export const DIR_DATA = path.resolve(__dirname, '..', 'data')
 export const DIR_IMAGE = path.resolve(DIR_DATA, 'images')
 export const DIR_DETAILS = path.resolve(DIR_DATA, 'details')
 export const DIR_METADATA = path.resolve(DIR_DATA, 'metadata')
+export const DIR_MERKLE = path.resolve(DIR_DATA, 'merkle')
 export const IMG_EXT = 'png'
 
 export function getEventImagePath(id: number): string {
@@ -24,7 +25,8 @@ export async function generateEventMetadata() {
   })
   for (const fname of files) {
     const fpath = path.resolve(DIR_DETAILS, fname)
-    const fmeta = path.resolve(DIR_METADATA, fname.split('.')[0])
+    // const fmeta = path.resolve(DIR_METADATA, fname.split('.')[0])
+    const fmeta = path.resolve(DIR_METADATA, fname)
     console.log(`Processing ${fname}`)
 
     const event = plainToInstance(

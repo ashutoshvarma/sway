@@ -39,6 +39,10 @@
     "typescript": "^4.5.2"
   },
   "dependencies": {
+    "@ethersproject/address": "^5.5.0",
+    "@ethersproject/bignumber": "^5.5.0",
+    "@sway/contracts": "portal:../../ng-packages/contracts",
+    "@sway/subgraph": "portal:../../ng-packages/subgraph",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
     "glob": "^7.2.0",

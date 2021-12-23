@@ -1,0 +1,15 @@
+.InputDiv {
+  position: relative;
+}
+
+.InputDiv input {
+  font-size: 15px;
+  padding: 19px;
+  width: 300px;
+  border: 1px solid #e5e5ed;
+  border-radius: 5px;
+}
+
+.InputDiv input::placeholder {
+  color: #e5e5ed;
+}

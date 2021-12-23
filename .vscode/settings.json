@@ -11,5 +11,8 @@
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "solidity.enabledAsYouTypeCompilationErrorCheck": true,
-  "solidity.packageDefaultDependenciesDirectory": "ng-packages/contracts/node_modules"
+  "solidity.packageDefaultDependenciesDirectory": "ng-packages/contracts/node_modules",
+  "cSpell.words": [
+    "typechain"
+  ]
 }

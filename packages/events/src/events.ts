@@ -13,6 +13,24 @@ import {
   IsString,
   IsBoolean,
 } from 'class-validator'
+import { BigNumber } from '@ethersproject/bignumber'
+import { isAddress } from '@ethersproject/address'
+import {
+  createEvent,
+  getMerkleRoot,
+  addEventDrop,
+} from '@sway/contracts/utils/helpers'
+import { plainToInstance } from 'class-transformer'
+import * as fs from 'fs'
+import assert from 'assert'
+
+export class SwayDropParticipants {
+  @IsString({ each: true })
+  participants: string[]
+
+  @IsInt()
+  event_id: number
+}
 
 export interface NFTMetadata extends Event {
   attributes: { trait_type: string; value: string }[]
@@ -78,3 +96,29 @@ export class Event {
     }
   }
 }
+
+export async function createEventWithMerkle(
+  minter: string,
+  participantsJsonPath: string,
+): Promise<[BigNumber, string]> {
+  const participants = plainToInstance(
+    SwayDropParticipants,
+    JSON.parse(
+      await fs.promises.readFile(participantsJsonPath, { encoding: 'utf8' }),
+    ),
+  )
+
+  await validateOrReject(participants)
+  // verify all are address
+  if (!participants.participants.every((a) => isAddress(a)))
+    throw new Error('Not all Participants are valid')
+
+  // create event
+  const eventId = await createEvent(minter)
+  const root = getMerkleRoot(participants.participants, eventId)
+  // add root
+  await addEventDrop(eventId, root)
+  return [eventId, root]
+}
+
+export { createEvent } from '@sway/contracts/utils/helpers'

@@ -1,0 +1,84 @@
+.Card {
+  padding: 40px 35px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 25px #5859761c;
+  text-align: center;
+}
+
+.CardThumbContainer {
+  padding-top: 150px;
+  position: relative;
+  margin: auto;
+  width: 150px;
+}
+
+.CardThumb {
+  border: 3px solid #fff4a3;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.Card .Title {
+  font-weight: 500;
+  font-size: 16px;
+  margin: 27px 0px 25px;
+}
+
+.AdditionalInfoRow {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 12px;
+  color: #767680;
+  margin: 20px;
+}
+
+.AdditionalInfoRow div {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.AdditionalInfoRow:last-of-type {
+  margin-bottom: 5px;
+}
+
+.DetailsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding: 20px;
+  border: 1px solid #ebebeb;
+  border-radius: 10px;
+  color: #767680;
+  font-size: 14px;
+  margin: 24px 0;
+}
+
+.DetailsGrid .Completed {
+  color: var(--primary-color);
+}
+
+.DetailsGrid .Head {
+  color: #000000;
+}
+
+.Share {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.Share img {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+}
+
+.Share img:hover {
+  opacity: 1;
+}

@@ -1,0 +1,109 @@
+.Shape {
+  width: 100%;
+  display: block;
+}
+
+.FooterContent {
+  background-color: black;
+  padding: 70px 0;
+  color: white;
+  font-size: 16px;
+  padding-top: 70px;
+}
+
+.FooterContent a,
+.FooterContent a:link,
+.FooterContent a:visited {
+  color: white;
+}
+
+.FooterGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+
+.FooterContent h4 {
+  font-size: 18px;
+}
+
+.LogoDiv {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 900;
+}
+
+.LogoDiv h2 {
+  font-size: 32px;
+  margin: 10px 0;
+}
+
+.Desc {
+  line-height: 24px;
+}
+
+/* MENU  */
+.Menu {
+  justify-self: center;
+}
+
+.Nav {
+  list-style: none;
+  padding: 0;
+}
+
+.Nav li {
+  margin-bottom: 10px;
+}
+/* Contact1 */
+
+.Contact1 p {
+  margin: 10px 0;
+}
+
+/* Contact2 */
+
+.ContactLinksContainer {
+  display: flex;
+  gap: 15px;
+}
+
+.ContactLinksContainer img {
+  margin-right: 5px;
+}
+
+.Menu,
+.Contact1,
+.Contact2 {
+  margin-top: 20px;
+}
+
+.Footnote {
+  padding: 25px 0;
+  background-color: #1f1f1f;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.589);
+}
+
+@media (max-width: 876px) {
+  .FooterGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .FooterGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .Menu {
+    justify-self: flex-start;
+  }
+  .Menu,
+  .Contact1,
+  .Contact2 {
+    margin-top: 0px;
+  }
+}

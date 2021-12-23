@@ -1,0 +1,78 @@
+.Header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.HeaderContent {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  align-items: center;
+  position: relative;
+}
+
+.LogoDiv {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.LogoDiv h1 {
+  font-size: 32px;
+}
+
+.Shape {
+  position: absolute;
+  z-index: -1;
+  /* left: -445px;
+	top: -455px;
+	transform: scale(0.7); */
+
+  left: -530px;
+  top: -465px;
+  transform: scale(0.8);
+}
+
+@media (max-width: 1000px) {
+  .Shape {
+    left: -415px;
+    top: -494px;
+    transform: scale(0.6);
+  }
+}
+
+@media (max-width: 900px) {
+  .Header {
+    top: 20px;
+  }
+  .LogoDiv h1 {
+    font-size: 22px;
+    margin: 0;
+  }
+
+  .LogoDiv img {
+    height: 30px;
+  }
+
+  .Shape {
+    left: -394px;
+    top: -499px;
+    transform: scale(0.4);
+  }
+}
+
+@media (max-width: 600px) {
+  /* .Shape {
+		left: -417px;
+		top: -494px;
+		transform: scale(0.4);
+	} */
+
+  .Shape {
+    left: -437px;
+    top: -494px;
+    transform: scale(0.5, 0.4);
+  }
+}

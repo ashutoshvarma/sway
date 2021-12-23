@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1191" height="351" viewBox="0 0 1191 351">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="birmingham-museums-trust-HslbEeUauYA-unsplash" d="M15,0H1176a15,15,0,0,1,15,15V351a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V15A15,15,0,0,1,15,0Z" transform="translate(2842 -9060)" fill="#e8cd00"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle_229" data-name="Rectangle 229" width="1467" height="522" fill="#ae3fff"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <rect id="Rectangle_228" data-name="Rectangle 228" width="1467" height="584" fill="#ae3fff"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="1" x2="-0.07" y2="1.043" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ae3fff"/>
+      <stop offset="1" stop-color="#fdc0f2"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="-0.026" y1="1.071" x2="0.827" y2="0.051" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="0.174" y1="0.84" x2="0.948" y2="0.41" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ae3fff"/>
+      <stop offset="1" stop-color="#fdb1e7"/>
+    </linearGradient>
+  </defs>
+  <g id="event-details-background" transform="translate(-365 -332)">
+    <path id="birmingham-museums-trust-HslbEeUauYA-unsplash-2" data-name="birmingham-museums-trust-HslbEeUauYA-unsplash" d="M15,0H1176a15,15,0,0,1,15,15V351a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V15A15,15,0,0,1,15,0Z" transform="translate(365 332)" fill="#e8cd00"/>
+    <g id="Mask_Group_7" data-name="Mask Group 7" transform="translate(-2477 9392)" opacity="0.351" clip-path="url(#clip-path)">
+      <g id="Group_1069" data-name="Group 1069">
+        <path id="birmingham-museums-trust-HslbEeUauYA-unsplash-3" data-name="birmingham-museums-trust-HslbEeUauYA-unsplash" d="M15,0H1176a15,15,0,0,1,15,15V351a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V15A15,15,0,0,1,15,0Z" transform="translate(2842 -9060)" fill="#e8cd00"/>
+        <g id="Mask_Group_6" data-name="Mask Group 6" transform="translate(2814 -9060)" clip-path="url(#clip-path-2)" style="mix-blend-mode: multiply;isolation: isolate">
+          <g id="Group_1068" data-name="Group 1068" transform="translate(-48.658 -84.617)">
+            <g id="Mask_Group_5" data-name="Mask Group 5" transform="translate(48.658 84.617)" opacity="0.296" clip-path="url(#clip-path-3)">
+              <path id="Rectangle_227" data-name="Rectangle 227" d="M15,0H1467a0,0,0,0,1,0,0V569a15,15,0,0,1-15,15H15A15,15,0,0,1,0,569V15A15,15,0,0,1,15,0Z" fill="url(#linear-gradient)"/>
+              <path id="Path_1638" data-name="Path 1638" d="M878-5104.867s168.271-165.246,503.7-57.437c272.064,26.038,348.3,31.462,439.957-156.6s72.281-190.222,229.241-196.8,221.264-17.956,270.412-61.269,41.881,157.256,41.881,157.256v468.021H878Z" transform="translate(-878 5595.713)" opacity="0.699" fill="url(#linear-gradient-2)"/>
+            </g>
+            <path id="Path_1639" data-name="Path 1639" d="M0,254.394S80.459,173.717,198.15,223,250.3,79.526,384.058,135.6c2.406,1.512,75.184,39.158,108.861-49.4C492.939,86.186,49.555,0,49.555,0h0Z" transform="translate(0 94.054) rotate(-11)" fill="url(#linear-gradient-3)"/>
+            <path id="Path_1640" data-name="Path 1640" d="M0,254.6s80.459-80.677,198.15-31.391S250.3,79.729,384.058,135.8c2.406,1.512,75.347,38.735,109.024-49.82C493.1,85.966,50.463,0,50.463,0h0Z" transform="translate(1565.251 658.709) rotate(169)" fill="#fdf2ff"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,33 @@
+.FieldLabel {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  font-weight: 500;
+  color: #585976;
+}
+
+.Input {
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px #e5e5ed solid;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+@media (max-width: 1600px) {
+  .FieldLabel {
+    font-size: 14px;
+  }
+  .Input {
+    padding: 14px;
+  }
+}
+
+/* @media (max-width: 800px) {
+	.FieldLabel {
+		font-size: 16px;
+	}
+	.Input {
+		padding: 15px;
+	}
+} */

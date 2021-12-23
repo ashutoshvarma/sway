@@ -1,0 +1,70 @@
+.Collection {
+  padding: 60px 0;
+}
+
+.Header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+
+.Header h3 {
+  font-size: 24px;
+  color: #585976;
+}
+
+.CollectionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.CreateContainer {
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: -100px;
+}
+
+.CreateContainer button {
+  cursor: pointer;
+  padding: 20px 30px;
+  color: white;
+  background-color: var(--primary-color);
+  font-size: 24px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+}
+
+.DropdownRoot {
+}
+.Dropdown {
+  border: none;
+}
+
+.DropdownPlaceholder {
+  color: #585976;
+}
+.DropdownPlaceholder::before {
+  content: 'Filter By: ';
+}
+
+.DropdownMenu {
+  border-radius: 5px;
+  border: 1px solid #eeeeee;
+}
+
+.DropdownMenu > div {
+  padding: 14px 20px;
+}
+
+@media (max-width: 600px) {
+  .Dropdown {
+    font-size: 16px;
+  }
+
+  .CreateContainer {
+    margin-bottom: 0;
+  }
+}

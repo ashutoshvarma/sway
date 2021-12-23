@@ -1,0 +1,392 @@
+/* Hero Section Styles  */
+
+.HeroSection {
+  min-height: 550px;
+  display: flex;
+  align-items: center;
+  height: 75vh;
+  color: var(--secondary-color);
+  padding-top: 130px;
+}
+
+.HeroSection .SectionContentWrapper {
+  display: flex;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+}
+
+.HeroSection .SectionContentDiv {
+  width: 40%;
+}
+
+.HeroSection h2 {
+  font-size: 55px;
+  margin-right: -150px;
+  line-height: 1.3em;
+  margin-bottom: 17px;
+}
+
+.HeroSection h2 span.Primary {
+  color: var(--primary-color);
+}
+
+.HeroSection p {
+  font-size: 20px;
+}
+
+.IllusContainer {
+  width: 50%;
+  /* margin-right: -100px; */
+}
+.HeroSection .IllusContainer {
+  width: 60%;
+}
+
+.HeroSection .IllusContainer img {
+  margin-top: 80px;
+}
+
+.IllusContainer img {
+  width: 100%;
+  width: -webkit-fill-available;
+}
+
+.Shape2,
+.Shape3,
+.Shape4,
+.Shape5 {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.Shape2Mobile,
+.Shape3Mobile,
+.Shape4Mobile,
+.Shape5Mobile {
+  display: none;
+}
+
+.Shape2 {
+  transform: translateY(100%);
+  bottom: 350px;
+}
+
+.Shape3 {
+  top: -120px;
+}
+
+.Shape4 {
+  top: -20px;
+}
+
+.Shape5 {
+  top: -120px;
+}
+
+/* Logo Section Styles */
+
+.LogoSection {
+  margin-top: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.LogoSection img {
+  height: 30px;
+}
+
+/* Narrow Section Styles */
+
+.MidSection {
+  padding: 120px 0;
+  position: relative;
+}
+
+.MidSection .SectionContentWrapper {
+  display: flex;
+  color: white;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.MidSection h3 {
+  font-size: 40px;
+  margin-bottom: 19px;
+}
+
+.MidSection h4 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.MidSection p {
+  font-size: 18px;
+}
+
+.MidSection button {
+  padding: 15px 40px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 20px;
+  border: none;
+}
+
+#MidSection2 {
+}
+
+#MidSection3 {
+  padding-top: 200px;
+}
+
+#MidSection2 .IllusContainer img,
+#MidSection3 .IllusContainer img {
+  margin-right: -100px;
+}
+
+/* FAQ Section */
+
+.FaqSection {
+  position: relative;
+  padding-top: 200px;
+  color: white;
+}
+
+.FaqSection h3 {
+  font-size: 45px;
+  text-align: center;
+  font-size: bold;
+}
+
+@media (min-width: 1600px) {
+  .LogoSection {
+    margin-top: 400px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .LogoSection {
+    margin-top: 250px;
+  }
+}
+
+@media (max-width: 1400px) {
+  #MidSection3 .IllusContainer img,
+  #MidSection4 .IllusContainer img {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .Shape2 {
+    bottom: 110%;
+  }
+}
+
+@media (max-width: 1300px) {
+  .HeroSection h2 br {
+    display: none;
+  }
+  .HeroSection h2 {
+    margin-right: 0;
+  }
+
+  .HeroSection .SectionContentDiv {
+    width: 50%;
+  }
+  .HeroSection .IllusContainer {
+    width: 50%;
+  }
+  .Shape2 {
+    transform-origin: top;
+    transform: translate(10%, 110%) scale(1.2, 1.3);
+  }
+  .Shape4 {
+    transform-origin: top;
+    transform: scale(1.2, 1.3);
+  }
+}
+
+@media (max-width: 1200px) {
+  .LogoSection {
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 1000px) {
+  .HeroSection {
+    align-items: flex-start;
+    padding-top: 100px;
+    height: 100vh;
+  }
+
+  .HeroSection > div {
+    height: 100%;
+  }
+
+  .HeroSection h2 br {
+    display: unset;
+  }
+
+  .HeroSection .SectionContentWrapper {
+    height: 100%;
+  }
+
+  .SectionContentWrapper {
+    flex-direction: column;
+  }
+  .HeroSection .SectionContentDiv {
+    width: auto;
+  }
+  .HeroSection h2 {
+    font-size: 40px;
+  }
+  .HeroSection p {
+    font-size: 18px;
+  }
+
+  .HeroSection .IllusContainer img {
+    margin-top: 0;
+    /* display: none; */
+    position: absolute;
+    height: 90%;
+    width: 100%;
+  }
+
+  .HeroSection .IllusContainer,
+  .IllusContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .IllusContainer {
+    max-width: 450px;
+  }
+
+  .LogoSection {
+    margin-top: 60px;
+  }
+
+  .LogoSection img {
+    height: 25px;
+  }
+
+  .Shape2,
+  .Shape3,
+  .Shape4,
+  .Shape5 {
+    display: none;
+  }
+
+  .Shape2Mobile,
+  .Shape3Mobile,
+  .Shape4Mobile,
+  .Shape5Mobile {
+    position: absolute;
+    display: block;
+    left: 0;
+    object-fit: cover;
+    object-position: top;
+
+    z-index: -1;
+    width: 100%;
+  }
+
+  .Shape2Mobile {
+    top: 50%;
+    max-height: 300%;
+  }
+  .Shape3Mobile {
+    top: -75px;
+    max-height: 150%;
+  }
+  .Shape4Mobile {
+    top: -75px;
+    max-height: 300%;
+  }
+  .Shape5Mobile {
+    top: -75px;
+    max-height: 150%;
+  }
+
+  .MidSection h3 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    margin-top: 0;
+  }
+  .MidSection h4 {
+    font-size: 18px;
+  }
+  .MidSection p {
+    font-size: 15px;
+  }
+
+  .MidSection button {
+    font-size: 18px;
+  }
+
+  #MidSection2 .SectionContentWrapper,
+  #MidSection3 .SectionContentWrapper {
+    flex-direction: column-reverse;
+  }
+  #MidSection2 .IllusContainer img,
+  #MidSection3 .IllusContainer img,
+  #MidSection4 .IllusContainer img {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+
+  #MidSection3 {
+    padding-top: 60px;
+  }
+
+  .FaqSection h3 {
+    font-size: 35px;
+  }
+  .FaqSection {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 800px) {
+  .HeroSection h2 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .HeroSection h2 br {
+    display: none;
+  }
+
+  .MidSection {
+    padding-top: 60px;
+  }
+
+  .LogoSection {
+    margin: 0;
+  }
+
+  .Shape2Mobile {
+    transform: scaleY(1.3);
+    transform-origin: top;
+  }
+  .FaqSection {
+    padding-top: 40px;
+    padding-bottom: 80px;
+  }
+}
+
+@media (max-width: 400px) {
+  .Shape2Mobile {
+    transform: scaleY(1.5);
+  }
+}

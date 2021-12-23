@@ -1,0 +1,31 @@
+.SelectInput {
+  color: #585976;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.SelectInput :global(.rdn-control) {
+  padding: 14px;
+  border-radius: 5px;
+  border: 1px #e5e5ed solid;
+  margin-top: 5px;
+}
+
+.SelectInput :global(.rdn-drop) {
+  border-radius: 5px;
+}
+
+.SelectInput :global(.rdn-drop-menu-option) {
+  padding: 15px 20px;
+}
+
+.SelectInput :global(.rdn-control-arrow-icon) {
+  right: 0;
+  top: -10px;
+}
+
+.FieldLabel {
+  font-size: 14px;
+}
+.Input {
+}

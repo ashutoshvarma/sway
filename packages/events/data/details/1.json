@@ -1,8 +1,8 @@
 {
   "description": "First Event on Sway",
-  "external_url": "https://static.sway.community/metadata/1",
+  "external_url": "https://static.sway.community/metadata/1.json",
   "home_url": "https://www.sway.community/",
-  "image_url": "https://static.sway.community/metadata/1",
+  "image_url": "https://static.sway.community/metadata/1.json",
   "image": "https://static.sway.community/badages/1.png",
   "name": "The Beginning of End",
   "year": 2021,

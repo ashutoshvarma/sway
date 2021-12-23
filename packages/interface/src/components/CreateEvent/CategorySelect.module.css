@@ -1,0 +1,107 @@
+.ImageContainer {
+  width: 160px;
+  height: 160px;
+  background-color: #fff4a3;
+  border-radius: 50%;
+  transition: background-color 0.2s ease-in-out;
+  display: flex;
+  padding: 45px;
+}
+
+.Container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px 30px;
+  margin-top: 30px;
+}
+
+.Label {
+  text-align: center;
+  cursor: pointer;
+}
+
+.Label span {
+  margin-top: 20px;
+  display: block;
+  font-size: 18px;
+  color: #585976;
+  font-weight: 500;
+}
+
+input[type='radio']:checked ~ .ImageContainer {
+  background-color: var(--primary-color);
+}
+
+input[type='radio']:checked ~ .ImageContainer img {
+  filter: brightness(4);
+}
+
+.Container2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.Label2 {
+  display: flex;
+  cursor: pointer;
+}
+.Label2 span {
+  padding: 15px 30px;
+  background-color: #fffce5;
+  border-radius: 50px;
+  transition: background-color 0.2s ease-in-out, color 0.1s ease-in-out;
+}
+
+.Label2 input[type='radio']:checked ~ span {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+@media (max-width: 1600px) {
+  .ImageContainer {
+    width: 120px;
+    height: 120px;
+    padding: 30px;
+    margin: auto;
+  }
+  .Label2 span {
+    padding: 15px 30px;
+    font-size: 16px;
+  }
+
+  .Container2 {
+    gap: 10px;
+  }
+
+  .Label span {
+    font-size: 16px;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .ImageContainer {
+    width: 100px;
+    height: 100px;
+    padding: 30px;
+    margin: auto;
+  }
+  .Label2 span {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .Container2 {
+    gap: 10px;
+  }
+
+  .Label span {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+}

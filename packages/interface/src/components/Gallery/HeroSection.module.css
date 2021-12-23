@@ -1,0 +1,89 @@
+.HeroSection {
+  min-height: 550px;
+  height: 90vh;
+  background-color: #fffbe6;
+  color: var(--secondary-color);
+  z-index: -1;
+  padding: 80px 0 80px;
+  overflow: hidden;
+}
+
+.HeroSection .SectionContentWrapper {
+  display: flex;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  height: 100%;
+}
+
+.HeroSection .SectionContentDiv {
+  width: 50%;
+}
+
+.HeroSection h2 {
+  font-size: 55px;
+  /* margin-right: -150px; */
+  line-height: 1.3em;
+  margin-bottom: 17px;
+}
+
+.HeroSection h2 span.Primary {
+  color: var(--primary-color);
+}
+
+.HeroSection p {
+  font-size: 24px;
+}
+
+.IllusContainer {
+  width: 50%;
+  height: 100%;
+}
+
+.Illustration {
+  background-position: center;
+  background-size: contain;
+  height: 100%;
+  background-repeat: no-repeat;
+  margin-right: -200px;
+  margin-top: 20px;
+}
+
+@media (max-width: 1200px) {
+  .HeroSection h2 {
+    font-size: 45px;
+  }
+
+  .HeroSection p {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .SectionContentWrapper {
+    flex-direction: column;
+  }
+
+  .HeroSection .SectionContentDiv,
+  .HeroSection .IllusContainer {
+    width: 100%;
+  }
+
+  .Illustration {
+    margin-right: -100px;
+    margin-top: 0;
+  }
+
+  .HeroSection h2 {
+    font-size: 36px;
+    margin-top: 60px;
+  }
+
+  .HeroSection p {
+    font-size: 18px;
+  }
+
+  .HeroSection {
+    padding-bottom: 20px;
+    height: 100vh;
+  }
+}
