@@ -9,7 +9,8 @@
     "contracts:compile": "cd ./ng-packages/contracts && yarn compile",
     "hardhat": "cd ./ng-packages/contracts && yarn hardhat",
     "graph": "cd ./ng-packages/subgraph && yarn graph",
-    "dapp:start": "yarn workspace @sway/interface start"
+    "dapp:start": "yarn workspace @sway/interface start",
+    "events:gen": "yarn workspace @sway/events gen"
   },
   "private": true,
   "workspaces": [

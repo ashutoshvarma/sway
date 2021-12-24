@@ -1,7 +1,10 @@
 import {expect} from './chai-setup';
 import {defaultFixture} from './fixture';
 import {getUnnamedAccounts} from 'hardhat';
-import {createEvent, getMerkleProof, getMerkleRoot} from '../utils/helpers';
+import * as hre from 'hardhat';
+import {createEvent} from '../utils/helpers';
+import {getMerkleProof, getMerkleRoot} from '../utils/merkle';
+
 describe('SwayDrop', () => {
   it('should be able to claim with valid proof', async () => {
     const {governor, sway, swayDrop, matt} = await defaultFixture();
@@ -10,7 +13,7 @@ describe('SwayDrop', () => {
 
     const participants = [accounts[3], accounts[4]];
 
-    const eventId = await createEvent(mattAddr);
+    const [eventId, _hash] = await createEvent(hre, mattAddr);
     const rootHash = getMerkleRoot(participants, eventId);
     const index = 1;
     const proof = getMerkleProof(index, eventId, participants);

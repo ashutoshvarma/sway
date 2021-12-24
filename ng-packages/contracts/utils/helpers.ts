@@ -1,11 +1,13 @@
-import { BigNumber, BigNumberish } from '@ethersproject/bignumber';
-import { ethers, getNamedAccounts } from 'hardhat';
-import { Sway } from '../typechain';
-import { MerkleTree } from 'merkletreejs';
-import keccak256 from 'keccak256';
-
-export async function createEvent(minter: string): Promise<BigNumber> {
-  const { governorAddr } = await getNamedAccounts();
+import {BigNumber} from '@ethersproject/bignumber';
+import {HardhatRuntimeEnvironment} from 'hardhat/types';
+import {Sway} from '../typechain';
+export async function createEvent(
+  hre: HardhatRuntimeEnvironment,
+  minter: string
+): Promise<[BigNumber, string]> {
+  const {ethers, deployments} = hre;
+  const {execute} = deployments;
+  const {governorAddr} = await hre.getNamedAccounts();
   const governor = await ethers.getSigner(governorAddr);
 
   const cSway = (await ethers.getContract('Sway')) as Sway;
@@ -13,59 +15,30 @@ export async function createEvent(minter: string): Promise<BigNumber> {
     await cSway.connect(governor).createEvent(minter)
   ).wait();
 
-  return BigNumber.from(
-    reciept.events?.filter((e) => e.event === 'EventAdded')[0].args?.[0]
-  );
+  // const reciept = await execute(
+  //   'Sway',
+  //   {
+  //     from: governorAddr,
+  //     log: true,
+  //   },
+  //   'createEvent',
+  //   minter
+  // );
+
+  return [
+    BigNumber.from(
+      reciept.events?.filter((e) => e.event === 'EventAdded')[0].args?.[0]
+    ),
+    reciept.transactionHash,
+  ];
 }
 
-export async function addEventDrop(eventId: BigNumberish, root: string) {
-  const { governorAddr } = await getNamedAccounts();
-  const governor = await ethers.getSigner(governorAddr);
+// export async function addEventDrop(eventId: BigNumberish, root: string) {
+//   const { governorAddr } = await getNamedAccounts();
+//   const governor = await ethers.getSigner(governorAddr);
 
-  const cSway = (await ethers.getContract('Sway')) as Sway;
-  return (
-    await cSway.connect(governor).addEventDrop(eventId, root)
-  ).wait();
-}
-
-export function calculateMerkleLeaf(
-  index: BigNumberish,
-  eventId: BigNumberish,
-  recipient: string
-): string {
-  return ethers.utils.solidityKeccak256(
-    ['uint256', 'uint256', 'address'],
-    [index, eventId, recipient]
-  );
-}
-
-export function getMerkleTree(
-  participants: string[],
-  eventId: BigNumberish
-): [MerkleTree, string[]] {
-  const leafs = participants.map((p, i) => calculateMerkleLeaf(i, eventId, p));
-  const tree = new MerkleTree(leafs, keccak256, { sort: true });
-  return [tree, leafs];
-}
-
-export function getMerkleProof(
-  index: number,
-  eventId: BigNumberish,
-  participants: string[]
-): string[] {
-  const [tree, leaves] = getMerkleTree(participants, eventId);
-  return tree.getHexProof(leaves[index]);
-}
-
-export function getMerkleRoot(
-  participants: string[],
-  eventId: BigNumberish
-): string {
-  return getMerkleTree(participants, eventId)[0].getHexRoot();
-}
-
-
-export async function getLastEventId(): Promise<BigNumber> {
-  const cSway = await ethers.getContract("Sway") as Sway
-  return cSway.lastEventId()
-}
+//   const cSway = (await ethers.getContract('Sway')) as Sway;
+//   return (
+//     await cSway.connect(governor).addEventDrop(eventId, root)
+//   ).wait();
+// }

@@ -9,6 +9,8 @@ module.exports = {
         tabWidth: 4,
         singleQuote: false,
         explicitTypes: 'always',
+        trailingComma: "all",
+        semi: false
       },
     },
   ],

@@ -48,7 +48,9 @@ describe('Sway', () => {
   it('tokenDetailsOfOwnerByIndex() should work correctly', async () => {
     const {sway, josh} = await singleMintFixture();
     await expect(
-      await sway.tokenDetailsOfOwnerByIndex(await josh.getAddress(), '0')
-    ).to.deep.members([BigNumber.from('1'), BigNumber.from('1')]);
+      await (
+        await sway.tokenDetailsOfOwnerByIndex(await josh.getAddress(), '0')
+      ).map((t) => t.toString())
+    ).to.deep.members(['1', '1']);
   });
 });

@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import {HardhatUserConfig} from 'hardhat/types';
-import {task} from 'hardhat/config';
+import {task, types} from 'hardhat/config';
 import 'hardhat-deploy';
 import '@nomiclabs/hardhat-ethers';
 import 'hardhat-gas-reporter';
@@ -11,6 +11,9 @@ import 'solidity-coverage';
 import '@ubeswap/hardhat-celo';
 import {fornoURLs, ICeloNetwork, derivationPath} from '@ubeswap/hardhat-celo';
 import {node_url, accounts} from './utils/network';
+import {balances} from './tasks/accounts';
+import {create_event, add_event_drop, mint, claim} from './tasks/events';
+import {toggle_pause, debug} from './tasks/governance';
 
 task('accounts', 'Prints the list of accounts', async (args, hre) => {
   const accounts = await hre.ethers.getSigners();
@@ -19,6 +22,53 @@ task('accounts', 'Prints the list of accounts', async (args, hre) => {
     console.log(await account.address);
   }
 });
+task('balances', 'Print Native Token Balance of all address').setAction(
+  balances
+);
+
+// Governance
+task('gov:pause', 'Toggle protocol pause state').setAction(toggle_pause);
+task('gov:debug', 'Print Protocol Debug Info').setAction(debug);
+
+// Events
+task('event:create', 'Create a new Sway Event')
+  .addParam(
+    'minter',
+    'Minter address for the new event',
+    undefined,
+    types.string
+  )
+  .setAction(create_event);
+task('event:addDrop', 'Add a SwayDrop for the Event')
+  .addParam('event', 'Event ID', undefined, types.int)
+  .addOptionalParam(
+    'json',
+    'SwayDrop Participants JSON File',
+    undefined,
+    types.inputFile
+  )
+  .addFlag('update', 'Update the Merkle Root')
+  .setAction(add_event_drop);
+task('event:mint', 'Mint token for a event')
+  .addParam('event', 'Event ID', undefined, types.int)
+  .addParam('to', 'Address of token recipient', undefined, types.string)
+  .addOptionalParam(
+    'minter',
+    'Minter account index for the event',
+    1,
+    types.int
+  )
+  .setAction(mint);
+task('event:claim', 'Mint token for a event')
+  .addParam('event', 'Event ID', undefined, types.int)
+  .addParam('to', 'Address of token recipient', undefined, types.string)
+  .addOptionalParam(
+    'json',
+    'SwayDrop Participants JSON File',
+    undefined,
+    types.inputFile
+  )
+  .setAction(claim);
 
 // While waiting for hardhat PR: https://github.com/nomiclabs/hardhat/pull/1542
 if (process.env.HARDHAT_FORK) {

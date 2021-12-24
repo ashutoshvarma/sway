@@ -21,10 +21,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:."
       },
       {
-        "name": "@sway/events",
-        "reference": "workspace:packages/events"
-      },
-      {
         "name": "@sway/interface",
         "reference": "workspace:packages/interface"
       },
@@ -36,7 +32,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     "enableTopLevelFallback": true,
     "ignorePatternData": "(^(?:\\.yarn\\/sdks(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?)|$))$)|(^(?:ng-packages(?:\\/(?!\\.{1,2}(?:\\/|$))(?:(?:(?!(?:^|\\/)\\.{1,2}(?:\\/|$)).)*?)|$))$)",
     "fallbackExclusionList": [
-      ["@sway/events", ["workspace:packages/events"]],
       ["@sway/interface", ["workspace:packages/interface"]],
       ["@sway/server", ["workspace:packages/server"]],
       ["sway", ["workspace:."]]
@@ -4700,10 +4695,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@sway/contracts", [
-        ["portal:../../ng-packages/contracts::locator=%40sway%2Fevents%40workspace%3Apackages%2Fevents", {
+        ["portal:../../ng-packages/contracts::locator=%40sway%2Fserver%40workspace%3Apackages%2Fserver", {
           "packageLocation": "./ng-packages/contracts/",
           "packageDependencies": [
-            ["@sway/contracts", "portal:../../ng-packages/contracts::locator=%40sway%2Fevents%40workspace%3Apackages%2Fevents"]
+            ["@sway/contracts", "portal:../../ng-packages/contracts::locator=%40sway%2Fserver%40workspace%3Apackages%2Fserver"]
           ],
           "linkType": "SOFT",
         }],
@@ -4711,33 +4706,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./ng-packages/contracts/",
           "packageDependencies": [
             ["@sway/contracts", "portal:./ng-packages/contracts::locator=sway%40workspace%3A."]
-          ],
-          "linkType": "SOFT",
-        }]
-      ]],
-      ["@sway/events", [
-        ["workspace:packages/events", {
-          "packageLocation": "./packages/events/",
-          "packageDependencies": [
-            ["@sway/events", "workspace:packages/events"],
-            ["@ethersproject/address", "npm:5.5.0"],
-            ["@ethersproject/bignumber", "npm:5.5.0"],
-            ["@sway/contracts", "portal:../../ng-packages/contracts::locator=%40sway%2Fevents%40workspace%3Apackages%2Fevents"],
-            ["@sway/subgraph", "portal:../../ng-packages/subgraph::locator=%40sway%2Fevents%40workspace%3Apackages%2Fevents"],
-            ["@types/glob", "npm:7.2.0"],
-            ["@types/node", "npm:16.11.17"],
-            ["@typescript-eslint/eslint-plugin", "virtual:8ac8a977a734713932fb69668562e811890b2f9d1a70073a9b457bbcdc7029cb1ca6a657e9b656ad6297c3b768d37a36b1d129244edf4d6e40274a1c81d3f271#npm:5.8.0"],
-            ["@typescript-eslint/parser", "virtual:8ac8a977a734713932fb69668562e811890b2f9d1a70073a9b457bbcdc7029cb1ca6a657e9b656ad6297c3b768d37a36b1d129244edf4d6e40274a1c81d3f271#npm:5.8.0"],
-            ["class-transformer", "npm:0.5.1"],
-            ["class-validator", "npm:0.13.2"],
-            ["eslint", "npm:8.5.0"],
-            ["eslint-config-prettier", "virtual:8ac8a977a734713932fb69668562e811890b2f9d1a70073a9b457bbcdc7029cb1ca6a657e9b656ad6297c3b768d37a36b1d129244edf4d6e40274a1c81d3f271#npm:8.3.0"],
-            ["eslint-plugin-prettier", "virtual:8ac8a977a734713932fb69668562e811890b2f9d1a70073a9b457bbcdc7029cb1ca6a657e9b656ad6297c3b768d37a36b1d129244edf4d6e40274a1c81d3f271#npm:4.0.0"],
-            ["glob", "npm:7.2.0"],
-            ["prettier", "npm:2.5.1"],
-            ["reflect-metadata", "npm:0.1.13"],
-            ["ts-node", "virtual:8ac8a977a734713932fb69668562e811890b2f9d1a70073a9b457bbcdc7029cb1ca6a657e9b656ad6297c3b768d37a36b1d129244edf4d6e40274a1c81d3f271#npm:10.4.0"],
-            ["typescript", "patch:typescript@npm%3A4.5.4#~builtin<compat/typescript>::version=4.5.4&hash=493e53"]
           ],
           "linkType": "SOFT",
         }]
@@ -4782,6 +4750,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./packages/server/",
           "packageDependencies": [
             ["@sway/server", "workspace:packages/server"],
+            ["@sway/contracts", "portal:../../ng-packages/contracts::locator=%40sway%2Fserver%40workspace%3Apackages%2Fserver"],
+            ["@sway/subgraph", "portal:../../ng-packages/subgraph::locator=%40sway%2Fserver%40workspace%3Apackages%2Fserver"],
             ["@types/node", "npm:16.11.17"],
             ["@typescript-eslint/eslint-plugin", "virtual:8ac8a977a734713932fb69668562e811890b2f9d1a70073a9b457bbcdc7029cb1ca6a657e9b656ad6297c3b768d37a36b1d129244edf4d6e40274a1c81d3f271#npm:5.8.0"],
             ["@typescript-eslint/parser", "virtual:8ac8a977a734713932fb69668562e811890b2f9d1a70073a9b457bbcdc7029cb1ca6a657e9b656ad6297c3b768d37a36b1d129244edf4d6e40274a1c81d3f271#npm:5.8.0"],
@@ -4796,10 +4766,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@sway/subgraph", [
-        ["portal:../../ng-packages/subgraph::locator=%40sway%2Fevents%40workspace%3Apackages%2Fevents", {
+        ["portal:../../ng-packages/subgraph::locator=%40sway%2Fserver%40workspace%3Apackages%2Fserver", {
           "packageLocation": "./ng-packages/subgraph/",
           "packageDependencies": [
-            ["@sway/subgraph", "portal:../../ng-packages/subgraph::locator=%40sway%2Fevents%40workspace%3Apackages%2Fevents"],
+            ["@sway/subgraph", "portal:../../ng-packages/subgraph::locator=%40sway%2Fserver%40workspace%3Apackages%2Fserver"],
             ["@graphprotocol/graph-cli", "npm:0.25.1"],
             ["@graphprotocol/graph-ts", "npm:0.24.1"]
           ],
@@ -8900,15 +8870,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["class-transformer", [
-        ["npm:0.5.1", {
-          "packageLocation": "./.yarn/cache/class-transformer-npm-0.5.1-96b5161e6c-f191c8b4cc.zip/node_modules/class-transformer/",
-          "packageDependencies": [
-            ["class-transformer", "npm:0.5.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["class-utils", [
         ["npm:0.3.6", {
           "packageLocation": "./.yarn/cache/class-utils-npm-0.3.6-2c691ad006-be10890080.zip/node_modules/class-utils/",
@@ -8918,17 +8879,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["define-property", "npm:0.2.5"],
             ["isobject", "npm:3.0.1"],
             ["static-extend", "npm:0.1.2"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["class-validator", [
-        ["npm:0.13.2", {
-          "packageLocation": "./.yarn/cache/class-validator-npm-0.13.2-915206252c-0deb4c29fa.zip/node_modules/class-validator/",
-          "packageDependencies": [
-            ["class-validator", "npm:0.13.2"],
-            ["libphonenumber-js", "npm:1.9.44"],
-            ["validator", "npm:13.7.0"]
           ],
           "linkType": "HARD",
         }]
@@ -16654,15 +16604,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["libphonenumber-js", [
-        ["npm:1.9.44", {
-          "packageLocation": "./.yarn/cache/libphonenumber-js-npm-1.9.44-cb990777a3-cac1f8c4d3.zip/node_modules/libphonenumber-js/",
-          "packageDependencies": [
-            ["libphonenumber-js", "npm:1.9.44"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["lines-and-columns", [
         ["npm:1.2.4", {
           "packageLocation": "./.yarn/cache/lines-and-columns-npm-1.2.4-d6c7cc5799-0c37f9f7fa.zip/node_modules/lines-and-columns/",
@@ -21625,15 +21566,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["reflect-metadata", [
-        ["npm:0.1.13", {
-          "packageLocation": "./.yarn/cache/reflect-metadata-npm-0.1.13-c525998e20-798d379a7b.zip/node_modules/reflect-metadata/",
-          "packageDependencies": [
-            ["reflect-metadata", "npm:0.1.13"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["regenerate", [
         ["npm:1.4.2", {
           "packageLocation": "./.yarn/cache/regenerate-npm-1.4.2-b296c5b63a-3317a09b2f.zip/node_modules/regenerate/",
@@ -25118,15 +25050,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["validate-npm-package-license", "npm:3.0.4"],
             ["spdx-correct", "npm:3.1.1"],
             ["spdx-expression-parse", "npm:3.0.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["validator", [
-        ["npm:13.7.0", {
-          "packageLocation": "./.yarn/cache/validator-npm-13.7.0-624277e841-2b83283de1.zip/node_modules/validator/",
-          "packageDependencies": [
-            ["validator", "npm:13.7.0"]
           ],
           "linkType": "HARD",
         }]

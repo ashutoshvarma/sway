@@ -11,8 +11,8 @@ export function getConfig(network: string): CommonConfig {
     swaySymbol: 'SWAY',
   };
 
-  if (network === 'celo') return {swayBaseUri: 'api.swaynft.club/', ...config};
+  if (network === 'celo') return {swayBaseUri: 'https://static.sway.community/metadata/', ...config};
   if (network === 'alfajores')
-    return {swayBaseUri: 'api.swaynft.club/', ...config};
-  return {swayBaseUri: 'api.swaynft.club/', ...config};
+    return {swayBaseUri: 'https://static.sway.community/metadata/', ...config};
+  return {swayBaseUri: 'https://static.sway.community/metadata/', ...config};
 }
