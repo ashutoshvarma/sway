@@ -62,7 +62,7 @@ contract SwayDrop is Initializable, PausableUpgradeable, AccessControlEnumerable
     }
 
     function addEvent(uint256 _eventId, bytes32 _roothash) public onlyRole(GOVERNOR_ROLE) {
-        require(rootHash[_eventId] == bytes(0), "SwayDrop::addEvent: Merkle Root already present for the event");
+        require(!isEventAdded(_eventId), "SwayDrop::addEvent: Merkle Root already present for the event");
         _updateEvent(_eventId, _roothash);
     }
 
