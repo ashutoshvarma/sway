@@ -33,7 +33,7 @@ describe('Sway', () => {
     const config = getConfig(network.name);
     await expect(await sway.ownerOf('1')).equals(await josh.getAddress());
 
-    await expect(await sway.tokenURI('1')).equals(`${config.swayBaseUri}1/1`);
+    await expect(await sway.tokenURI('1')).equals(`${config.swayBaseUri}1/1.json`);
     await expect(sway.tokenURI('99999')).to.revertedWith(
       'Sway: URI query for nonexistent token'
     );
@@ -42,6 +42,13 @@ describe('Sway', () => {
   it('setBaseURI() should work correctly ', async () => {
     const {sway, governor} = await singleMintFixture();
     await sway.connect(governor).setBaseURI('abc/');
+    await expect(await sway.tokenURI('1')).equals('abc/1/1.json');
+  });
+
+  it('setBaseURIExtension() should work correctly ', async () => {
+    const {sway, governor} = await singleMintFixture();
+    await sway.connect(governor).setBaseURI('abc/');
+    await sway.connect(governor).setBaseURIExtension('');
     await expect(await sway.tokenURI('1')).equals('abc/1/1');
   });
 

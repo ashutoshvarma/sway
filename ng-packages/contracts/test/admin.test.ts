@@ -4,7 +4,7 @@ import {defaultFixture, singleEventFixture} from './fixture';
 describe('SwayAdmin', () => {
   it('initialize should run only once during proxy', async () => {
     const {sway, matt} = await defaultFixture();
-    await expect(sway.initialize('', '', '', await matt.getAddress())).to
+    await expect(sway.initialize('', '', '', '', await matt.getAddress())).to
       .reverted;
   });
 

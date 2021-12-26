@@ -1,7 +1,6 @@
 import {HardhatRuntimeEnvironment} from 'hardhat/types';
 import {DeployFunction} from 'hardhat-deploy/types';
 import {getConfig} from '../utils/constants';
-import {ethers} from 'hardhat';
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const {deployments, getNamedAccounts} = hre;
@@ -22,6 +21,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
           config.swayName,
           config.swaySymbol,
           config.swayBaseUri,
+          config.swayBaseUriExtension,
           governorAddr,
         ],
       },

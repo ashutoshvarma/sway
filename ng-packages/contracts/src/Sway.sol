@@ -15,6 +15,9 @@ contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
     // Base token URI
     string private _baseURIextendend;
 
+    // Base token URI extension
+    string private _baseURIExtension;
+
     // EventId for each token
     mapping(uint256 => uint256) public tokenEvent;
 
@@ -25,9 +28,11 @@ contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
         string memory __name,
         string memory __symbol,
         string memory __baseURI,
+        string memory __baseURIExtension,
         address governor
     ) public initializer {
         _baseURIextendend = __baseURI;
+        _baseURIExtension = __baseURIExtension;
 
         __SwayAdmin_init(governor);
         __ERC721_init_unchained(__name, __symbol);
@@ -48,6 +53,10 @@ contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
 
     function setBaseURI(string memory baseURI) public onlyGovernor whenNotPaused {
         _baseURIextendend = baseURI;
+    }
+
+    function setBaseURIExtension(string memory baseURIExtension) public onlyGovernor whenNotPaused {
+        _baseURIExtension = baseURIExtension;
     }
 
     /**
@@ -72,7 +81,7 @@ contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
         require(_exists(tokenId), "Sway: URI query for nonexistent token");
 
         uint256 eventId = tokenEvent[tokenId];
-        return string(abi.encodePacked(_baseURI(), eventId.toString(), "/", tokenId.toString()));
+        return string(abi.encodePacked(_baseURI(), eventId.toString(), "/", tokenId.toString(), _baseURIExtension));
     }
 
     /**
