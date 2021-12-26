@@ -4,7 +4,7 @@
   "scripts": {
     "hardhat": "cd ../contracts && yarn hardhat",
     "graph-node": "mustache ./config/${NETWORK:-dev}.json docker-compose.template.yml > docker-compose.yml && docker-compose up",
-    "chain:start": "yarn hardhat node --hostname 0.0.0.0 --export-all deployments.json",
+    "chain:start": "yarn hardhat node --watch --hostname 0.0.0.0 --export-all deployments.json",
     "chain:smoke": "yarn hardhat run scripts/smokeTest.ts --network localhost",
     "subgraph:config": "cd ../contracts && yarn subgraph:config",
     "subgraph:mustache": " mustache ./config/${NETWORK:-dev}.json subgraph.template.yaml > subgraph.yaml ",

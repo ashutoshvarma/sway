@@ -10,7 +10,7 @@ export function getConfig(network: string): CommonConfig {
   const config = {
     swayName: 'Sway',
     swaySymbol: 'SWAY',
-    swayBaseUriExtension: ".json"
+    swayBaseUriExtension: ""
   };
 
   if (network === 'celo') return {swayBaseUri: 'https://static.sway.community/metadata/', ...config};

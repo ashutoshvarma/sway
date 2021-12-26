@@ -1,29 +1,29 @@
 {
-  "description": "Test Event 2 with some details",
-  "external_url": "https://static.sway.community/metadata/3.json",
+  "description": "First Event on Sway",
+  "external_url": "https://static.sway.community/metadata/1",
   "home_url": "https://www.sway.community/",
-  "image_url": "https://static.sway.community/metadata/3.json",
-  "image": "https://static.sway.community/badages/3.png",
-  "name": "Test Event 2",
-  "year": 2020,
+  "image_url": "https://static.sway.community/metadata/1",
+  "image": "https://static.sway.community/badges/1",
+  "name": "The Beginning of End",
+  "year": 2021,
   "tags": [
     "sway",
     "event"
   ],
-  "start_date": "2020-12-22",
-  "end_date": "2020-12-22",
+  "start_date": "2021-12-22",
+  "end_date": "2021-12-22",
   "virtual_event": true,
-  "city": "Delhi",
+  "city": "Mumbai",
   "country": "India",
   "event_url": "https://www.sway.community/",
   "attributes": [
     {
       "trait_type": "start_date",
-      "value": "2020-12-22"
+      "value": "2021-12-22"
     },
     {
       "trait_type": "end_date",
-      "value": "2020-12-22"
+      "value": "2021-12-22"
     },
     {
       "trait_type": "virtual_event",
@@ -31,7 +31,7 @@
     },
     {
       "trait_type": "city",
-      "value": "Delhi"
+      "value": "Mumbai"
     },
     {
       "trait_type": "country",

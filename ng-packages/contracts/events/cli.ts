@@ -6,7 +6,7 @@ import { plainToInstance } from 'class-transformer'
 import { Event as SwayEvent } from './events'
 import { validateOrReject } from 'class-validator'
 
-export const DIR_DATA = path.resolve(__dirname, '..', 'data')
+export const DIR_DATA = path.resolve(__dirname, '.', 'data')
 export const DIR_IMAGE = path.resolve(DIR_DATA, 'images')
 export const DIR_DETAILS = path.resolve(DIR_DATA, 'details')
 export const DIR_METADATA = path.resolve(DIR_DATA, 'metadata')
