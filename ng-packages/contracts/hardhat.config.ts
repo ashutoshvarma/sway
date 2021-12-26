@@ -12,7 +12,7 @@ import '@ubeswap/hardhat-celo';
 import {fornoURLs, ICeloNetwork, derivationPath} from '@ubeswap/hardhat-celo';
 import {node_url, accounts} from './utils/network';
 import {balances} from './tasks/accounts';
-import {create_event, add_event_drop, mint, claim} from './tasks/events';
+import {create_event, add_event_drop, mint, claim, minter} from './tasks/events';
 import {toggle_pause, debug} from './tasks/governance';
 
 task('accounts', 'Prints the list of accounts', async (args, hre) => {
@@ -69,6 +69,16 @@ task('event:claim', 'Mint token for a event')
     types.inputFile
   )
   .setAction(claim);
+task('event:minter', 'Add/Revoke minter from a Event')
+  .addParam('event', 'Event ID', undefined, types.int)
+  .addParam(
+    'minter',
+    'Minter address for the new event',
+    undefined,
+    types.string
+  )
+  .addFlag('remove', 'Remove Minter')
+  .setAction(minter);
 
 // While waiting for hardhat PR: https://github.com/nomiclabs/hardhat/pull/1542
 if (process.env.HARDHAT_FORK) {

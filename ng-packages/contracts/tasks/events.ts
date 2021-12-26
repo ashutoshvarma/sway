@@ -11,6 +11,7 @@ import assert from 'assert';
 import {getEventMerkleParticipants} from '../events';
 
 export type CreateEventArgs = {minter: string};
+export type MinterArgs = {event: number; minter: string; remove: boolean};
 export type MintArgs = {event: number; to: string; minter?: number};
 export type ClaimArgs = {
   event: number;
@@ -31,8 +32,6 @@ export async function create_event(
 ): Promise<BigNumber> {
   const {ethers} = hre;
   const sway = (await ethers.getContract('Sway')) as Sway;
-
-  console.log(taskArgs);
 
   const eventId = (await sway.lastEventId()).add(1);
   console.log(
@@ -58,7 +57,6 @@ export async function add_event_drop(
   const sway = (await ethers.getContract('Sway')) as Sway;
   const swayDrop = (await ethers.getContract('SwayDrop')) as SwayDrop;
   const sGovernor = await ethers.getNamedSigner('governorAddr');
-  console.log(taskArgs);
   const participants = await getEventMerkleParticipants(
     taskArgs.event,
     taskArgs.json
@@ -102,15 +100,15 @@ export async function mint(
       taskArgs.to
     }...`
   );
-  const reciept = await (
+  const receipt = await (
     await sway
       .connect(minter)
       ['mintToken(uint256,address)'](taskArgs.event, taskArgs.to)
   ).wait();
-  const tokenId = reciept.events?.filter((e) => e.event === 'EventToken')[0]
+  const tokenId = receipt.events?.filter((e) => e.event === 'EventToken')[0]
     .args?.[1];
   console.log(
-    `Successfully minted Token(${tokenId}), txHash - ${reciept.transactionHash}`
+    `Successfully minted Token(${tokenId}), txHash - ${receipt.transactionHash}`
   );
 }
 
@@ -152,4 +150,35 @@ export async function claim(
   console.log(
     `Successfully claimed Token, txHash - ${reciept.transactionHash}`
   );
+}
+
+export async function minter(
+  taskArgs: MinterArgs,
+  hre: HardhatRuntimeEnvironment,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _: RunSuperFunction<MinterArgs>
+): Promise<void> {
+  const {ethers} = hre;
+  const governor = await ethers.getNamedSigner('governorAddr');
+  const sway = ((await ethers.getContract('Sway')) as Sway).connect(governor);
+  const role = await sway.eventRoleMapping(taskArgs.event);
+  if (taskArgs.remove) {
+    console.log(
+      `Revoking Minter(${
+        taskArgs.minter
+      }) Role for Event(${taskArgs.event.toString()})...`
+    );
+    const hash = (await (await sway.revokeRole(role, taskArgs.minter)).wait())
+      .transactionHash;
+    console.log(`Successfully revoked Minter, txHash - ${hash}`);
+  } else {
+    console.log(
+      `Adding Minter(${
+        taskArgs.minter
+      }) Role for Event(${taskArgs.event.toString()})...`
+    );
+    const hash = (await (await sway.grantRole(role, taskArgs.minter)).wait())
+      .transactionHash;
+    console.log(`Successfully added Minter, txHash - ${hash}`);
+  }
 }
