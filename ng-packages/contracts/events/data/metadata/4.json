@@ -1,41 +1,38 @@
 {
-  "description": "First Event on Sway",
-  "external_url": "https://static.sway.community/metadata/1",
+  "description": "event",
+  "external_url": "https://static.sway.community/metadata/4",
   "home_url": "https://www.sway.community/",
-  "image_url": "https://static.sway.community/metadata/1",
-  "image": "https://static.sway.community/badges/1",
-  "name": "The Beginning of End",
+  "image_url": "https://static.sway.community/badges/4",
+  "image": "https://static.sway.community/badges/4",
+  "name": "name",
   "year": 2021,
-  "tags": [
-    "sway",
-    "event"
-  ],
-  "start_date": "2021-12-22",
-  "end_date": "2021-12-22",
-  "virtual_event": true,
-  "city": "Mumbai",
-  "country": "India",
+  "tags": [],
+  "start_date": "2021-02-22",
+  "end_date": "2021-05-22",
+  "virtual_event": false,
+  "city": "cty",
+  "country": "cntry",
   "event_url": "https://www.sway.community/",
   "attributes": [
     {
       "trait_type": "start_date",
-      "value": "2021-12-22"
+      "value": "2021-02-22"
     },
     {
       "trait_type": "end_date",
-      "value": "2021-12-22"
+      "value": "2021-05-22"
     },
     {
       "trait_type": "virtual_event",
-      "value": "true"
+      "value": "false"
     },
     {
       "trait_type": "city",
-      "value": "Mumbai"
+      "value": "cty"
     },
     {
       "trait_type": "country",
-      "value": "India"
+      "value": "cntry"
     },
     {
       "trait_type": "event_url",
