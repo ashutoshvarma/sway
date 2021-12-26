@@ -10,7 +10,7 @@ require('dotenv').config();
 const commandlineArgs = process.argv.slice(2);
 
 const SUBGRAPH_NETWORK_MAPPING = {
-  localhost: 'dev',
+  localhost: 'localhost',
   celo: 'celo',
   alfajores: 'celo-alfajores',
 };
@@ -210,7 +210,7 @@ async function performAction(rawArgs) {
     const configPath = path.resolve(
       __dirname,
       '../subgraph/config',
-      `${SUBGRAPH_NETWORK_MAPPING[network]}.json`
+      `${network}.json`
     );
 
     const config = JSON.parse(fs.readFileSync(configPath));

@@ -1,4 +1,6 @@
 {
   "network": "celo-alfajores",
-  "rpc": "https://alfajores-forno.celo-testnet.org"
+  "rpc": "https://alfajores-forno.celo-testnet.org",
+  "SwayAddress": "0xB865057452f4f63F3eeF4C818dfF61B32e493B7C",
+  "SwayDropAddress": "0x28c280061117FC52991796f55e44511c619F5833"
 }

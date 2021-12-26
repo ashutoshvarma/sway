@@ -1,5 +1,5 @@
 import {BigNumber} from '@ethersproject/bignumber';
-import {deployments, ethers, getUnnamedAccounts, run} from 'hardhat';
+import {deployments, ethers, getUnnamedAccounts, run, network} from 'hardhat';
 import {Sway} from '../typechain';
 const {execute} = deployments;
 
@@ -79,6 +79,9 @@ async function swaySimple() {
 }
 
 async function main() {
+  if (network.name === 'celo')
+    throw new Error('Cannot run smokeTest in celo mainnet');
+
   await swaySimple();
 }
 
