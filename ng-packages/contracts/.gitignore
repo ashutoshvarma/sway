@@ -25,3 +25,5 @@ contractsInfo.json
 deployments/hardhat
 deployments/localhost
 deployments.json
+
+smoke.log

@@ -1,4 +1,5 @@
-import {deployments, ethers, getUnnamedAccounts} from 'hardhat';
+import {BigNumber} from '@ethersproject/bignumber';
+import {deployments, ethers, getUnnamedAccounts, run} from 'hardhat';
 import {Sway} from '../typechain';
 const {execute} = deployments;
 
@@ -29,15 +30,56 @@ async function swayTest() {
     0
   );
 
-  await sway.connect(josh)['safeTransferFrom(address,address,uint256)'](
-    josh.address,
-    patt.address,
-    joshTokenId
-  );
+  await sway
+    .connect(josh)
+    ['safeTransferFrom(address,address,uint256)'](
+      josh.address,
+      patt.address,
+      joshTokenId
+    );
+}
+
+async function swaySimple() {
+  const accounts = await ethers.getSigners();
+  const matt = accounts[3];
+  const josh = accounts[4];
+  const patt = accounts[5];
+  const amy = accounts[6];
+
+  const ids: BigNumber[] = [];
+  // mint 5 events with matt as minter
+  for (let i = 0; i < 5; i++) {
+    ids.push(await run('event:create', {minter: matt.address}));
+  }
+  // mint 5 events with with josh as minter
+  for (let i = 0; i < 5; i++) {
+    ids.push(await run('event:create', {minter: josh.address}));
+  }
+  // mint 5 events with with josh as minter
+  for (let i = 0; i < 5; i++) {
+    ids.push(await run('event:create', {minter: patt.address}));
+  }
+  console.log(ids.map((v) => v.toString()));
+
+  for (const id of ids) {
+    if (id.toNumber() % 2 === 0) {
+      await run('event:mint', {event: id.toNumber(), to: matt.address});
+    } else {
+      await run('event:mint', {event: id.toNumber(), to: patt.address});
+    }
+    await run('event:mint', {event: id.toNumber(), to: josh.address});
+    await run('event:mint', {event: id.toNumber(), to: amy.address});
+  }
+
+  for (const id of ids) {
+    if (id.toNumber() % 2 === 0) {
+      await run('event:minter', {event: id.toNumber(), minter: amy.address});
+    }
+  }
 }
 
 async function main() {
-  await swayTest();
+  await swaySimple();
 }
 
 main()

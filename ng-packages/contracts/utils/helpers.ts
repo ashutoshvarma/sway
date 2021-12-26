@@ -1,6 +1,7 @@
 import {BigNumber} from '@ethersproject/bignumber';
 import {HardhatRuntimeEnvironment} from 'hardhat/types';
 import {Sway} from '../typechain';
+
 export async function createEvent(
   hre: HardhatRuntimeEnvironment,
   minter: string
@@ -32,13 +33,3 @@ export async function createEvent(
     reciept.transactionHash,
   ];
 }
-
-// export async function addEventDrop(eventId: BigNumberish, root: string) {
-//   const { governorAddr } = await getNamedAccounts();
-//   const governor = await ethers.getSigner(governorAddr);
-
-//   const cSway = (await ethers.getContract('Sway')) as Sway;
-//   return (
-//     await cSway.connect(governor).addEventDrop(eventId, root)
-//   ).wait();
-// }

@@ -1,4 +1,5 @@
 export interface CommonConfig {
+  swayBaseUriExtension: string;
   swayName: string;
   swaySymbol: string;
   // make sure url ends with trailing '/'
@@ -9,6 +10,7 @@ export function getConfig(network: string): CommonConfig {
   const config = {
     swayName: 'Sway',
     swaySymbol: 'SWAY',
+    swayBaseUriExtension: ".json"
   };
 
   if (network === 'celo') return {swayBaseUri: 'https://static.sway.community/metadata/', ...config};
