@@ -9,3 +9,4 @@ data
 build
 subgraph.yaml
 docker-compose.yml
+generated

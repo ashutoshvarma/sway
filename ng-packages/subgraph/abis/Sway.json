@@ -717,6 +717,11 @@
         "type": "string"
       },
       {
+        "internalType": "string",
+        "name": "__baseURIExtension",
+        "type": "string"
+      },
+      {
         "internalType": "address",
         "name": "governor",
         "type": "address"
@@ -1057,6 +1062,19 @@
       }
     ],
     "name": "setBaseURI",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "baseURIExtension",
+        "type": "string"
+      }
+    ],
+    "name": "setBaseURIExtension",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
