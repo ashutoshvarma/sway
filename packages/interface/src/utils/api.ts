@@ -74,13 +74,30 @@ const api = {
    * @param maxCount Maximum events to fetch
    * @param last Last Event
    * @returns Event details
+   * @example 
+   * ```ts
+   * // Get the first 10 events (in desc order)
+   * let events = await getEventMetadata(10)
+   * // save the last event to state
+   * let lastEvent = events[events.length]
+   * // to get the next 10 events
+   * let nextEvents = await getEventMetadata(10, lastEvent)
+   * ```
    */
   getEvents: async (
     maxCount: number,
     last: { created: string } = {
       created: Number.MAX_SAFE_INTEGER.toString(),
     },
-  ) => {
+  ): Promise<
+    {
+      metadata: SwayEvent
+      id: string
+      tokenCount: string
+      transferCount: string
+      created: string
+    }[]
+  > => {
     // run the graphql query to fetch event ids
     const events = (
       await request<EventDataResponse>(SUBGRAPH_URL, eventsQuery, {
@@ -101,7 +118,22 @@ const api = {
     )
   },
 
-  getUserTokenInfo: async (address: string) => {
+  /**
+   * Get the Users' Tokens Info
+   * @param address Address of User
+   * @returns Token info if user owns one or more token or else null
+   */
+  getUserTokenInfo: async (
+    address: string,
+  ): Promise<{
+    tokensOwned: string
+    tokens: {
+      created: string
+      metadataUri: string
+      transactionHash: string
+      metadata: SwayEvent
+    }[]
+  } | null> => {
     // subgraph has lowercase address
     const userID = address.toLowerCase()
     const account = (
