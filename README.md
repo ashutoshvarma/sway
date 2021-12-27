@@ -1,0 +1,4 @@
+# Sway
+- contracts
+- subgraph
+- interface

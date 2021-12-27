@@ -4695,6 +4695,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@sway/contracts", [
+        ["portal:../../ng-packages/contracts::locator=%40sway%2Finterface%40workspace%3Apackages%2Finterface", {
+          "packageLocation": "./ng-packages/contracts/",
+          "packageDependencies": [
+            ["@sway/contracts", "portal:../../ng-packages/contracts::locator=%40sway%2Finterface%40workspace%3Apackages%2Finterface"]
+          ],
+          "linkType": "SOFT",
+        }],
         ["portal:../../ng-packages/contracts::locator=%40sway%2Fserver%40workspace%3Apackages%2Fserver", {
           "packageLocation": "./ng-packages/contracts/",
           "packageDependencies": [
@@ -4719,6 +4726,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
               "@poofcash/use-contractkit",
               "virtual:45061356eaa95ba6d0c68c86c559428bca557b9b2a8e8a61109e76bb597eac3a32d62105c9986c45af223bb7d807964cbcc41a47b33df8149950e407535144a7#npm:1.0.10"
             ]],
+            ["@sway/contracts", "portal:../../ng-packages/contracts::locator=%40sway%2Finterface%40workspace%3Apackages%2Finterface"],
             ["@testing-library/jest-dom", "npm:5.16.1"],
             ["@testing-library/react", "virtual:45061356eaa95ba6d0c68c86c559428bca557b9b2a8e8a61109e76bb597eac3a32d62105c9986c45af223bb7d807964cbcc41a47b33df8149950e407535144a7#npm:11.2.7"],
             ["@testing-library/user-event", "virtual:45061356eaa95ba6d0c68c86c559428bca557b9b2a8e8a61109e76bb597eac3a32d62105c9986c45af223bb7d807964cbcc41a47b33df8149950e407535144a7#npm:12.8.3"],
@@ -4730,6 +4738,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-react-app", "virtual:45061356eaa95ba6d0c68c86c559428bca557b9b2a8e8a61109e76bb597eac3a32d62105c9986c45af223bb7d807964cbcc41a47b33df8149950e407535144a7#npm:6.0.0"],
             ["formik", "virtual:45061356eaa95ba6d0c68c86c559428bca557b9b2a8e8a61109e76bb597eac3a32d62105c9986c45af223bb7d807964cbcc41a47b33df8149950e407535144a7#npm:2.2.9"],
             ["gh-pages", "npm:3.2.3"],
+            ["graphql-request", "virtual:45061356eaa95ba6d0c68c86c559428bca557b9b2a8e8a61109e76bb597eac3a32d62105c9986c45af223bb7d807964cbcc41a47b33df8149950e407535144a7#npm:3.7.0"],
             ["history", "npm:5.2.0"],
             ["react", "npm:17.0.2"],
             ["react-accessible-accordion", "virtual:45061356eaa95ba6d0c68c86c559428bca557b9b2a8e8a61109e76bb597eac3a32d62105c9986c45af223bb7d807964cbcc41a47b33df8149950e407535144a7#npm:4.0.0"],
@@ -12348,6 +12357,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["extract-files", [
+        ["npm:9.0.0", {
+          "packageLocation": "./.yarn/cache/extract-files-npm-9.0.0-6ee13e6aab-c31781d090.zip/node_modules/extract-files/",
+          "packageDependencies": [
+            ["extract-files", "npm:9.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["extsprintf", [
         ["npm:1.3.0", {
           "packageLocation": "./.yarn/cache/extsprintf-npm-1.3.0-61a92b324c-cee7a4a1e3.zip/node_modules/extsprintf/",
@@ -13476,6 +13494,31 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/graphql-npm-15.8.0-0156c66b65-423325271d.zip/node_modules/graphql/",
           "packageDependencies": [
             ["graphql", "npm:15.8.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["graphql-request", [
+        ["npm:3.7.0", {
+          "packageLocation": "./.yarn/cache/graphql-request-npm-3.7.0-0479d981ec-db3800cc4e.zip/node_modules/graphql-request/",
+          "packageDependencies": [
+            ["graphql-request", "npm:3.7.0"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:45061356eaa95ba6d0c68c86c559428bca557b9b2a8e8a61109e76bb597eac3a32d62105c9986c45af223bb7d807964cbcc41a47b33df8149950e407535144a7#npm:3.7.0", {
+          "packageLocation": "./.yarn/__virtual__/graphql-request-virtual-7990cf0674/0/cache/graphql-request-npm-3.7.0-0479d981ec-db3800cc4e.zip/node_modules/graphql-request/",
+          "packageDependencies": [
+            ["graphql-request", "virtual:45061356eaa95ba6d0c68c86c559428bca557b9b2a8e8a61109e76bb597eac3a32d62105c9986c45af223bb7d807964cbcc41a47b33df8149950e407535144a7#npm:3.7.0"],
+            ["@types/graphql", null],
+            ["cross-fetch", "npm:3.1.4"],
+            ["extract-files", "npm:9.0.0"],
+            ["form-data", "npm:3.0.1"],
+            ["graphql", null]
+          ],
+          "packagePeers": [
+            "@types/graphql",
+            "graphql"
           ],
           "linkType": "HARD",
         }]
