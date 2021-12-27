@@ -13496,6 +13496,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["graphql", "npm:15.8.0"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:16.2.0", {
+          "packageLocation": "./.yarn/cache/graphql-npm-16.2.0-441b615dc9-204b5c9991.zip/node_modules/graphql/",
+          "packageDependencies": [
+            ["graphql", "npm:16.2.0"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["graphql-request", [
@@ -13514,11 +13521,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cross-fetch", "npm:3.1.4"],
             ["extract-files", "npm:9.0.0"],
             ["form-data", "npm:3.0.1"],
-            ["graphql", null]
+            ["graphql", "npm:16.2.0"]
           ],
           "packagePeers": [
-            "@types/graphql",
-            "graphql"
+            "@types/graphql"
           ],
           "linkType": "HARD",
         }]
