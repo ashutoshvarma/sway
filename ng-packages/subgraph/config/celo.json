@@ -1,4 +1,5 @@
 {
   "network": "celo",
-  "rpc": "https://forno.celo.org"
+  "rpc": "https://forno.celo.org",
+  "startBlock": 0
 }

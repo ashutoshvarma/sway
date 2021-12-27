@@ -1,6 +1,6 @@
 {
-  "name": "sway-alfajores",
-  "license": "UNLICENSED",
+  "name": "@sway/subgraph",
+  "license": "GPLv2",
   "scripts": {
     "hardhat": "cd ../contracts && yarn hardhat",
     "graph-node": "mustache ./config/${NETWORK:-localhost}.json docker-compose.template.yml > docker-compose.yml && docker-compose up",
@@ -11,10 +11,10 @@
     "subgraph:prepare": "yarn subgraph:config && yarn subgraph:mustache && rm -rf generated && yarn codegen",
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "yarn subgraph:prepare && graph deploy --node https://api.thegraph.com/deploy/ ashutoshvarma/sway-alfajores",
-    "create-local": "graph create --node http://localhost:8020/ ashutoshvarma/sway-alfajores",
-    "remove-local": "graph remove --node http://localhost:8020/ ashutoshvarma/sway-alfajores",
-    "deploy-local": "yarn subgraph:prepare && graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 ashutoshvarma/sway-alfajores"
+    "deploy": "yarn subgraph:prepare && graph deploy --node https://api.thegraph.com/deploy/ ashutoshvarma/sway-${NETWORK:-localhost}",
+    "create-local": "graph create --node http://localhost:8020/ ashutoshvarma/sway-${NETWORK:-localhost}",
+    "remove-local": "graph remove --node http://localhost:8020/ ashutoshvarma/sway-${NETWORK:-localhost}",
+    "deploy-local": "yarn subgraph:prepare && graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 ashutoshvarma/sway-${NETWORK:-localhost}"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.25.1",

@@ -117,6 +117,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sway/subgraph@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@sway/subgraph@workspace:."
+  dependencies:
+    "@graphprotocol/graph-cli": 0.25.1
+    "@graphprotocol/graph-ts": 0.24.1
+    "@types/mustache": ^4
+    mustache: ^4.2.0
+    ts-node: ^10.4.0
+    typescript: ^4.5.4
+  languageName: unknown
+  linkType: soft
+
 "@tootallnate/once@npm:1":
   version: 1.1.2
   resolution: "@tootallnate/once@npm:1.1.2"
@@ -4039,19 +4052,6 @@ __metadata:
   checksum: 3dda818de06ebbe5b9653e07842d9479f3555ebc77e9a0280caf5a14fb877ffee9ed57007c3b78f5a6324b8dbeec648d9e97a24e2ed9fdb81ddc69ea07100f4a
   languageName: node
   linkType: hard
-
-"sway-alfajores@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "sway-alfajores@workspace:."
-  dependencies:
-    "@graphprotocol/graph-cli": 0.25.1
-    "@graphprotocol/graph-ts": 0.24.1
-    "@types/mustache": ^4
-    mustache: ^4.2.0
-    ts-node: ^10.4.0
-    typescript: ^4.5.4
-  languageName: unknown
-  linkType: soft
 
 "tar-fs@npm:~1.16.3":
   version: 1.16.3
