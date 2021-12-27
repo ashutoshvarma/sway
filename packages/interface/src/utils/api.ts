@@ -1,9 +1,14 @@
 import { request, gql } from 'graphql-request'
 import { METADATA_URL, SUBGRAPH_URL } from './constants'
-import { Event as SwayEvent, NFTMetadata } from '@sway/contracts/events/events'
+import { Event as SwayEvent } from '@sway/contracts/events/events'
 
 interface EventDataResponse {
-  events: { id: string; tokenCount: string; transferCount: string }[]
+  events: {
+    id: string
+    tokenCount: string
+    transferCount: string
+    created: string
+  }[]
 }
 
 interface UserTokenDataResponse {
@@ -21,16 +26,17 @@ interface UserTokenDataResponse {
 }
 
 export const eventsQuery = gql`
-  query getEvents($lastID: String) {
+  query getEvents($maxCount: Int, $lastCreated: String) {
     events(
       orderBy: created
       orderDirection: desc
-      first: 1000
-      where: { id_gt: $lastID }
+      first: $maxCount
+      where: { created_lt: $lastCreated }
     ) {
       id
       tokenCount
       transferCount
+      created
     }
   }
 `
@@ -66,14 +72,20 @@ const api = {
   /**
    * Get all the events from subgraph along with their metadata
    * @param maxCount Maximum events to fetch
-   * @param lastID Last Events' ID for pagination
+   * @param last Last Event
    * @returns Event details
    */
-  getEvents: async (maxCount: number, lastID: string = '') => {
+  getEvents: async (
+    maxCount: number,
+    last: { created: string } = {
+      created: Number.MAX_SAFE_INTEGER.toString(),
+    },
+  ) => {
     // run the graphql query to fetch event ids
     const events = (
       await request<EventDataResponse>(SUBGRAPH_URL, eventsQuery, {
-        lastID,
+        maxCount,
+        lastCreated: last.created,
       })
     ).events
 
@@ -89,13 +101,15 @@ const api = {
     )
   },
 
-  getUserTokens: async (address: string) => {
+  getUserTokenInfo: async (address: string) => {
+    // subgraph has lowercase address
+    const userID = address.toLowerCase()
     const account = (
       await request<UserTokenDataResponse>(SUBGRAPH_URL, userTokensQuery, {
-        address,
+        userID,
       })
     ).account
-
+    if (!account) return null
     return {
       tokensOwned: account.tokensOwned,
       tokens: await Promise.all(
@@ -112,3 +126,5 @@ const api = {
     }
   },
 }
+
+export default api
