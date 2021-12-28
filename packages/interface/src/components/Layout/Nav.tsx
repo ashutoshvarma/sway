@@ -4,14 +4,15 @@ import styles from './Nav.module.css'
 import walleticon from '../../assets/icons/wallet.svg'
 import hamburger from '../../assets/icons/hamburger.svg'
 import cross from '../../assets/icons/cross.svg'
+import { NavLink } from 'react-router-dom'
 
 interface Props {
-  dark?: Boolean
+  dark?: boolean
 }
 
 function Nav({ dark }: Props): ReactElement {
   const { connect, address, destroy } = useContractKit()
-  const [navOpen, setNavOpen] = useState<Boolean>(false)
+  const [navOpen, setNavOpen] = useState<boolean>(false)
   const toggleNav = () => {
     setNavOpen((state) => !state)
   }
@@ -34,10 +35,10 @@ function Nav({ dark }: Props): ReactElement {
           <img src={cross} alt="cross icon" />
         </button>
         <div className={styles['NavListContent']}>
-          <NavItem>Explore</NavItem>
-          <NavItem>Create</NavItem>
-          <NavItem>My Account</NavItem>
-          <NavItem primary>
+          <NavItem to="/gallery">Explore</NavItem>
+          <NavItem to="/event">Create</NavItem>
+          <NavItem to="/user_collection">My Account</NavItem>
+          <NavItem to="#" primary>
             {address ? (
               <a onClick={() => destroy().catch(console.log)}>
                 <img src={walleticon} alt="wallet icon" />
@@ -58,15 +59,19 @@ function Nav({ dark }: Props): ReactElement {
 
 interface NavItemProps {
   children: React.ReactNode
-  primary?: Boolean
-  // to: String
+  primary?: boolean
+  to: string
 }
 
-function NavItem({ children, primary }: NavItemProps): ReactElement {
-  let classes = [styles['NavItem']]
+function NavItem({ children, to, primary }: NavItemProps): ReactElement {
+  const classes = [styles['NavItem']]
   if (primary) classes.push(styles['Primary'])
 
-  return <div className={classes.join(' ')}>{children}</div>
+  return (
+    <NavLink to={to} className={classes.join(' ')}>
+      {children}
+    </NavLink>
+  )
 }
 
 export default Nav

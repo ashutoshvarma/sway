@@ -63,11 +63,20 @@ main {
 
 button {
   cursor: pointer;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
 }
 
 button:active {
   transform: scale(0.9);
+}
+
+button:hover {
+  transform: scale(1.02) translateY(-2px);
+  box-shadow: 1px 1px 48px -10px #c2c2c2;
+}
+button:active {
+  transform: scale(0.95);
+  box-shadow: 1px 1px 48px -100px #c2c2c2;
 }
 
 @media (max-width: 1600px) {

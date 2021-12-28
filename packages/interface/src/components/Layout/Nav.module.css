@@ -3,6 +3,11 @@
   padding: 10px;
   display: flex;
   gap: 5px;
+  text-decoration: none;
+}
+
+.NavItem:hover {
+  text-decoration: underline;
 }
 
 .NavItem.Primary {
@@ -10,6 +15,22 @@
   border-radius: 5px;
   padding: 10px 20px;
   color: white;
+  text-decoration: none;
+  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.NavItem.Primary:hover {
+  transform: scale(1.02) translateY(-2px);
+  box-shadow: 1px 1px 48px -10px #c2c2c2;
+}
+.NavItem.Primary:active {
+  transform: scale(0.95);
+  box-shadow: 1px 1px 48px -100px #c2c2c2;
+}
+
+.NavItem.Primary > a {
+  display: flex;
+  gap: 5px;
 }
 
 .Hamburger {

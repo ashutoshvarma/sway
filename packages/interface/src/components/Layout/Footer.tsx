@@ -5,6 +5,7 @@ import logo from '../../assets/logos/sway.svg'
 import reddit from '../../assets/logos/reddit.svg'
 import discord from '../../assets/logos/discord.svg'
 import github from '../../assets/logos/github.svg'
+import { Link } from 'react-router-dom'
 
 function Footer(): ReactElement {
   return (
@@ -28,11 +29,21 @@ function Footer(): ReactElement {
             <div className={styles['Menu']}>
               <h4>Menu</h4>
               <ul className={styles['Nav']}>
-                <li>Explore</li>
-                <li>Create</li>
-                <li>My Account</li>
-                <li>Details</li>
-                <li>Career</li>
+                <li>
+                  <Link to="/gallery">Explore</Link>
+                </li>
+                <li>
+                  <Link to="/event/create">Create</Link>
+                </li>
+                <li>
+                  <Link to="/user_collection">My Account</Link>
+                </li>
+                <li>
+                  <Link to="/event">Details</Link>
+                </li>
+                <li>
+                  <Link to="#">Career</Link>
+                </li>
               </ul>
             </div>
             <div className={styles['Contact1']}>
