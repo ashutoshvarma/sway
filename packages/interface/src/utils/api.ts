@@ -1,6 +1,9 @@
 import { request, gql } from 'graphql-request'
-import { METADATA_URL, SUBGRAPH_URL } from './constants'
-import { Event as SwayEvent } from '@sway/events/src/events'
+import { MERKLE_URL, METADATA_URL, SUBGRAPH_URL } from './constants'
+import {
+  Event as SwayEvent,
+  SwayDropParticipants,
+} from '@sway/events/src/events'
 
 interface EventDataResponse {
   events: {
@@ -67,6 +70,12 @@ export const userTokensQuery = gql`
 const api = {
   getEventMetadata: async (eventId: string): Promise<SwayEvent> => {
     return await (await fetch(`${METADATA_URL}/${eventId}`)).json()
+  },
+
+  getEventMerkleDetails: async (
+    eventId: string,
+  ): Promise<SwayDropParticipants> => {
+    return await (await fetch(`${MERKLE_URL}/${eventId}`)).json()
   },
 
   /**
