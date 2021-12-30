@@ -11,7 +11,7 @@ describe('SwayDrop', () => {
     const mattAddr = await matt.getAddress();
     const accounts = await getUnnamedAccounts();
 
-    const participants = [accounts[3], accounts[4]];
+    const participants = [accounts[3]!, accounts[4]!];
 
     const [eventId, _hash] = await createEvent(hre, mattAddr);
     const rootHash = getMerkleRoot(participants, eventId);
@@ -19,7 +19,7 @@ describe('SwayDrop', () => {
     const proof = getMerkleProof(index, eventId, participants);
     await sway.connect(governor).addEventDrop(eventId, rootHash);
     // should be able to claim
-    await expect(swayDrop.claim(index, eventId, participants[index], proof))
+    await expect(swayDrop.claim(index, eventId, participants[index]!, proof))
       .to.emit(swayDrop, 'TokenClaimed')
       .withArgs(eventId, participants[index]);
     // revert if wrong details

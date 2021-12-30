@@ -15,7 +15,7 @@ import {balances} from './tasks/accounts';
 import {create_event, add_event_drop, mint, claim, minter} from './tasks/events';
 import {toggle_pause, debug} from './tasks/governance';
 
-task('accounts', 'Prints the list of accounts', async (args, hre) => {
+task('accounts', 'Prints the list of accounts', async (_args, hre) => {
   const accounts = await hre.ethers.getSigners();
 
   for (const account of accounts) {
@@ -81,8 +81,8 @@ task('event:minter', 'Add/Revoke minter from a Event')
   .setAction(minter);
 
 // While waiting for hardhat PR: https://github.com/nomiclabs/hardhat/pull/1542
-if (process.env.HARDHAT_FORK) {
-  process.env['HARDHAT_DEPLOY_FORK'] = process.env.HARDHAT_FORK;
+if (process.env['HARDHAT_FORK']) {
+  process.env['HARDHAT_DEPLOY_FORK'] = process.env['HARDHAT_FORK'];
 }
 
 const config: HardhatUserConfig = {
@@ -105,17 +105,17 @@ const config: HardhatUserConfig = {
       // process.env.HARDHAT_FORK will specify the network that the fork is made from.
       // this line ensure the use of the corresponding accounts
       accounts: {
-        ...accounts(process.env.HARDHAT_FORK),
+        ...accounts(process.env['HARDHAT_FORK']),
         count: 8,
         path: derivationPath,
         accountsBalance: '10000000000000000000000',
       },
-      forking: process.env.HARDHAT_FORK
+      forking: process.env['HARDHAT_FORK']
         ? {
             // TODO once PR merged : network: process.env.HARDHAT_FORK,
-            url: node_url(process.env.HARDHAT_FORK),
-            blockNumber: process.env.HARDHAT_FORK_NUMBER
-              ? parseInt(process.env.HARDHAT_FORK_NUMBER)
+            url: node_url(process.env['HARDHAT_FORK']),
+            blockNumber: process.env['HARDHAT_FORK_NUMBER']
+              ? parseInt(process.env['HARDHAT_FORK_NUMBER'])
               : undefined,
           }
         : undefined,
@@ -160,8 +160,8 @@ const config: HardhatUserConfig = {
   gasReporter: {
     currency: 'USD',
     gasPrice: 100,
-    enabled: process.env.REPORT_GAS ? true : false,
-    coinmarketcap: process.env.COINMARKETCAP_API_KEY,
+    enabled: process.env['REPORT_GAS'] ? true : false,
+    coinmarketcap: process.env['COINMARKETCAP_API_KEY'],
     maxMethodDiff: 10,
   },
   typechain: {

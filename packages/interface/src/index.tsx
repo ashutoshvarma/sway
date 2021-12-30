@@ -4,10 +4,7 @@ import './index.css'
 import App from './App'
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import reportWebVitals from './reportWebVitals'
-import {
-  ContractKitProvider,
-  Alfajores,
-} from '@celo-tools/use-contractkit'
+import { ContractKitProvider, Alfajores } from '@celo-tools/use-contractkit'
 import '@celo-tools/use-contractkit/lib/styles.css'
 import icon from './assets/logo192.png'
 
@@ -20,6 +17,7 @@ ReactDOM.render(
           'The interface for Sway, a decentralized souvenir protocol',
         url: 'https://example.com',
         icon: icon,
+        supportedNetworks: [Alfajores],
       }}
       network={Alfajores}
       networks={[Alfajores]}

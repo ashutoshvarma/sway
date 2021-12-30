@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import { ReactElement } from 'react'
 import { FieldAttributes, Field as FormikField, ErrorMessage } from 'formik'
 import styles from './Field.module.css'
 
@@ -16,10 +16,10 @@ function Field({
   if (props.id === undefined) props.id = props.name
   let FieldComponent = input || FormikField
   return (
-    <label className={[styles.FieldLabel, className].join(' ')}>
+    <label className={[styles['FieldLabel'], className].join(' ')}>
       <span>{label}</span>
       <ErrorMessage name={props.name} />
-      <FieldComponent className={styles.Input} {...props} />
+      <FieldComponent className={styles['Input']} {...props} />
     </label>
   )
 }

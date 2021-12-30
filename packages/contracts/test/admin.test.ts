@@ -95,13 +95,13 @@ describe('SwayAdmin', () => {
   });
 
   it('should be able to add additional governor', async () => {
-    const {governor, matt, josh, sway} = await singleEventFixture();
+    const {governor, josh, sway} = await singleEventFixture();
     const GOVERNOR_ROLE = await sway.GOVERNOR_ROLE();
     const joshAddr = await josh.getAddress();
     await sway.connect(governor).grantRole(GOVERNOR_ROLE, joshAddr);
     // josh should now be governor
     await expect(await sway.isGovernor(joshAddr)).to.be.true;
-    // josh should be able to access governor gaurded functions
+    // josh should be able to access governor guarded functions
     await sway.connect(josh).pause();
   });
 });

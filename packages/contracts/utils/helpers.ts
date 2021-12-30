@@ -6,13 +6,12 @@ export async function createEvent(
   hre: HardhatRuntimeEnvironment,
   minter: string
 ): Promise<[BigNumber, string]> {
-  const {ethers, deployments} = hre;
-  const {execute} = deployments;
+  const {ethers} = hre;
   const {governorAddr} = await hre.getNamedAccounts();
-  const governor = await ethers.getSigner(governorAddr);
+  const governor = await ethers.getSigner(governorAddr!);
 
   const cSway = (await ethers.getContract('Sway')) as Sway;
-  const reciept = await (
+  const receipt = await (
     await cSway.connect(governor).createEvent(minter)
   ).wait();
 
@@ -28,8 +27,8 @@ export async function createEvent(
 
   return [
     BigNumber.from(
-      reciept.events?.filter((e) => e.event === 'EventAdded')[0].args?.[0]
+      receipt.events?.filter((e) => e.event === 'EventAdded')[0]?.args?.[0]
     ),
-    reciept.transactionHash,
+    receipt.transactionHash,
   ];
 }

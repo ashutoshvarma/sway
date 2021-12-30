@@ -1,8 +1,7 @@
-import { BigNumberish } from "ethers";
-import * as ethers from "ethers";
-import MerkleTree from "merkletreejs";
+import {BigNumberish} from 'ethers';
+import * as ethers from 'ethers';
+import MerkleTree from 'merkletreejs';
 import keccak256 from 'keccak256';
-
 
 export function calculateMerkleLeaf(
   index: BigNumberish,
@@ -20,7 +19,7 @@ export function getMerkleTree(
   eventId: BigNumberish
 ): [MerkleTree, string[]] {
   const leafs = participants.map((p, i) => calculateMerkleLeaf(i, eventId, p));
-  const tree = new MerkleTree(leafs, keccak256, { sort: true });
+  const tree = new MerkleTree(leafs, keccak256, {sort: true});
   return [tree, leafs];
 }
 
@@ -30,7 +29,11 @@ export function getMerkleProof(
   participants: string[]
 ): string[] {
   const [tree, leaves] = getMerkleTree(participants, eventId);
-  return tree.getHexProof(leaves[index]);
+  const leaf = leaves[index];
+  if (!leaf) {
+    throw new Error(`Leaf with index ${index} not found`);
+  }
+  return tree.getHexProof(leaf);
 }
 
 export function getMerkleRoot(

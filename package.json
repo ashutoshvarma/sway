@@ -10,7 +10,8 @@
     "hardhat": "yarn contracts hardhat",
     "graph": "yarn subgraph graph",
     "dapp:start": "yarn workspace @sway/interface start",
-    "events:gen": "yarn workspace @sway/events gen"
+    "events:gen": "yarn workspace @sway/events gen",
+    "clean": "rm -fr yarn.lock "
   },
   "private": true,
   "workspaces": [

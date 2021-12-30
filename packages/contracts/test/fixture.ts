@@ -23,11 +23,11 @@ export async function defaultFixture() {
   const anna = await ethers.provider.getSigner(accounts[2]);
 
   try {
-    tracer.nameTags[governorAddr] = 'Governor';
-    tracer.nameTags[deployerAddr] = 'Deployer';
-    tracer.nameTags[accounts[0]] = 'Matt';
-    tracer.nameTags[accounts[1]] = 'Josh';
-    tracer.nameTags[accounts[2]] = 'Anna';
+    tracer.nameTags[governorAddr!] = 'Governor';
+    tracer.nameTags[deployerAddr!] = 'Deployer';
+    tracer.nameTags[accounts[0]!] = 'Matt';
+    tracer.nameTags[accounts[1]!] = 'Josh';
+    tracer.nameTags[accounts[2]!] = 'Anna';
   } catch {}
 
   return {

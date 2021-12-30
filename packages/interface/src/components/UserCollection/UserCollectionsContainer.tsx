@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import { ReactElement } from 'react'
 import HeroSection from './HeroSection'
 import Collections from './Collections'
 function UserCollectionsContainer(): ReactElement {

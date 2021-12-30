@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import { ReactElement } from 'react'
 import 'react-dropdown/style.css'
 import styles from './Gallery.module.css'
 import Card from './Card'
@@ -12,17 +12,17 @@ interface Props {}
 
 function Gallery({}: Props): ReactElement {
   return (
-    <section className={styles.Gallery}>
+    <section className={styles['Gallery']}>
       <div className="wrapper narrow">
-        <div className={styles.Header}>
-          <div className={styles.DropdownContainer}>
+        <div className={styles['Header']}>
+          <div className={styles['DropdownContainer']}>
             <Dropdown
               options={options}
               // onChange={this._onSelect}
-              className={styles.DropdownRoot}
-              controlClassName={styles.Dropdown}
-              placeholderClassName={styles.DropdownPlaceholder}
-              menuClassName={styles.DropdownMenu}
+              className={styles['DropdownRoot']}
+              controlClassName={styles['Dropdown']}
+              placeholderClassName={styles['DropdownPlaceholder']}
+              menuClassName={styles['DropdownMenu']}
               value={defaultOption}
               placeholder="Select an option"
             />
@@ -30,11 +30,11 @@ function Gallery({}: Props): ReactElement {
           <h2>
             <span className="primary-color underline">Sway</span> Gallery
           </h2>
-          <div className={styles.SearchInputContainer}>
+          <div className={styles['SearchInputContainer']}>
             <SearchInput />
           </div>
         </div>
-        <div className={styles.GalleryGrid}>
+        <div className={styles['GalleryGrid']}>
           <Card />
           <Card />
           <Card />
@@ -43,7 +43,7 @@ function Gallery({}: Props): ReactElement {
           <Card />
           <Card />
         </div>
-        <div className={styles.LoadMoreContainer}>
+        <div className={styles['LoadMoreContainer']}>
           <button>Load More</button>
         </div>
       </div>

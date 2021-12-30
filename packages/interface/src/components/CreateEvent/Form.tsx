@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import { ReactElement } from 'react'
 import { Formik, Form as FormikForm } from 'formik'
 import styles from './Form.module.css'
 import ToggleInput from './ToggleInput'
@@ -46,17 +46,17 @@ function Form(): ReactElement {
     <section style={{ overflowX: 'hidden' }}>
       <div className="wrapper narrow">
         <Formik initialValues={initialValues} onSubmit={() => {}}>
-          <FormikForm className={styles.Form}>
-            <div className={styles.FormSection}>
-              <h3 className={styles.SectionTitle}>
+          <FormikForm className={styles['Form']}>
+            <div className={styles['FormSection']}>
+              <h3 className={styles['SectionTitle']}>
                 1. What is the category of your event?
               </h3>
               <CategorySelect1 name="Category1" options={CAT_OPTIONS1} />
-              <h3 className={styles.SectionTitle}>Select Category</h3>
+              <h3 className={styles['SectionTitle']}>Select Category</h3>
               <CategorySelect2 name="Category2" options={CAT_OPTIONS2} />
             </div>
-            <div className={styles.FormSection}>
-              <h3 className={styles.SectionTitle}>
+            <div className={styles['FormSection']}>
+              <h3 className={styles['SectionTitle']}>
                 2. Is this a private or Public Event?
               </h3>
 
@@ -66,11 +66,11 @@ function Form(): ReactElement {
                 id="public"
               />
             </div>
-            <div className={styles.FormSection}>
-              <h3 className={styles.SectionTitle}>
+            <div className={styles['FormSection']}>
+              <h3 className={styles['SectionTitle']}>
                 3. When will this Event be?
               </h3>
-              <div className={styles.Section3InputGrid}>
+              <div className={styles['Section3InputGrid']}>
                 <Field
                   input={SelectInput}
                   options={['Monthly', 'Weekly', 'Yearly', 'Once']}
@@ -90,11 +90,11 @@ function Form(): ReactElement {
                 <Field name="endDate" type="date" label="Ends" />
               </div>
             </div>
-            <div className={styles.FormSection}>
-              <h3 className={styles.SectionTitle} id={styles.Section4Title}>
+            <div className={styles['FormSection']}>
+              <h3 className={styles['SectionTitle']} id={styles['Section4Title']}>
                 4. Event Details {'&'} Description
               </h3>
-              <div className={styles.Section4InputGrid}>
+              <div className={styles['Section4InputGrid']}>
                 <Field name="eventName" label="Event Title" />
 
                 <Field
@@ -104,13 +104,13 @@ function Form(): ReactElement {
                   options={['test1', 'test2', 'test3']}
                 />
                 <ImageInput
-                  className={styles.TwoRow}
+                  className={styles['TwoRow']}
                   name="image"
                   label="Add an event image:"
                 />
 
                 <Field
-                  className={styles.TwoRow}
+                  className={styles['TwoRow']}
                   name="link"
                   label="Paste your link here"
                 />
@@ -121,13 +121,13 @@ function Form(): ReactElement {
 
                 <Field
                   as="textarea"
-                  className={styles.TwoRow}
+                  className={styles['TwoRow']}
                   name="description"
                   label="Event Description"
                 />
               </div>
             </div>
-            <div className={styles.CreateContainer}>
+            <div className={styles['CreateContainer']}>
               <button>Create Event</button>
             </div>
           </FormikForm>

@@ -130,7 +130,7 @@ const api = {
     tokens: {
       created: string
       metadataUri: string
-      transactionHash: string
+      transactionHash?: string
       metadata: SwayEvent
     }[]
   } | null> => {
@@ -150,7 +150,7 @@ const api = {
           return {
             created: t.created,
             metadataUri: t.metadataUri,
-            transactionHash: t.transfers[0].transaction,
+            transactionHash: t.transfers[0]?.transaction,
             metadata,
           }
         }),

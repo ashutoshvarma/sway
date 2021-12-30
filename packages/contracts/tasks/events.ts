@@ -1,9 +1,5 @@
 import {BigNumber} from 'ethers';
-import {
-  ActionType,
-  HardhatRuntimeEnvironment,
-  RunSuperFunction,
-} from 'hardhat/types';
+import {HardhatRuntimeEnvironment, RunSuperFunction} from 'hardhat/types';
 import {createEvent} from '../utils/helpers';
 import {getMerkleRoot, getMerkleProof} from '../utils/merkle';
 import {Sway, SwayDrop} from '../typechain';
@@ -93,7 +89,11 @@ export async function mint(
   const {ethers} = hre;
   const sway = (await ethers.getContract('Sway')) as Sway;
   const accounts = await ethers.getSigners();
+
   const minter = taskArgs.minter ? accounts[taskArgs.minter] : accounts[1];
+  if (!minter) {
+    throw new Error('Minter not found');
+  }
 
   console.log(
     `Minting token for Event(${taskArgs.event.toString()}) for ${
@@ -105,8 +105,8 @@ export async function mint(
       .connect(minter)
       ['mintToken(uint256,address)'](taskArgs.event, taskArgs.to)
   ).wait();
-  const tokenId = receipt.events?.filter((e) => e.event === 'EventToken')[0]
-    .args?.[1];
+  const tokenId = receipt.events?.filter((e) => e.event === 'EventToken')?.[0]
+    ?.args?.[1];
   console.log(
     `Successfully minted Token(${tokenId}), txHash - ${receipt.transactionHash}`
   );
@@ -119,7 +119,6 @@ export async function claim(
   _: RunSuperFunction<ClaimArgs>
 ): Promise<void> {
   const {ethers} = hre;
-  const sway = (await ethers.getContract('Sway')) as Sway;
   const swayDrop = (await ethers.getContract('SwayDrop')) as SwayDrop;
 
   const dropParticipants = await getEventMerkleParticipants(
@@ -143,12 +142,12 @@ export async function claim(
     }...`
   );
 
-  const reciept = await (
+  const receipt = await (
     await swayDrop.claim(index, taskArgs.event, taskArgs.to, proof)
   ).wait();
 
   console.log(
-    `Successfully claimed Token, txHash - ${reciept.transactionHash}`
+    `Successfully claimed Token, txHash - ${receipt.transactionHash}`
   );
 }
 

@@ -13,7 +13,7 @@ export function node_url(networkName: string): string {
     }
   }
 
-  let uri = process.env.ETH_NODE_URI;
+  let uri = process.env['ETH_NODE_URI'];
   if (uri) {
     uri = uri.replace('{{networkName}}', networkName);
   }
@@ -37,7 +37,7 @@ export function getMnemonic(networkName?: string): string {
     }
   }
 
-  const mnemonic = process.env.MNEMONIC;
+  const mnemonic = process.env['MNEMONIC'];
   if (!mnemonic || mnemonic === '') {
     return 'test test test test test test test test test test test junk';
   }

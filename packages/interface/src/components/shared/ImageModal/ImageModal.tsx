@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import { ReactElement } from 'react'
 import styles from './ImageModal.module.css'
 
 interface Props {
@@ -16,8 +16,8 @@ function ImageModal({
 }: Props): ReactElement | null {
   if (show)
     return (
-      <div className={styles.Modal} onClick={toggle}>
-        <img src={imageUrl} alt={alt} className={styles.Image} />
+      <div className={styles['Modal']} onClick={toggle}>
+        <img src={imageUrl} alt={alt} className={styles['Image']} />
       </div>
     )
   return null

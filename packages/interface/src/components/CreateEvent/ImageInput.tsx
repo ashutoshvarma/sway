@@ -50,23 +50,23 @@ const ImageInput = ({
   }
 
   return (
-    <div className={[styles.Container, props.className].join(' ')}>
-      <label className={styles.Label}>
+    <div className={[styles['Container'], props.className].join(' ')}>
+      <label className={styles['Label']}>
         {label}
         <input
-          className={styles.Input}
+          className={styles['Input']}
           {...fieldProps}
           onChange={changeHandler}
           type="file"
           accept="image/*"
         />
         <div>
-          <div className={styles.Button}>
+          <div className={styles['Button']}>
             <img src={attachmentIcon} alt="attachment icon" />
             Click to add attachement
           </div>
           {value && value.length > 0 && (
-            <div className={styles.FileName}>
+            <div className={styles['FileName']}>
               {start_and_end(value[0].name)}
               <button onClick={clearImage}>
                 <img src={cross} alt="" />
@@ -82,7 +82,7 @@ const ImageInput = ({
           alt="Event Thumbnail"
           toggle={onClickThumb}
         />
-        <div className={[styles.Preview, imageUrl && styles.Active].join(' ')}>
+        <div className={[styles['Preview'], imageUrl && styles['Active']].join(' ')}>
           <img onClick={onClickThumb} src={imageUrl} alt="" />
         </div>
       </div>

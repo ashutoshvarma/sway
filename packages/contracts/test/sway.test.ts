@@ -2,7 +2,6 @@ import {getConfig} from '../utils/constants';
 import {expect} from './chai-setup';
 import {defaultFixture, singleEventFixture, singleMintFixture} from './fixture';
 import {network} from 'hardhat';
-import {BigNumber} from '@ethersproject/bignumber';
 
 describe('Sway', () => {
   it('should have correct name, symbol', async () => {

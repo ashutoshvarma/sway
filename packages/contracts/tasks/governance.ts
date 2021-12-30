@@ -1,14 +1,13 @@
 import {
-  ActionType,
   HardhatRuntimeEnvironment,
   RunSuperFunction,
 } from 'hardhat/types';
 import {Sway} from '../typechain';
 
 export async function debug(
-  taskArgs: any,
+  _taskArgs: any,
   hre: HardhatRuntimeEnvironment,
-  runSuper: RunSuperFunction<any>
+  _runSuper: RunSuperFunction<any>
 ) {
   const {ethers} = hre;
   const sway = (await ethers.getContract('Sway')) as Sway;
@@ -34,9 +33,9 @@ export async function debug(
 }
 
 export async function toggle_pause(
-  taskArgs: any,
+  _taskArgs: any,
   hre: HardhatRuntimeEnvironment,
-  runSuper: RunSuperFunction<any>
+  _runSuper: RunSuperFunction<any>
 ) {
   const {ethers} = hre;
   const sway = (await ethers.getContract('Sway')) as Sway;

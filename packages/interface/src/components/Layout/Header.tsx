@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import { ReactElement } from 'react'
 import styles from './Header.module.css'
 import Logo from '../../assets/logos/sway.svg'
 import Shape1 from '../../assets/shapes/shape1.svg'
@@ -11,15 +11,15 @@ interface Props {
 
 function Header({ dark }: Props): ReactElement {
   return (
-    <header className={styles.Header}>
+    <header className={styles['Header']}>
       <div className="wrapper">
-        <div className={styles.HeaderContent}>
+        <div className={styles['HeaderContent']}>
           <img
             src={dark ? Shape1Dark : Shape1}
-            className={styles.Shape}
+            className={styles['Shape']}
             alt=""
           />
-          <div className={styles.LogoDiv}>
+          <div className={styles['LogoDiv']}>
             <img src={Logo} alt="Sway-logo" />
             <h1>Sway</h1>
           </div>

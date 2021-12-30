@@ -7,7 +7,7 @@ interface Props {
 
 function SearchInput({ style }: Props): ReactElement {
   return (
-    <div className={styles.InputDiv} style={style}>
+    <div className={styles['InputDiv']} style={style}>
       <input placeholder="Search" />
     </div>
   )

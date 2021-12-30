@@ -12,12 +12,12 @@ const SelectInput = ({
   options,
   ...props
 }: FieldHookConfig<string> & Props): ReactElement => {
-  const [field, meta, helpers] = useField(props)
+  const [field, _meta, helpers] = useField(props)
   const { value } = field
 
   const changeHandler = (
     option: any,
-    e: React.SyntheticEvent<Element, Event>,
+    _e: React.SyntheticEvent<Element, Event>,
   ) => {
     helpers.setValue(option.value)
     helpers.setTouched(true)
@@ -30,7 +30,7 @@ const SelectInput = ({
   return (
     <div>
       <Dropdown
-        className={`rdn ${styles.SelectInput}`}
+        className={`rdn ${styles['SelectInput']}`}
         options={options}
         onChange={changeHandler}
         onClose={onClose}

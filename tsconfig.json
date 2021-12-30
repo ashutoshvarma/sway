@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "moduleResolution": "Node",
+    "module": "CommonJS",
+    "target": "ES2018",
+    "sourceMap": true,
+    "lib": ["esnext"],
+    "esModuleInterop": true,
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noUncheckedIndexedAccess": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "resolveJsonModule": true,
+    "declarationMap": true,
+    "declaration": true,
+    "experimentalDecorators": true,
+    "paths": {
+      "@sway/*": ["packages/*/src/index.ts"]
+    }
+  },
+  "references": [
+    {
+      "path": "packages/interface"
+    },
+    {
+      "path": "packages/events"
+    },
+    {
+      "path": "packages/contracts"
+    },
+    {
+      "path": "packages/server"
+    }
+  ],
+  "exclude": ["node_modules", "dist", "*.d.ts"]
+}

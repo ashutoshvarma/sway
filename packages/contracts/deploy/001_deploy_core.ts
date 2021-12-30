@@ -11,7 +11,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   const dSway = await deploy('Sway', {
     contract: 'Sway',
-    from: deployerAddr,
+    from: deployerAddr!,
     proxy: {
       owner: proxyAdminAddr,
       proxyContract: 'OpenZeppelinTransparentProxy',
@@ -31,7 +31,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   const dSwayDrop = await deploy('SwayDrop', {
     contract: 'SwayDrop',
-    from: deployerAddr,
+    from: deployerAddr!,
     proxy: {
       owner: proxyAdminAddr,
       proxyContract: 'OpenZeppelinTransparentProxy',
@@ -45,7 +45,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   await execute(
     'Sway',
-    {from: governorAddr, log: true},
+    {from: governorAddr!, log: true},
     'setDrop',
     dSwayDrop.address
   );

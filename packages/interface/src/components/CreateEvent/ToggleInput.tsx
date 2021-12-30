@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import { ReactElement } from 'react'
 import styles from './ToggleInput.module.css'
 import { useField, FieldHookConfig } from 'formik'
 
@@ -17,9 +17,9 @@ const ToggleInput = ({
     <div>
       <label>
         {label}
-        <input className={styles.Input} {...field} type="checkbox" />
-        <div className={styles.ToggleContainer}>
-          <div className={styles.Toggle}>
+        <input className={styles['Input']} {...field} type="checkbox" />
+        <div className={styles['ToggleContainer']}>
+          <div className={styles['Toggle']}>
             <span>{choices[0]}</span>
             <span>{choices[1]}</span>
           </div>

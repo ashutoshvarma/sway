@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import { ReactElement } from 'react'
 // import Accordion from "react-bootstrap/Accordion";
 import styles from './Faqs.module.css'
 import {
@@ -13,21 +13,21 @@ import 'react-accessible-accordion/dist/fancy-example.css'
 
 function Faqs(): ReactElement {
   return (
-    <div className={styles.Faq}>
+    <div className={styles['Faq']}>
       <Accordion
         allowZeroExpanded
-        className={styles.Accordion}
+        className={styles['Accordion']}
         // bsPrefix={styles.Accordion}
         // defaultActiveKey="0"
       >
-        <div className={styles.Col}>
-          <AccordionItem className={styles.AccordionItem}>
+        <div className={styles['Col']}>
+          <AccordionItem className={styles['AccordionItem']}>
             <AccordionItemHeading>
-              <AccordionItemButton className={styles.AccordionItemButton}>
+              <AccordionItemButton className={styles['AccordionItemButton']}>
                 Accordion Item #1
               </AccordionItemButton>
             </AccordionItemHeading>
-            <AccordionItemPanel className={styles.AccordionPanel}>
+            <AccordionItemPanel className={styles['AccordionPanel']}>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -39,13 +39,13 @@ function Faqs(): ReactElement {
               </p>
             </AccordionItemPanel>
           </AccordionItem>
-          <AccordionItem className={styles.AccordionItem}>
+          <AccordionItem className={styles['AccordionItem']}>
             <AccordionItemHeading>
-              <AccordionItemButton className={styles.AccordionItemButton}>
+              <AccordionItemButton className={styles['AccordionItemButton']}>
                 Accordion Item #1
               </AccordionItemButton>
             </AccordionItemHeading>
-            <AccordionItemPanel className={styles.AccordionPanel}>
+            <AccordionItemPanel className={styles['AccordionPanel']}>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -57,13 +57,13 @@ function Faqs(): ReactElement {
               </p>
             </AccordionItemPanel>
           </AccordionItem>
-          <AccordionItem className={styles.AccordionItem}>
+          <AccordionItem className={styles['AccordionItem']}>
             <AccordionItemHeading>
-              <AccordionItemButton className={styles.AccordionItemButton}>
+              <AccordionItemButton className={styles['AccordionItemButton']}>
                 Accordion Item #1
               </AccordionItemButton>
             </AccordionItemHeading>
-            <AccordionItemPanel className={styles.AccordionPanel}>
+            <AccordionItemPanel className={styles['AccordionPanel']}>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -76,14 +76,14 @@ function Faqs(): ReactElement {
             </AccordionItemPanel>
           </AccordionItem>
         </div>
-        <div className={styles.Col}>
-          <AccordionItem className={styles.AccordionItem}>
+        <div className={styles['Col']}>
+          <AccordionItem className={styles['AccordionItem']}>
             <AccordionItemHeading>
-              <AccordionItemButton className={styles.AccordionItemButton}>
+              <AccordionItemButton className={styles['AccordionItemButton']}>
                 Accordion Item #1
               </AccordionItemButton>
             </AccordionItemHeading>
-            <AccordionItemPanel className={styles.AccordionPanel}>
+            <AccordionItemPanel className={styles['AccordionPanel']}>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -95,13 +95,13 @@ function Faqs(): ReactElement {
               </p>
             </AccordionItemPanel>
           </AccordionItem>
-          <AccordionItem className={styles.AccordionItem}>
+          <AccordionItem className={styles['AccordionItem']}>
             <AccordionItemHeading>
-              <AccordionItemButton className={styles.AccordionItemButton}>
+              <AccordionItemButton className={styles['AccordionItemButton']}>
                 Accordion Item #1
               </AccordionItemButton>
             </AccordionItemHeading>
-            <AccordionItemPanel className={styles.AccordionPanel}>
+            <AccordionItemPanel className={styles['AccordionPanel']}>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut

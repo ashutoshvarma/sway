@@ -32,13 +32,13 @@ function HomePage({}: Props): ReactElement {
   console.log(styles)
   return (
     <>
-      <section className={styles.HeroSection}>
+      <section className={styles['HeroSection']}>
         <div style={{ position: 'relative', width: '100%' }}>
-          <div className={`wrapper ${styles.SectionContentWrapper}`}>
-            <div className={styles.SectionContentDiv}>
+          <div className={`wrapper ${styles['SectionContentWrapper']}`}>
+            <div className={styles['SectionContentDiv']}>
               <h2>
-                <span className={styles.Primary}>Create</span> and{' '}
-                <span className={styles.Primary}>Collect</span> Free
+                <span className={styles['Primary']}>Create</span> and{' '}
+                <span className={styles['Primary']}>Collect</span> Free
                 <br /> Souvenir NFTs!
               </h2>
               <p>
@@ -46,16 +46,16 @@ function HomePage({}: Props): ReactElement {
                 form of NFTs and share with your friends
               </p>
             </div>
-            <div className={styles.IllusContainer}>
+            <div className={styles['IllusContainer']}>
               <img src={hero} alt="illustration" />
             </div>
           </div>
-          <img src={shape2} className={styles.Shape2} alt="" />
-          <img src={shape2mobile} className={styles.Shape2Mobile} alt="" />
+          <img src={shape2} className={styles['Shape2']} alt="" />
+          <img src={shape2mobile} className={styles['Shape2Mobile']} alt="" />
         </div>
       </section>
 
-      <section className={`wrapper ${styles.LogoSection}`}>
+      <section className={`wrapper ${styles['LogoSection']}`}>
         <img src={google} alt="google" />
         <img src={dropbox} alt="dropbox" />
         <img src={intercom} alt="intercom" />
@@ -65,15 +65,15 @@ function HomePage({}: Props): ReactElement {
         <img src={netflix} alt="netflix" />
       </section>
 
-      <section className={styles.MidSection}>
+      <section className={styles['MidSection']}>
         <div
-          className={`wrapper narrow ${styles.SectionContentWrapper}`}
+          className={`wrapper narrow ${styles['SectionContentWrapper']}`}
           style={{ gridTemplateColumns: '7fr 5fr' }}
         >
-          <div className={styles.IllusContainer}>
+          <div className={styles['IllusContainer']}>
             <img src={illus2} style={{ marginLeft: -20 }} alt="illustration" />
           </div>
-          <div className={styles.SectionContentDiv}>
+          <div className={styles['SectionContentDiv']}>
             <h3>NFTs That Define You</h3>
             <h4>Every human is unique and so are NFTs</h4>
             <p>
@@ -86,9 +86,9 @@ function HomePage({}: Props): ReactElement {
         </div>
       </section>
 
-      <section className={styles.MidSection} id={styles.MidSection2}>
-        <div className={`wrapper narrow ${styles.SectionContentWrapper}`}>
-          <div className={styles.SectionContentDiv}>
+      <section className={styles['MidSection']} id={styles['MidSection2']}>
+        <div className={`wrapper narrow ${styles['SectionContentWrapper']}`}>
+          <div className={styles['SectionContentDiv']}>
             <h3>Earn The Bragging Rights</h3>
             <h4>Share your NFT collection with your friends</h4>
             <p>
@@ -97,17 +97,17 @@ function HomePage({}: Props): ReactElement {
             </p>
             <button>Get started</button>
           </div>
-          <div className={styles.IllusContainer}>
+          <div className={styles['IllusContainer']}>
             <img src={illus3} alt="illustration" />
           </div>
         </div>
-        <img src={shape3} className={styles.Shape3} alt="" />
-        <img src={shape3mobile} className={styles.Shape3Mobile} alt="" />
+        <img src={shape3} className={styles['Shape3']} alt="" />
+        <img src={shape3mobile} className={styles['Shape3Mobile']} alt="" />
       </section>
 
-      <section className={styles.MidSection} id={styles.MidSection3}>
-        <div className={`wrapper narrow ${styles.SectionContentWrapper}`}>
-          <div className={styles.SectionContentDiv}>
+      <section className={styles['MidSection']} id={styles['MidSection3']}>
+        <div className={`wrapper narrow ${styles['SectionContentWrapper']}`}>
+          <div className={styles['SectionContentDiv']}>
             <h3>How does Sway work?</h3>
             <p>
               There are many variations of passages of Lorem Ipsum available,
@@ -121,24 +121,24 @@ function HomePage({}: Props): ReactElement {
               there isn’t anything embarrassing hidden.
             </p>
           </div>
-          <div className={styles.IllusContainer}>
+          <div className={styles['IllusContainer']}>
             <img src={illus4} alt="illustration" />
           </div>
         </div>
-        <img src={shape4} className={styles.Shape4} alt="" />
-        <img src={shape4mobile} className={styles.Shape4Mobile} alt="" />
+        <img src={shape4} className={styles['Shape4']} alt="" />
+        <img src={shape4mobile} className={styles['Shape4Mobile']} alt="" />
       </section>
 
       <section
-        className={styles.MidSection}
-        id={styles.MidSection4}
+        className={styles['MidSection']}
+        id={styles['MidSection4']}
         style={{ paddingTop: 0 }}
       >
-        <div className={`wrapper narrow ${styles.SectionContentWrapper}`}>
-          <div className={styles.IllusContainer}>
+        <div className={`wrapper narrow ${styles['SectionContentWrapper']}`}>
+          <div className={styles['IllusContainer']}>
             <img src={illus5} alt="illustration" />
           </div>
-          <div className={styles.SectionContentDiv}>
+          <div className={styles['SectionContentDiv']}>
             <h3>Make Your Step Toward Sway!</h3>
             <p>
               There are many variations of passages of Lorem Ipsum available,
@@ -150,12 +150,12 @@ function HomePage({}: Props): ReactElement {
           </div>
         </div>
       </section>
-      <section className={styles.FaqSection}>
+      <section className={styles['FaqSection']}>
         <div className="wrapper narrow">
           <h3>Frequently Asked Questions</h3>
           <Faqs />
-          <img src={shape5} className={styles.Shape5} alt="" />
-          <img src={shape5mobile} className={styles.Shape5Mobile} alt="" />
+          <img src={shape5} className={styles['Shape5']} alt="" />
+          <img src={shape5mobile} className={styles['Shape5Mobile']} alt="" />
         </div>
       </section>
     </>
