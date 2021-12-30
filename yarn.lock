@@ -3471,7 +3471,7 @@ __metadata:
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@0.3.0-beta.11"
     "@openzeppelin/contracts-upgradeable": ^4.3.2
     "@openzeppelin/hardhat-upgrades": ^1.10.0
-    "@sway/events": "link:../../packages/events"
+    "@sway/events": ^0.1.0
     "@typechain/ethers-v5": ^7.0.1
     "@typechain/hardhat": ^2.0.2
     "@types/chai": ^4.2.18
@@ -3512,10 +3512,24 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@sway/events@link:../../packages/events::locator=%40sway%2Fcontracts%40workspace%3Apackages%2Fcontracts":
+"@sway/events@^0.1.0, @sway/events@workspace:packages/events":
   version: 0.0.0-use.local
-  resolution: "@sway/events@link:../../packages/events::locator=%40sway%2Fcontracts%40workspace%3Apackages%2Fcontracts"
-  languageName: node
+  resolution: "@sway/events@workspace:packages/events"
+  dependencies:
+    "@ethersproject/address": ^5.5.0
+    "@types/node": ^16.11.10
+    "@typescript-eslint/eslint-plugin": ^5.4.0
+    "@typescript-eslint/parser": ^5.4.0
+    class-transformer: ^0.5.1
+    class-validator: ^0.13.2
+    eslint: ^8.3.0
+    eslint-config-prettier: ^8.3.0
+    eslint-plugin-prettier: ^4.0.0
+    glob: ^7.2.0
+    prettier: ^2.4.1
+    ts-node: ^10.4.0
+    typescript: ^4.5.2
+  languageName: unknown
   linkType: soft
 
 "@sway/interface@workspace:packages/interface":
@@ -3524,6 +3538,7 @@ __metadata:
   dependencies:
     "@celo-tools/use-contractkit": "npm:@poofcash/use-contractkit@^1.0.10"
     "@sway/contracts": ^0.1.0
+    "@sway/events": ^0.1.0
     "@testing-library/jest-dom": ^5.15.0
     "@testing-library/react": ^11.2.7
     "@testing-library/user-event": ^12.8.3

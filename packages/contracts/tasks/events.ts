@@ -8,7 +8,7 @@ import {createEvent} from '../utils/helpers';
 import {getMerkleRoot, getMerkleProof} from '../utils/merkle';
 import {Sway, SwayDrop} from '../typechain';
 import assert from 'assert';
-import {getEventMerkleParticipants} from '../events';
+import {getEventMerkleParticipants} from '@sway/events/src';
 
 export type CreateEventArgs = {minter: string};
 export type MinterArgs = {event: number; minter: string; remove: boolean};

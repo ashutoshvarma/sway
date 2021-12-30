@@ -26,7 +26,7 @@
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@0.3.0-beta.11",
     "@openzeppelin/contracts-upgradeable": "^4.3.2",
     "@openzeppelin/hardhat-upgrades": "^1.10.0",
-    "@sway/events": "link:../../packages/events",
+    "@sway/events": "^0.1.0",
     "@typechain/ethers-v5": "^7.0.1",
     "@typechain/hardhat": "^2.0.2",
     "@types/chai": "^4.2.18",
@@ -86,7 +86,6 @@
     "fork:dev": "node ./_scripts.js fork:dev",
     "fork:node": "node ./_scripts.js fork:node",
     "fork:test": "node ./_scripts.js fork:test",
-    "subgraph:config": "hardhat export --export-all deployments.json && node ./_scripts.js subgraph:config",
-    "metadata": "ts-node events/cli.ts"
+    "subgraph:config": "hardhat export --export-all deployments.json && node ./_scripts.js subgraph:config"
   }
 }

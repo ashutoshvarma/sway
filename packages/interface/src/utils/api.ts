@@ -1,6 +1,6 @@
 import { request, gql } from 'graphql-request'
 import { METADATA_URL, SUBGRAPH_URL } from './constants'
-import { Event as SwayEvent } from '@sway/contracts/events/events'
+import { Event as SwayEvent } from '@sway/events/src/events'
 
 interface EventDataResponse {
   events: {
@@ -74,7 +74,7 @@ const api = {
    * @param maxCount Maximum events to fetch
    * @param last Last Event
    * @returns Event details
-   * @example 
+   * @example
    * ```ts
    * // Get the first 10 events (in desc order)
    * let events = await getEventMetadata(10)
