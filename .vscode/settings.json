@@ -7,7 +7,6 @@
     "**/.pnp.*": true
   },
   "solidity.enabledAsYouTypeCompilationErrorCheck": true,
-  "solidity.packageDefaultDependenciesDirectory": "ng-packages/contracts/node_modules",
   "cSpell.words": [
     "typechain"
   ],

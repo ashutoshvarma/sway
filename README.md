@@ -2,7 +2,7 @@
 
 ## Install
 ```
-yarn && (cd ng-packages/contracts/ && yarn) && (cd ng-packages/subgraph/ && yarn) 
+yarn
 ```
 
 - contracts
