@@ -2997,12 +2997,6 @@ __metadata:
   languageName: node
   linkType: soft
 
-"@sway/contracts@portal:./ng-packages/contracts::locator=sway%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@sway/contracts@portal:./ng-packages/contracts::locator=sway%40workspace%3A."
-  languageName: node
-  linkType: soft
-
 "@sway/interface@workspace:packages/interface":
   version: 0.0.0-use.local
   resolution: "@sway/interface@workspace:packages/interface"
@@ -3056,15 +3050,6 @@ __metadata:
 "@sway/subgraph@portal:../../ng-packages/subgraph::locator=%40sway%2Fserver%40workspace%3Apackages%2Fserver":
   version: 0.0.0-use.local
   resolution: "@sway/subgraph@portal:../../ng-packages/subgraph::locator=%40sway%2Fserver%40workspace%3Apackages%2Fserver"
-  dependencies:
-    "@graphprotocol/graph-cli": 0.25.1
-    "@graphprotocol/graph-ts": 0.24.1
-  languageName: node
-  linkType: soft
-
-"@sway/subgraph@portal:./ng-packages/subgraph::locator=sway%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "@sway/subgraph@portal:./ng-packages/subgraph::locator=sway%40workspace%3A."
   dependencies:
     "@graphprotocol/graph-cli": 0.25.1
     "@graphprotocol/graph-ts": 0.24.1
@@ -19313,12 +19298,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "sway@workspace:."
   dependencies:
-    "@sway/contracts": "portal:./ng-packages/contracts"
-    "@sway/subgraph": "portal:./ng-packages/subgraph"
     "@types/node": ^16.11.10
     "@typescript-eslint/eslint-plugin": ^5.4.0
     "@typescript-eslint/parser": ^5.4.0
-    eslint: ^8.3.0
+    eslint: ^7.11.0
     eslint-config-prettier: ^8.3.0
     eslint-plugin-prettier: ^4.0.0
     prettier: ^2.4.1
