@@ -17,7 +17,6 @@ ReactDOM.render(
           'The interface for Sway, a decentralized souvenir protocol',
         url: 'https://example.com',
         icon: icon,
-        supportedNetworks: [Alfajores],
       }}
       network={Alfajores}
       networks={[Alfajores]}
