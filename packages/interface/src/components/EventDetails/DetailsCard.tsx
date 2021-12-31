@@ -6,27 +6,32 @@ import background from '../../assets/images/event-details-background.svg'
 import calender from '../../assets/icons/calender.svg'
 import nft from '../../assets/icons/nft.svg'
 import location from '../../assets/icons/location.svg'
+import { Event as SwayEvent } from '@sway/events/src/events'
+import { truncate } from '../../utils/helpers'
 
-interface Props {}
+interface Props {
+  event: SwayEvent | undefined
+}
 
-function DetailsCard({}: Props): ReactElement {
+function DetailsCard({ event }: Props): ReactElement {
   return (
     <div className={styles['Card']}>
       <img className={styles['Background']} src={background} alt="" />
       <div>
-        <img className={styles['Thumb']} src={thumb} alt="thumbnail" />
-        <h3>Collect Best NFT’s Quickly!</h3>
-        <p className={styles['Desc']}>
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don’t look even slightly believable
-          you are going to use a passage. There are many variations of passages
-          of Lorem Ipsum available, but the majority have suffered alteration.
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don’t look even slightly believable.
-        </p>
+        <img
+          className={styles['Thumb']}
+          src={event?.image || thumb}
+          alt="thumbnail"
+        />
+        <h3>{event?.name}</h3>
+        <p className={styles['Desc']}>{event?.description}</p>
       </div>
+      <div className={styles['Tags']}>
+        {event?.tags?.map((tag) => (
+          <span>{tag}</span>
+        ))}
+      </div>
+
       <div className={styles['AdditionalInfoRow']}>
         <div>
           <img src={calender} alt="calender icon" />
@@ -34,7 +39,10 @@ function DetailsCard({}: Props): ReactElement {
         </div>
         <div>
           <img src={location} alt="location icon" />
-          <span>Delhi</span>
+          <span>
+            {truncate(event?.city as string, 30)},{' '}
+            {truncate(event?.country as string, 20)}
+          </span>
         </div>
         <div>
           <img src={nft} alt="nft icon" />
@@ -44,6 +52,7 @@ function DetailsCard({}: Props): ReactElement {
           </div>
         </div>
       </div>
+
       <div className={styles['JoinContainer']}>
         <button>Join the event</button>
       </div>
