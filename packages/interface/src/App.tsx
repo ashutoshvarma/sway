@@ -20,7 +20,7 @@ function App(): ReactElement {
           <Route path="/" element={withLayout(<HomePage />)} />
           <Route path="/gallery" element={withLayout(<GalleryPage />)} />
           <Route
-            path="/event"
+            path="/event/:id"
             element={withLayout(<EventDetailPage />, true)}
           />
           <Route

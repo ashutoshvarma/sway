@@ -40,15 +40,15 @@ function Nav({ dark }: Props): ReactElement {
           <NavItem to="/user_collection">My Account</NavItem>
           <NavItem to="#" primary>
             {address ? (
-              <a onClick={() => destroy().catch(console.log)}>
+              <span onClick={() => destroy().catch(console.log)}>
                 <img src={walleticon} alt="wallet icon" />
                 Disconnect
-              </a>
+              </span>
             ) : (
-              <a onClick={() => connect().catch(console.log)}>
+              <span onClick={() => connect().catch(console.log)}>
                 <img src={walleticon} alt="wallet icon" />
                 Connect
-              </a>
+              </span>
             )}
           </NavItem>
         </div>

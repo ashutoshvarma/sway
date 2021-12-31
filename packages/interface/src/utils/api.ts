@@ -28,6 +28,14 @@ interface UserTokenDataResponse {
   }
 }
 
+export interface EventInterface {
+  metadata: SwayEvent
+  id: string
+  tokenCount: string
+  transferCount: string
+  created: string
+}
+
 export const eventsQuery = gql`
   query getEvents($maxCount: Int, $lastCreated: String) {
     events(
@@ -98,15 +106,7 @@ const api = {
     last: { created: string } = {
       created: Number.MAX_SAFE_INTEGER.toString(),
     },
-  ): Promise<
-    {
-      metadata: SwayEvent
-      id: string
-      tokenCount: string
-      transferCount: string
-      created: string
-    }[]
-  > => {
+  ): Promise<EventInterface[]> => {
     // run the graphql query to fetch event ids
     const events = (
       await request<EventDataResponse>(SUBGRAPH_URL, eventsQuery, {

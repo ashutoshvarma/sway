@@ -28,7 +28,7 @@
   box-shadow: 1px 1px 48px -100px #c2c2c2;
 }
 
-.NavItem.Primary > a {
+.NavItem.Primary > span {
   display: flex;
   gap: 5px;
 }

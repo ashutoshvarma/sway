@@ -1,16 +1,41 @@
-import { ReactElement } from 'react'
+import { ReactElement, useEffect, useState } from 'react'
 import 'react-dropdown/style.css'
 import styles from './Gallery.module.css'
 import Card from './Card'
 import SearchInput from './SearchInput'
 import Dropdown from 'react-dropdown'
+import api, { EventInterface } from '../../utils/api'
 
 const options = ['High to Low', 'Low to High']
 const defaultOption = options[0]
 
 interface Props {}
+const PAGE_LIMIT = 2
 
 function Gallery({}: Props): ReactElement {
+  const [events, setEvents] = useState<EventInterface[]>([])
+  const [loading, setLoading] = useState<Boolean>(true)
+  const [moreAvailable, setMoreAvailable] = useState<Boolean>(true)
+
+  useEffect(() => {
+    ;(async () => {
+      setLoading(true)
+      let eventsData = await api.getEvents(PAGE_LIMIT)
+      if (eventsData.length < PAGE_LIMIT) setMoreAvailable(false)
+      setEvents(eventsData)
+      setLoading(false)
+    })()
+  }, [])
+
+  async function loadMoreHandler(): Promise<void> {
+    console.log('loading more')
+    setLoading(true)
+    let eventsData = await api.getEvents(PAGE_LIMIT, events[events.length - 1])
+    if (eventsData.length < PAGE_LIMIT) setMoreAvailable(false)
+    setLoading(false)
+    setEvents([...events, ...eventsData])
+  }
+
   return (
     <section className={styles['Gallery']}>
       <div className="wrapper narrow">
@@ -35,17 +60,17 @@ function Gallery({}: Props): ReactElement {
           </div>
         </div>
         <div className={styles['GalleryGrid']}>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {events.map((event) => (
+            <Card event={event} key={event.id} />
+          ))}
+          {/* <SkeletonCard /> */}
         </div>
-        <div className={styles['LoadMoreContainer']}>
-          <button>Load More</button>
-        </div>
+
+        {loading || moreAvailable == false ? null : (
+          <div className={styles['LoadMoreContainer']}>
+            <button onClick={loadMoreHandler}>Load More</button>
+          </div>
+        )}
       </div>
     </section>
   )
