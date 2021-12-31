@@ -29,7 +29,6 @@ export function handleEventToken(ev: EventToken): void {
   const token = getOrInitToken(ev.params.tokenId, ev)
 
   event.tokenCount += One
-  event.transferCount += One
   token.event = event.id
 
   event.save()
