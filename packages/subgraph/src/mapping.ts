@@ -70,6 +70,7 @@ export function handleTransfer(ev: TransferEvent): void {
   transfer.to = to.id
   transfer.transaction = ev.transaction.hash
   transfer.timestamp = ev.block.timestamp
+  transfer.event = token.event
 
   token.save()
   from.save()
