@@ -9,5 +9,10 @@
     {"source": "/details/:eventId", "destination": "/details/:eventId.png"},
     {"source": "/merkle/:eventId", "destination": "/merkle/:eventId.png"},
     {"source": "/(.*)", "destination": "/404.json"}
-  ]
+  ],
+  "functions": {
+    "api/events.ts": {
+      "includeFiles": "details/**"
+    }
+  }
 }
