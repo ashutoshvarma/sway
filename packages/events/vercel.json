@@ -12,7 +12,7 @@
   ],
   "functions": {
     "api/events.ts": {
-      "includeFiles": "data/details/**"
+      "includeFiles": "data/**/*.json"
     }
   }
 }
