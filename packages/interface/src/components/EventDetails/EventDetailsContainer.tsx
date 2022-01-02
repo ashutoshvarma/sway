@@ -6,9 +6,7 @@ import api from '../../utils/api'
 import { Event as SwayEvent } from '@sway/events/src/events'
 // import { useContractKit } from '@celo-tools/use-contractkit'
 
-interface Props {}
-
-function EventDetailsContainer({}: Props): ReactElement {
+function EventDetailsContainer(): ReactElement {
   const params = useParams()
   const id = params['id'] as string
   const [event, setEvent] = useState<SwayEvent>()

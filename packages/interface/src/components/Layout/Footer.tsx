@@ -58,15 +58,15 @@ function Footer(): ReactElement {
             <div className={styles['Contact2']}>
               <h4>Contact us</h4>
               <div className={styles['ContactLinksContainer']}>
-                <a href="#">
+                <a href="#sdsd">
                   <img src={reddit} alt="reddit" />
                   <span>Reddit</span>
                 </a>
-                <a href="#">
+                <a href="#sdssd">
                   <img src={github} alt="github" />
                   <span>Github</span>
                 </a>
-                <a href="#">
+                <a href="#sdf">
                   <img src={discord} alt="discord" />
                   <span>Discord</span>
                 </a>

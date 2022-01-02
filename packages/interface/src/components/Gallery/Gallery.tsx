@@ -9,10 +9,9 @@ import api, { EventInterface } from '../../utils/api'
 const options = ['High to Low', 'Low to High']
 const defaultOption = options[0]
 
-interface Props {}
 const PAGE_LIMIT = 2
 
-function Gallery({}: Props): ReactElement {
+function Gallery(): ReactElement {
   const [events, setEvents] = useState<EventInterface[]>([])
   const [loading, setLoading] = useState<Boolean>(true)
   const [moreAvailable, setMoreAvailable] = useState<Boolean>(true)
@@ -66,7 +65,7 @@ function Gallery({}: Props): ReactElement {
           {/* <SkeletonCard /> */}
         </div>
 
-        {loading || moreAvailable == false ? null : (
+        {loading || moreAvailable === false ? null : (
           <div className={styles['LoadMoreContainer']}>
             <button onClick={loadMoreHandler}>Load More</button>
           </div>

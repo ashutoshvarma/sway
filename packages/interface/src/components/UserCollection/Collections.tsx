@@ -8,9 +8,7 @@ import Dropdown from 'react-dropdown'
 const options = ['Event', 'Something else']
 const defaultOption = options[0]
 
-interface Props {}
-
-function Collections({}: Props): ReactElement {
+function Collections(): ReactElement {
   return (
     <section className={styles['Collection']}>
       <div className="wrapper narrow">

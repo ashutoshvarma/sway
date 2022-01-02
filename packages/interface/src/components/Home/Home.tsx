@@ -26,9 +26,7 @@ import illus5 from '../../assets/illustrations/illus5.svg'
 
 import Faqs from './Faqs'
 
-interface Props {}
-
-function HomePage({}: Props): ReactElement {
+function HomePage(): ReactElement {
   console.log(styles)
   return (
     <>

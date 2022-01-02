@@ -9,9 +9,7 @@ import facebook from '../../assets/icons/facebook.svg'
 import pinterest from '../../assets/icons/pinterest.svg'
 import twitter from '../../assets/icons/twitter.svg'
 
-interface Props {}
-
-function Card({}: Props): ReactElement {
+function Card(): ReactElement {
   return (
     <div className={styles['Card']}>
       <div className={styles['CardThumbContainer']}>

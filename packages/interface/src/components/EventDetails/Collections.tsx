@@ -1,9 +1,7 @@
 import { ReactElement } from 'react'
 import styles from './Collections.module.css'
 
-interface Props {}
-
-function Collections({}: Props): ReactElement {
+function Collections(): ReactElement {
   return (
     <section className={styles['Collections']}>
       <div className="wrapper narrow">
@@ -37,7 +35,7 @@ function Collections({}: Props): ReactElement {
   )
 }
 
-function TableRow({}) {
+function TableRow() {
   return (
     <tr>
       <td className={styles['MobileLabel']}>SwayId</td>

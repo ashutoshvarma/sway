@@ -2,9 +2,7 @@ import { ReactElement } from 'react'
 import bg from '../../assets/images/dark-hero-bg.svg'
 import styles from './HeroSection.module.css'
 
-interface Props {}
-
-function HeroSection({}: Props): ReactElement {
+function HeroSection(): ReactElement {
   return (
     <section
       className={styles['HeroSection']}
