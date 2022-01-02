@@ -5,6 +5,20 @@ import {
   SwayDropParticipants,
 } from '@sway/events/src/events'
 
+interface EventTransferResponse {
+  transfers: {
+    token: {
+      transferCount: string
+      id: string
+      created: string
+    }
+    to: {
+      id: string
+    }
+    transaction: string
+  }[]
+}
+
 interface EventDataResponse {
   events: {
     id: string
@@ -23,6 +37,7 @@ interface UserTokenDataResponse {
       metadataUri: string
       event: { id: string }
       created: string
+      transferCount: string
       transfers: { transaction: string; timestamp: string }[]
     }[]
   }
@@ -52,6 +67,22 @@ export const eventsQuery = gql`
   }
 `
 
+export const eventTransferQuery = gql`
+  query getTransfers($eventId: String) {
+    transfers(where: { event: $eventId }) {
+      token {
+        transferCount
+        id
+        created
+      }
+      to {
+        id
+      }
+      transaction
+    }
+  }
+`
+
 export const userTokensQuery = gql`
   query getUserTokens($userID: String) {
     account(id: $userID) {
@@ -64,6 +95,7 @@ export const userTokensQuery = gql`
           id
         }
         created
+        transferCount
         transfers(
           where: { from: "0x0000000000000000000000000000000000000000" }
         ) {
@@ -165,6 +197,37 @@ const api = {
         }),
       ),
     }
+  },
+
+  getEventsTransfer: async (
+    eventId: string,
+  ): Promise<
+    {
+      collection: string
+      tokenId: string
+      timestamp: string
+      transferCount: string
+      userTokenCount: number | undefined
+    }[]
+  > => {
+    const transfers = (
+      await request<EventTransferResponse>(SUBGRAPH_URL, eventTransferQuery, {
+        eventId,
+      })
+    ).transfers
+
+    return Promise.all(
+      transfers.map(async (t) => {
+        return {
+          collection: t.to.id,
+          tokenId: t.token.id,
+          timestamp: t.token.created,
+          transferCount: t.token.transferCount,
+          // power
+          userTokenCount: (await api.getUserTokenInfo(t.to.id))?.tokens.length,
+        }
+      }),
+    )
   },
 }
 
