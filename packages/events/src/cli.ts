@@ -45,7 +45,11 @@ export async function generateEventMetadata() {
       continue
     }
 
-    const metadataJson = JSON.stringify(event.metadata(), null, 2)
+    const eventId = fname.split('.')[0]
+    if (!eventId)
+      throw new Error(`Cannot extract eventId from file name - ${fname}`)
+
+    const metadataJson = JSON.stringify(event.metadata(eventId), null, 2)
     await fs.promises.writeFile(fmeta, metadataJson)
   }
 }

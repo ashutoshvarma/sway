@@ -17,6 +17,7 @@ export class SwayDropParticipants {
 }
 
 export interface NFTMetadata extends Event {
+  eventId: string
   attributes: { trait_type: string; value: string }[]
 }
 
@@ -71,8 +72,9 @@ export class Event {
   @IsUrl()
   event_url!: string
 
-  metadata(): NFTMetadata {
+  metadata(eventId: string): NFTMetadata {
     return {
+      eventId,
       ...this,
       attributes: Event.attributes_props.map((p) => {
         return { trait_type: p.toString(), value: this[p].toString() }
