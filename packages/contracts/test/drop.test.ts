@@ -13,6 +13,7 @@ describe('SwayDrop', () => {
 
     const participants = [accounts[3]!, accounts[4]!];
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [eventId, _hash] = await createEvent(hre, mattAddr);
     const rootHash = getMerkleRoot(participants, eventId);
     const index = 1;

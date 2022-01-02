@@ -3,8 +3,9 @@ import {HardhatRuntimeEnvironment, RunSuperFunction} from 'hardhat/types';
 export async function balances(
   _taskArgs: unknown,
   hre: HardhatRuntimeEnvironment,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   _runSuper: RunSuperFunction<unknown>
-) {
+): Promise<void> {
   const accounts = await hre.ethers.getSigners();
   const {governorAddr, deployerAddr, proxyAdminAddr} =
     await hre.getNamedAccounts();

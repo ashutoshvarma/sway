@@ -1,14 +1,12 @@
-import {
-  HardhatRuntimeEnvironment,
-  RunSuperFunction,
-} from 'hardhat/types';
+import {HardhatRuntimeEnvironment, RunSuperFunction} from 'hardhat/types';
 import {Sway} from '../typechain';
 
 export async function debug(
-  _taskArgs: any,
+  _taskArgs: unknown,
   hre: HardhatRuntimeEnvironment,
-  _runSuper: RunSuperFunction<any>
-) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _runSuper: RunSuperFunction<unknown>
+): Promise<void> {
   const {ethers} = hre;
   const sway = (await ethers.getContract('Sway')) as Sway;
 
@@ -33,10 +31,11 @@ export async function debug(
 }
 
 export async function toggle_pause(
-  _taskArgs: any,
+  _taskArgs: unknown,
   hre: HardhatRuntimeEnvironment,
-  _runSuper: RunSuperFunction<any>
-) {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _runSuper: RunSuperFunction<unknown>
+): Promise<void> {
   const {ethers} = hre;
   const sway = (await ethers.getContract('Sway')) as Sway;
   const sGovernor = await ethers.getNamedSigner('governorAddr');

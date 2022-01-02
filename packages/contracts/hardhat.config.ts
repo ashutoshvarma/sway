@@ -12,7 +12,13 @@ import '@ubeswap/hardhat-celo';
 import {fornoURLs, ICeloNetwork, derivationPath} from '@ubeswap/hardhat-celo';
 import {node_url, accounts} from './utils/network';
 import {balances} from './tasks/accounts';
-import {create_event, add_event_drop, mint, claim, minter} from './tasks/events';
+import {
+  create_event,
+  add_event_drop,
+  mint,
+  claim,
+  minter,
+} from './tasks/events';
 import {toggle_pause, debug} from './tasks/governance';
 
 task('accounts', 'Prints the list of accounts', async (_args, hre) => {
