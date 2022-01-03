@@ -1,10 +1,11 @@
 import { ReactElement } from 'react'
-import Card from './Card'
-import { EventInterface } from '../../utils/api'
+import styles from './Card.module.css'
+import cardImg from '../../assets/illustrations/hero-illus.svg'
+import Tags from './Tags'
 
 const SAMPLE_DATA = {
   created: '1640523288',
-  id: '12',
+  id: '124343532',
   tokenCount: '3',
   transferCount: '6',
   metadata: {
@@ -27,9 +28,42 @@ const SAMPLE_DATA = {
 interface Props {}
 
 function SkeletonCard({}: Props): ReactElement {
+  let classes = [styles['Card'], styles['Loading']]
+  let event = SAMPLE_DATA
   return (
     <>
-      <Card event={SAMPLE_DATA as EventInterface} loading={true} />
+      <div className={classes.join(' ')}>
+        <div className={styles['CardThumbContainer']}>
+          <img src={cardImg} className={styles['CardThumb']} alt="thumbnail" />
+        </div>
+        <div className={styles['Label']}>
+          <span>#{event.id}</span>
+        </div>
+        <h3 className={styles['Title']}>{event.metadata.name}</h3>
+        <p className={styles['Desc']}>{event.metadata.description}</p>
+        {/* <div className={styles['AdditionalInfoRow']}>
+          <div>
+            <img src={calenderIcon} alt="calender icon" />
+            <span>17-Oct-2022</span>
+          </div>
+          <div>
+            <img src={eventIcon} alt="quick events" />
+            <span>Quick Events</span>
+          </div>
+        </div> */}
+        {/* <Tags tags={event.metadata.tags} /> */}
+        <Tags tags={['tag1', 'taggg2', 'tag3', 'tagtag4']} loading />
+        {/* <div className={styles['AdditionalInfoRow']}>
+          <div>
+            <span style={{ fontWeight: 900 }}>SUPPLY</span>
+            <span>{event.tokenCount}</span>
+          </div>
+          <div>
+            <span style={{ fontWeight: 900 }}>TRANSFERS</span>
+            <span>{event.transferCount}</span>
+          </div>
+        </div> */}
+      </div>
     </>
   )
 }

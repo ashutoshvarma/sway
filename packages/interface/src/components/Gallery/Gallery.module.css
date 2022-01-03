@@ -22,6 +22,8 @@
 .LoadMoreContainer {
   text-align: center;
   margin-top: 80px;
+  position: relative;
+  z-index: 10;
   margin-bottom: -100px;
 }
 

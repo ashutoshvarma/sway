@@ -2,6 +2,8 @@ import { ReactElement, useEffect, useState } from 'react'
 import 'react-dropdown/style.css'
 import styles from './Gallery.module.css'
 import Card from './Card'
+import SkeletonCard from './SkeletonCard'
+
 import SearchInput from './SearchInput'
 import Dropdown from 'react-dropdown'
 import api, { EventInterface } from '../../utils/api'
@@ -9,7 +11,7 @@ import api, { EventInterface } from '../../utils/api'
 const options = ['High to Low', 'Low to High']
 const defaultOption = options[0]
 
-const PAGE_LIMIT = 2
+const PAGE_LIMIT = 6
 
 function Gallery(): ReactElement {
   const [events, setEvents] = useState<EventInterface[]>([])
@@ -62,7 +64,13 @@ function Gallery(): ReactElement {
           {events.map((event) => (
             <Card event={event} key={event.id} />
           ))}
-          {/* <SkeletonCard /> */}
+          {loading ? (
+            <>
+              <SkeletonCard />
+              <SkeletonCard />
+              <SkeletonCard />
+            </>
+          ) : null}
         </div>
 
         {loading || moreAvailable === false ? null : (

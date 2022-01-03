@@ -3,9 +3,10 @@ import styles from './Tags.module.css'
 
 interface TagsProps {
   tags: string[]
+  loading?: boolean
 }
 
-function Tags({ tags }: TagsProps): ReactElement {
+function Tags({ tags, loading }: TagsProps): ReactElement {
   useEffect(() => {
     removeExtraTags()
   }, [tags])
@@ -50,8 +51,10 @@ function Tags({ tags }: TagsProps): ReactElement {
     }
   }
 
+  let classes = [styles['Tags']]
+  if (loading) classes.push(styles['Loading'])
   return (
-    <div className={styles['Tags']} ref={tagsElementRef}>
+    <div className={classes.join(' ')} ref={tagsElementRef}>
       {tags.map((tag, i) => (
         <span key={i}>{tag}</span>
       ))}
