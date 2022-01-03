@@ -1,12 +1,24 @@
 import { ReactElement } from 'react'
 import styles from './Collections.module.css'
+import { CollectionInterface } from '../../utils/api'
+import moment from 'moment'
 
-function Collections(): ReactElement {
+interface Props {
+  collections: CollectionInterface[] | undefined
+  loading: boolean
+}
+
+interface RowProps {
+  collection?: CollectionInterface
+  loading?: boolean
+}
+
+function Collections({ collections, loading }: Props): ReactElement {
   return (
     <section className={styles['Collections']}>
       <div className="wrapper narrow">
         <h3>Collection</h3>
-        <div className={styles['CollectionGrid']}>
+        <table className={styles['CollectionGrid']}>
           <thead>
             <tr>
               <th className={styles['TableHeader']}>SwayId</th>
@@ -17,37 +29,37 @@ function Collections(): ReactElement {
             </tr>
           </thead>
           <tbody>
-            <TableRow />
-            <TableRow />
-            <TableRow />
-            <TableRow />
-            <TableRow />
-            <TableRow />
-            <TableRow />
-            <TableRow />
-            <TableRow />
-            <TableRow />
-            <TableRow />
+            {collections?.map((collection) => (
+              <TableRow key={collection.tokenId} collection={collection} />
+            ))}
+            {loading ? (
+              <>
+                <TableRow loading />
+                <TableRow loading />
+                <TableRow loading />
+                <TableRow loading />
+              </>
+            ) : null}
           </tbody>
-        </div>
+        </table>
       </div>
     </section>
   )
 }
 
-function TableRow() {
+function TableRow({ collection, loading }: RowProps) {
   return (
-    <tr>
+    <tr className={loading ? styles['Loading'] : undefined}>
       <td className={styles['MobileLabel']}>SwayId</td>
-      <td>#1222</td>
+      <td>{collection?.tokenId}</td>
       <td className={styles['MobileLabel']}>Collections</td>
-      <td>O9238ud89ud48hd7744993</td>
+      <td>{collection?.collection}</td>
       <td className={styles['MobileLabel']}>Minting Date</td>
-      <td>3 days ago</td>
+      <td>{collection && moment(Number(collection.timestamp)).fromNow()}</td>
       <td className={styles['MobileLabel']}>TX Count</td>
-      <td>1</td>
+      <td>{collection?.transferCount}</td>
       <td className={styles['MobileLabel']}>Power</td>
-      <td>1</td>
+      <td>{collection?.userTokenCount}</td>
     </tr>
   )
 }

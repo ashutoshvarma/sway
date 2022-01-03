@@ -25,9 +25,7 @@ const SAMPLE_DATA = {
   },
 }
 
-interface Props {}
-
-function SkeletonCard({}: Props): ReactElement {
+function SkeletonCard(): ReactElement {
   let classes = [styles['Card'], styles['Loading']]
   let event = SAMPLE_DATA
   return (
@@ -41,28 +39,8 @@ function SkeletonCard({}: Props): ReactElement {
         </div>
         <h3 className={styles['Title']}>{event.metadata.name}</h3>
         <p className={styles['Desc']}>{event.metadata.description}</p>
-        {/* <div className={styles['AdditionalInfoRow']}>
-          <div>
-            <img src={calenderIcon} alt="calender icon" />
-            <span>17-Oct-2022</span>
-          </div>
-          <div>
-            <img src={eventIcon} alt="quick events" />
-            <span>Quick Events</span>
-          </div>
-        </div> */}
-        {/* <Tags tags={event.metadata.tags} /> */}
+
         <Tags tags={['tag1', 'taggg2', 'tag3', 'tagtag4']} loading />
-        {/* <div className={styles['AdditionalInfoRow']}>
-          <div>
-            <span style={{ fontWeight: 900 }}>SUPPLY</span>
-            <span>{event.tokenCount}</span>
-          </div>
-          <div>
-            <span style={{ fontWeight: 900 }}>TRANSFERS</span>
-            <span>{event.transferCount}</span>
-          </div>
-        </div> */}
       </div>
     </>
   )

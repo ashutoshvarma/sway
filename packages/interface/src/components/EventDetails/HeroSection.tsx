@@ -7,9 +7,10 @@ import { Event as SwayEvent } from '@sway/events/src/events'
 interface Props {
   event: SwayEvent | undefined
   id: string
+  loading: boolean
 }
 
-function HeroSection({ event, id }: Props): ReactElement {
+function HeroSection({ event, id, loading }: Props): ReactElement {
   return (
     <section className={styles['HeroSection']}>
       <div
@@ -20,7 +21,7 @@ function HeroSection({ event, id }: Props): ReactElement {
         <div className={styles['HeroContentDiv']}>
           <h2>Event Id: #{id}</h2>
           <div className={styles['EventDetails']}>
-            <DetailsCard event={event} />
+            <DetailsCard event={event} loading={loading} />
           </div>
         </div>
       </div>

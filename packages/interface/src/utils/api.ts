@@ -51,6 +51,14 @@ export interface EventInterface {
   created: string
 }
 
+export interface CollectionInterface {
+  collection: string
+  tokenId: string
+  timestamp: string
+  transferCount: string
+  userTokenCount: number | undefined
+}
+
 export const eventsQuery = gql`
   query getEvents($maxCount: Int, $lastCreated: String) {
     events(
