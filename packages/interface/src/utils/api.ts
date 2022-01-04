@@ -123,7 +123,24 @@ const api = {
   getEventMerkleDetails: async (
     eventId: string,
   ): Promise<SwayDropParticipants> => {
-    return await (await fetch(`${MERKLE_URL}/${eventId}`)).json()
+    return await (await fetch(`${MERKLE_URL}/${eventId}.json`)).json()
+  },
+
+  isAccountEligibleForMerkle: async (
+    eventId: string,
+    address: string | null,
+  ): Promise<boolean> => {
+    if (!address) return false
+    try {
+      const participants = await api.getEventMerkleDetails(eventId)
+      console.log(participants)
+      return participants.participants
+        .map((p) => p.toLowerCase())
+        .includes(address.toLowerCase())
+    } catch (err) {
+      console.error(err)
+      return false
+    }
   },
 
   /**

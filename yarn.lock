@@ -1989,7 +1989,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ethersproject/contracts@npm:5.5.0, @ethersproject/contracts@npm:^5.4.1":
+"@ethersproject/contracts@npm:5.5.0, @ethersproject/contracts@npm:^5.4.1, @ethersproject/contracts@npm:^5.5.0":
   version: 5.5.0
   resolution: "@ethersproject/contracts@npm:5.5.0"
   dependencies:
@@ -2109,7 +2109,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ethersproject/providers@npm:5.5.1, @ethersproject/providers@npm:^5.3.0, @ethersproject/providers@npm:^5.4.4":
+"@ethersproject/providers@npm:5.5.1, @ethersproject/providers@npm:^5.3.0, @ethersproject/providers@npm:^5.4.4, @ethersproject/providers@npm:^5.5.0":
   version: 5.5.1
   resolution: "@ethersproject/providers@npm:5.5.1"
   dependencies:
@@ -3402,6 +3402,10 @@ __metadata:
   resolution: "@sway/interface@workspace:packages/interface"
   dependencies:
     "@celo-tools/use-contractkit": ^2.1.2
+    "@ethersproject/address": ^5.5.0
+    "@ethersproject/constants": ^5.5.0
+    "@ethersproject/contracts": ^5.5.0
+    "@ethersproject/providers": ^5.5.0
     "@sway/contracts": ^0.1.0
     "@sway/events": ^0.1.0
     "@testing-library/jest-dom": ^5.15.0

@@ -36,7 +36,7 @@ function Nav({ dark }: Props): ReactElement {
         </button>
         <div className={styles['NavListContent']}>
           <NavItem to="/gallery">Explore</NavItem>
-          <NavItem to="/event">Create</NavItem>
+          <NavItem to="/event/create">Create</NavItem>
           <NavItem to="/user_collection">My Account</NavItem>
           <NavItem to="#" primary>
             {address ? (

@@ -17,6 +17,7 @@ export type { ERC165Upgradeable } from "./ERC165Upgradeable";
 export type { IERC165Upgradeable } from "./IERC165Upgradeable";
 export type { SwayDrop } from "./SwayDrop";
 export type { SwayToken } from "./SwayToken";
+export type { ISway } from "./ISway";
 export type { ISwayAdmin } from "./ISwayAdmin";
 export type { ISwayDrop } from "./ISwayDrop";
 export type { Sway } from "./Sway";
@@ -38,6 +39,7 @@ export { ERC165Upgradeable__factory } from "./factories/ERC165Upgradeable__facto
 export { IERC165Upgradeable__factory } from "./factories/IERC165Upgradeable__factory";
 export { SwayDrop__factory } from "./factories/SwayDrop__factory";
 export { SwayToken__factory } from "./factories/SwayToken__factory";
+export { ISway__factory } from "./factories/ISway__factory";
 export { ISwayAdmin__factory } from "./factories/ISwayAdmin__factory";
 export { ISwayDrop__factory } from "./factories/ISwayDrop__factory";
 export { Sway__factory } from "./factories/Sway__factory";

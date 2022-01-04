@@ -58,7 +58,8 @@ function DetailsCard({ event, loading }: Props): ReactElement {
         <div>
           <img src={location} alt="location icon" />
           <span>
-            {truncate(event?.city, 20)}, {truncate(event?.country, 20)}
+            {truncate(event?.city || '', 20)},{' '}
+            {truncate(event?.country || '', 20)}
           </span>
         </div>
         <div>
