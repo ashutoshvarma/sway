@@ -4,6 +4,10 @@
   "private": true,
   "dependencies": {
     "@celo-tools/use-contractkit": "^2.1.2",
+    "@ethersproject/address": "^5.5.0",
+    "@ethersproject/constants": "^5.5.0",
+    "@ethersproject/contracts": "^5.5.0",
+    "@ethersproject/providers": "^5.5.0",
     "@sway/contracts": "^0.1.0",
     "@sway/events": "^0.1.0",
     "bootstrap": "^5.1.3",

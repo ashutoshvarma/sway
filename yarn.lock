@@ -1989,7 +1989,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ethersproject/contracts@npm:5.5.0, @ethersproject/contracts@npm:^5.4.1":
+"@ethersproject/contracts@npm:5.5.0, @ethersproject/contracts@npm:^5.4.1, @ethersproject/contracts@npm:^5.5.0":
   version: 5.5.0
   resolution: "@ethersproject/contracts@npm:5.5.0"
   dependencies:
@@ -2109,7 +2109,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ethersproject/providers@npm:5.5.1, @ethersproject/providers@npm:^5.3.0, @ethersproject/providers@npm:^5.4.4":
+"@ethersproject/providers@npm:5.5.1, @ethersproject/providers@npm:^5.3.0, @ethersproject/providers@npm:^5.4.4, @ethersproject/providers@npm:^5.5.0":
   version: 5.5.1
   resolution: "@ethersproject/providers@npm:5.5.1"
   dependencies:
@@ -3380,14 +3380,17 @@ __metadata:
   dependencies:
     "@ethersproject/address": ^5.5.0
     "@types/node": ^16.11.10
+    "@types/node-fetch": 2
     "@typescript-eslint/eslint-plugin": ^5.4.0
     "@typescript-eslint/parser": ^5.4.0
+    "@vercel/node": ^1.12.1
     class-transformer: ^0.5.1
     class-validator: ^0.13.2
     eslint: ^8.3.0
     eslint-config-prettier: ^8.3.0
     eslint-plugin-prettier: ^4.0.0
     glob: ^7.2.0
+    node-fetch: 2
     prettier: ^2.4.1
     ts-node: ^10.4.0
     typescript: ^4.5.2
@@ -3399,6 +3402,10 @@ __metadata:
   resolution: "@sway/interface@workspace:packages/interface"
   dependencies:
     "@celo-tools/use-contractkit": ^2.1.2
+    "@ethersproject/address": ^5.5.0
+    "@ethersproject/constants": ^5.5.0
+    "@ethersproject/contracts": ^5.5.0
+    "@ethersproject/providers": ^5.5.0
     "@sway/contracts": ^0.1.0
     "@sway/events": ^0.1.0
     "@testing-library/jest-dom": ^5.15.0
@@ -3991,6 +3998,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node-fetch@npm:2":
+  version: 2.5.12
+  resolution: "@types/node-fetch@npm:2.5.12"
+  dependencies:
+    "@types/node": "*"
+    form-data: ^3.0.0
+  checksum: ad63c85ba6a9477b8e057ec8682257738130d98e8ece4e31141789bd99df9d9147985cc8bc0cb5c8983ed5aa6bb95d46df23d1e055f4ad5cf8b82fc69cf626c7
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*":
   version: 17.0.5
   resolution: "@types/node@npm:17.0.5"
@@ -4567,6 +4584,17 @@ __metadata:
   version: 1.1.2
   resolution: "@ungap/promise-all-settled@npm:1.1.2"
   checksum: 08d37fdfa23a6fe8139f1305313562ebad973f3fac01bcce2773b2bda5bcb0146dfdcf3cb6a722cf0a5f2ca0bc56a827eac8f1e7b3beddc548f654addf1fc34c
+  languageName: node
+  linkType: hard
+
+"@vercel/node@npm:^1.12.1":
+  version: 1.12.1
+  resolution: "@vercel/node@npm:1.12.1"
+  dependencies:
+    "@types/node": "*"
+    ts-node: 8.9.1
+    typescript: 4.3.4
+  checksum: 15a0bae4af01e4eb96dfc4b097db70125a2945c606ab1290b4644484a242ddd262705bf4745cec016f2ca62649f8eb7079025f39027210d3aa0d7739d7509255
   languageName: node
   linkType: hard
 
@@ -16694,19 +16722,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:2.6.1":
-  version: 2.6.1
-  resolution: "node-fetch@npm:2.6.1"
-  checksum: 91075bedd57879117e310fbcc36983ad5d699e522edb1ebcdc4ee5294c982843982652925c3532729fdc86b2d64a8a827797a745f332040d91823c8752ee4d7c
-  languageName: node
-  linkType: hard
-
-"node-fetch@npm:^2.3.0, node-fetch@npm:^2.6.0, node-fetch@npm:^2.6.1":
+"node-fetch@npm:2, node-fetch@npm:^2.3.0, node-fetch@npm:^2.6.0, node-fetch@npm:^2.6.1":
   version: 2.6.6
   resolution: "node-fetch@npm:2.6.6"
   dependencies:
     whatwg-url: ^5.0.0
   checksum: ee8290626bdb73629c59722b75dcf4b9b6a67c1ed7eb9102e368479c4a13b56a48c2bb3ad71571e378e98c8b2c64c820e11f9cd39e4b8557dd138ad571ef9a42
+  languageName: node
+  linkType: hard
+
+"node-fetch@npm:2.6.1":
+  version: 2.6.1
+  resolution: "node-fetch@npm:2.6.1"
+  checksum: 91075bedd57879117e310fbcc36983ad5d699e522edb1ebcdc4ee5294c982843982652925c3532729fdc86b2d64a8a827797a745f332040d91823c8752ee4d7c
   languageName: node
   linkType: hard
 
@@ -22709,6 +22737,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ts-node@npm:8.9.1":
+  version: 8.9.1
+  resolution: "ts-node@npm:8.9.1"
+  dependencies:
+    arg: ^4.1.0
+    diff: ^4.0.1
+    make-error: ^1.1.1
+    source-map-support: ^0.5.17
+    yn: 3.1.1
+  peerDependencies:
+    typescript: ">=2.7"
+  bin:
+    ts-node: dist/bin.js
+    ts-node-script: dist/bin-script.js
+    ts-node-transpile-only: dist/bin-transpile.js
+    ts-script: dist/bin-script-deprecated.js
+  checksum: 59997e32cfb84323317f9fd33ff62d025b467ff36c296c3ad1ee54f08fd355c58fab37e096e2a63fd01fced929384b16b9d74bf324713a21844e527ddd5f6c17
+  languageName: node
+  linkType: hard
+
 "ts-node@npm:^10.0.0, ts-node@npm:^10.4.0":
   version: 10.4.0
   resolution: "ts-node@npm:10.4.0"
@@ -23014,6 +23062,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:4.3.4":
+  version: 4.3.4
+  resolution: "typescript@npm:4.3.4"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 75e1f2769c7ff38c718523d05eaf1c2611dbf92c0ab0f85f603ead9bb23416af2009a5dac46e76ef6a207a8508fa53f51b43a41f2a91b1241b53cd744c16128c
+  languageName: node
+  linkType: hard
+
 "typescript@npm:^3.6.4":
   version: 3.9.10
   resolution: "typescript@npm:3.9.10"
@@ -23031,6 +23089,16 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 59f3243f9cd6fe3161e6150ff6bf795fc843b4234a655dbd938a310515e0d61afd1ac942799e7415e4334255e41c2c49b7dd5d9fd38a17acd25a6779ca7e0961
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@4.3.4#~builtin<compat/typescript>":
+  version: 4.3.4
+  resolution: "typescript@patch:typescript@npm%3A4.3.4#~builtin<compat/typescript>::version=4.3.4&hash=493e53"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 49f3e6734d6f27c1931d3a665439350d9015b28eee87ba26ebcae0ba35fc609962ad8eb0b09f0324366497d65260c4222b8735098325bba46d508b5cab7b4640
   languageName: node
   linkType: hard
 

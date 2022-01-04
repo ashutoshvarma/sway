@@ -1,12 +1,29 @@
+import '@celo-tools/use-contractkit/lib/styles.css'
+import icon from './assets/logo192.png'
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
-// import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import reportWebVitals from './reportWebVitals'
-import { ContractKitProvider, Alfajores } from '@celo-tools/use-contractkit'
-import '@celo-tools/use-contractkit/lib/styles.css'
-import icon from './assets/logo192.png'
+import {
+  Alfajores,
+  ContractKitProvider,
+  Mainnet,
+} from '@celo-tools/use-contractkit'
+import { NETWORK } from './utils/environment'
+
+if (window.celo) {
+  window.celo.autoRefreshOnNetworkChange = false
+}
+
+if (!NETWORK) {
+  throw new Error('Please set the valid network')
+} else {
+  console.log(
+    `Using network ${NETWORK.name}, with config - ${JSON.stringify(NETWORK)}`,
+  )
+}
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,11 +32,11 @@ ReactDOM.render(
         name: 'Sway',
         description:
           'The interface for Sway, a decentralized souvenir protocol',
-        url: 'https://example.com',
+        url: 'https://sway.community',
         icon: icon,
       }}
-      network={Alfajores}
-      networks={[Alfajores]}
+      network={NETWORK}
+      networks={[Mainnet, Alfajores]}
       connectModal={{
         reactModalProps: {
           style: {
