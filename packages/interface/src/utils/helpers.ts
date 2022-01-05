@@ -5,6 +5,7 @@ import { Contract } from '@ethersproject/contracts'
 import { AddressZero } from '@ethersproject/constants'
 import { Web3Provider, JsonRpcSigner } from '@ethersproject/providers'
 import { Sway, SwayDrop } from '@sway/contracts/typechain'
+import { SwayDropParticipants } from 'packages/events/src/events'
 
 export const truncate = (str: string, max_length: number): string => {
   if (str.length > max_length) {
@@ -17,6 +18,13 @@ export function shortenAddress(address: string, chars = 4): string {
     throw Error(`Invalid 'address' parameter '${address}'.`)
   }
   return `${address.substring(0, chars + 2)}...${address.substring(42 - chars)}`
+}
+
+export function indexInParticipants(
+  address: string,
+  participants: SwayDropParticipants,
+): number {
+  return participants.participants.map((p) => p.toLowerCase()).indexOf(address)
 }
 
 export const explorerLink = (hash: string) => {
