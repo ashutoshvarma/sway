@@ -18,6 +18,7 @@ import {
   mint,
   claim,
   minter,
+  event_info,
 } from './tasks/events';
 import {toggle_pause, debug} from './tasks/governance';
 
@@ -85,6 +86,9 @@ task('event:minter', 'Add/Revoke minter from a Event')
   )
   .addFlag('remove', 'Remove Minter')
   .setAction(minter);
+task('event:info', 'Add/Revoke minter from a Event')
+  .addParam('event', 'Event ID', undefined, types.int)
+  .setAction(event_info);
 
 // While waiting for hardhat PR: https://github.com/nomiclabs/hardhat/pull/1542
 if (process.env['HARDHAT_FORK']) {

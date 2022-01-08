@@ -1,5 +1,5 @@
 import {HardhatRuntimeEnvironment, RunSuperFunction} from 'hardhat/types';
-import {Sway} from '../typechain';
+import {Sway, SwayDrop} from '../typechain';
 
 export async function debug(
   _taskArgs: unknown,
@@ -9,6 +9,7 @@ export async function debug(
 ): Promise<void> {
   const {ethers} = hre;
   const sway = (await ethers.getContract('Sway')) as Sway;
+  const swayDrop = (await ethers.getContract('SwayDrop')) as SwayDrop;
 
   // admin roles
   const GOVERNOR_ROLE = await sway.GOVERNOR_ROLE();
@@ -22,12 +23,18 @@ export async function debug(
   console.log(`Sway Protocol Debug`);
   console.log(`===================`);
   console.log(`=> Governance`);
-  console.log(`  Governors Count:          ${gCount.toString()}`);
-  console.log(`  Governors:                ${governors}`);
-  console.log(`  Paused:                   ${await sway.paused()}`);
-  console.log(`=> Sway`);
-  console.log(`  Total Supply:             ${await sway.totalSupply()}`);
-  console.log(`  Last Event ID:            ${await sway.lastEventId()}`);
+  console.log(`- Governors Count:          ${gCount.toString()}`);
+  console.log(`- Governors:                ${governors}`);
+  console.log(`- Paused:                   ${await sway.paused()}`);
+  console.log(``);
+  console.log(`=> SwayDrop (${swayDrop.address})`);
+  console.log(`- Implementation Address:             ${await swayDrop()}`);
+  console.log(`- Sway Address:             ${await swayDrop.sway()}`);
+  console.log(``);
+  console.log(`=> Sway (${sway.address})`);
+  console.log(`- Total Supply:             ${await sway.totalSupply()}`);
+  console.log(`- Last Event ID:            ${await sway.lastEventId()}`);
+  console.log(`- Drop Address:             ${await sway.drop()}`);
 }
 
 export async function toggle_pause(
