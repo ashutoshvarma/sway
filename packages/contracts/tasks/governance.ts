@@ -28,10 +28,19 @@ export async function debug(
   console.log(`- Paused:                   ${await sway.paused()}`);
   console.log(``);
   console.log(`=> SwayDrop (${swayDrop.address})`);
-  console.log(`- Implementation Address:             ${await swayDrop()}`);
+  console.log(
+    `- Implementation Address:   ${
+      (await ethers.getContract('SwayDrop_Implementation')).address
+    }`
+  );
   console.log(`- Sway Address:             ${await swayDrop.sway()}`);
   console.log(``);
   console.log(`=> Sway (${sway.address})`);
+  console.log(
+    `- Implementation Address:   ${
+      (await ethers.getContract('Sway_Implementation')).address
+    }`
+  );
   console.log(`- Total Supply:             ${await sway.totalSupply()}`);
   console.log(`- Last Event ID:            ${await sway.lastEventId()}`);
   console.log(`- Drop Address:             ${await sway.drop()}`);
