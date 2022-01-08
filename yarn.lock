@@ -3430,6 +3430,7 @@ __metadata:
     react-dropdown-now: ^6.0.1
     react-router-dom: ^6.0.1
     react-scripts: 4.0.3
+    react-toastify: ^8.1.0
     typescript: ^4.4.4
     web-vitals: ^1.1.2
   languageName: unknown
@@ -7479,6 +7480,13 @@ __metadata:
   version: 1.0.4
   resolution: "clone@npm:1.0.4"
   checksum: d06418b7335897209e77bdd430d04f882189582e67bd1f75a04565f3f07f5b3f119a9d670c943b6697d0afb100f03b866b3b8a1f91d4d02d72c4ecf2bb64b5dd
+  languageName: node
+  linkType: hard
+
+"clsx@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "clsx@npm:1.1.1"
+  checksum: ff052650329773b9b245177305fc4c4dc3129f7b2be84af4f58dc5defa99538c61d4207be7419405a5f8f3d92007c954f4daba5a7b74e563d5de71c28c830063
   languageName: node
   linkType: hard
 
@@ -19717,6 +19725,18 @@ __metadata:
   bin:
     react-scripts: ./bin/react-scripts.js
   checksum: a05a46ce3145b42ac8b57633d3b90b6689c24697c1449bccf219349996d718a3cd0796e4910f4ab6abb5b024982cafd62345e88c8e7b42a45efca3bef1a0eb87
+  languageName: node
+  linkType: hard
+
+"react-toastify@npm:^8.1.0":
+  version: 8.1.0
+  resolution: "react-toastify@npm:8.1.0"
+  dependencies:
+    clsx: ^1.1.1
+  peerDependencies:
+    react: ">=16"
+    react-dom: ">=16"
+  checksum: 9d7b18c747e1b6736771dbb877dfaab61c49e99a64b9dbdaa3d57d62c899d8a46e193fd69aa4bd045a1e0023859353f94ce4617d600154657a2bdd213407e607
   languageName: node
   linkType: hard
 

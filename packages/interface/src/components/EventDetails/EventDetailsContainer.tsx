@@ -3,7 +3,11 @@ import HeroSection from './HeroSection'
 import Collections from './Collections'
 import { useParams } from 'react-router-dom'
 import api, { CollectionInterface } from '../../utils/api'
-import { Event as SwayEvent } from '@sway/events/src/events'
+// import { useClaimStatus } from '../../hooks/events'
+import {
+  Event as SwayEvent,
+  SwayDropParticipants,
+} from '@sway/events/src/events'
 
 function EventDetailsContainer(): ReactElement {
   const params = useParams()
@@ -12,13 +16,21 @@ function EventDetailsContainer(): ReactElement {
   const [collections, setCollection] = useState<
     CollectionInterface[] | undefined
   >()
+  const [swayParticipants, setSwayParticpants] = useState<
+    SwayDropParticipants | undefined
+  >()
   const [eventLoading, setEventLoading] = useState<boolean>(true)
   const [collectionsLoading, setCollectionsLoading] = useState<boolean>(true)
+  // const [claimStatus, boolean] = useClaimStatus(id, swayParticipants)
+  // console.log('claim status', claimStatus, boolean)
 
   useEffect(() => {
     ;(async () => {
       setEventLoading(true)
       let eventData = await api.getEventMetadata(id)
+      let sway_participants = await api.getEventMerkleDetails(id)
+      setSwayParticpants(sway_participants)
+      console.log(sway_participants)
       setEvent(eventData)
       setEventLoading(false)
     })()
@@ -35,7 +47,12 @@ function EventDetailsContainer(): ReactElement {
 
   return (
     <div>
-      <HeroSection event={event} id={id} loading={eventLoading} />
+      <HeroSection
+        event={event}
+        participants={swayParticipants}
+        id={id}
+        loading={eventLoading}
+      />
       <Collections collections={collections} loading={collectionsLoading} />
     </div>
   )

@@ -2,15 +2,24 @@ import { ReactElement } from 'react'
 import styles from './HeroSection.module.css'
 import bg from '../../assets/images/dark-hero-bg.svg'
 import DetailsCard from './DetailsCard'
-import { Event as SwayEvent } from '@sway/events/src/events'
+import {
+  Event as SwayEvent,
+  SwayDropParticipants,
+} from '@sway/events/src/events'
 
 interface Props {
   event: SwayEvent | undefined
+  participants: SwayDropParticipants | undefined
   id: string
   loading: boolean
 }
 
-function HeroSection({ event, id, loading }: Props): ReactElement {
+function HeroSection({
+  event,
+  id,
+  loading,
+  participants,
+}: Props): ReactElement {
   return (
     <section className={styles['HeroSection']}>
       <div
@@ -21,7 +30,11 @@ function HeroSection({ event, id, loading }: Props): ReactElement {
         <div className={styles['HeroContentDiv']}>
           <h2>Event Id: #{id}</h2>
           <div className={styles['EventDetails']}>
-            <DetailsCard event={event} loading={loading} />
+            <DetailsCard
+              participants={participants}
+              event={event}
+              loading={loading}
+            />
           </div>
         </div>
       </div>

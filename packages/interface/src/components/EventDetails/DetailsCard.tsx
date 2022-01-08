@@ -6,13 +6,17 @@ import background from '../../assets/images/event-details-background.svg'
 import calender from '../../assets/icons/calender.svg'
 import nft from '../../assets/icons/nft.svg'
 import location from '../../assets/icons/location.svg'
-import { Event as SwayEvent } from '@sway/events/src/events'
+import {
+  Event as SwayEvent,
+  SwayDropParticipants,
+} from '@sway/events/src/events'
 import moment from 'moment'
 import { truncate } from '../../utils/helpers'
 
 interface Props {
   event: SwayEvent | undefined
   loading?: boolean
+  participants?: SwayDropParticipants | undefined
 }
 
 function DetailsCard({ event, loading }: Props): ReactElement {
@@ -73,9 +77,9 @@ function DetailsCard({ event, loading }: Props): ReactElement {
         </div>
       </div>
 
-      {/* <div className={styles['JoinContainer']}>
+      <div className={styles['JoinContainer']}>
         <button>Join the event</button>
-      </div> */}
+      </div>
     </div>
   )
 }

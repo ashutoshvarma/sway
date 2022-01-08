@@ -5,6 +5,7 @@ import walleticon from '../../assets/icons/wallet.svg'
 import hamburger from '../../assets/icons/hamburger.svg'
 import cross from '../../assets/icons/cross.svg'
 import { NavLink } from 'react-router-dom'
+import { shortenAddress } from '../../utils/helpers'
 
 interface Props {
   dark?: boolean
@@ -42,7 +43,7 @@ function Nav({ dark }: Props): ReactElement {
             {address ? (
               <span onClick={() => destroy().catch(console.log)}>
                 <img src={walleticon} alt="wallet icon" />
-                Disconnect
+                {shortenAddress(address, 4)}
               </span>
             ) : (
               <span onClick={() => connect().catch(console.log)}>

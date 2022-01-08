@@ -1,6 +1,8 @@
 import { ReactElement } from 'react'
 import styles from './Collections.module.css'
 import { CollectionInterface } from '../../utils/api'
+import { explorerLink } from '../../utils/helpers'
+
 import moment from 'moment'
 
 interface Props {
@@ -53,7 +55,15 @@ function TableRow({ collection, loading }: RowProps) {
       <td className={styles['MobileLabel']}>SwayId</td>
       <td>{collection?.tokenId}</td>
       <td className={styles['MobileLabel']}>Collections</td>
-      <td>{collection?.collection}</td>
+      <td>
+        <a
+          href={collection?.collection && explorerLink(collection?.collection)}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {collection?.collection}
+        </a>
+      </td>
       <td className={styles['MobileLabel']}>Minting Date</td>
       <td>{collection && moment(Number(collection.timestamp)).fromNow()}</td>
       <td className={styles['MobileLabel']}>TX Count</td>
