@@ -55,7 +55,11 @@ contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
         _baseURIextendend = baseURI;
     }
 
-    function setBaseURIExtension(string memory baseURIExtension) public onlyGovernor whenNotPaused {
+    function setBaseURIExtension(string memory baseURIExtension)
+        public
+        onlyGovernor
+        whenNotPaused
+    {
         _baseURIExtension = baseURIExtension;
     }
 
@@ -81,7 +85,16 @@ contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
         require(_exists(tokenId), "Sway: URI query for nonexistent token");
 
         uint256 eventId = tokenEvent[tokenId];
-        return string(abi.encodePacked(_baseURI(), eventId.toString(), "/", tokenId.toString(), _baseURIExtension));
+        return
+            string(
+                abi.encodePacked(
+                    _baseURI(),
+                    eventId.toString(),
+                    "/",
+                    tokenId.toString(),
+                    _baseURIExtension
+                )
+            );
     }
 
     /**
@@ -90,7 +103,12 @@ contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
      * @param to The address that will receive the minted tokens.
      * @return A boolean that indicates if the operation was successful.
      */
-    function mintToken(uint256 eventId, address to) public whenNotPaused onlyEventMinter(eventId) returns (bool) {
+    function mintToken(uint256 eventId, address to)
+        public
+        whenNotPaused
+        onlyEventMinter(eventId)
+        returns (bool)
+    {
         lastId += 1;
         return _mintToken(eventId, lastId, to);
     }
@@ -112,7 +130,10 @@ contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
 
     function burn(uint256 tokenId) public {
         //solhint-disable-next-line max-line-length
-        require(_isApprovedOrOwner(_msgSender(), tokenId), "Sway: caller is not owner nor approved");
+        require(
+            _isApprovedOrOwner(_msgSender(), tokenId),
+            "Sway: caller is not owner nor approved"
+        );
         _burn(tokenId);
     }
 
