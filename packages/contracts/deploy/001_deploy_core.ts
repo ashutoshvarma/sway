@@ -4,7 +4,7 @@ import {getConfig} from '../utils/constants';
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const {deployments, getNamedAccounts} = hre;
-  const {deploy, execute} = deployments;
+  const {deploy} = deployments;
   const config = getConfig(hre.network.name);
 
   const {deployerAddr, governorAddr, proxyAdminAddr} = await getNamedAccounts();
@@ -29,7 +29,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     log: true,
   });
 
-  const dSwayDrop = await deploy('SwayDrop', {
+  await deploy('SwayDrop', {
     contract: 'SwayDrop',
     from: deployerAddr!,
     proxy: {
@@ -37,18 +37,11 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       proxyContract: 'OpenZeppelinTransparentProxy',
       execute: {
         methodName: 'initialize',
-        args: ['SwayDrop', dSway.address, governorAddr],
+        args: ['SwayDrop', dSway.address],
       },
     },
     log: true,
   });
-
-  await execute(
-    'Sway',
-    {from: governorAddr!, log: true},
-    'setDrop',
-    dSwayDrop.address
-  );
 };
 
 export default func;

@@ -23,14 +23,13 @@ interface SwayInterface extends ethers.utils.Interface {
   functions: {
     "DEFAULT_ADMIN_ROLE()": FunctionFragment;
     "GOVERNOR_ROLE()": FunctionFragment;
-    "addEventDrop(uint256,bytes32)": FunctionFragment;
+    "addEventDrop(uint256,bytes32,address)": FunctionFragment;
     "addEventMinter(uint256,address)": FunctionFragment;
     "addGovernor(address)": FunctionFragment;
     "approve(address,uint256)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
     "burn(uint256)": FunctionFragment;
     "createEvent(address)": FunctionFragment;
-    "drop()": FunctionFragment;
     "eventRoleMapping(uint256)": FunctionFragment;
     "getApproved(uint256)": FunctionFragment;
     "getRoleAdmin(bytes32)": FunctionFragment;
@@ -56,7 +55,6 @@ interface SwayInterface extends ethers.utils.Interface {
     "setApprovalForAll(address,bool)": FunctionFragment;
     "setBaseURI(string)": FunctionFragment;
     "setBaseURIExtension(string)": FunctionFragment;
-    "setDrop(address)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
     "symbol()": FunctionFragment;
     "tokenByIndex(uint256)": FunctionFragment;
@@ -79,7 +77,7 @@ interface SwayInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "addEventDrop",
-    values: [BigNumberish, BytesLike]
+    values: [BigNumberish, BytesLike, string]
   ): string;
   encodeFunctionData(
     functionFragment: "addEventMinter",
@@ -93,7 +91,6 @@ interface SwayInterface extends ethers.utils.Interface {
   encodeFunctionData(functionFragment: "balanceOf", values: [string]): string;
   encodeFunctionData(functionFragment: "burn", values: [BigNumberish]): string;
   encodeFunctionData(functionFragment: "createEvent", values: [string]): string;
-  encodeFunctionData(functionFragment: "drop", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "eventRoleMapping",
     values: [BigNumberish]
@@ -179,7 +176,6 @@ interface SwayInterface extends ethers.utils.Interface {
     functionFragment: "setBaseURIExtension",
     values: [string]
   ): string;
-  encodeFunctionData(functionFragment: "setDrop", values: [string]): string;
   encodeFunctionData(
     functionFragment: "supportsInterface",
     values: [BytesLike]
@@ -242,7 +238,6 @@ interface SwayInterface extends ethers.utils.Interface {
     functionFragment: "createEvent",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "drop", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "eventRoleMapping",
     data: BytesLike
@@ -310,7 +305,6 @@ interface SwayInterface extends ethers.utils.Interface {
     functionFragment: "setBaseURIExtension",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "setDrop", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "supportsInterface",
     data: BytesLike
@@ -353,7 +347,6 @@ interface SwayInterface extends ethers.utils.Interface {
     "RoleAdminChanged(bytes32,bytes32,bytes32)": EventFragment;
     "RoleGranted(bytes32,address,address)": EventFragment;
     "RoleRevoked(bytes32,address,address)": EventFragment;
-    "SwayDropAddressUpdated(address)": EventFragment;
     "Transfer(address,address,uint256)": EventFragment;
     "Unpaused(address)": EventFragment;
   };
@@ -370,7 +363,6 @@ interface SwayInterface extends ethers.utils.Interface {
   getEvent(nameOrSignatureOrTopic: "RoleAdminChanged"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "RoleGranted"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "RoleRevoked"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "SwayDropAddressUpdated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Transfer"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Unpaused"): EventFragment;
 }
@@ -433,10 +425,6 @@ export type RoleRevokedEvent = TypedEvent<
   [string, string, string] & { role: string; account: string; sender: string }
 >;
 
-export type SwayDropAddressUpdatedEvent = TypedEvent<
-  [string] & { drop: string }
->;
-
 export type TransferEvent = TypedEvent<
   [string, string, BigNumber] & { from: string; to: string; tokenId: BigNumber }
 >;
@@ -494,6 +482,7 @@ export class Sway extends BaseContract {
     addEventDrop(
       eventId: BigNumberish,
       rootHash: BytesLike,
+      drop: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
@@ -525,8 +514,6 @@ export class Sway extends BaseContract {
       minter: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
-
-    drop(overrides?: CallOverrides): Promise<[string]>;
 
     eventRoleMapping(
       arg0: BigNumberish,
@@ -668,11 +655,6 @@ export class Sway extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    setDrop(
-      _drop: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
     supportsInterface(
       interfaceId: BytesLike,
       overrides?: CallOverrides
@@ -730,6 +712,7 @@ export class Sway extends BaseContract {
   addEventDrop(
     eventId: BigNumberish,
     rootHash: BytesLike,
+    drop: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
@@ -761,8 +744,6 @@ export class Sway extends BaseContract {
     minter: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
-
-  drop(overrides?: CallOverrides): Promise<string>;
 
   eventRoleMapping(
     arg0: BigNumberish,
@@ -901,11 +882,6 @@ export class Sway extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  setDrop(
-    _drop: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
   supportsInterface(
     interfaceId: BytesLike,
     overrides?: CallOverrides
@@ -957,6 +933,7 @@ export class Sway extends BaseContract {
     addEventDrop(
       eventId: BigNumberish,
       rootHash: BytesLike,
+      drop: string,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -979,8 +956,6 @@ export class Sway extends BaseContract {
     burn(tokenId: BigNumberish, overrides?: CallOverrides): Promise<void>;
 
     createEvent(minter: string, overrides?: CallOverrides): Promise<void>;
-
-    drop(overrides?: CallOverrides): Promise<string>;
 
     eventRoleMapping(
       arg0: BigNumberish,
@@ -1110,8 +1085,6 @@ export class Sway extends BaseContract {
       baseURIExtension: string,
       overrides?: CallOverrides
     ): Promise<void>;
-
-    setDrop(_drop: string, overrides?: CallOverrides): Promise<void>;
 
     supportsInterface(
       interfaceId: BytesLike,
@@ -1337,14 +1310,6 @@ export class Sway extends BaseContract {
       { role: string; account: string; sender: string }
     >;
 
-    "SwayDropAddressUpdated(address)"(
-      drop?: string | null
-    ): TypedEventFilter<[string], { drop: string }>;
-
-    SwayDropAddressUpdated(
-      drop?: string | null
-    ): TypedEventFilter<[string], { drop: string }>;
-
     "Transfer(address,address,uint256)"(
       from?: string | null,
       to?: string | null,
@@ -1378,6 +1343,7 @@ export class Sway extends BaseContract {
     addEventDrop(
       eventId: BigNumberish,
       rootHash: BytesLike,
+      drop: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
@@ -1409,8 +1375,6 @@ export class Sway extends BaseContract {
       minter: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
-
-    drop(overrides?: CallOverrides): Promise<BigNumber>;
 
     eventRoleMapping(
       arg0: BigNumberish,
@@ -1555,11 +1519,6 @@ export class Sway extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    setDrop(
-      _drop: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
     supportsInterface(
       interfaceId: BytesLike,
       overrides?: CallOverrides
@@ -1618,6 +1577,7 @@ export class Sway extends BaseContract {
     addEventDrop(
       eventId: BigNumberish,
       rootHash: BytesLike,
+      drop: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
@@ -1652,8 +1612,6 @@ export class Sway extends BaseContract {
       minter: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
-
-    drop(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     eventRoleMapping(
       arg0: BigNumberish,
@@ -1798,11 +1756,6 @@ export class Sway extends BaseContract {
 
     setBaseURIExtension(
       baseURIExtension: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
-    setDrop(
-      _drop: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 

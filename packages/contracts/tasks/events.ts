@@ -72,7 +72,9 @@ export async function add_event_drop(
   } else {
     hash = await (
       await (
-        await sway.connect(sGovernor).addEventDrop(taskArgs.event, root)
+        await sway
+          .connect(sGovernor)
+          .addEventDrop(taskArgs.event, root, swayDrop.address)
       ).wait()
     ).transactionHash;
   }
