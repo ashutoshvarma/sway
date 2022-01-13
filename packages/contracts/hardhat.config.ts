@@ -1,6 +1,13 @@
 import 'dotenv/config';
-import {HardhatUserConfig} from 'hardhat/types';
+import * as path from 'path';
+import * as fs from 'fs';
+import {
+  HardhatRuntimeEnvironment,
+  HardhatUserConfig,
+  RunSuperFunction,
+} from 'hardhat/types';
 import {task, types} from 'hardhat/config';
+import '@openzeppelin/hardhat-upgrades';
 import 'hardhat-deploy';
 import '@nomiclabs/hardhat-ethers';
 import 'hardhat-gas-reporter';
@@ -94,6 +101,43 @@ task('event:info', 'Add/Revoke minter from a Event')
 if (process.env['HARDHAT_FORK']) {
   process.env['HARDHAT_DEPLOY_FORK'] = process.env['HARDHAT_FORK'];
 }
+
+// Simple hack to verify ERC1967Proxy though sourcify
+// It overwrite the proxy artifact in @openzeppelin/upgrades-core to match the metadata hash
+task(
+  'compile',
+  async (
+    taskArguments: never,
+    hre: HardhatRuntimeEnvironment,
+    runSuper: RunSuperFunction<never>
+  ) => {
+    await runSuper(taskArguments);
+    const {artifacts} = hre;
+    const UPGRADES_PROXY_ARTIFACT_PATH = path.resolve(
+      __dirname,
+      '../../node_modules/@openzeppelin/upgrades-core/artifacts/@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol/ERC1967Proxy.json'
+    );
+    const ERC1967_FULLY_QUALIFIED_NAME =
+      '@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol:ERC1967Proxy';
+    const proxyArtifact = await artifacts.readArtifact(
+      ERC1967_FULLY_QUALIFIED_NAME
+    );
+
+    if (!fs.existsSync(UPGRADES_PROXY_ARTIFACT_PATH)) {
+      console.error('ERROR: UPGRADES_PROXY_ARTIFACT_PATH not found');
+      return;
+    }
+
+    fs.writeFileSync(
+      UPGRADES_PROXY_ARTIFACT_PATH,
+      JSON.stringify(proxyArtifact, null, 2)
+    );
+
+    console.log(
+      'Successfully updated @openzeppelin/upgrades-core ERC1976Proxy artifact'
+    );
+  }
+);
 
 const config: HardhatUserConfig = {
   solidity: {

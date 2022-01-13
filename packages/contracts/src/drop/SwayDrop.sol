@@ -5,6 +5,7 @@ import "hardhat/console.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/cryptography/MerkleProofUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 
 interface SwayToken {
     function mintToken(uint256 eventId, address to) external returns (bool);
@@ -14,7 +15,7 @@ interface SwayAdmin {
     function isGovernor(address _addr) external returns (bool);
 }
 
-contract SwayDrop is Initializable, PausableUpgradeable {
+contract SwayDrop is Initializable, UUPSUpgradeable, PausableUpgradeable {
     string public name;
     address public swayAddr;
 
@@ -26,22 +27,39 @@ contract SwayDrop is Initializable, PausableUpgradeable {
 
     event TokenClaimed(uint256 indexed eventId, address indexed to);
 
+    /// @custom:oz-upgrades-unsafe-allow constructor
+    constructor() initializer {}
+
     function initialize(string memory _name, address _swayAddr) public initializer {
         name = _name;
         swayAddr = _swayAddr;
 
         __Context_init_unchained();
         __Pausable_init_unchained();
+        // UUPSUpgradeable
+        __ERC1967Upgrade_init_unchained();
+        __UUPSUpgradeable_init_unchained();
     }
 
     modifier onlyGovernorOrSway() {
         console.log(msg.sender);
         require(
             SwayAdmin(swayAddr).isGovernor(msg.sender) || msg.sender == swayAddr,
+            "SwayDrop: sender is not Sway or does not have Governor Role"
+        );
+        _;
+    }
+
+    modifier onlyGovernor() {
+        console.log(msg.sender);
+        require(
+            SwayAdmin(swayAddr).isGovernor(msg.sender),
             "SwayDrop: sender does not have Governor Role"
         );
         _;
     }
+
+    function _authorizeUpgrade(address) internal override onlyGovernor {}
 
     function _updateEvent(uint256 _eventId, bytes32 _roothash) internal {
         rootHash[_eventId] = _roothash;

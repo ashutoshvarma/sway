@@ -4,9 +4,10 @@ pragma solidity ^0.8.4;
 import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import "./SwayAdmin.sol";
 
-contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
+contract Sway is Initializable, UUPSUpgradeable, ERC721EnumerableUpgradeable, SwayAdmin {
     using StringsUpgradeable for uint256;
 
     // used to generate new ids
@@ -24,6 +25,9 @@ contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
     // events
     event EventToken(uint256 eventId, uint256 tokenId);
 
+    /// @custom:oz-upgrades-unsafe-allow constructor
+    constructor() initializer {}
+
     function initialize(
         string memory __name,
         string memory __symbol,
@@ -37,7 +41,12 @@ contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
         __SwayAdmin_init(governor);
         __ERC721_init_unchained(__name, __symbol);
         __ERC721Enumerable_init_unchained();
+        // UUPSUpgradeable
+        __ERC1967Upgrade_init_unchained();
+        __UUPSUpgradeable_init_unchained();
     }
+
+    function _authorizeUpgrade(address) internal override onlyGovernor {}
 
     function supportsInterface(bytes4 interfaceId)
         public
