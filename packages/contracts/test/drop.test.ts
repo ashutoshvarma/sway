@@ -7,7 +7,7 @@ import {getMerkleProof, getMerkleRoot} from '../utils/merkle';
 
 describe('SwayDrop', () => {
   it('should be able to claim with valid proof', async () => {
-    const {governor, sway, swayDrop, matt} = await defaultFixture();
+    const {governor, swayDrop, sway, matt} = await defaultFixture();
     const mattAddr = await matt.getAddress();
     const accounts = await getUnnamedAccounts();
 
@@ -18,7 +18,9 @@ describe('SwayDrop', () => {
     const rootHash = getMerkleRoot(participants, eventId);
     const index = 1;
     const proof = getMerkleProof(index, eventId, participants);
-    await sway.connect(governor).addEventDrop(eventId, rootHash);
+    await sway
+      .connect(governor)
+      .addEventDrop(eventId, rootHash, swayDrop.address);
     // should be able to claim
     await expect(swayDrop.claim(index, eventId, participants[index]!, proof))
       .to.emit(swayDrop, 'TokenClaimed')

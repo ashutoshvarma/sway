@@ -4,9 +4,10 @@ pragma solidity ^0.8.4;
 import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/ERC721EnumerableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import "./SwayAdmin.sol";
 
-contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
+contract Sway is Initializable, UUPSUpgradeable, ERC721EnumerableUpgradeable, SwayAdmin {
     using StringsUpgradeable for uint256;
 
     // used to generate new ids
@@ -24,6 +25,9 @@ contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
     // events
     event EventToken(uint256 eventId, uint256 tokenId);
 
+    /// @custom:oz-upgrades-unsafe-allow constructor
+    constructor() initializer {}
+
     function initialize(
         string memory __name,
         string memory __symbol,
@@ -37,7 +41,12 @@ contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
         __SwayAdmin_init(governor);
         __ERC721_init_unchained(__name, __symbol);
         __ERC721Enumerable_init_unchained();
+        // UUPSUpgradeable
+        __ERC1967Upgrade_init_unchained();
+        __UUPSUpgradeable_init_unchained();
     }
+
+    function _authorizeUpgrade(address) internal override onlyGovernor {}
 
     function supportsInterface(bytes4 interfaceId)
         public
@@ -55,7 +64,11 @@ contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
         _baseURIextendend = baseURI;
     }
 
-    function setBaseURIExtension(string memory baseURIExtension) public onlyGovernor whenNotPaused {
+    function setBaseURIExtension(string memory baseURIExtension)
+        public
+        onlyGovernor
+        whenNotPaused
+    {
         _baseURIExtension = baseURIExtension;
     }
 
@@ -81,7 +94,16 @@ contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
         require(_exists(tokenId), "Sway: URI query for nonexistent token");
 
         uint256 eventId = tokenEvent[tokenId];
-        return string(abi.encodePacked(_baseURI(), eventId.toString(), "/", tokenId.toString(), _baseURIExtension));
+        return
+            string(
+                abi.encodePacked(
+                    _baseURI(),
+                    eventId.toString(),
+                    "/",
+                    tokenId.toString(),
+                    _baseURIExtension
+                )
+            );
     }
 
     /**
@@ -90,7 +112,12 @@ contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
      * @param to The address that will receive the minted tokens.
      * @return A boolean that indicates if the operation was successful.
      */
-    function mintToken(uint256 eventId, address to) public whenNotPaused onlyEventMinter(eventId) returns (bool) {
+    function mintToken(uint256 eventId, address to)
+        public
+        whenNotPaused
+        onlyEventMinter(eventId)
+        returns (bool)
+    {
         lastId += 1;
         return _mintToken(eventId, lastId, to);
     }
@@ -112,7 +139,10 @@ contract Sway is Initializable, ERC721EnumerableUpgradeable, SwayAdmin {
 
     function burn(uint256 tokenId) public {
         //solhint-disable-next-line max-line-length
-        require(_isApprovedOrOwner(_msgSender(), tokenId), "Sway: caller is not owner nor approved");
+        require(
+            _isApprovedOrOwner(_msgSender(), tokenId),
+            "Sway: caller is not owner nor approved"
+        );
         _burn(tokenId);
     }
 

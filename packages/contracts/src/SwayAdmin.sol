@@ -10,25 +10,29 @@ interface ISwayDrop {
     function addEvent(uint256 _eventId, bytes32 _roothash) external;
 }
 
-contract SwayAdmin is Initializable, AccessControlEnumerableUpgradeable, PausableUpgradeable {
+contract SwayAdmin is
+    Initializable,
+    AccessControlEnumerableUpgradeable,
+    PausableUpgradeable
+{
     using StringsUpgradeable for uint256;
 
     bytes32 public constant GOVERNOR_ROLE = keccak256("GOVERNOR_ROLE");
-
-    // drop address
-    address public drop;
 
     mapping(uint256 => bytes32) public eventRoleMapping;
     // Last event id (used to generate new ids)
     uint256 public lastEventId;
 
     // events
-    event EventAdded(uint256 indexed eventId, address indexed minter, bytes32 indexed role);
+    event EventAdded(
+        uint256 indexed eventId,
+        address indexed minter,
+        bytes32 indexed role
+    );
     event EventMinterAdded(uint256 indexed eventId, address indexed account);
     event EventMinterRemoved(uint256 indexed eventId, address indexed account);
     event GovernorAdded(address indexed account);
     event GovernorRemoved(address indexed account);
-    event SwayDropAddressUpdated(address indexed drop);
 
     function __SwayAdmin_init(address governor) internal initializer {
         __Context_init_unchained();
@@ -114,13 +118,11 @@ contract SwayAdmin is Initializable, AccessControlEnumerableUpgradeable, Pausabl
     }
 
     modifier onlyEventMinter(uint256 eventId) {
-        require(isEventMinter(eventId, msg.sender), "SwayAdmin: sender does not have Minter Role in Event");
+        require(
+            isEventMinter(eventId, msg.sender),
+            "SwayAdmin: sender does not have Minter Role in Event"
+        );
         _;
-    }
-
-    function setDrop(address _drop) public onlyGovernor {
-        drop = _drop;
-        emit SwayDropAddressUpdated(_drop);
     }
 
     function createEvent(address minter) public onlyGovernor {
@@ -143,13 +145,22 @@ contract SwayAdmin is Initializable, AccessControlEnumerableUpgradeable, Pausabl
         _removeGovernor(account);
     }
 
-    function addEventDrop(uint256 eventId, bytes32 rootHash) public onlyGovernor {
-        require(drop != address(0), "SwayAdmin: drop address not set");
+    function addEventDrop(
+        uint256 eventId,
+        bytes32 rootHash,
+        ISwayDrop drop
+    ) public onlyGovernor {
+        require(
+            address(drop) != address(0),
+            "SwayAdmin: drop address should not be zero"
+        );
         require(rootHash != bytes32(0), "SwayAdmin: rootHash is zero");
         require(eventRoleMapping[eventId] != bytes32(0), "SwayAdmin: eventId not found");
         // add event root hash in SwayDrop
-        ISwayDrop(drop).addEvent(lastEventId, rootHash);
+        drop.addEvent(lastEventId, rootHash);
         // add SwayDrop as minter
-        _addEventMinter(eventId, drop);
+        _addEventMinter(eventId, address(drop));
     }
+
+    uint256[50] private __gap;
 }
