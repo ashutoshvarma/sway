@@ -17,10 +17,10 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const swayProxy = await upgrades.deployProxy(
     Sway,
     [
-      config.swayName,
-      config.swaySymbol,
-      config.swayBaseUri,
-      config.swayBaseUriExtension,
+      config.contracts.name,
+      config.contracts.symbol,
+      config.contracts.baseUri,
+      config.contracts.baseUriExtension,
       governorAddr,
     ],
     {

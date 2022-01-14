@@ -3330,6 +3330,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@sway/common@^0.1.0, @sway/common@workspace:packages/common":
+  version: 0.0.0-use.local
+  resolution: "@sway/common@workspace:packages/common"
+  dependencies:
+    "@types/node": ^16.11.10
+    "@typescript-eslint/eslint-plugin": ^5.4.0
+    "@typescript-eslint/parser": ^5.4.0
+    eslint: ^8.3.0
+    eslint-config-prettier: ^8.3.0
+    eslint-plugin-prettier: ^4.0.0
+    prettier: ^2.4.1
+    ts-node: ^10.4.0
+    typescript: ^4.5.2
+  languageName: unknown
+  linkType: soft
+
 "@sway/contracts@^0.1.0, @sway/contracts@workspace:packages/contracts":
   version: 0.0.0-use.local
   resolution: "@sway/contracts@workspace:packages/contracts"
@@ -3341,6 +3357,7 @@ __metadata:
     "@openzeppelin/contracts": 4.3.2
     "@openzeppelin/contracts-upgradeable": 4.3.2
     "@openzeppelin/hardhat-upgrades": 1.10.0
+    "@sway/common": ^0.1.0
     "@sway/events": ^0.1.0
     "@typechain/ethers-v5": ^7.0.1
     "@typechain/hardhat": ^2.0.2
@@ -3387,6 +3404,7 @@ __metadata:
   resolution: "@sway/events@workspace:packages/events"
   dependencies:
     "@ethersproject/address": ^5.5.0
+    "@sway/common": ^0.1.0
     "@types/node": ^16.11.10
     "@types/node-fetch": 2
     "@typescript-eslint/eslint-plugin": ^5.4.0
@@ -3441,22 +3459,6 @@ __metadata:
     react-toastify: ^8.1.0
     typescript: ^4.4.4
     web-vitals: ^1.1.2
-  languageName: unknown
-  linkType: soft
-
-"@sway/server@workspace:packages/server":
-  version: 0.0.0-use.local
-  resolution: "@sway/server@workspace:packages/server"
-  dependencies:
-    "@types/node": ^16.11.10
-    "@typescript-eslint/eslint-plugin": ^5.4.0
-    "@typescript-eslint/parser": ^5.4.0
-    eslint: ^8.3.0
-    eslint-config-prettier: ^8.3.0
-    eslint-plugin-prettier: ^4.0.0
-    prettier: ^2.4.1
-    ts-node: ^10.4.0
-    typescript: ^4.5.2
   languageName: unknown
   linkType: soft
 

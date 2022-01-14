@@ -1,14 +1,26 @@
 {
   "rewrites": [
     {
-      "source": "/metadata/:eventId/:tokenId",
-      "destination": "/metadata/:eventId.json"
+      "source": "/:network/metadata/:eventId/:tokenId",
+      "destination": "/:network/metadata/:eventId.json"
     },
-    {"source": "/metadata/:eventId", "destination": "/metadata/:eventId.json"},
-    {"source": "/badges/:eventId", "destination": "/badges/:eventId.png"},
-    {"source": "/details/:eventId", "destination": "/details/:eventId.png"},
-    {"source": "/merkle/:eventId", "destination": "/merkle/:eventId.png"},
-    {"source": "/(.*)", "destination": "/404.json"}
+    {
+      "source": "/:network/metadata/:eventId",
+      "destination": "/:network/metadata/:eventId.json"
+    },
+    {
+      "source": "/:network/badges/:eventId",
+      "destination": "/:network/badges/:eventId.png"
+    },
+    {
+      "source": "/:network/details/:eventId",
+      "destination": "/:network/details/:eventId.json"
+    },
+    {
+      "source": "/:network/merkle/:eventId",
+      "destination": "/:network/merkle/:eventId.json"
+    },
+    { "source": "/(.*)", "destination": "/404.json" }
   ],
   "functions": {
     "api/events.ts": {

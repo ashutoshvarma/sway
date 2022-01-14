@@ -1,0 +1,16 @@
+{
+  "description": "First Event on Sway",
+  "external_url": "https://static.sway.community/metadata/1",
+  "home_url": "https://www.sway.community/",
+  "image_url": "https://static.sway.community/badges/1",
+  "image": "https://static.sway.community/badges/1",
+  "name": "The Beginning of End",
+  "year": 2021,
+  "tags": ["sway", "event"],
+  "start_date": "2021-12-22",
+  "end_date": "2021-12-22",
+  "virtual_event": true,
+  "city": "Mumbai",
+  "country": "India",
+  "event_url": "https://www.sway.community/"
+}
