@@ -36,6 +36,7 @@ export async function saveProxy(
   }
 }
 
-export function sleep(ms: number, msg?:) {
+export function sleep(ms: number, msg?: string) {
+  if (msg) console.log(msg);
   return new Promise((resolve) => setTimeout(resolve, ms));
 }

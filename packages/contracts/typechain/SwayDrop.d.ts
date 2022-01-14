@@ -12,6 +12,7 @@ import {
   BaseContract,
   ContractTransaction,
   Overrides,
+  PayableOverrides,
   CallOverrides,
 } from "ethers";
 import { BytesLike } from "@ethersproject/bytes";
@@ -32,6 +33,8 @@ interface SwayDropInterface extends ethers.utils.Interface {
     "setSway(address)": FunctionFragment;
     "swayAddr()": FunctionFragment;
     "updateEvent(uint256,bytes32)": FunctionFragment;
+    "upgradeTo(address)": FunctionFragment;
+    "upgradeToAndCall(address,bytes)": FunctionFragment;
   };
 
   encodeFunctionData(
@@ -66,6 +69,11 @@ interface SwayDropInterface extends ethers.utils.Interface {
     functionFragment: "updateEvent",
     values: [BigNumberish, BytesLike]
   ): string;
+  encodeFunctionData(functionFragment: "upgradeTo", values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "upgradeToAndCall",
+    values: [string, BytesLike]
+  ): string;
 
   decodeFunctionResult(functionFragment: "addEvent", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "claim", data: BytesLike): Result;
@@ -84,17 +92,34 @@ interface SwayDropInterface extends ethers.utils.Interface {
     functionFragment: "updateEvent",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(functionFragment: "upgradeTo", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "upgradeToAndCall",
+    data: BytesLike
+  ): Result;
 
   events: {
+    "AdminChanged(address,address)": EventFragment;
+    "BeaconUpgraded(address)": EventFragment;
     "Paused(address)": EventFragment;
     "TokenClaimed(uint256,address)": EventFragment;
     "Unpaused(address)": EventFragment;
+    "Upgraded(address)": EventFragment;
   };
 
+  getEvent(nameOrSignatureOrTopic: "AdminChanged"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "BeaconUpgraded"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Paused"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "TokenClaimed"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Unpaused"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "Upgraded"): EventFragment;
 }
+
+export type AdminChangedEvent = TypedEvent<
+  [string, string] & { previousAdmin: string; newAdmin: string }
+>;
+
+export type BeaconUpgradedEvent = TypedEvent<[string] & { beacon: string }>;
 
 export type PausedEvent = TypedEvent<[string] & { account: string }>;
 
@@ -103,6 +128,8 @@ export type TokenClaimedEvent = TypedEvent<
 >;
 
 export type UnpausedEvent = TypedEvent<[string] & { account: string }>;
+
+export type UpgradedEvent = TypedEvent<[string] & { implementation: string }>;
 
 export class SwayDrop extends BaseContract {
   connect(signerOrProvider: Signer | Provider | string): this;
@@ -197,6 +224,17 @@ export class SwayDrop extends BaseContract {
       _roothash: BytesLike,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
+
+    upgradeTo(
+      newImplementation: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    upgradeToAndCall(
+      newImplementation: string,
+      data: BytesLike,
+      overrides?: PayableOverrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
   };
 
   addEvent(
@@ -249,6 +287,17 @@ export class SwayDrop extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
+  upgradeTo(
+    newImplementation: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  upgradeToAndCall(
+    newImplementation: string,
+    data: BytesLike,
+    overrides?: PayableOverrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
   callStatic: {
     addEvent(
       _eventId: BigNumberish,
@@ -296,9 +345,44 @@ export class SwayDrop extends BaseContract {
       _roothash: BytesLike,
       overrides?: CallOverrides
     ): Promise<void>;
+
+    upgradeTo(
+      newImplementation: string,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    upgradeToAndCall(
+      newImplementation: string,
+      data: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<void>;
   };
 
   filters: {
+    "AdminChanged(address,address)"(
+      previousAdmin?: null,
+      newAdmin?: null
+    ): TypedEventFilter<
+      [string, string],
+      { previousAdmin: string; newAdmin: string }
+    >;
+
+    AdminChanged(
+      previousAdmin?: null,
+      newAdmin?: null
+    ): TypedEventFilter<
+      [string, string],
+      { previousAdmin: string; newAdmin: string }
+    >;
+
+    "BeaconUpgraded(address)"(
+      beacon?: string | null
+    ): TypedEventFilter<[string], { beacon: string }>;
+
+    BeaconUpgraded(
+      beacon?: string | null
+    ): TypedEventFilter<[string], { beacon: string }>;
+
     "Paused(address)"(
       account?: null
     ): TypedEventFilter<[string], { account: string }>;
@@ -326,6 +410,14 @@ export class SwayDrop extends BaseContract {
     ): TypedEventFilter<[string], { account: string }>;
 
     Unpaused(account?: null): TypedEventFilter<[string], { account: string }>;
+
+    "Upgraded(address)"(
+      implementation?: string | null
+    ): TypedEventFilter<[string], { implementation: string }>;
+
+    Upgraded(
+      implementation?: string | null
+    ): TypedEventFilter<[string], { implementation: string }>;
   };
 
   estimateGas: {
@@ -377,6 +469,17 @@ export class SwayDrop extends BaseContract {
       _eventId: BigNumberish,
       _roothash: BytesLike,
       overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    upgradeTo(
+      newImplementation: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    upgradeToAndCall(
+      newImplementation: string,
+      data: BytesLike,
+      overrides?: PayableOverrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
   };
 
@@ -432,6 +535,17 @@ export class SwayDrop extends BaseContract {
       _eventId: BigNumberish,
       _roothash: BytesLike,
       overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    upgradeTo(
+      newImplementation: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    upgradeToAndCall(
+      newImplementation: string,
+      data: BytesLike,
+      overrides?: PayableOverrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
   };
 }
