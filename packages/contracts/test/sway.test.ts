@@ -7,8 +7,8 @@ describe('Sway', () => {
   it('should have correct name, symbol', async () => {
     const {sway} = await defaultFixture();
     const config = getConfig(network.name);
-    await expect(await sway.name()).equals(config.swayName);
-    await expect(await sway.symbol()).equals(config.swaySymbol);
+    await expect(await sway.name()).equals(config.contracts.name);
+    await expect(await sway.symbol()).equals(config.contracts.symbol);
   });
 
   it('minter should be able to mint', async () => {
@@ -32,7 +32,9 @@ describe('Sway', () => {
     const config = getConfig(network.name);
     await expect(await sway.ownerOf('1')).equals(await josh.getAddress());
 
-    await expect(await sway.tokenURI('1')).equals(`${config.swayBaseUri}1/1`);
+    await expect(await sway.tokenURI('1')).equals(
+      `${config.contracts.baseUri}1/1`
+    );
     await expect(sway.tokenURI('99999')).to.revertedWith(
       'Sway: URI query for nonexistent token'
     );

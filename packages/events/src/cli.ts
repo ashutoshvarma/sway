@@ -5,28 +5,46 @@ import { glob } from 'glob'
 import { plainToInstance } from 'class-transformer'
 import { Event as SwayEvent } from './events'
 import { validateOrReject } from 'class-validator'
+import { SwayNetworkNames } from '@sway/common/src'
 
 export const DIR_DATA = path.resolve(__dirname, '..', 'data')
-export const DIR_IMAGE = path.resolve(DIR_DATA, 'images')
-export const DIR_DETAILS = path.resolve(DIR_DATA, 'details')
-export const DIR_METADATA = path.resolve(DIR_DATA, 'metadata')
-export const DIR_MERKLE = path.resolve(DIR_DATA, 'merkle')
 export const IMG_EXT = 'png'
-
-export function getEventImagePath(id: number): string {
-  return path.resolve(DIR_IMAGE, `${id.toString()}.${IMG_EXT}`)
+export interface SwayStaticDirs {
+  baseData: string
+  images: string
+  details: string
+  merkle: string
+  metadata: string
 }
 
-export async function generateEventMetadata() {
+export function getStaticDirs(network: SwayNetworkNames): SwayStaticDirs {
+  const baseData = path.resolve(DIR_DATA, network)
+  return {
+    baseData,
+    details: path.resolve(baseData, 'details'),
+    images: path.resolve(baseData, 'images'),
+    merkle: path.resolve(baseData, 'merkle'),
+    metadata: path.resolve(baseData, 'metadata'),
+  }
+}
+
+export async function generateMetadata(network: SwayNetworkNames) {
+  console.log(`Building Metadata for ${network}`)
+  const dirs = getStaticDirs(network)
+  await _generate(dirs)
+  console.log()
+}
+
+async function _generate(dirs: SwayStaticDirs) {
   const files: string[] = await new Promise((resolve, reject) => {
-    glob(`*.json`, { cwd: DIR_DETAILS }, (err, files) =>
+    glob(`*.json`, { cwd: dirs.details }, (err, files) =>
       err === null ? resolve(files) : reject(err),
     )
   })
   for (const fname of files) {
-    const fpath = path.resolve(DIR_DETAILS, fname)
+    const fpath = path.resolve(dirs.details, fname)
     // const fmeta = path.resolve(DIR_METADATA, fname.split('.')[0])
-    const fmeta = path.resolve(DIR_METADATA, fname)
+    const fmeta = path.resolve(dirs.metadata, fname)
     console.log(`Processing ${fname}`)
 
     const event = plainToInstance(
@@ -54,4 +72,15 @@ export async function generateEventMetadata() {
   }
 }
 
-generateEventMetadata()
+async function main() {
+  for (const network in SwayNetworkNames) {
+    if (network === SwayNetworkNames.hardhat) continue
+    await generateMetadata(network as SwayNetworkNames)
+  }
+}
+
+main()
+  .catch((error) => {
+    console.error(error)
+  })
+  .then(() => process.exit(0))

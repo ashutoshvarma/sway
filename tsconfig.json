@@ -37,7 +37,7 @@
       "path": "packages/contracts"
     },
     {
-      "path": "packages/server"
+      "path": "packages/common"
     }
   ],
   "exclude": ["node_modules", "dist", "*.d.ts"]

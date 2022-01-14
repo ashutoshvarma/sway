@@ -1,0 +1,46 @@
+{
+  "eventId": "7",
+  "description": "This is an event description",
+  "external_url": "https://static.sway.community/metadata/7",
+  "home_url": "https://www.sway.community/",
+  "image_url": "https://static.sway.community/badges/2",
+  "image": "https://static.sway.community/badges/2",
+  "name": "This is a name",
+  "year": 2021,
+  "tags": [
+    "sway",
+    "event"
+  ],
+  "start_date": "2021-01-22",
+  "end_date": "2021-02-22",
+  "virtual_event": true,
+  "city": "city name ",
+  "country": "small country",
+  "event_url": "https://www.sway.community/",
+  "attributes": [
+    {
+      "trait_type": "start_date",
+      "value": "2021-01-22"
+    },
+    {
+      "trait_type": "end_date",
+      "value": "2021-02-22"
+    },
+    {
+      "trait_type": "virtual_event",
+      "value": "true"
+    },
+    {
+      "trait_type": "city",
+      "value": "city name "
+    },
+    {
+      "trait_type": "country",
+      "value": "small country"
+    },
+    {
+      "trait_type": "event_url",
+      "value": "https://www.sway.community/"
+    }
+  ]
+}
