@@ -3,7 +3,7 @@ import HeroSection from './HeroSection'
 import Collections from './Collections'
 import { useParams } from 'react-router-dom'
 import api, { CollectionInterface } from '../../utils/api'
-// import { useClaimStatus } from '../../hooks/events'
+import { useClaimStatus } from '../../hooks/events'
 import {
   Event as SwayEvent,
   SwayDropParticipants,
@@ -21,8 +21,8 @@ function EventDetailsContainer(): ReactElement {
   >()
   const [eventLoading, setEventLoading] = useState<boolean>(true)
   const [collectionsLoading, setCollectionsLoading] = useState<boolean>(true)
-  // const [claimStatus, boolean] = useClaimStatus(id, swayParticipants)
-  // console.log('claim status', claimStatus, boolean)
+  const [claimStatus, boolean] = useClaimStatus(id, swayParticipants)
+  console.log('claim status', claimStatus, boolean)
 
   useEffect(() => {
     ;(async () => {

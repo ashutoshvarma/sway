@@ -5,7 +5,7 @@ import { Contract } from '@ethersproject/contracts'
 import { AddressZero } from '@ethersproject/constants'
 import { Web3Provider, JsonRpcSigner } from '@ethersproject/providers'
 import { Sway, SwayDrop } from '@sway/contracts/typechain'
-import { SwayDropParticipants } from 'packages/events/src/events'
+import { SwayDropParticipants } from '@sway/events/src/events'
 
 export const truncate = (str: string, max_length: number): string => {
   if (str.length > max_length) {

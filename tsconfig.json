@@ -22,9 +22,9 @@
     "declarationMap": true,
     "declaration": true,
     "experimentalDecorators": true,
-    "paths": {
-      "@sway/*": ["packages/*/src/index.ts"]
-    }
+    // "paths": {
+    //   "@sway/*": ["packages/*/src/index.ts"]
+    // }
   },
   "references": [
     {

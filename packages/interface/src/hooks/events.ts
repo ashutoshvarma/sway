@@ -3,7 +3,7 @@ import {
   useGetConnectedSigner,
   useProvider,
 } from '@celo-tools/use-contractkit'
-import { SwayDropParticipants } from 'packages/events/src/events'
+import { SwayDropParticipants } from '@sway/events/src/events'
 import { getMerkleProof } from '@sway/contracts/utils/merkle'
 import { useEffect, useMemo, useState } from 'react'
 import { getSwayDropContract, indexInParticipants } from '../utils/helpers'
