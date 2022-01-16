@@ -24,7 +24,9 @@ export function indexInParticipants(
   address: string,
   participants: SwayDropParticipants,
 ): number {
-  return participants.participants.map((p) => p.toLowerCase()).indexOf(address)
+  return participants.participants
+    .map((p) => p.toLowerCase())
+    .indexOf(address.toLowerCase())
 }
 
 export const explorerLink = (hash: string) => {
