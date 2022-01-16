@@ -3,8 +3,8 @@
   "description": "This is an event description",
   "external_url": "https://static.sway.community/metadata/2",
   "home_url": "https://www.sway.community/",
-  "image_url": "https://static.sway.community/badges/2",
-  "image": "https://static.sway.community/badges/2",
+  "image_url": "https://static.sway.community/alfajores/badges/2",
+  "image": "https://static.sway.community/alfajores/badges/2",
   "name": "This is a name",
   "year": 2021,
   "tags": [
