@@ -21,8 +21,8 @@ function EventDetailsContainer(): ReactElement {
   >()
   const [eventLoading, setEventLoading] = useState<boolean>(true)
   const [collectionsLoading, setCollectionsLoading] = useState<boolean>(true)
-  const [claimStatus, boolean] = useClaimStatus(id, swayParticipants)
-  console.log('claim status', claimStatus, boolean)
+  const [claimStatus, loading] = useClaimStatus(id, swayParticipants)
+  console.log('claim status', { claimStatus, loading })
 
   useEffect(() => {
     ;(async () => {
