@@ -41,7 +41,6 @@ contract SwayDrop is Initializable, UUPSUpgradeable, PausableUpgradeable {
     }
 
     modifier onlyGovernorOrSway() {
-        console.log(msg.sender);
         require(
             SwayAdmin(swayAddr).isGovernor(msg.sender) || msg.sender == swayAddr,
             "SwayDrop: sender is not Sway or does not have Governor Role"
@@ -50,7 +49,6 @@ contract SwayDrop is Initializable, UUPSUpgradeable, PausableUpgradeable {
     }
 
     modifier onlyGovernor() {
-        console.log(msg.sender);
         require(
             SwayAdmin(swayAddr).isGovernor(msg.sender),
             "SwayDrop: sender does not have Governor Role"
