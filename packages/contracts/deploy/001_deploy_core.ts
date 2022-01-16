@@ -77,7 +77,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   await save('Sway', swayArtifact);
   await save('SwayDrop', swayDropArtifact);
 
-  return true;
+  return hre.network.live ? true : false;
 };
 
 export default func;

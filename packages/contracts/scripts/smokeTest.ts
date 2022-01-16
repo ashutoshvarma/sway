@@ -38,6 +38,12 @@ async function swaySimple() {
       await run('event:minter', {event: id.toNumber(), minter: amy.address});
     }
   }
+
+  await run('event:addDrop', {event: 1});
+  await run('event:claim', {
+    event: 1,
+    to: '0x5394e0594fC270ff22f99b4A73AF3Cad5ca8D0d7',
+  });
 }
 
 async function main() {

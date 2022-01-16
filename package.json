@@ -2,6 +2,7 @@
   "name": "sway",
   "packageManager": "yarn@3.1.1",
   "scripts": {
+    "events": "yarn workspace @sway/events",
     "contracts": "yarn workspace @sway/contracts",
     "subgraph": "yarn workspace @sway/subgraph",
     "interface": "yarn workspace @sway/interface",

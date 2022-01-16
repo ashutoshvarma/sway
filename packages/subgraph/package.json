@@ -2,6 +2,7 @@
   "name": "@sway/subgraph",
   "license": "GPLv2",
   "scripts": {
+    "clean": "rm -fr data generated build docker-compose.yml subgraph.yaml",
     "graph-node": "mustache ./config/${NETWORK:-localhost}.json docker-compose.template.yml > docker-compose.yml && docker-compose up",
     "chain:start": "yarn workspace @sway/contracts hardhat node --watch --hostname 0.0.0.0 --export-all deployments.json",
     "chain:smoke": "yarn workspace @sway/contracts execute localhost scripts/smokeTest.ts",
