@@ -46,7 +46,7 @@ export const CONFIGS: {
     server: {
       static: 'https://static.sway.community/alfajores/',
       subgraph:
-        'https://thegraph.com/hosted-service/subgraph/ashutoshvarma/sway-alfajores',
+        'https://api.thegraph.com/subgraphs/name/ashutoshvarma/sway-alfajores',
     },
   },
   [SwayNetworkNames.localhost]: {
@@ -55,11 +55,12 @@ export const CONFIGS: {
       name: 'Sway Protocol',
       baseUriExtension: '',
       // make sure url ends with trailing '/'
-      baseUri: 'https://static.sway.community/lo/metadata/',
+      baseUri: 'https://static.sway.community/localhost/metadata/',
     },
     server: {
-      static: 'http://localhost:8000/localhost/',
-      subgraph: 'http://localhost:5000/localhost/',
+      static: 'http://localhost:3001/localhost/',
+      subgraph:
+        ' http://localhost:8000/subgraphs/name/ashutoshvarma/sway-localhost',
     },
   },
   [SwayNetworkNames.hardhat]: {
@@ -68,11 +69,12 @@ export const CONFIGS: {
       name: 'Sway Protocol',
       baseUriExtension: '',
       // make sure url ends with trailing '/'
-      baseUri: 'https://static.sway.community/lo/metadata/',
+      baseUri: 'https://static.sway.community/localhost/metadata/',
     },
     server: {
-      static: 'http://localhost:8000/localhost/',
-      subgraph: 'http://localhost:5000/localhost/',
+      static: 'http://localhost:3001/localhost/',
+      subgraph:
+        ' http://localhost:8000/subgraphs/name/ashutoshvarma/sway-localhost',
     },
   },
 }
