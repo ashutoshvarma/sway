@@ -11,6 +11,8 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const {save} = deployments;
   const config = getConfig(hre.network.name);
 
+  console.log(`Deploy Config: ${JSON.stringify(config, null, 2)}`);
+
   const Sway = await (
     await ethers.getContractFactory<Sway__factory>('Sway')
   ).connect(sDeployer);
@@ -77,7 +79,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   await save('Sway', swayArtifact);
   await save('SwayDrop', swayDropArtifact);
 
-  return true;
+  return hre.network.live ? true : false;
 };
 
 export default func;

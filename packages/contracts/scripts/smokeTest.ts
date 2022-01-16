@@ -1,5 +1,6 @@
 import {BigNumber} from '@ethersproject/bignumber';
 import {ethers, run, network} from 'hardhat';
+import {getEventMerkleParticipants} from '@sway/events/src';
 
 async function swaySimple() {
   const accounts = await ethers.getSigners();
@@ -38,6 +39,14 @@ async function swaySimple() {
       await run('event:minter', {event: id.toNumber(), minter: amy.address});
     }
   }
+
+  await run('event:addDrop', {event: 1});
+  const participant = (await getEventMerkleParticipants(1, network.name))
+    .participants[0];
+  await run('event:claim', {
+    event: 1,
+    to: participant,
+  });
 }
 
 async function main() {

@@ -2,6 +2,6 @@
   "network": "celo-alfajores",
   "rpc": "https://alfajores-forno.celo-testnet.org",
   "startBlock": 9000000,
-  "SwayAddress": "0x65454344E550e8de4B9E9a79d371641c97B9F2a0",
-  "SwayDropAddress": "0x2efD00bE2b33bD1cE659ADEc7a3ec7D4b326174F"
+  "SwayAddress": "0xd27e4398482E0d57341A21eF452c62ffE2CD6aC2",
+  "SwayDropAddress": "0x753656E0793063690b0F7032e95658EE5F54ab38"
 }

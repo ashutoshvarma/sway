@@ -6,27 +6,7 @@ import { plainToInstance } from 'class-transformer'
 import { Event as SwayEvent } from './events'
 import { validateOrReject } from 'class-validator'
 import { SwayNetworkNames } from '@sway/common/src'
-
-export const DIR_DATA = path.resolve(__dirname, '..', 'data')
-export const IMG_EXT = 'png'
-export interface SwayStaticDirs {
-  baseData: string
-  images: string
-  details: string
-  merkle: string
-  metadata: string
-}
-
-export function getStaticDirs(network: SwayNetworkNames): SwayStaticDirs {
-  const baseData = path.resolve(DIR_DATA, network)
-  return {
-    baseData,
-    details: path.resolve(baseData, 'details'),
-    images: path.resolve(baseData, 'images'),
-    merkle: path.resolve(baseData, 'merkle'),
-    metadata: path.resolve(baseData, 'metadata'),
-  }
-}
+import { getStaticDirs, SwayStaticDirs } from './index'
 
 export async function generateMetadata(network: SwayNetworkNames) {
   console.log(`Building Metadata for ${network}`)

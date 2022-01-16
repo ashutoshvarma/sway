@@ -180,7 +180,7 @@ const api = {
       created: string
       metadataUri: string
       transactionHash?: string
-      metadata: SwayEvent
+      eventId: string
     }[]
   } | null> => {
     // subgraph has lowercase address
@@ -193,17 +193,14 @@ const api = {
     if (!account) return null
     return {
       tokensOwned: account.tokensOwned,
-      tokens: await Promise.all(
-        account.tokens.map(async (t) => {
-          const metadata = await api.getEventMetadata(t.event.id)
-          return {
-            created: t.created,
-            metadataUri: t.metadataUri,
-            transactionHash: t.transfers[0]?.transaction,
-            metadata,
-          }
-        }),
-      ),
+      tokens: account.tokens.map((t) => {
+        return {
+          created: t.created,
+          metadataUri: t.metadataUri,
+          transactionHash: t.transfers[0]?.transaction,
+          eventId: t.event.id,
+        }
+      }),
     }
   },
 

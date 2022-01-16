@@ -3,7 +3,7 @@ import {
   useGetConnectedSigner,
   useProvider,
 } from '@celo-tools/use-contractkit'
-import { SwayDropParticipants } from 'packages/events/src/events'
+import { SwayDropParticipants } from '@sway/events/src/events'
 import { getMerkleProof } from '@sway/contracts/utils/merkle'
 import { useEffect, useMemo, useState } from 'react'
 import { getSwayDropContract, indexInParticipants } from '../utils/helpers'
@@ -30,15 +30,15 @@ export function useClaimStatus(
   useEffect(() => {
     try {
       setLoading(true)
-      if (account && participants) {
+      if (account && participants?.participants) {
         // check if account in drop list
         if (indexInParticipants(account, participants) !== -1) {
           // get if already claimed
           getSwayDropContract(library)
             .claimed(eventId, account)
-            .then((c) =>
-              setStatus(c === true ? ClaimStatus.CLAIMED : ClaimStatus.AVAIL),
-            )
+            .then((c) => {
+              setStatus(c === true ? ClaimStatus.CLAIMED : ClaimStatus.AVAIL)
+            })
         } else {
           setStatus(ClaimStatus.NOT_AVAIL)
         }
@@ -48,7 +48,7 @@ export function useClaimStatus(
     } finally {
       setLoading(false)
     }
-  }, [eventId, chainId, library])
+  }, [account, participants, eventId, chainId, library])
 
   return [status, loading]
 }
@@ -105,5 +105,5 @@ export function useClaimCallback(
       },
       error: null,
     }
-  }, [eventId, chainId, library, getConnectedSigner, participants])
+  }, [account, eventId, chainId, library, getConnectedSigner, participants])
 }

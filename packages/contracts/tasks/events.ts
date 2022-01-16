@@ -56,6 +56,7 @@ export async function add_event_drop(
   const sGovernor = await ethers.getNamedSigner('governorAddr');
   const participants = await getEventMerkleParticipants(
     taskArgs.event,
+    hre.network.name,
     taskArgs.json
   );
   const root = getMerkleRoot(participants.participants, taskArgs.event);
@@ -127,6 +128,7 @@ export async function claim(
 
   const dropParticipants = await getEventMerkleParticipants(
     taskArgs.event,
+    hre.network.name,
     taskArgs.json
   );
 

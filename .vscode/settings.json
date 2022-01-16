@@ -8,6 +8,7 @@
   },
   "solidity.enabledAsYouTypeCompilationErrorCheck": true,
   "cSpell.words": [
+    "merkle",
     "sourcify",
     "typechain",
     "uups"

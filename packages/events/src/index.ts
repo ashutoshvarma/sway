@@ -5,33 +5,47 @@ import { plainToInstance } from 'class-transformer'
 import { SwayDropParticipants } from './events'
 import { validateOrReject } from 'class-validator'
 import { isAddress } from '@ethersproject/address'
+import { SwayNetworkNames } from '@sway/common/src'
 
 export const DIR_DATA = path.resolve(__dirname, '..', 'data')
-export const DIR_IMAGE = path.resolve(DIR_DATA, 'images')
-export const DIR_DETAILS = path.resolve(DIR_DATA, 'details')
-export const DIR_METADATA = path.resolve(DIR_DATA, 'metadata')
-export const DIR_MERKLE = path.resolve(DIR_DATA, 'merkle')
 export const IMG_EXT = 'png'
-
-export function getEventImagePath(id: number): string {
-  const p = path.resolve(DIR_IMAGE, `${id.toString()}.${IMG_EXT}`)
-  if (!fs.existsSync(p))
-    throw new Error(`Cannot find image file for event ${id}`)
-  return p
+export interface SwayStaticDirs {
+  baseData: string
+  images: string
+  details: string
+  merkle: string
+  metadata: string
 }
 
-export function getEventMerkleJSONPath(id: number): string {
-  const p = path.resolve(DIR_MERKLE, `${id.toString()}.json`)
-  if (!fs.existsSync(p))
-    throw new Error(`Cannot find merkle json file for event ${id}`)
-  return p
+export function getStaticDirs(network: SwayNetworkNames): SwayStaticDirs {
+  const baseData = path.resolve(DIR_DATA, network)
+  return {
+    baseData,
+    details: path.resolve(baseData, 'details'),
+    images: path.resolve(baseData, 'images'),
+    merkle: path.resolve(baseData, 'merkle'),
+    metadata: path.resolve(baseData, 'metadata'),
+  }
+}
+
+export function getEventMerkleJSONPath(id: number, network: string): string {
+  if (Object.values(SwayNetworkNames).includes(network as SwayNetworkNames)) {
+    const merkleDir = getStaticDirs(network as SwayNetworkNames).merkle
+    const p = path.resolve(merkleDir, `${id.toString()}.json`)
+    if (!fs.existsSync(p))
+      throw new Error(`Cannot find merkle json file for event ${id}`)
+    return p
+  } else {
+    throw new Error(`Network ${network} is not a valid SwayNetwork`)
+  }
 }
 
 export async function getEventMerkleParticipants(
   id: number,
+  network: string,
   participantsJsonPath?: string,
 ): Promise<SwayDropParticipants> {
-  const jsonPath = participantsJsonPath || getEventMerkleJSONPath(id)
+  const jsonPath = participantsJsonPath || getEventMerkleJSONPath(id, network)
   const participants = plainToInstance(
     SwayDropParticipants,
     JSON.parse(await fs.promises.readFile(jsonPath, { encoding: 'utf8' })),

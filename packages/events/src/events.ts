@@ -82,27 +82,3 @@ export class Event {
     }
   }
 }
-
-// export async function createEventWithMerkle(
-//   minter: string,
-//   participantsJsonPath: string,
-// ): Promise<[BigNumber, string]> {
-//   const participants = plainToInstance(
-//     SwayDropParticipants,
-//     JSON.parse(
-//       await fs.promises.readFile(participantsJsonPath, { encoding: 'utf8' }),
-//     ),
-//   )
-
-//   await validateOrReject(participants)
-//   // verify all are address
-//   if (!participants.participants.every((a) => isAddress(a)))
-//     throw new Error('Not all Participants are valid')
-
-//   // create event
-//   const eventId = await createEvent(minter)
-//   const root = getMerkleRoot(participants.participants, eventId)
-//   // add root
-//   await addEventDrop(eventId, root)
-//   return [eventId, root]
-// }

@@ -7,6 +7,7 @@ import SwayDropCelo from '@sway/contracts/deployments/alfajores/SwayDrop.json'
 // alfajores
 import SwayAlfajores from '@sway/contracts/deployments/alfajores/Sway.json'
 import SwayDropAlfajores from '@sway/contracts/deployments/alfajores/SwayDrop.json'
+import { CONFIGS, SwayNetworkNames } from '@sway/common/src'
 
 export const NETWORK_CHAIN_ID = Number(
   process.env['REACT_APP_NETWORK_CHAIN_ID'],
@@ -30,3 +31,8 @@ export const DEPLOYMENTS =
         SwayDrop: SwayDropAlfajores,
       }
     : null
+
+export const CONFIG =
+  NETWORK && NETWORK.chainId === Mainnet.chainId
+    ? CONFIGS[SwayNetworkNames.celo]
+    : CONFIGS[SwayNetworkNames.alfajores]

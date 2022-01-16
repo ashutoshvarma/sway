@@ -157,7 +157,7 @@ contract SwayAdmin is
         require(rootHash != bytes32(0), "SwayAdmin: rootHash is zero");
         require(eventRoleMapping[eventId] != bytes32(0), "SwayAdmin: eventId not found");
         // add event root hash in SwayDrop
-        drop.addEvent(lastEventId, rootHash);
+        drop.addEvent(eventId, rootHash);
         // add SwayDrop as minter
         _addEventMinter(eventId, address(drop));
     }

@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
-import "hardhat/console.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/cryptography/MerkleProofUpgradeable.sol";
@@ -42,7 +41,6 @@ contract SwayDrop is Initializable, UUPSUpgradeable, PausableUpgradeable {
     }
 
     modifier onlyGovernorOrSway() {
-        console.log(msg.sender);
         require(
             SwayAdmin(swayAddr).isGovernor(msg.sender) || msg.sender == swayAddr,
             "SwayDrop: sender is not Sway or does not have Governor Role"
@@ -51,7 +49,6 @@ contract SwayDrop is Initializable, UUPSUpgradeable, PausableUpgradeable {
     }
 
     modifier onlyGovernor() {
-        console.log(msg.sender);
         require(
             SwayAdmin(swayAddr).isGovernor(msg.sender),
             "SwayDrop: sender does not have Governor Role"

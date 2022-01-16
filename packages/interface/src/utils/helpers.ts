@@ -5,7 +5,7 @@ import { Contract } from '@ethersproject/contracts'
 import { AddressZero } from '@ethersproject/constants'
 import { Web3Provider, JsonRpcSigner } from '@ethersproject/providers'
 import { Sway, SwayDrop } from '@sway/contracts/typechain'
-import { SwayDropParticipants } from 'packages/events/src/events'
+import { SwayDropParticipants } from '@sway/events/src/events'
 
 export const truncate = (str: string, max_length: number): string => {
   if (str.length > max_length) {
@@ -24,7 +24,9 @@ export function indexInParticipants(
   address: string,
   participants: SwayDropParticipants,
 ): number {
-  return participants.participants.map((p) => p.toLowerCase()).indexOf(address)
+  return participants.participants
+    .map((p) => p.toLowerCase())
+    .indexOf(address.toLowerCase())
 }
 
 export const explorerLink = (hash: string) => {
