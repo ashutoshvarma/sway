@@ -10,3 +10,5 @@ build
 subgraph.yaml
 docker-compose.yml
 generated
+
+config/localhost.json

@@ -26,4 +26,6 @@ deployments/hardhat
 deployments/localhost
 deployments.json
 
+.openzeppelin/unknown-31337.json
+
 smoke.log
