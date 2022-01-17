@@ -11,17 +11,16 @@ import pinterest from '../../assets/icons/pinterest.svg'
 import twitter from '../../assets/icons/twitter.svg'
 
 interface Props {
-  loading?: boolean,
+  loading?: boolean
   token?: Token
 }
 
-
-function Card({loading,token}:Props): ReactElement {
+function Card({ loading, token }: Props): ReactElement {
   let classes = [styles['Card']]
-  if(loading) classes.push(styles['Loading'])
+  if (loading) classes.push(styles['Loading'])
 
   return (
-    <div className={classes.join(" ")}>
+    <div className={classes.join(' ')}>
       <div className={styles['CardThumbContainer']}>
         <img
           src={token?.image_url || cardImg}
