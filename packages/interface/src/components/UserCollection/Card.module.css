@@ -63,6 +63,15 @@
   color: var(--primary-color);
 }
 
+.Loading .DetailsGrid .Completed,
+.Loading .DetailsGrid .Hash {
+  background-color: #e2e2e2;
+  border-radius: 5px;
+  max-width: 150px;
+  margin: 0px auto;
+  color:transparent
+}
+
 .DetailsGrid .Head {
   color: #000000;
 }

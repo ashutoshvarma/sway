@@ -59,6 +59,31 @@
   padding: 14px 20px;
 }
 
+.ConnectDiv {
+  color: #888;
+  text-align: center;
+  margin: 30px 0px;
+  padding: 30px;
+  background-color: #eee7;
+  border-radius: 5px;
+}
+
+.ConnectDiv h3 {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.ConnectDiv button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e8cd00;
+  color: white;
+  font-size: 17px;
+  font-weight: 400;
+  font-family: 'CircularStd';
+}
+
 @media (max-width: 600px) {
   .Dropdown {
     font-size: 16px;
