@@ -3,9 +3,6 @@ import styles from './Collections.module.css'
 import Card from './Card'
 import api from '../../utils/api';
 
-import {
-  Event as SwayEvent,
-} from '@sway/events/src/events'
 import { useContractKit } from '@celo-tools/use-contractkit'
 import 'react-dropdown/style.css'
 import Dropdown from 'react-dropdown'
@@ -18,7 +15,7 @@ export interface Token {
     created: string;
     metadataUri: string;
     transactionHash?: string | undefined;
-    metadata: SwayEvent;
+    eventId: string;
 }
 
 function Collections(): ReactElement {
