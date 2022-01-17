@@ -8,6 +8,7 @@
   },
   "solidity.enabledAsYouTypeCompilationErrorCheck": true,
   "cSpell.words": [
+    "blockscout",
     "merkle",
     "sourcify",
     "typechain",

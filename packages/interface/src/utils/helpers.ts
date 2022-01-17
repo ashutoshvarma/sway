@@ -36,9 +36,17 @@ export function indexInParticipants(
     .indexOf(address.toLowerCase())
 }
 
-export const explorerLink = (hash: string, isTx = false) => {
+/**
+ *
+ * @param hashOrAddress Transaction Hash or user address
+ * @param isTx If it is transaction hash
+ * @returns blockscout link
+ */
+export const explorerLink = (hashOrAddress: string, isTx = false) => {
   const explorer = NETWORK ? NETWORK.explorer : Mainnet.explorer
-  return isTx ? `${explorer}/tx/${hash}` : `${explorer}/address/${hash}`
+  return isTx
+    ? `${explorer}/tx/${hashOrAddress}`
+    : `${explorer}/address/${hashOrAddress}`
 }
 
 // account is not optional
