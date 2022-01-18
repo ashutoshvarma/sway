@@ -93,6 +93,11 @@
   pointer-events: none;
 }
 
+.Loading .EventId a:link {
+  color: transparent;
+  pointer-events: none;
+}
+
 .DetailsGrid .Head {
   color: #000000;
 }
@@ -112,3 +117,5 @@
 .Share img:hover {
   opacity: 1;
 }
+
+
