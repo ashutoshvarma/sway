@@ -8,7 +8,8 @@ import 'react-dropdown/style.css'
 import Dropdown from 'react-dropdown'
 
 
-const options = ['Event', 'Something else']
+const options: [string, string, string, string] = ['Created: High to Low', 'Created: Low to High', 'Event Id: High to Low', "Event Id: Low to High"]
+// created by, event idy
 const defaultOption = options[0]
 
 export interface Token {
@@ -21,20 +22,57 @@ export interface Token {
 function Collections(): ReactElement {
   const { connect, address } = useContractKit()
   const [tokens, setTokens] = useState<Token[] | null>(null)
+  const [sorting, setSorting] = useState<string>(options[0])
   const [tokenLoading, setTokenLoading] = useState<Boolean>(false)
   useEffect(()=>{
     (async()=>{
       if(address){
         setTokenLoading(true)
         let data = await api.getUserTokenInfo(address);
-        data? setTokens(data.tokens): setTokens([]);
+
+        let newTokens = data? data.tokens: [];
+        newTokens = sortTokens(newTokens)
+        setTokens(newTokens)
         setTokenLoading(false) 
       }
       else 
       setTokens(null)
 
     })()
+    // eslint-disable-next-line
   },[address])
+
+  useEffect(()=>{
+    if(tokens)
+    {
+      let sortedTokens = sortTokens(tokens);
+      setTokens(sortedTokens)
+    }
+    // eslint-disable-next-line
+  }, [sorting])
+  
+  const sortTokens = (tokens:Token[])=>{
+    let newTokens = [...tokens];
+    switch(sorting){
+      case "Created: High to Low":
+        newTokens.sort((a,b)=>Number(Number(b.created)- Number(a.created)));
+        break;
+        
+      case "Created: Low to High":
+        newTokens.sort((a,b)=>Number(Number(a.created) -Number(b.created)));
+        break;
+        
+      case "Event Id: High to Low":
+        newTokens.sort((a,b)=>Number(Number(b.eventId) -Number(a.eventId)));
+        break;
+        case "Event Id: Low to High":
+          newTokens.sort((a,b)=>Number(Number(a.eventId) - Number(b.eventId)));
+        break;
+
+    }
+    return newTokens;    
+  }
+  
 
 
 
@@ -75,7 +113,7 @@ function Collections(): ReactElement {
           <div style={{ display: 'flex' }}>
             <Dropdown
               options={options}
-              // onChange={this._onSelect}
+              onChange={(op)=>{setSorting(op.value); console.log(op.value)}}
               className={styles['DropdownRoot']}
               controlClassName={styles['Dropdown']}
               placeholderClassName={styles['DropdownPlaceholder']}
@@ -87,9 +125,6 @@ function Collections(): ReactElement {
         </div>
        {renderTokens()}
         
-        {/* <div className={styles['CreateContainer']}>
-          <button>Create Event</button>
-        </div> */}
       </div>
     </section>
   )

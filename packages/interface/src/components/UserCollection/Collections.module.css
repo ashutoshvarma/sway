@@ -15,7 +15,7 @@
 
 .CollectionGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
   margin: 40px 0;
 }
@@ -47,7 +47,7 @@
   color: #585976;
 }
 .DropdownPlaceholder::before {
-  content: 'Filter By: ';
+  content: 'Sort By: ';
 }
 
 .DropdownMenu {
