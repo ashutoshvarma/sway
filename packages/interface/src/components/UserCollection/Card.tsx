@@ -34,7 +34,7 @@ function Card({ loading, token }: Props): ReactElement {
         </Link>
       </div>
       <div className={styles['EventId']}>
-        <Link to={`event/${token?.eventId}`}><span>#{token?.eventId}</span></Link>
+        <Link to={`/event/${token?.eventId}`}><span>#{token?.eventId}</span></Link>
       </div>
       <div className={styles['DetailsGrid']}>
         <span className={styles['Head']}>Status</span>
