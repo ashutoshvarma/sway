@@ -105,7 +105,7 @@ function Collections(): ReactElement {
     else if(!tokenLoading && !tokens?.length)
     return(
       <div className={styles['ConnectDiv']}>
-        <h3>No tokens available for this account</h3>
+        <h3>You're yet to own a Sway!</h3>
       </div>
     )
     else 
