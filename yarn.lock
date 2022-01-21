@@ -130,7 +130,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-create-class-features-plugin@npm:^7.16.7":
+"@babel/helper-create-class-features-plugin@npm:^7.16.10, @babel/helper-create-class-features-plugin@npm:^7.16.7":
   version: 7.16.10
   resolution: "@babel/helper-create-class-features-plugin@npm:7.16.10"
   dependencies:
@@ -569,15 +569,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-proposal-private-methods@npm:^7.16.0, @babel/plugin-proposal-private-methods@npm:^7.16.7":
-  version: 7.16.7
-  resolution: "@babel/plugin-proposal-private-methods@npm:7.16.7"
+"@babel/plugin-proposal-private-methods@npm:^7.16.0, @babel/plugin-proposal-private-methods@npm:^7.16.11":
+  version: 7.16.11
+  resolution: "@babel/plugin-proposal-private-methods@npm:7.16.11"
   dependencies:
-    "@babel/helper-create-class-features-plugin": ^7.16.7
+    "@babel/helper-create-class-features-plugin": ^7.16.10
     "@babel/helper-plugin-utils": ^7.16.7
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: 1d3aef6f1818278d257ed6f1a90ec3b0cfe85e1b24cabf1bcd0d2a0033f8ae15f9cb36140ec2adc2a317f63fc78095ce0b5c154f73128e0f84480879a4b64269
+  checksum: b333e5aa91c265bb394a57b5f4ae1a34fc8ee73a8d75506b12df258d8b5342107cbd9261f95e606bd3264a5b023db77f1f95be30c2e526683916c57f793f7943
   languageName: node
   linkType: hard
 
@@ -1307,8 +1307,8 @@ __metadata:
   linkType: hard
 
 "@babel/preset-env@npm:^7.12.1, @babel/preset-env@npm:^7.16.4, @babel/preset-env@npm:^7.8.4":
-  version: 7.16.10
-  resolution: "@babel/preset-env@npm:7.16.10"
+  version: 7.16.11
+  resolution: "@babel/preset-env@npm:7.16.11"
   dependencies:
     "@babel/compat-data": ^7.16.8
     "@babel/helper-compilation-targets": ^7.16.7
@@ -1328,7 +1328,7 @@ __metadata:
     "@babel/plugin-proposal-object-rest-spread": ^7.16.7
     "@babel/plugin-proposal-optional-catch-binding": ^7.16.7
     "@babel/plugin-proposal-optional-chaining": ^7.16.7
-    "@babel/plugin-proposal-private-methods": ^7.16.7
+    "@babel/plugin-proposal-private-methods": ^7.16.11
     "@babel/plugin-proposal-private-property-in-object": ^7.16.7
     "@babel/plugin-proposal-unicode-property-regex": ^7.16.7
     "@babel/plugin-syntax-async-generators": ^7.8.4
@@ -1386,7 +1386,7 @@ __metadata:
     semver: ^6.3.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: cd39d0c30a3b3d24f36ae4822e9368bc758c904039599ce26239932c0e0f537e8d3ec9b9e952ddb9f0a459d06254c138e71b89cee5be7709ef2a0890f503d915
+  checksum: c8029c272073df787309d983ae458dd094b57f87152b8ccad95c7c8b1e82b042c1077e169538aae5f98b7659de0632d10708d9c85acf21a5e9406d7dd3656d8c
   languageName: node
   linkType: hard
 
@@ -2926,8 +2926,8 @@ __metadata:
   linkType: hard
 
 "@openzeppelin/upgrades-core@npm:^1.9.0":
-  version: 1.11.0
-  resolution: "@openzeppelin/upgrades-core@npm:1.11.0"
+  version: 1.11.1
+  resolution: "@openzeppelin/upgrades-core@npm:1.11.1"
   dependencies:
     bn.js: ^5.1.2
     cbor: ^8.0.0
@@ -2937,7 +2937,7 @@ __metadata:
     ethereumjs-util: ^7.0.3
     proper-lockfile: ^4.1.1
     solidity-ast: ^0.4.15
-  checksum: b2e9c848539cb99e93a4f93470dc90376eeb61cc7841870dc2c10b0a501bbdea6b687c3779ecf207a9e7c298df80892615ac1ba3cb12ac316f4b44af0e48f858
+  checksum: 7fb6e98044bb20726d0b5e34aa7e91ca50d4bc60777719336e443a6ab23b6098995689688740b2000ce545aefdc9ab9a78cc55985e137db020b618cb9ea2933a
   languageName: node
   linkType: hard
 
@@ -3674,25 +3674,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@truffle/interface-adapter@npm:^0.5.8":
-  version: 0.5.8
-  resolution: "@truffle/interface-adapter@npm:0.5.8"
+"@truffle/interface-adapter@npm:^0.5.9":
+  version: 0.5.9
+  resolution: "@truffle/interface-adapter@npm:0.5.9"
   dependencies:
     bn.js: ^5.1.3
     ethers: ^4.0.32
     web3: 1.5.3
-  checksum: 1cb7e59ae3629d20e92ecaf3e8321fcec0e852ae37ceedb92bb6c8c801d57017d2989ef1624283b7cf11ed8e6e492d8b7f25b489d252006271546e4c4060f960
+  checksum: 519dbeefbb750195e62645a025171b9ae634846daaf779483c184393c7998734c80387ce2fbb6952f767dfccb4b5ac5ae4c86989d9426df49eb2a87bf07e24b8
   languageName: node
   linkType: hard
 
 "@truffle/provider@npm:^0.2.24":
-  version: 0.2.42
-  resolution: "@truffle/provider@npm:0.2.42"
+  version: 0.2.43
+  resolution: "@truffle/provider@npm:0.2.43"
   dependencies:
     "@truffle/error": ^0.0.14
-    "@truffle/interface-adapter": ^0.5.8
+    "@truffle/interface-adapter": ^0.5.9
     web3: 1.5.3
-  checksum: a5eb74ae1f77d57446c16e2445926dc9035ea58edffa1dcf5de93f278cdd4730555ab41c0a59366194790df6910748fc3ace8067a6f5f6517353962fbe461b6b
+  checksum: a7c6e3c3fb0dd0900423ba8e1e2e6a43ff09c013244cff655a50fce44b72205b4073b72c48ed0fab61ab767663c8793e3dec885659f057db19b2b46bc5a3902b
   languageName: node
   linkType: hard
 
@@ -6567,7 +6567,7 @@ __metadata:
     create-hash: ^1.1.0
     pbkdf2: ^3.0.9
     randombytes: ^2.0.1
-  checksum: e66debe9ca19f14b46b4f8189019540034db63e5304299eb8cf5747f67c8747e0b349af8464ff6abaa66fc4bdb70ce6d7fdee5d32b55b45938ff69453587f221
+  checksum: 444efc9a61b4ffa4a4166b995e64eaf92bffd02b1aa927e1f757318970ce0247fe75f24fc2778fc96f2d74757e40d8487ebb7be568d7b66acf2fe387f829cc0f
   languageName: node
   linkType: hard
 
@@ -8271,11 +8271,11 @@ __metadata:
   linkType: hard
 
 "cross-fetch@npm:^3.0.6":
-  version: 3.1.4
-  resolution: "cross-fetch@npm:3.1.4"
+  version: 3.1.5
+  resolution: "cross-fetch@npm:3.1.5"
   dependencies:
-    node-fetch: 2.6.1
-  checksum: 2107e5e633aa327bdacab036b1907c7ddd28651ede0c1d4fd14db04510944d56849a8255e2f5b8f9a1da0e061b6cee943f6819fe29ed9a130195e7fadd82a4ff
+    node-fetch: 2.6.7
+  checksum: f6b8c6ee3ef993ace6277fd789c71b6acf1b504fd5f5c7128df4ef2f125a429e29cd62dc8c127523f04a5f2fa4771ed80e3f3d9695617f441425045f505cf3bb
   languageName: node
   linkType: hard
 
@@ -10945,9 +10945,9 @@ __metadata:
   linkType: hard
 
 "fast-redact@npm:^3.0.0":
-  version: 3.0.2
-  resolution: "fast-redact@npm:3.0.2"
-  checksum: f4ffdf48f1647dbe0411884e5dca85ebef0762d1ce1937f6779beaea5c83ef7c35416d800b2bff60f1a252b670d1707f9484c9a5d0ef721e68f3dae94b420fa8
+  version: 3.1.0
+  resolution: "fast-redact@npm:3.1.0"
+  checksum: 0d4d9386aefa9e20a5785855655f7150b859311dae2603afaa6fa36262ea0a4c5e24c7b4630ec360636763d7e5d554abc7e7939c4ed0980e2164ecc8d2877d6b
   languageName: node
   linkType: hard
 
@@ -12218,8 +12218,8 @@ __metadata:
   linkType: hard
 
 "hardhat-deploy@npm:^0.9.24":
-  version: 0.9.24
-  resolution: "hardhat-deploy@npm:0.9.24"
+  version: 0.9.26
+  resolution: "hardhat-deploy@npm:0.9.26"
   dependencies:
     "@ethersproject/abi": ^5.4.0
     "@ethersproject/abstract-signer": ^5.4.1
@@ -12246,7 +12246,7 @@ __metadata:
   peerDependencies:
     "@ethersproject/hardware-wallets": ^5.0.14
     hardhat: ^2.6.8
-  checksum: 5b592bc846097dc18c9e25df772f29ef0a304c09cf54142204db1f21825b51cf1642d1dae7bd5bf31b82bf2dbb8416d63f5a3696901d7a68ecf224b651dd20b7
+  checksum: bd905d65d825250a98e0530f8d5c55a4d0012254fb54b1aa077ccbbd03ff9c923fdb273ce00e4818fd8e4517d68d8959c43c681a043944dfd7463848be7881df
   languageName: node
   linkType: hard
 
@@ -16925,7 +16925,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:2, node-fetch@npm:^2.3.0, node-fetch@npm:^2.6.0, node-fetch@npm:^2.6.1":
+"node-fetch@npm:2, node-fetch@npm:2.6.7, node-fetch@npm:^2.3.0, node-fetch@npm:^2.6.0, node-fetch@npm:^2.6.1":
   version: 2.6.7
   resolution: "node-fetch@npm:2.6.7"
   dependencies:
@@ -16936,13 +16936,6 @@ __metadata:
     encoding:
       optional: true
   checksum: 8d816ffd1ee22cab8301c7756ef04f3437f18dace86a1dae22cf81db8ef29c0bf6655f3215cb0cdb22b420b6fe141e64b26905e7f33f9377a7fa59135ea3e10b
-  languageName: node
-  linkType: hard
-
-"node-fetch@npm:2.6.1":
-  version: 2.6.1
-  resolution: "node-fetch@npm:2.6.1"
-  checksum: 91075bedd57879117e310fbcc36983ad5d699e522edb1ebcdc4ee5294c982843982652925c3532729fdc86b2d64a8a827797a745f332040d91823c8752ee4d7c
   languageName: node
   linkType: hard
 
@@ -18906,12 +18899,12 @@ __metadata:
   linkType: hard
 
 "postcss-selector-parser@npm:^6.0.0, postcss-selector-parser@npm:^6.0.2":
-  version: 6.0.8
-  resolution: "postcss-selector-parser@npm:6.0.8"
+  version: 6.0.9
+  resolution: "postcss-selector-parser@npm:6.0.9"
   dependencies:
     cssesc: ^3.0.0
     util-deprecate: ^1.0.2
-  checksum: 550351c8d04216106e259f7c433652aa6742dd7ddbedf7afdc313526963bb170589a6fefd1bc1fe6268a2cf9f5073d4ecb09bc7b5b4bef49edf80634300500af
+  checksum: f8161ab4d3e5c76b8467189c6d164ba0f6b6e74677435f29e34caa1df01e052b582b4ae4f7468b2243c4befdd8bdcdb7685542d1b2fca8deae21b3e849c78802
   languageName: node
   linkType: hard
 
@@ -23322,12 +23315,12 @@ __metadata:
   linkType: hard
 
 "typescript@npm:^4.3.2, typescript@npm:^4.4.4, typescript@npm:^4.5.2, typescript@npm:^4.5.4":
-  version: 4.5.4
-  resolution: "typescript@npm:4.5.4"
+  version: 4.5.5
+  resolution: "typescript@npm:4.5.5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 59f3243f9cd6fe3161e6150ff6bf795fc843b4234a655dbd938a310515e0d61afd1ac942799e7415e4334255e41c2c49b7dd5d9fd38a17acd25a6779ca7e0961
+  checksum: 506f4c919dc8aeaafa92068c997f1d213b9df4d9756d0fae1a1e7ab66b585ab3498050e236113a1c9e57ee08c21ec6814ca7a7f61378c058d79af50a4b1f5a5e
   languageName: node
   linkType: hard
 
@@ -23352,12 +23345,12 @@ __metadata:
   linkType: hard
 
 "typescript@patch:typescript@^4.3.2#~builtin<compat/typescript>, typescript@patch:typescript@^4.4.4#~builtin<compat/typescript>, typescript@patch:typescript@^4.5.2#~builtin<compat/typescript>, typescript@patch:typescript@^4.5.4#~builtin<compat/typescript>":
-  version: 4.5.4
-  resolution: "typescript@patch:typescript@npm%3A4.5.4#~builtin<compat/typescript>::version=4.5.4&hash=493e53"
+  version: 4.5.5
+  resolution: "typescript@patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=493e53"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 2e488dde7d2c4a2fa2e79cf2470600f8ce81bc0563c276b72df8ff412d74456ae532ba824650ae936ce207440c79720ddcfaa25e3cb4477572b8534fa4e34d49
+  checksum: c05c318d79c690f101d7ffb34cd6c7d6bbd884d3af9cefe7749ad0cd6be43c7082f098280982ca945dcba23fde34a08fed9602bb26540936baf8c0520727d3ba
   languageName: node
   linkType: hard
 
