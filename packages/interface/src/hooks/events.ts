@@ -7,6 +7,28 @@ import { SwayDropParticipants } from '@sway/events/src/events'
 import { getMerkleProof } from '@sway/contracts/utils/merkle'
 import { useEffect, useMemo, useState } from 'react'
 import { getSwayDropContract, indexInParticipants } from '../utils/helpers'
+import api, { EventInterface } from '../utils/api'
+
+export const MAX_EVENTS_GRAPH_FETCH = 999
+
+export enum EventSortBy {
+  ID = 'id',
+  TokenCount = 'tokenCount',
+  TransferCount = 'transferCount',
+  Created = 'created',
+}
+
+export enum SortDirection {
+  Ascending = 'asc',
+  Descending = 'desc',
+}
+export interface EventSearchOptions {
+  page: number
+  maxCount: number
+  query?: string
+  sortBy: EventSortBy
+  sortDirection: SortDirection
+}
 
 export enum ClaimStatus {
   // already claimed
@@ -106,4 +128,70 @@ export function useClaimCallback(
       error: null,
     }
   }, [account, eventId, chainId, library, getConnectedSigner, participants])
+}
+
+export function useGetFetchEvents() {
+  const [loading, setLoading] = useState(true)
+  const [events, setEvents] = useState<EventInterface[]>([])
+
+  const fetchAllEvents = async () => {
+    const events = await api.getEvents(MAX_EVENTS_GRAPH_FETCH)
+    let newEvents = events
+    while (newEvents.length > 0) {
+      const lastEvent = newEvents[newEvents.length - 1]
+      newEvents = await api.getEvents(MAX_EVENTS_GRAPH_FETCH, lastEvent)
+      events.push(...newEvents)
+    }
+    console.log(events)
+    return events
+  }
+
+  useEffect(() => {
+    setLoading(true)
+    fetchAllEvents()
+      .then((events) => {
+        // we need to set loading false first
+        setLoading(false)
+        setEvents(events)
+      })
+      .finally(() => setLoading(false))
+  }, [])
+
+  return useMemo(() => {
+    /**
+     * Fetch Events
+     * @param options Search Options, page index starts at 0
+     * @param appendList max events in a page
+     * @returns
+     */
+    return {
+      fetchEvents: (
+        options: EventSearchOptions,
+        appendList?: EventInterface[],
+      ) => {
+        const filtered = events
+        if (options.query) {
+          
+        }
+
+        filtered.sort((a, b) =>
+          options.sortDirection === SortDirection.Ascending
+            ? Number(a[options.sortBy]) - Number(b[options.sortBy])
+            : Number(b[options.sortBy]) - Number(a[options.sortBy]),
+        )
+
+        const startIdx = options.page * options.maxCount
+        const endIdx = startIdx + options.maxCount
+        const paginated = filtered.slice(startIdx, endIdx)
+        const next = endIdx <= filtered.length ? options.page + 1 : undefined
+        return {
+          events: appendList ? [...appendList, ...paginated] : paginated,
+          loading,
+          next,
+          maxCount: options.maxCount,
+        }
+      },
+      loading,
+    }
+  }, [events, loading])
 }

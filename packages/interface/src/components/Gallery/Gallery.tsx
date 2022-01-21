@@ -6,35 +6,45 @@ import SkeletonCard from './SkeletonCard'
 
 import SearchInput from './SearchInput'
 import Dropdown from 'react-dropdown'
-import api, { EventInterface } from '../../utils/api'
+import {
+  EventSearchOptions,
+  EventSortBy,
+  SortDirection,
+  useGetFetchEvents,
+} from '../../hooks/events'
+import { EventInterface } from '../../utils/api'
 
-const options = ['High to Low', 'Low to High']
-const defaultOption = options[0]
+const dropOptions = ['High to Low', 'Low to High']
+const defaultOption = dropOptions[0]
 
 const PAGE_LIMIT = 6
+const DEFAULT_SEARCH_OPTIONS: EventSearchOptions = {
+  page: 0,
+  maxCount: PAGE_LIMIT,
+  sortBy: EventSortBy.ID,
+  sortDirection: SortDirection.Descending,
+}
 
 function Gallery(): ReactElement {
+  const [options, setOptions] = useState<EventSearchOptions>(
+    DEFAULT_SEARCH_OPTIONS,
+  )
   const [events, setEvents] = useState<EventInterface[]>([])
-  const [loading, setLoading] = useState<Boolean>(true)
-  const [moreAvailable, setMoreAvailable] = useState<Boolean>(true)
+  const [next, setNext] = useState<number>()
+  const { fetchEvents, loading } = useGetFetchEvents()
 
   useEffect(() => {
-    ;(async () => {
-      setLoading(true)
-      let eventsData = await api.getEvents(PAGE_LIMIT)
-      if (eventsData.length < PAGE_LIMIT) setMoreAvailable(false)
-      setEvents(eventsData)
-      setLoading(false)
-    })()
-  }, [])
+    const fetched = fetchEvents(options, events)
+    setEvents(fetched.events)
+    setNext(fetched.next)
+    console.log(fetched)
+    // eslint-disable-next-line
+  }, [fetchEvents, options])
 
   async function loadMoreHandler(): Promise<void> {
-    console.log('loading more')
-    setLoading(true)
-    let eventsData = await api.getEvents(PAGE_LIMIT, events[events.length - 1])
-    if (eventsData.length < PAGE_LIMIT) setMoreAvailable(false)
-    setLoading(false)
-    setEvents([...events, ...eventsData])
+    if (next !== undefined) {
+      setOptions((o) => ({ ...o, page: next }))
+    }
   }
 
   return (
@@ -43,7 +53,7 @@ function Gallery(): ReactElement {
         <div className={styles['Header']}>
           <div className={styles['DropdownContainer']}>
             <Dropdown
-              options={options}
+              options={dropOptions}
               // onChange={this._onSelect}
               className={styles['DropdownRoot']}
               controlClassName={styles['Dropdown']}
@@ -73,7 +83,7 @@ function Gallery(): ReactElement {
           ) : null}
         </div>
 
-        {loading || moreAvailable === false ? null : (
+        {loading || next === undefined ? null : (
           <div className={styles['LoadMoreContainer']}>
             <button onClick={loadMoreHandler}>Load More</button>
           </div>
