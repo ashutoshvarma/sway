@@ -17,6 +17,7 @@ export interface Token {
     metadataUri: string;
     transactionHash?: string | undefined;
     eventId: string;
+    image_url?:string
 }
 
 function Collections(): ReactElement {
@@ -27,17 +28,27 @@ function Collections(): ReactElement {
   useEffect(()=>{
     (async()=>{
       if(address){
+        
         setTokenLoading(true)
         let data = await api.getUserTokenInfo(address);
+        let newTokens: Token[] = data? data.tokens: [];
+        newTokens = sortTokens(newTokens )
 
-        let newTokens = data? data.tokens: [];
-        newTokens = sortTokens(newTokens)
+
+        // fetching metadata
+        let metadataPromises = newTokens.map(async(t,i)=>{
+          let metadata = await api.getEventMetadata(t.eventId)
+          // if(account?.tokens?.length > i)
+         newTokens[i]!.image_url = metadata.image
+        })
+        await Promise.all(metadataPromises)
+
         setTokens(newTokens)
         setTokenLoading(false) 
+
       }
       else 
       setTokens(null)
-
     })()
     // eslint-disable-next-line
   },[address])
@@ -100,7 +111,7 @@ function Collections(): ReactElement {
     else 
     return(
       <div className={styles['CollectionGrid']}>
-        {tokens?.map((token)=><Card token={token}/>)}
+        {tokens?.map((token,i)=><Card key={i} token={token}/>)}
       </div>
     )
   }
