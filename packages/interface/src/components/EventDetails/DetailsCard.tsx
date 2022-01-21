@@ -1,28 +1,63 @@
-import { ReactElement } from 'react'
+import { ReactElement, useState } from 'react'
 import styles from './DetailsCard.module.css'
+
+import {
+  Event as SwayEvent
+} from '@sway/events/src/events'
+import { ClaimStatus } from '../../hooks/events'
+import moment from 'moment'
+import { truncate } from '../../utils/helpers'
+import { toast } from 'react-toastify'
+//assets
 import thumb from '../../assets/images/event-thumb.png'
 import background from '../../assets/images/event-details-background.svg'
-
 import calender from '../../assets/icons/calender.svg'
 import nft from '../../assets/icons/nft.svg'
 import location from '../../assets/icons/location.svg'
-import {
-  Event as SwayEvent,
-  SwayDropParticipants,
-} from '@sway/events/src/events'
-import moment from 'moment'
-import { truncate } from '../../utils/helpers'
 
 interface Props {
   event: SwayEvent | undefined
   loading?: boolean
-  participants?: SwayDropParticipants | undefined
+  claimStatus: ClaimStatus
+  claimLoading: Boolean,
+  claimEvent: (() => Promise<string>) | null
 }
 
-function DetailsCard({ event, loading }: Props): ReactElement {
+function DetailsCard({ event, loading: eventLoading, claimStatus, claimLoading, claimEvent }: Props): ReactElement {
+  const [joinLoading, setJoinLoading] = useState(false);
+
+  const joinEventHandler = async () => {
+    if (!claimEvent) return;
+    try {
+      setJoinLoading(true)
+      let hash = await claimEvent();
+      toast.success(`Yey! Success! ${hash}`)
+    }
+    catch (error: any) {
+      toast.error(error.message)
+    }
+    finally {
+      setJoinLoading(false)
+    }
+  }
+
+  const renderClaimSection = () => {
+
+    if (claimLoading) return null
+    if (claimStatus === ClaimStatus.AVAIL)
+      return (<div className={styles['JoinContainer']}>
+        <button onClick={joinEventHandler}>Join the event</button>
+      </div>)
+    else if (claimStatus === ClaimStatus.CLAIMED)
+      return <div className={styles['JoinContainer']}>You've already joined this event!</div>
+    // else if (claimStatus === ClaimStatus.NOT_CONNECTED)
+    //   return <div className={styles['JoinContainer']}>Connect a wallet to join the event</div>
+    else
+      return null;
+  }
+
   let classes = [styles['Card']]
-  // loading = true
-  if (loading) classes.push(styles['Loading'])
+  if (eventLoading) classes.push(styles['Loading'])
 
   return (
     <div className={classes.join(' ')}>
@@ -42,7 +77,7 @@ function DetailsCard({ event, loading }: Props): ReactElement {
         {event?.tags?.map((tag, i) => (
           <span key={i}>{tag}</span>
         ))}
-        {loading ? (
+        {eventLoading ? (
           <>
             <span>Loading</span>
             <span>Loading</span>
@@ -76,10 +111,7 @@ function DetailsCard({ event, loading }: Props): ReactElement {
           </div>
         </div>
       </div>
-
-      <div className={styles['JoinContainer']}>
-        <button>Join the event</button>
-      </div>
+      {joinLoading ? <div className={styles['Loader']}><div></div><div></div><div></div><div></div></div> : renderClaimSection()}
     </div>
   )
 }

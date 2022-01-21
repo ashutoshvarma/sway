@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { ReactElement, useEffect, useState } from 'react'
 import styles from './HeroSection.module.css'
 import bg from '../../assets/images/dark-hero-bg.svg'
 import DetailsCard from './DetailsCard'
@@ -6,20 +6,45 @@ import {
   Event as SwayEvent,
   SwayDropParticipants,
 } from '@sway/events/src/events'
+import api from '../../utils/api'
+import { useClaimStatus, useClaimCallback } from '../../hooks/events'
+
+
 
 interface Props {
-  event: SwayEvent | undefined
-  participants: SwayDropParticipants | undefined
   id: string
-  loading: boolean
 }
 
-function HeroSection({
-  event,
-  id,
-  loading,
-  participants,
-}: Props): ReactElement {
+function HeroSection({ id }: Props): ReactElement {
+
+  const [event, setEvent] = useState<SwayEvent>()
+  const [loading, setLoading] = useState<boolean>(true)
+  const [swayParticipants, setSwayParticpants] = useState<
+    SwayDropParticipants | undefined
+  >()
+  const [claimStatus, claimLoading] = useClaimStatus(id, swayParticipants)
+  const { callback: claimEvent } = useClaimCallback(id, swayParticipants)
+
+
+  //Fetching Event Details
+  useEffect(() => {
+    ; (async () => {
+      setLoading(true)
+      let eventData = await api.getEventMetadata(id)
+      try {
+        let sway_participants = await api.getEventMerkleDetails(id)
+        setSwayParticpants(sway_participants)
+      }
+      catch { }
+      finally {
+        setEvent(eventData)
+        setLoading(false)
+      }
+    })()
+  }, [id])
+
+
+
   return (
     <section className={styles['HeroSection']}>
       <div
@@ -31,9 +56,11 @@ function HeroSection({
           <h2>Event Id: #{id}</h2>
           <div className={styles['EventDetails']}>
             <DetailsCard
-              participants={participants}
               event={event}
               loading={loading}
+              claimStatus={claimStatus}
+              claimLoading={claimLoading}
+              claimEvent={claimEvent}
             />
           </div>
         </div>

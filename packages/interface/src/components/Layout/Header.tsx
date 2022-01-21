@@ -4,6 +4,7 @@ import Logo from '../../assets/logos/sway.svg'
 import Shape1 from '../../assets/shapes/shape1.svg'
 import Shape1Dark from '../../assets/shapes/nav-shape-dark.svg'
 import Nav from './Nav'
+import { Link } from 'react-router-dom'
 
 interface Props {
   dark?: boolean
@@ -19,10 +20,10 @@ function Header({ dark }: Props): ReactElement {
             className={styles['Shape']}
             alt=""
           />
-          <div className={styles['LogoDiv']}>
+          <Link to="/" className={styles['LogoDiv']}>
             <img src={Logo} alt="Sway-logo" />
             <h1>Sway</h1>
-          </div>
+          </Link>
           <Nav dark={dark} />
         </div>
       </div>

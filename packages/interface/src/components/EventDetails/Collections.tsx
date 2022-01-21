@@ -1,13 +1,13 @@
-import { ReactElement } from 'react'
+import { ReactElement,useEffect,useState } from 'react'
 import styles from './Collections.module.css'
-import { CollectionInterface } from '../../utils/api'
+
 import { explorerLink } from '../../utils/helpers'
+import api, { CollectionInterface } from '../../utils/api'
 
 import moment from 'moment'
 
-interface Props {
-  collections: CollectionInterface[] | undefined
-  loading: boolean
+interface Props{
+  eventId: string
 }
 
 interface RowProps {
@@ -15,7 +15,22 @@ interface RowProps {
   loading?: boolean
 }
 
-function Collections({ collections, loading }: Props): ReactElement {
+function Collections({eventId:id}:Props): ReactElement {
+  const [loading, setLoading] = useState<boolean>(true)
+  const [collections, setCollection] = useState<
+  CollectionInterface[] | undefined
+>()
+  //Fetching Collections
+    useEffect(() => {
+      ;(async () => {
+        setLoading(true)
+        let collectionsData = await api.getEventsTransfer(id)
+        setCollection(collectionsData)
+        setLoading(false)
+      })()
+    }, [id])
+  
+
   return (
     <section className={styles['Collections']}>
       <div className="wrapper narrow">
@@ -65,7 +80,7 @@ function TableRow({ collection, loading }: RowProps) {
         </a>
       </td>
       <td className={styles['MobileLabel']}>Minting Date</td>
-      <td>{collection && moment(Number(collection.timestamp)).fromNow()}</td>
+      <td>{collection && moment(Number(collection.timestamp)*1000).fromNow()}</td>
       <td className={styles['MobileLabel']}>TX Count</td>
       <td>{collection?.transferCount}</td>
       <td className={styles['MobileLabel']}>Power</td>
