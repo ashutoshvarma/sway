@@ -15,7 +15,7 @@
 
 .CollectionGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
   margin: 40px 0;
 }
@@ -47,7 +47,7 @@
   color: #585976;
 }
 .DropdownPlaceholder::before {
-  content: 'Filter By: ';
+  content: 'Sort By: ';
 }
 
 .DropdownMenu {
@@ -57,6 +57,31 @@
 
 .DropdownMenu > div {
   padding: 14px 20px;
+}
+
+.ConnectDiv {
+  color: #888;
+  text-align: center;
+  margin: 30px 0px;
+  padding: 30px;
+  background-color: #eee7;
+  border-radius: 5px;
+}
+
+.ConnectDiv h3 {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.ConnectDiv button {
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e8cd00;
+  color: white;
+  font-size: 17px;
+  font-weight: 400;
+  font-family: 'CircularStd';
 }
 
 @media (max-width: 600px) {

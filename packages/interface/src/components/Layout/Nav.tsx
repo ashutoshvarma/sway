@@ -39,14 +39,14 @@ function Nav({ dark }: Props): ReactElement {
           <NavItem to="/gallery">Explore</NavItem>
           <NavItem to="/event/create">Create</NavItem>
           <NavItem to="/user_collection">My Account</NavItem>
-          <NavItem to="#" primary>
+          <NavItem to="#" primary click={address? () => destroy().catch(console.log): () => connect().catch(console.log) }>
             {address ? (
-              <span onClick={() => destroy().catch(console.log)}>
+              <span>
                 <img src={walleticon} alt="wallet icon" />
                 {shortenAddress(address, 4)}
               </span>
             ) : (
-              <span onClick={() => connect().catch(console.log)}>
+              <span>
                 <img src={walleticon} alt="wallet icon" />
                 Connect
               </span>
@@ -61,13 +61,17 @@ function Nav({ dark }: Props): ReactElement {
 interface NavItemProps {
   children: React.ReactNode
   primary?: boolean
-  to: string
+  to: string,
+  click?: ()=>{}
 }
 
-function NavItem({ children, to, primary }: NavItemProps): ReactElement {
+function NavItem({ children, to, primary, click }: NavItemProps): ReactElement {
   const classes = [styles['NavItem']]
   if (primary) classes.push(styles['Primary'])
 
+  if(click)
+    return <span onClick={click} className={classes.join(' ')}> {children}</span>
+  
   return (
     <NavLink to={to} className={classes.join(' ')}>
       {children}

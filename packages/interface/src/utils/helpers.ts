@@ -13,6 +13,13 @@ export const truncate = (str: string, max_length: number): string => {
   } else return str
 }
 
+/**
+ * Shorten the eth address
+ * @param address Valid ETH 42byte hex address
+ * @param chars chars to show from start and end
+ * @returns shortened address
+ * @throws If given address is not a valid eth address
+ */
 export function shortenAddress(address: string, chars = 4): string {
   if (!isAddress(address)) {
     throw Error(`Invalid 'address' parameter '${address}'.`)
@@ -29,9 +36,17 @@ export function indexInParticipants(
     .indexOf(address.toLowerCase())
 }
 
-export const explorerLink = (hash: string) => {
+/**
+ *
+ * @param hashOrAddress Transaction Hash or user address
+ * @param isTx If it is transaction hash
+ * @returns blockscout link
+ */
+export const explorerLink = (hashOrAddress: string, isTx = false) => {
   const explorer = NETWORK ? NETWORK.explorer : Mainnet.explorer
-  return `${explorer}/tx/${hash}`
+  return isTx
+    ? `${explorer}/tx/${hashOrAddress}`
+    : `${explorer}/address/${hashOrAddress}`
 }
 
 // account is not optional
