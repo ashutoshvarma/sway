@@ -8,6 +8,7 @@ import { getMerkleProof } from '@sway/contracts/utils/merkle'
 import { useEffect, useMemo, useState } from 'react'
 import { getSwayDropContract, indexInParticipants } from '../utils/helpers'
 import api, { EventInterface } from '../utils/api'
+import { Document } from 'flexsearch'
 
 export const MAX_EVENTS_GRAPH_FETCH = 999
 
@@ -133,28 +134,44 @@ export function useClaimCallback(
 export function useGetFetchEvents() {
   const [loading, setLoading] = useState(true)
   const [events, setEvents] = useState<EventInterface[]>([])
+  const document: Document<EventInterface> = useMemo(
+    () =>
+      new Document({
+        preset: 'match',
+        document: {
+          id: 'id',
+          index: ['metadata:name', 'metadata:description'],
+        },
+      }),
+    [],
+  )
 
   const fetchAllEvents = async () => {
-    const events = await api.getEvents(MAX_EVENTS_GRAPH_FETCH)
-    let newEvents = events
+    const fetchedEvents = await api.getEvents(MAX_EVENTS_GRAPH_FETCH)
+    let newEvents = fetchedEvents
     while (newEvents.length > 0) {
       const lastEvent = newEvents[newEvents.length - 1]
       newEvents = await api.getEvents(MAX_EVENTS_GRAPH_FETCH, lastEvent)
-      events.push(...newEvents)
+      fetchedEvents.push(...newEvents)
     }
-    console.log(events)
-    return events
+
+    // populate document
+    await Promise.all(
+      fetchedEvents.map(async (e) => {
+        await document.addAsync(e.id, e)
+      }),
+    )
+
+    // we need to set loading false first
+    setLoading(false)
+    // set events
+    setEvents(fetchedEvents)
   }
 
   useEffect(() => {
     setLoading(true)
-    fetchAllEvents()
-      .then((events) => {
-        // we need to set loading false first
-        setLoading(false)
-        setEvents(events)
-      })
-      .finally(() => setLoading(false))
+    fetchAllEvents().finally(() => setLoading(false))
+    // eslint-disable-next-line
   }, [])
 
   return useMemo(() => {
@@ -169,9 +186,20 @@ export function useGetFetchEvents() {
         options: EventSearchOptions,
         appendList?: EventInterface[],
       ) => {
-        const filtered = events
+        let filtered = events
         if (options.query) {
-          
+          const results = document.search(options.query)
+          const resSet = new Set<string>()
+          for (const res of results) {
+            res.result.every((r) => resSet.add(r as string))
+          }
+          console.log({
+            options,
+            results,
+            resSet,
+            t: document.export(console.log),
+          })
+          filtered = filtered.filter((v) => resSet.has(v.id))
         }
 
         filtered.sort((a, b) =>
@@ -193,5 +221,5 @@ export function useGetFetchEvents() {
       },
       loading,
     }
-  }, [events, loading])
+  }, [events, loading, document])
 }
