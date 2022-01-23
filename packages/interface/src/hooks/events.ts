@@ -5,7 +5,7 @@ import {
 } from '@celo-tools/use-contractkit'
 import { SwayDropParticipants } from '@sway/events/src/events'
 import { getMerkleProof } from '@sway/contracts/utils/merkle'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, useRef } from 'react'
 import { getSwayDropContract, indexInParticipants } from '../utils/helpers'
 import api, { EventInterface } from '../utils/api'
 import { Document } from 'flexsearch'
@@ -134,17 +134,17 @@ export function useClaimCallback(
 export function useGetFetchEvents() {
   const [loading, setLoading] = useState(true)
   const [events, setEvents] = useState<EventInterface[]>([])
-  const document: Document<EventInterface> = useMemo(
-    () =>
-      new Document({
-        preset: 'match',
-        document: {
-          id: 'id',
-          index: ['metadata:name', 'metadata:description'],
-        },
-      }),
-    [],
+
+  const documentRef = useRef<Document<EventInterface>>(
+    new Document({
+      preset: 'match',
+      document: {
+        id: 'id',
+        index: ['metadata:name', 'metadata:description'],
+      },
+    })
   )
+  const document = documentRef.current;
 
   const fetchAllEvents = async () => {
     const fetchedEvents = await api.getEvents(MAX_EVENTS_GRAPH_FETCH)
@@ -162,10 +162,10 @@ export function useGetFetchEvents() {
       }),
     )
 
-    // we need to set loading false first
-    setLoading(false)
     // set events
     setEvents(fetchedEvents)
+    // we need to set loading false first
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -174,52 +174,52 @@ export function useGetFetchEvents() {
     // eslint-disable-next-line
   }, [])
 
-  return useMemo(() => {
-    /**
-     * Fetch Events
-     * @param options Search Options, page index starts at 0
-     * @param appendList max events in a page
-     * @returns
-     */
-    return {
-      fetchEvents: (
-        options: EventSearchOptions,
-        appendList?: EventInterface[],
-      ) => {
-        let filtered = events
-        if (options.query) {
-          const results = document.search(options.query)
-          const resSet = new Set<string>()
-          for (const res of results) {
-            res.result.every((r) => resSet.add(r as string))
-          }
-          console.log({
-            options,
-            results,
-            resSet,
-            t: document.export(console.log),
-          })
-          filtered = filtered.filter((v) => resSet.has(v.id))
-        }
 
-        filtered.sort((a, b) =>
-          options.sortDirection === SortDirection.Ascending
-            ? Number(a[options.sortBy]) - Number(b[options.sortBy])
-            : Number(b[options.sortBy]) - Number(a[options.sortBy]),
-        )
-
-        const startIdx = options.page * options.maxCount
-        const endIdx = startIdx + options.maxCount
-        const paginated = filtered.slice(startIdx, endIdx)
-        const next = endIdx <= filtered.length ? options.page + 1 : undefined
-        return {
-          events: appendList ? [...appendList, ...paginated] : paginated,
-          loading,
-          next,
-          maxCount: options.maxCount,
+  /**
+   * Fetch Events
+   * @param options Search Options, page index starts at 0
+   * @param appendList max events in a page
+   * @returns
+   */
+  return {
+    fetchEvents: (
+      options: EventSearchOptions,
+      appendList?: EventInterface[],
+    ) => {
+      let filtered = events
+      if (options.query) {
+        const results = document.search(options.query)
+        const resSet = new Set<string>()
+        for (const res of results) {
+          res.result.every((r) => resSet.add(r as string))
         }
-      },
-      loading,
-    }
-  }, [events, loading, document])
+        console.log({
+          options,
+          results,
+          resSet,
+          t: document.export(console.log),
+        })
+        filtered = filtered.filter((v) => resSet.has(v.id))
+      }
+
+      filtered.sort((a, b) =>
+        options.sortDirection === SortDirection.Ascending
+          ? Number(a[options.sortBy]) - Number(b[options.sortBy])
+          : Number(b[options.sortBy]) - Number(a[options.sortBy]),
+      )
+
+      const startIdx = options.page * options.maxCount
+      const endIdx = startIdx + options.maxCount
+      const paginated = filtered.slice(startIdx, endIdx)
+      const next = endIdx <= filtered.length ? options.page + 1 : undefined
+      return {
+        events: appendList ? [...appendList, ...paginated] : paginated,
+        loading,
+        next,
+        maxCount: options.maxCount,
+      }
+    },
+    loading,
+  }
+
 }
