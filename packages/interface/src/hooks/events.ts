@@ -142,9 +142,9 @@ export function useGetFetchEvents() {
         id: 'id',
         index: ['metadata:name', 'metadata:description'],
       },
-    })
+    }),
   )
-  const document = documentRef.current;
+  const document = documentRef.current
 
   const fetchAllEvents = async () => {
     const fetchedEvents = await api.getEvents(MAX_EVENTS_GRAPH_FETCH)
@@ -173,7 +173,6 @@ export function useGetFetchEvents() {
     fetchAllEvents().finally(() => setLoading(false))
     // eslint-disable-next-line
   }, [])
-
 
   /**
    * Fetch Events
@@ -221,5 +220,4 @@ export function useGetFetchEvents() {
     },
     loading,
   }
-
 }

@@ -39,7 +39,15 @@ function Nav({ dark }: Props): ReactElement {
           <NavItem to="/gallery">Explore</NavItem>
           <NavItem to="/event/create">Create</NavItem>
           <NavItem to="/user_collection">My Account</NavItem>
-          <NavItem to="#" primary click={address? () => destroy().catch(console.log): () => connect().catch(console.log) }>
+          <NavItem
+            to="#"
+            primary
+            click={
+              address
+                ? () => destroy().catch(console.log)
+                : () => connect().catch(console.log)
+            }
+          >
             {address ? (
               <span>
                 <img src={walleticon} alt="wallet icon" />
@@ -61,17 +69,22 @@ function Nav({ dark }: Props): ReactElement {
 interface NavItemProps {
   children: React.ReactNode
   primary?: boolean
-  to: string,
-  click?: ()=>{}
+  to: string
+  click?: () => {}
 }
 
 function NavItem({ children, to, primary, click }: NavItemProps): ReactElement {
   const classes = [styles['NavItem']]
   if (primary) classes.push(styles['Primary'])
 
-  if(click)
-    return <span onClick={click} className={classes.join(' ')}> {children}</span>
-  
+  if (click)
+    return (
+      <span onClick={click} className={classes.join(' ')}>
+        {' '}
+        {children}
+      </span>
+    )
+
   return (
     <NavLink to={to} className={classes.join(' ')}>
       {children}

@@ -22,10 +22,16 @@ function Card({ loading, token }: Props): ReactElement {
   return (
     <div className={classes.join(' ')}>
       <div className={styles['CardThumbContainer']}>
-        <img src={token?.image_url||cardImg} className={styles['CardThumb']} alt="thumbnail" />
+        <img
+          src={token?.image_url || cardImg}
+          className={styles['CardThumb']}
+          alt="thumbnail"
+        />
       </div>
       <div className={styles['EventId']}>
-        <Link to={`/event/${token?.eventId}`}><span>#{token?.eventId}</span></Link>
+        <Link to={`/event/${token?.eventId}`}>
+          <span>#{token?.eventId}</span>
+        </Link>
       </div>
       <div className={styles['DetailsGrid']}>
         <span className={styles['Head']}>Status</span>

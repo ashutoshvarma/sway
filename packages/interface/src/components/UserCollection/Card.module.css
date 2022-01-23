@@ -44,7 +44,6 @@
   background-color: #e8cd00;
 }
 
-
 .AdditionalInfoRow {
   display: flex;
   justify-content: center;
@@ -86,7 +85,7 @@
   border-radius: 5px;
   max-width: 150px;
   margin: 0px auto;
-  color:transparent
+  color: transparent;
 }
 
 .Loading .EventId a:link {
@@ -113,5 +112,3 @@
 .Share img:hover {
   opacity: 1;
 }
-
-
