@@ -71,7 +71,7 @@ function Gallery(): ReactElement {
 
   const sortHandler = (arg: Option) => {
     let sortingConfig = dropOptionsToValueMap[arg.value]
-    setOptions({ ...options, ...sortingConfig })
+    setOptions({ ...options, ...sortingConfig, page: 0 })
   }
 
 
