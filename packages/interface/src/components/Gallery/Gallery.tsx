@@ -74,6 +74,22 @@ function Gallery(): ReactElement {
     setOptions({ ...options, ...sortingConfig, page: 0 })
   }
 
+  const renderEvents = () => {
+    if (loading)
+      return (<div className={styles['GalleryGrid']}>
+        <SkeletonCard />
+        <SkeletonCard />
+        <SkeletonCard />
+      </div>)
+    else if (!loading && events.length == 0)
+      return <div className={styles['NoEvent']}><h3>No events available</h3></div>
+    else
+      return (<div className={styles['GalleryGrid']}>
+        {events.map((event) => (
+          <Card event={event} key={event.id} />
+        ))}
+      </div>)
+  }
 
   return (
     <section className={styles['Gallery']}>
@@ -98,19 +114,7 @@ function Gallery(): ReactElement {
             <SearchInput inputHandler={searchHandler} />
           </div>
         </div>
-        <div className={styles['GalleryGrid']}>
-          {events.map((event) => (
-            <Card event={event} key={event.id} />
-          ))}
-          {loading ? (
-            <>
-              <SkeletonCard />
-              <SkeletonCard />
-              <SkeletonCard />
-            </>
-          ) : null}
-        </div>
-
+        {renderEvents()}
         {loading || next === undefined ? null : (
           <div className={styles['LoadMoreContainer']}>
             <button onClick={loadMoreHandler}>Load More</button>
