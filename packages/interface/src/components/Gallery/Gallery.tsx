@@ -81,7 +81,7 @@ function Gallery(): ReactElement {
         <SkeletonCard />
         <SkeletonCard />
       </div>)
-    else if (!loading && events.length == 0)
+    else if (!loading && events.length === 0)
       return <div className={styles['NoEvent']}><h3>No events available</h3></div>
     else
       return (<div className={styles['GalleryGrid']}>
