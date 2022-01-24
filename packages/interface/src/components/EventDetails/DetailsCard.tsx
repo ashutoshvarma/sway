@@ -21,9 +21,10 @@ interface Props {
   claimStatus: ClaimStatus
   claimLoading: Boolean,
   claimEvent: (() => Promise<string>) | null
+  forceCheckStatus: (() => void)
 }
 
-function DetailsCard({ event, loading: eventLoading, claimStatus, claimLoading, claimEvent }: Props): ReactElement {
+function DetailsCard({ event, loading: eventLoading, claimStatus, claimLoading, claimEvent, forceCheckStatus }: Props): ReactElement {
   const [joinLoading, setJoinLoading] = useState(false);
 
   const joinEventHandler = async () => {
@@ -31,7 +32,8 @@ function DetailsCard({ event, loading: eventLoading, claimStatus, claimLoading, 
     try {
       setJoinLoading(true)
       let hash = await claimEvent();
-      toast.success(`Yey! Success! ${hash}`)
+      forceCheckStatus()
+      toast.success(`Yey! Success!\n${hash}`)
     }
     catch (error: any) {
       toast.error(error.message)
@@ -43,7 +45,7 @@ function DetailsCard({ event, loading: eventLoading, claimStatus, claimLoading, 
 
   const renderClaimSection = () => {
 
-    if (claimLoading) return null
+    if (claimLoading || eventLoading) return null
     if (claimStatus === ClaimStatus.AVAIL)
       return (<div className={styles['JoinContainer']}>
         <button onClick={joinEventHandler}>Join the event</button>

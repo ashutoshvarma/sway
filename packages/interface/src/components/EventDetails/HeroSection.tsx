@@ -22,7 +22,7 @@ function HeroSection({ id }: Props): ReactElement {
   const [swayParticipants, setSwayParticpants] = useState<
     SwayDropParticipants | undefined
   >()
-  const [claimStatus, claimLoading] = useClaimStatus(id, swayParticipants)
+  const [claimStatus, claimLoading, forceCheckStatus] = useClaimStatus(id, swayParticipants)
   const { callback: claimEvent } = useClaimCallback(id, swayParticipants)
 
 
@@ -61,6 +61,7 @@ function HeroSection({ id }: Props): ReactElement {
               claimStatus={claimStatus}
               claimLoading={claimLoading}
               claimEvent={claimEvent}
+              forceCheckStatus={forceCheckStatus}
             />
           </div>
         </div>

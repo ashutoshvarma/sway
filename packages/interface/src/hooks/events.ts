@@ -45,15 +45,15 @@ export enum ClaimStatus {
 export function useClaimStatus(
   eventId: string,
   participants?: SwayDropParticipants,
-): [ClaimStatus, boolean] {
+): [ClaimStatus, boolean, () => void] {
   const { network, address: account } = useContractKit()
   const chainId = network.chainId
   const library = useProvider()
   const [status, setStatus] = useState<ClaimStatus>(ClaimStatus.NOT_AVAIL)
   const [loading, setLoading] = useState<boolean>(true)
 
-  useEffect(() => {
-    console.log(account)
+  const checkClaimStatus = () => {
+
     try {
       setLoading(true)
       if (!account) setStatus(ClaimStatus.NOT_CONNECTED)
@@ -76,9 +76,13 @@ export function useClaimStatus(
     } finally {
       setLoading(false)
     }
+  }
+
+  useEffect(() => {
+    checkClaimStatus()
   }, [account, participants, eventId, chainId, library])
 
-  return [status, loading]
+  return [status, loading, checkClaimStatus]
 }
 
 export function useClaimCallback(
