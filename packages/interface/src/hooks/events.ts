@@ -53,6 +53,7 @@ export function useClaimStatus(
   const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
+    console.log(account)
     try {
       setLoading(true)
       if (!account) setStatus(ClaimStatus.NOT_CONNECTED)
@@ -69,6 +70,7 @@ export function useClaimStatus(
           setStatus(ClaimStatus.NOT_AVAIL)
         }
       }
+      else { setStatus(ClaimStatus.NOT_AVAIL) }
     } catch (error) {
       console.error(error, { account, eventId })
     } finally {

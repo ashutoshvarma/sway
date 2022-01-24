@@ -49,11 +49,11 @@ function DetailsCard({ event, loading: eventLoading, claimStatus, claimLoading, 
         <button onClick={joinEventHandler}>Join the event</button>
       </div>)
     else if (claimStatus === ClaimStatus.CLAIMED)
-      return <div className={styles['JoinContainer']}>You've already joined this event!</div>
-    // else if (claimStatus === ClaimStatus.NOT_CONNECTED)
-    //   return <div className={styles['JoinContainer']}>Connect a wallet to join the event</div>
+      return <div className={styles['EventJoined']}>You've already joined this event!</div>
+    else if (claimStatus === ClaimStatus.NOT_CONNECTED)
+      return <div className={styles['Connect']}>Connect a wallet to join the event</div>
     else
-      return null;
+      return <div className={styles['NotAvail']}>Not available</div>
   }
 
   let classes = [styles['Card']]

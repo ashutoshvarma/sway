@@ -93,6 +93,28 @@
   /* margin-bottom: -100px; */
 }
 
+.EventJoined, .NotAvail, .Connect {
+  display: inline-block;
+  background: hsl(105deg 60% 86% / 52%);
+  color: #76893d;
+  /* background: hsl(80deg 32% 49%);
+  color: white; */
+  padding: 15px 40px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.Connect {
+  background: hsl(0deg 0% 53%);
+  color: white;
+}
+
+.NotAvail {
+  background: hsl(0deg 0% 94%);
+  color: #9f9f9f;
+
+}
+
 .JoinContainer button {
   cursor: pointer;
   padding: 24px 40px;
