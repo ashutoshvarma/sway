@@ -7,20 +7,22 @@ import GalleryPage from './components/Gallery/GalleryContainer'
 import EventDetailPage from './components/EventDetails/EventDetailsContainer'
 import UserCollectionPage from './components/UserCollection/UserCollectionsContainer'
 import CreateEvent from './components/CreateEvent/CreateEventContainer'
-import { ToastContainer, ToastPosition } from 'react-toastify'
+import { ToastContainer, Theme } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import './toasts.css'
 
 function withLayout(El: ReactNode, dark?: boolean) {
   return <Layout dark={dark}>{El}</Layout>
 }
 
 const ToastConfig = {
-  position: 'bottom-right' as ToastPosition,
-  autoClose: 5000,
+  autoClose: 100000,
   closeOnClick: true,
   pauseOnHover: true,
   draggable: true,
   progress: undefined,
+  hideProgressBar: true,
+  theme: "dark" as Theme
 }
 
 function App(): ReactElement {

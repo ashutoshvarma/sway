@@ -53,7 +53,6 @@ export function useClaimStatus(
   const [loading, setLoading] = useState<boolean>(true)
 
   const checkClaimStatus = () => {
-
     try {
       setLoading(true)
       if (!account) setStatus(ClaimStatus.NOT_CONNECTED)
@@ -69,8 +68,9 @@ export function useClaimStatus(
         } else {
           setStatus(ClaimStatus.NOT_AVAIL)
         }
+      } else {
+        setStatus(ClaimStatus.NOT_AVAIL)
       }
-      else { setStatus(ClaimStatus.NOT_AVAIL) }
     } catch (error) {
       console.error(error, { account, eventId })
     } finally {
@@ -80,6 +80,7 @@ export function useClaimStatus(
 
   useEffect(() => {
     checkClaimStatus()
+    // eslint-disable-next-line
   }, [account, participants, eventId, chainId, library])
 
   return [status, loading, checkClaimStatus]

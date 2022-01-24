@@ -26,6 +26,7 @@ interface Props {
 
 function DetailsCard({ event, loading: eventLoading, claimStatus, claimLoading, claimEvent, forceCheckStatus }: Props): ReactElement {
   const [joinLoading, setJoinLoading] = useState(false);
+  // toast.error(`Yey! Success!`)
 
   const joinEventHandler = async () => {
     if (!claimEvent) return;
