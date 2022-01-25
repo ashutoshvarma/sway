@@ -22,9 +22,9 @@
     "declarationMap": true,
     "declaration": true,
     "experimentalDecorators": true,
-    "paths": {
-      "@sway/*": ["packages/*/src/index.ts"]
-    }
+    // "paths": {
+    //   "@sway/*": ["packages/*/src/index.ts"]
+    // }
   },
   "references": [
     {
@@ -37,7 +37,7 @@
       "path": "packages/contracts"
     },
     {
-      "path": "packages/server"
+      "path": "packages/common"
     }
   ],
   "exclude": ["node_modules", "dist", "*.d.ts"]

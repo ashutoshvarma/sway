@@ -12,7 +12,7 @@ const SelectInput = ({
   options,
   ...props
 }: FieldHookConfig<string> & Props): ReactElement => {
-  const [field, _meta, helpers] = useField(props)
+  const [field, , helpers] = useField(props)
   const { value } = field
 
   const changeHandler = (

@@ -2,21 +2,21 @@
 pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/cryptography/MerkleProofUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 
 interface SwayToken {
     function mintToken(uint256 eventId, address to) external returns (bool);
 }
 
-contract SwayDrop is Initializable, PausableUpgradeable, AccessControlEnumerableUpgradeable {
-    bytes32 public constant GOVERNOR_ROLE = keccak256("GOVERNOR_ROLE");
+interface SwayAdmin {
+    function isGovernor(address _addr) external returns (bool);
+}
 
+contract SwayDrop is Initializable, UUPSUpgradeable, PausableUpgradeable {
     string public name;
-
-    address public sway;
+    address public swayAddr;
 
     // mapping of event and processed claims
     mapping(uint256 => mapping(address => bool)) public claimed;
@@ -26,24 +26,37 @@ contract SwayDrop is Initializable, PausableUpgradeable, AccessControlEnumerable
 
     event TokenClaimed(uint256 indexed eventId, address indexed to);
 
-    function initialize(
-        string memory _name,
-        address _sway,
-        address _governor
-    ) public initializer {
+    /// @custom:oz-upgrades-unsafe-allow constructor
+    constructor() initializer {}
+
+    function initialize(string memory _name, address _swayAddr) public initializer {
         name = _name;
-        sway = _sway;
+        swayAddr = _swayAddr;
 
         __Context_init_unchained();
-        __ERC165_init_unchained();
-        __AccessControl_init_unchained();
-        __AccessControlEnumerable_init_unchained();
         __Pausable_init_unchained();
-
-        _setRoleAdmin(GOVERNOR_ROLE, GOVERNOR_ROLE);
-        _setupRole(GOVERNOR_ROLE, _sway);
-        _setupRole(GOVERNOR_ROLE, _governor);
+        // UUPSUpgradeable
+        __ERC1967Upgrade_init_unchained();
+        __UUPSUpgradeable_init_unchained();
     }
+
+    modifier onlyGovernorOrSway() {
+        require(
+            SwayAdmin(swayAddr).isGovernor(msg.sender) || msg.sender == swayAddr,
+            "SwayDrop: sender is not Sway or does not have Governor Role"
+        );
+        _;
+    }
+
+    modifier onlyGovernor() {
+        require(
+            SwayAdmin(swayAddr).isGovernor(msg.sender),
+            "SwayDrop: sender does not have Governor Role"
+        );
+        _;
+    }
+
+    function _authorizeUpgrade(address) internal override onlyGovernor {}
 
     function _updateEvent(uint256 _eventId, bytes32 _roothash) internal {
         rootHash[_eventId] = _roothash;
@@ -61,17 +74,20 @@ contract SwayDrop is Initializable, PausableUpgradeable, AccessControlEnumerable
         return rootHash[eventId] != bytes32(0);
     }
 
-    function addEvent(uint256 _eventId, bytes32 _roothash) public onlyRole(GOVERNOR_ROLE) {
-        require(!isEventAdded(_eventId), "SwayDrop::addEvent: Merkle Root already present for the event");
+    function addEvent(uint256 _eventId, bytes32 _roothash) public onlyGovernorOrSway {
+        require(
+            !isEventAdded(_eventId),
+            "SwayDrop::addEvent: Merkle Root already present for the event"
+        );
         _updateEvent(_eventId, _roothash);
     }
 
-    function updateEvent(uint256 _eventId, bytes32 _roothash) public onlyRole(GOVERNOR_ROLE) {
+    function updateEvent(uint256 _eventId, bytes32 _roothash) public onlyGovernorOrSway {
         _updateEvent(_eventId, _roothash);
     }
 
-    function setSway(address _sway) public onlyRole(GOVERNOR_ROLE) {
-        sway = _sway;
+    function setSway(address _swayAddr) public onlyGovernorOrSway {
+        swayAddr = _swayAddr;
     }
 
     function _makeLeaf(
@@ -89,13 +105,24 @@ contract SwayDrop is Initializable, PausableUpgradeable, AccessControlEnumerable
         bytes32[] memory proof
     ) public {
         require(isEventAdded(_eventId), "SwayDrop: event not added for drop");
-        require(claimed[_eventId][_recipient] == false, "SwayDrop: recipient already processed!");
+        require(
+            claimed[_eventId][_recipient] == false,
+            "SwayDrop: recipient already processed!"
+        );
         bytes32 leaf = _makeLeaf(_index, _eventId, _recipient);
-        require(verify(proof, rootHash[_eventId], leaf), "SwayDrop: recipient not in merkle tree!");
+        require(
+            verify(proof, rootHash[_eventId], leaf),
+            "SwayDrop: recipient not in merkle tree!"
+        );
 
         claimed[_eventId][_recipient] = true;
         emit TokenClaimed(_eventId, _recipient);
 
-        require(SwayToken(sway).mintToken(_eventId, _recipient), "SwayDrop: could not mint SWAY");
+        require(
+            SwayToken(swayAddr).mintToken(_eventId, _recipient),
+            "SwayDrop: could not mint SWAY"
+        );
     }
+
+    uint256[50] private __gap;
 }

@@ -8,6 +8,7 @@ import {getEventMerkleParticipants} from '@sway/events/src';
 
 export type CreateEventArgs = {minter: string};
 export type MinterArgs = {event: number; minter: string; remove: boolean};
+export type EventInfoArgs = {event: number};
 export type MintArgs = {event: number; to: string; minter?: number};
 export type ClaimArgs = {
   event: number;
@@ -55,6 +56,7 @@ export async function add_event_drop(
   const sGovernor = await ethers.getNamedSigner('governorAddr');
   const participants = await getEventMerkleParticipants(
     taskArgs.event,
+    hre.network.name,
     taskArgs.json
   );
   const root = getMerkleRoot(participants.participants, taskArgs.event);
@@ -71,7 +73,9 @@ export async function add_event_drop(
   } else {
     hash = await (
       await (
-        await sway.connect(sGovernor).addEventDrop(taskArgs.event, root)
+        await sway
+          .connect(sGovernor)
+          .addEventDrop(taskArgs.event, root, swayDrop.address)
       ).wait()
     ).transactionHash;
   }
@@ -119,10 +123,12 @@ export async function claim(
   _: RunSuperFunction<ClaimArgs>
 ): Promise<void> {
   const {ethers} = hre;
+  const sGovernor = await ethers.getNamedSigner('governorAddr');
   const swayDrop = (await ethers.getContract('SwayDrop')) as SwayDrop;
 
   const dropParticipants = await getEventMerkleParticipants(
     taskArgs.event,
+    hre.network.name,
     taskArgs.json
   );
 
@@ -143,7 +149,9 @@ export async function claim(
   );
 
   const receipt = await (
-    await swayDrop.claim(index, taskArgs.event, taskArgs.to, proof)
+    await swayDrop
+      .connect(sGovernor)
+      .claim(index, taskArgs.event, taskArgs.to, proof)
   ).wait();
 
   console.log(
@@ -180,4 +188,36 @@ export async function minter(
       .transactionHash;
     console.log(`Successfully added Minter, txHash - ${hash}`);
   }
+}
+
+export async function event_info(
+  taskArgs: EventInfoArgs,
+  hre: HardhatRuntimeEnvironment,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _: RunSuperFunction<EventInfoArgs>
+): Promise<void> {
+  const {ethers} = hre;
+  const sway = (await ethers.getContract('Sway')) as Sway;
+  const swayDrop = (await ethers.getContract('SwayDrop')) as SwayDrop;
+  const role = await sway.eventRoleMapping(taskArgs.event);
+
+  const eventDrop = await swayDrop.isEventAdded(taskArgs.event);
+  const mCount = await sway.getRoleMemberCount(role);
+  const minters = [];
+  for (let i = 0; i < mCount.toNumber(); i++) {
+    minters.push(await sway.getRoleMember(role, i));
+  }
+
+  console.log(`=> Event(${taskArgs.event})`);
+  console.log(`   - Event Drop:        ${eventDrop}`);
+  // if (eventDrop) {
+  console.log(
+    `   - Merkle Root:       ${await swayDrop.rootHash(taskArgs.event)}`
+  );
+  // }
+  console.log(`   - Minters:`);
+  for (const minter of minters) {
+    console.log(`      - ${minter}`);
+  }
+  console.log(``);
 }

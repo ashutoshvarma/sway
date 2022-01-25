@@ -1,14 +1,41 @@
-import { ReactElement } from 'react'
+import { ReactElement,useEffect,useState } from 'react'
 import styles from './Collections.module.css'
 
-interface Props {}
+import { explorerLink } from '../../utils/helpers'
+import api, { CollectionInterface } from '../../utils/api'
 
-function Collections({}: Props): ReactElement {
+import moment from 'moment'
+
+interface Props{
+  eventId: string
+}
+
+interface RowProps {
+  collection?: CollectionInterface
+  loading?: boolean
+}
+
+function Collections({eventId:id}:Props): ReactElement {
+  const [loading, setLoading] = useState<boolean>(true)
+  const [collections, setCollection] = useState<
+  CollectionInterface[] | undefined
+>()
+  //Fetching Collections
+    useEffect(() => {
+      ;(async () => {
+        setLoading(true)
+        let collectionsData = await api.getEventsTransfer(id)
+        setCollection(collectionsData)
+        setLoading(false)
+      })()
+    }, [id])
+  
+
   return (
     <section className={styles['Collections']}>
       <div className="wrapper narrow">
         <h3>Collection</h3>
-        <div className={styles['CollectionGrid']}>
+        <table className={styles['CollectionGrid']}>
           <thead>
             <tr>
               <th className={styles['TableHeader']}>SwayId</th>
@@ -19,37 +46,45 @@ function Collections({}: Props): ReactElement {
             </tr>
           </thead>
           <tbody>
-            <TableRow />
-            <TableRow />
-            <TableRow />
-            <TableRow />
-            <TableRow />
-            <TableRow />
-            <TableRow />
-            <TableRow />
-            <TableRow />
-            <TableRow />
-            <TableRow />
+            {collections?.map((collection) => (
+              <TableRow key={collection.tokenId} collection={collection} />
+            ))}
+            {loading ? (
+              <>
+                <TableRow loading />
+                <TableRow loading />
+                <TableRow loading />
+                <TableRow loading />
+              </>
+            ) : null}
           </tbody>
-        </div>
+        </table>
       </div>
     </section>
   )
 }
 
-function TableRow({}) {
+function TableRow({ collection, loading }: RowProps) {
   return (
-    <tr>
+    <tr className={loading ? styles['Loading'] : undefined}>
       <td className={styles['MobileLabel']}>SwayId</td>
-      <td>#1222</td>
+      <td>{collection?.tokenId}</td>
       <td className={styles['MobileLabel']}>Collections</td>
-      <td>O9238ud89ud48hd7744993</td>
+      <td>
+        <a
+          href={collection?.collection && explorerLink(collection?.collection)}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {collection?.collection}
+        </a>
+      </td>
       <td className={styles['MobileLabel']}>Minting Date</td>
-      <td>3 days ago</td>
+      <td>{collection && moment(Number(collection.timestamp)*1000).fromNow()}</td>
       <td className={styles['MobileLabel']}>TX Count</td>
-      <td>1</td>
+      <td>{collection?.transferCount}</td>
       <td className={styles['MobileLabel']}>Power</td>
-      <td>1</td>
+      <td>{collection?.userTokenCount}</td>
     </tr>
   )
 }

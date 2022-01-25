@@ -19,12 +19,20 @@
   object-fit: cover;
 }
 
-.Thumb {
+.ThumbContainer {
   border: 10px solid #fff;
   border-radius: 50%;
   height: 370px;
   width: 370px;
   margin-top: 130px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+}
+
+.Thumb {
+  width: 100%;
+  height: 100%;
 }
 
 .Card h3 {
@@ -85,6 +93,28 @@
   /* margin-bottom: -100px; */
 }
 
+.EventJoined, .NotAvail, .Connect {
+  display: inline-block;
+  background: hsl(105deg 60% 86% / 52%);
+  color: #76893d;
+  /* background: hsl(80deg 32% 49%);
+  color: white; */
+  padding: 15px 40px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.Connect {
+  background: hsl(0deg 0% 53%);
+  color: white;
+}
+
+.NotAvail {
+  background: hsl(0deg 0% 94%);
+  color: #9f9f9f;
+
+}
+
 .JoinContainer button {
   cursor: pointer;
   padding: 24px 40px;
@@ -97,18 +127,143 @@
   border-radius: 5px;
 }
 
-@media (max-width: 1600px) {
+.Tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: auto;
+
+  margin-top: 20px;
+  max-width: 800px;
+  justify-content: center;
+}
+
+.Tags span {
+  border-radius: 100px;
+  font-size: 14px;
+  padding: 7px 15px;
+  color: #919191;
+  font-weight: 100;
+  background-color: #fffce5;
+  text-transform: capitalize;
+}
+
+/* Loading Styles */
+.Loading {
+  --loading-color: #eaeaea;
+}
+
+.Loading .ThumbContainer {
+  background-color: var(--loading-color);
+}
+
+.Loading h3,
+.Loading .Desc {
+  background-color: var(--loading-color);
+  color: transparent;
+  border-radius: 5px;
+}
+
+.Loading .Desc {
+  min-height: 100px;
+}
+
+.Loading h3::after {
+  content: 'loading';
+}
+
+.Loading .Thumb {
+  opacity: 0;
+}
+
+.Loading .Tags span {
+  background-color: var(--loading-color);
+  color: transparent;
+}
+
+.Loading .AdditionalInfoRow span {
+  background-color: var(--loading-color);
+  color: transparent;
+  border-radius: 5px;
+  width: 100px;
+  /* height: 20px; */
+}
+
+.Loading .JoinContainer {
+  display: none;
+}
+
+
+/* Loader */
+.Loader {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.Loader div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.Loader div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.Loader div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.Loader div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.Loader div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+
+@media (max-width: 2000px) {
   .Background {
     height: 180px;
   }
 
-  .Thumb {
+  .ThumbContainer {
     height: 200px;
     width: 200px;
     margin-top: 20px;
   }
   .Card {
-    /* max-width: 800px; */
     margin: auto;
   }
 
@@ -139,7 +294,7 @@
     height: 150px;
   }
 
-  .Thumb {
+  .ThumbContainer {
     height: 150px;
     width: 150px;
     margin-top: 40px;

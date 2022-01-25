@@ -1,0 +1,43 @@
+{
+  "eventId": "14",
+  "description": "event",
+  "external_url": "https://static.sway.community/metadata/14",
+  "home_url": "https://www.sway.community/",
+  "image_url": "https://static.sway.community/alfajores/badges/4",
+  "image": "https://static.sway.community/alfajores/badges/4",
+  "name": "name",
+  "year": 2021,
+  "tags": [],
+  "start_date": "2021-02-22",
+  "end_date": "2021-05-22",
+  "virtual_event": false,
+  "city": "cty",
+  "country": "cntry",
+  "event_url": "https://www.sway.community/",
+  "attributes": [
+    {
+      "trait_type": "start_date",
+      "value": "2021-02-22"
+    },
+    {
+      "trait_type": "end_date",
+      "value": "2021-05-22"
+    },
+    {
+      "trait_type": "virtual_event",
+      "value": "false"
+    },
+    {
+      "trait_type": "city",
+      "value": "cty"
+    },
+    {
+      "trait_type": "country",
+      "value": "cntry"
+    },
+    {
+      "trait_type": "event_url",
+      "value": "https://www.sway.community/"
+    }
+  ]
+}

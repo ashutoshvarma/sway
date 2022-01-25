@@ -2,9 +2,7 @@ import { ReactElement } from 'react'
 import styles from './HeroSection.module.css'
 import hero from '../../assets/illustrations/gallery-illus.svg'
 
-interface Props {}
-
-function HeroSection({}: Props): ReactElement {
+function HeroSection(): ReactElement {
   return (
     <section className={styles['HeroSection']}>
       <div className={`wrapper narrow ${styles['SectionContentWrapper']}`}>

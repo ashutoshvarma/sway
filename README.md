@@ -1,10 +1,9 @@
-# Sway
+# Sway Protocol
 
-## Install
-```
-yarn
-```
+## [contracts](./packages/contracts)
 
-- contracts
-- subgraph
-- interface
+## [events](./packages/events)
+
+## [common](./packages/common)
+
+## [interface](./packages/interface)

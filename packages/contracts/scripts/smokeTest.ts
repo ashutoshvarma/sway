@@ -1,50 +1,13 @@
 import {BigNumber} from '@ethersproject/bignumber';
-import {deployments, ethers, getUnnamedAccounts, run, network} from 'hardhat';
-import {Sway} from '../typechain';
-const {execute} = deployments;
-
-async function swayTest() {
-  const sway = (await ethers.getContract('Sway')) as Sway;
-  const accounts = await ethers.getSigners();
-  const matt = accounts[3];
-  const josh = accounts[4];
-  const patt = accounts[5];
-  const sGovernor = await ethers.getNamedSigner('governorAddr');
-  console.log(`using Sway at ${sway.address}`);
-
-  await (await sway.connect(sGovernor).createEvent(matt.address)).wait();
-  const mattEventId = await sway.lastEventId();
-  console.log(
-    `Event(${mattEventId.toString()}) created with ${matt.address} as minter`
-  );
-
-  await (
-    await sway
-      .connect(matt)
-      ['mintToken(uint256,address)'](mattEventId, josh.address)
-  ).wait();
-  console.log(`Minted token to ${josh.address}`);
-
-  const [joshTokenId, joshTokenEventId] = await sway.tokenDetailsOfOwnerByIndex(
-    josh.address,
-    0
-  );
-
-  await sway
-    .connect(josh)
-    ['safeTransferFrom(address,address,uint256)'](
-      josh.address,
-      patt.address,
-      joshTokenId
-    );
-}
+import {ethers, run, network} from 'hardhat';
+import {getEventMerkleParticipants} from '@sway/events/src';
 
 async function swaySimple() {
   const accounts = await ethers.getSigners();
-  const matt = accounts[3];
-  const josh = accounts[4];
-  const patt = accounts[5];
-  const amy = accounts[6];
+  const matt = accounts[3]!;
+  const josh = accounts[4]!;
+  const patt = accounts[5]!;
+  const amy = accounts[6]!;
 
   const ids: BigNumber[] = [];
   // mint 5 events with matt as minter
@@ -76,6 +39,14 @@ async function swaySimple() {
       await run('event:minter', {event: id.toNumber(), minter: amy.address});
     }
   }
+
+  await run('event:addDrop', {event: 1});
+  const participant = (await getEventMerkleParticipants(1, network.name))
+    .participants[0];
+  await run('event:claim', {
+    event: 1,
+    to: participant,
+  });
 }
 
 async function main() {

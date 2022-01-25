@@ -17,6 +17,7 @@ export class SwayDropParticipants {
 }
 
 export interface NFTMetadata extends Event {
+  eventId: string
   attributes: { trait_type: string; value: string }[]
 }
 
@@ -71,8 +72,9 @@ export class Event {
   @IsUrl()
   event_url!: string
 
-  metadata(): NFTMetadata {
+  metadata(eventId: string): NFTMetadata {
     return {
+      eventId,
       ...this,
       attributes: Event.attributes_props.map((p) => {
         return { trait_type: p.toString(), value: this[p].toString() }
@@ -80,27 +82,3 @@ export class Event {
     }
   }
 }
-
-// export async function createEventWithMerkle(
-//   minter: string,
-//   participantsJsonPath: string,
-// ): Promise<[BigNumber, string]> {
-//   const participants = plainToInstance(
-//     SwayDropParticipants,
-//     JSON.parse(
-//       await fs.promises.readFile(participantsJsonPath, { encoding: 'utf8' }),
-//     ),
-//   )
-
-//   await validateOrReject(participants)
-//   // verify all are address
-//   if (!participants.participants.every((a) => isAddress(a)))
-//     throw new Error('Not all Participants are valid')
-
-//   // create event
-//   const eventId = await createEvent(minter)
-//   const root = getMerkleRoot(participants.participants, eventId)
-//   // add root
-//   await addEventDrop(eventId, root)
-//   return [eventId, root]
-// }

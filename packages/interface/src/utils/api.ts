@@ -5,6 +5,20 @@ import {
   SwayDropParticipants,
 } from '@sway/events/src/events'
 
+interface EventTransferResponse {
+  transfers: {
+    token: {
+      transferCount: string
+      id: string
+      created: string
+    }
+    to: {
+      id: string
+    }
+    transaction: string
+  }[]
+}
+
 interface EventDataResponse {
   events: {
     id: string
@@ -23,9 +37,26 @@ interface UserTokenDataResponse {
       metadataUri: string
       event: { id: string }
       created: string
+      transferCount: string
       transfers: { transaction: string; timestamp: string }[]
     }[]
   }
+}
+
+export interface EventInterface {
+  metadata: SwayEvent
+  id: string
+  tokenCount: string
+  transferCount: string
+  created: string
+}
+
+export interface CollectionInterface {
+  collection: string
+  tokenId: string
+  timestamp: string
+  transferCount: string
+  userTokenCount: number | undefined
 }
 
 export const eventsQuery = gql`
@@ -44,6 +75,22 @@ export const eventsQuery = gql`
   }
 `
 
+export const eventTransferQuery = gql`
+  query getTransfers($eventId: String) {
+    transfers(where: { event: $eventId }) {
+      token {
+        transferCount
+        id
+        created
+      }
+      to {
+        id
+      }
+      transaction
+    }
+  }
+`
+
 export const userTokensQuery = gql`
   query getUserTokens($userID: String) {
     account(id: $userID) {
@@ -56,6 +103,7 @@ export const userTokensQuery = gql`
           id
         }
         created
+        transferCount
         transfers(
           where: { from: "0x0000000000000000000000000000000000000000" }
         ) {
@@ -75,7 +123,7 @@ const api = {
   getEventMerkleDetails: async (
     eventId: string,
   ): Promise<SwayDropParticipants> => {
-    return await (await fetch(`${MERKLE_URL}/${eventId}`)).json()
+    return await (await fetch(`${MERKLE_URL}/${eventId}.json`)).json()
   },
 
   /**
@@ -98,15 +146,7 @@ const api = {
     last: { created: string } = {
       created: Number.MAX_SAFE_INTEGER.toString(),
     },
-  ): Promise<
-    {
-      metadata: SwayEvent
-      id: string
-      tokenCount: string
-      transferCount: string
-      created: string
-    }[]
-  > => {
+  ): Promise<EventInterface[]> => {
     // run the graphql query to fetch event ids
     const events = (
       await request<EventDataResponse>(SUBGRAPH_URL, eventsQuery, {
@@ -140,7 +180,7 @@ const api = {
       created: string
       metadataUri: string
       transactionHash?: string
-      metadata: SwayEvent
+      eventId: string
     }[]
   } | null> => {
     // subgraph has lowercase address
@@ -151,20 +191,50 @@ const api = {
       })
     ).account
     if (!account) return null
+
     return {
       tokensOwned: account.tokensOwned,
-      tokens: await Promise.all(
-        account.tokens.map(async (t) => {
-          const metadata = await api.getEventMetadata(t.event.id)
-          return {
-            created: t.created,
-            metadataUri: t.metadataUri,
-            transactionHash: t.transfers[0]?.transaction,
-            metadata,
-          }
-        }),
-      ),
+      tokens: account.tokens.map((t) => {
+        return {
+          created: t.created,
+          metadataUri: t.metadataUri,
+          transactionHash: t.transfers[0]?.transaction,
+          eventId: t.event.id,
+
+        }
+      }),
     }
+  },
+
+  getEventsTransfer: async (
+    eventId: string,
+  ): Promise<
+    {
+      collection: string
+      tokenId: string
+      timestamp: string
+      transferCount: string
+      userTokenCount: number | undefined
+    }[]
+  > => {
+    const transfers = (
+      await request<EventTransferResponse>(SUBGRAPH_URL, eventTransferQuery, {
+        eventId,
+      })
+    ).transfers
+
+    return Promise.all(
+      transfers.map(async (t) => {
+        return {
+          collection: t.to.id,
+          tokenId: t.token.id,
+          timestamp: t.token.created,
+          transferCount: t.token.transferCount,
+          // power
+          userTokenCount: (await api.getUserTokenInfo(t.to.id))?.tokens.length,
+        }
+      }),
+    )
   },
 }
 

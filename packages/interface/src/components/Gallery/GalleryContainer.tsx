@@ -2,9 +2,7 @@ import { ReactElement } from 'react'
 import HeroSection from './HeroSection'
 import Gallery from './Gallery'
 
-interface Props {}
-
-function GalleryContainer({}: Props): ReactElement {
+function GalleryContainer(): ReactElement {
   return (
     <div>
       <HeroSection />

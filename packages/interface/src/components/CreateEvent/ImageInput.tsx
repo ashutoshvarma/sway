@@ -26,6 +26,7 @@ const ImageInput = ({
     return () => {
       if (imageUrl) URL.revokeObjectURL(imageUrl)
     }
+    // eslint-disable-next-line
   }, [value])
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,7 +83,11 @@ const ImageInput = ({
           alt="Event Thumbnail"
           toggle={onClickThumb}
         />
-        <div className={[styles['Preview'], imageUrl && styles['Active']].join(' ')}>
+        <div
+          className={[styles['Preview'], imageUrl && styles['Active']].join(
+            ' ',
+          )}
+        >
           <img onClick={onClickThumb} src={imageUrl} alt="" />
         </div>
       </div>

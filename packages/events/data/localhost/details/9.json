@@ -1,0 +1,16 @@
+{
+  "description": "event",
+  "external_url": "https://static.sway.community/metadata/9",
+  "home_url": "https://www.sway.community/",
+  "image_url": "https://static.sway.community/alfajores/badges/4",
+  "image": "https://static.sway.community/alfajores/badges/4",
+  "name": "name",
+  "year": 2021,
+  "tags": [],
+  "start_date": "2021-02-22",
+  "end_date": "2021-05-22",
+  "virtual_event": false,
+  "city": "cty",
+  "country": "cntry",
+  "event_url": "https://www.sway.community/"
+}

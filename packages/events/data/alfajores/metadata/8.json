@@ -1,0 +1,50 @@
+{
+  "eventId": "8",
+  "description": "This is a large large large large event description",
+  "external_url": "https://static.sway.community/metadata/8",
+  "home_url": "https://www.sway.community/",
+  "image_url": "https://static.sway.community/alfajores/badges/3",
+  "image": "https://static.sway.community/alfajores/badges/3",
+  "name": "This is a large large large large name",
+  "year": 2021,
+  "tags": [
+    "sway",
+    "event",
+    "more events",
+    "more events",
+    "more events",
+    "More events"
+  ],
+  "start_date": "2021-02-22",
+  "end_date": "2021-05-22",
+  "virtual_event": false,
+  "city": "Large large large large ccity name",
+  "country": "Large Large Large Large County name",
+  "event_url": "https://www.sway.community/",
+  "attributes": [
+    {
+      "trait_type": "start_date",
+      "value": "2021-02-22"
+    },
+    {
+      "trait_type": "end_date",
+      "value": "2021-05-22"
+    },
+    {
+      "trait_type": "virtual_event",
+      "value": "false"
+    },
+    {
+      "trait_type": "city",
+      "value": "Large large large large ccity name"
+    },
+    {
+      "trait_type": "country",
+      "value": "Large Large Large Large County name"
+    },
+    {
+      "trait_type": "event_url",
+      "value": "https://www.sway.community/"
+    }
+  ]
+}

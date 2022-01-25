@@ -37,6 +37,21 @@
   display: none;
 }
 
+/* Loading styles */
+
+.CollectionGrid .Loading td {
+  /* color: transparent; */
+}
+
+.CollectionGrid .Loading td::after {
+  content: '';
+  display: block;
+  background-color: #77777717;
+  width: 100%;
+  height: 1.2em;
+  border-radius: 2px;
+}
+
 @media (max-width: 800px) {
   .MobileLabel {
     display: block;

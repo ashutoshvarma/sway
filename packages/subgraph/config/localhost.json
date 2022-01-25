@@ -2,6 +2,6 @@
   "rpc": "http://host.docker.internal:8545",
   "startBlock": 0,
   "network": "celo",
-  "SwayAddress": "0x0e95a741a4232C3d3f7a597Ae83d4E43140C2A37",
-  "SwayDropAddress": "0x709595d687547675661367a43D13584f6A24ab4f"
+  "SwayAddress": "0xdDFbB58bEE492c8C45532a8353D29A1004aeAE4C",
+  "SwayDropAddress": "0x75e442D37816A7f380Cc831ECe09A70646E50a54"
 }

@@ -4,17 +4,21 @@ import styles from './Nav.module.css'
 import walleticon from '../../assets/icons/wallet.svg'
 import hamburger from '../../assets/icons/hamburger.svg'
 import cross from '../../assets/icons/cross.svg'
+import { NavLink } from 'react-router-dom'
+import { shortenAddress } from '../../utils/helpers'
 
 interface Props {
-  dark?: Boolean
+  dark?: boolean
 }
 
 function Nav({ dark }: Props): ReactElement {
   const { connect, address, destroy } = useContractKit()
-  const [navOpen, setNavOpen] = useState<Boolean>(false)
+  const [navOpen, setNavOpen] = useState<boolean>(false)
   const toggleNav = () => {
     setNavOpen((state) => !state)
   }
+  const closeNav = () => setNavOpen(false)
+
   return (
     <nav>
       <button
@@ -34,20 +38,34 @@ function Nav({ dark }: Props): ReactElement {
           <img src={cross} alt="cross icon" />
         </button>
         <div className={styles['NavListContent']}>
-          <NavItem>Explore</NavItem>
-          <NavItem>Create</NavItem>
-          <NavItem>My Account</NavItem>
-          <NavItem primary>
+          <NavItem to="/gallery" click={closeNav}>
+            Explore
+          </NavItem>
+          <NavItem to="/event/create" click={closeNav}>
+            Create
+          </NavItem>
+          <NavItem to="/user_collection" click={closeNav}>
+            My Account
+          </NavItem>
+          <NavItem
+            to="#"
+            primary
+            click={
+              address
+                ? () => destroy().catch(console.log)
+                : () => connect().catch(console.log)
+            }
+          >
             {address ? (
-              <a onClick={() => destroy().catch(console.log)}>
+              <span>
                 <img src={walleticon} alt="wallet icon" />
-                Disconnect
-              </a>
+                {shortenAddress(address, 4)}
+              </span>
             ) : (
-              <a onClick={() => connect().catch(console.log)}>
+              <span>
                 <img src={walleticon} alt="wallet icon" />
                 Connect
-              </a>
+              </span>
             )}
           </NavItem>
         </div>
@@ -58,15 +76,27 @@ function Nav({ dark }: Props): ReactElement {
 
 interface NavItemProps {
   children: React.ReactNode
-  primary?: Boolean
-  // to: String
+  primary?: boolean
+  to: string
+  click?: () => void
 }
 
-function NavItem({ children, primary }: NavItemProps): ReactElement {
-  let classes = [styles['NavItem']]
-  if (primary) classes.push(styles['Primary'])
-
-  return <div className={classes.join(' ')}>{children}</div>
+function NavItem({ children, to, primary, click }: NavItemProps): ReactElement {
+  const classes = [styles['NavItem']]
+  if (primary) {
+    classes.push(styles['Primary'])
+    return (
+      <span onClick={click} className={classes.join(' ')}>
+        {' '}
+        {children}
+      </span>
+    )
+  }
+  return (
+    <NavLink to={to} onClick={click} className={classes.join(' ')}>
+      {children}
+    </NavLink>
+  )
 }
 
 export default Nav

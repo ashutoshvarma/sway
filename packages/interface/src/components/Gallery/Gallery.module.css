@@ -14,7 +14,7 @@
 
 .GalleryGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
   margin: 40px 0;
 }
@@ -22,6 +22,8 @@
 .LoadMoreContainer {
   text-align: center;
   margin-top: 80px;
+  position: relative;
+  z-index: 10;
   margin-bottom: -100px;
 }
 
@@ -64,6 +66,21 @@
 
 .SearchInputContainer {
   justify-self: flex-end;
+}
+
+.NoEvent {
+  color: #888;
+  text-align: center;
+  margin: 30px 0px;
+  padding: 30px;
+  background-color: #eee7;
+  border-radius: 5px;
+  margin-bottom: 50px;
+}
+
+.NoEvent h3 {
+  font-weight: 400;
+  font-size: 20px;
 }
 
 @media (max-width: 1000px) {

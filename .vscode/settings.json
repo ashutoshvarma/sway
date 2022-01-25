@@ -8,8 +8,12 @@
   },
   "solidity.enabledAsYouTypeCompilationErrorCheck": true,
   "cSpell.words": [
-    "typechain"
+    "blockscout",
+    "merkle",
+    "sourcify",
+    "typechain",
+    "uups"
   ],
   "solidity.compileUsingRemoteVersion": "v0.8.4+commit.c7e474f2",
-  "solidity.defaultCompiler": "remote"
+  "solidity.defaultCompiler": "remote",
 }

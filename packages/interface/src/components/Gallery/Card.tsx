@@ -4,23 +4,38 @@ import styles from './Card.module.css'
 import cardImg from '../../assets/illustrations/hero-illus.svg'
 import calenderIcon from '../../assets/icons/calender.svg'
 import eventIcon from '../../assets/icons/event.svg'
+import { EventInterface } from '../../utils/api'
+import { truncate } from '../../utils/helpers'
+import Tags from './Tags'
+import { useNavigate } from 'react-router-dom'
 
-interface Props {}
+interface Props {
+  event: EventInterface
+  loading?: Boolean
+}
 
-function Card({}: Props): ReactElement {
+function Card({ event, loading }: Props): ReactElement {
+  let navigate = useNavigate()
+  let classes = [styles['Card']]
+  if (loading) classes.push(styles['Loading'])
   return (
-    <div className={styles['Card']}>
+    <div
+      className={classes.join(' ')}
+      onClick={() => navigate(`/event/${event.id}`)}
+    >
       <div className={styles['CardThumbContainer']}>
-        <img src={cardImg} className={styles['CardThumb']} alt="thumbnail" />
+        <img
+          src={event.metadata.image || cardImg}
+          className={styles['CardThumb']}
+          alt="thumbnail"
+        />
       </div>
       <div className={styles['Label']}>
-        <span>#4340</span>
+        <span>#{event.id}</span>
       </div>
-      <h3 className={styles['Title']}>Collect Best NFT’s Quickly!</h3>
+      <h3 className={styles['Title']}>{truncate(event.metadata.name, 50)}</h3>
       <p className={styles['Desc']}>
-        There are many variations of passages of Lorem Ipsum available, but the
-        majority have suffered alteration in some form, by injected humour, or
-        randomised words which.
+        {truncate(event.metadata.description, 100)}
       </p>
       <div className={styles['AdditionalInfoRow']}>
         <div>
@@ -32,14 +47,15 @@ function Card({}: Props): ReactElement {
           <span>Quick Events</span>
         </div>
       </div>
+      <Tags tags={event.metadata.tags} />
       <div className={styles['AdditionalInfoRow']}>
         <div>
           <span style={{ fontWeight: 900 }}>SUPPLY</span>
-          <span>1</span>
+          <span>{event.tokenCount}</span>
         </div>
         <div>
           <span style={{ fontWeight: 900 }}>TRANSFERS</span>
-          <span>1</span>
+          <span>{event.transferCount}</span>
         </div>
       </div>
     </div>

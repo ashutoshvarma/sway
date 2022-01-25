@@ -5,12 +5,12 @@ module.exports = {
     {
       files: '*.sol',
       options: {
-        printWidth: 120,
+        printWidth: 90,
         tabWidth: 4,
         singleQuote: false,
         explicitTypes: 'always',
-        trailingComma: "all",
-        semi: false
+        trailingComma: 'all',
+        semi: false,
       },
     },
   ],

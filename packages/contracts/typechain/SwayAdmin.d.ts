@@ -23,11 +23,10 @@ interface SwayAdminInterface extends ethers.utils.Interface {
   functions: {
     "DEFAULT_ADMIN_ROLE()": FunctionFragment;
     "GOVERNOR_ROLE()": FunctionFragment;
-    "addEventDrop(uint256,bytes32)": FunctionFragment;
+    "addEventDrop(uint256,bytes32,address)": FunctionFragment;
     "addEventMinter(uint256,address)": FunctionFragment;
     "addGovernor(address)": FunctionFragment;
     "createEvent(address)": FunctionFragment;
-    "drop()": FunctionFragment;
     "eventRoleMapping(uint256)": FunctionFragment;
     "getRoleAdmin(bytes32)": FunctionFragment;
     "getRoleMember(bytes32,uint256)": FunctionFragment;
@@ -43,7 +42,6 @@ interface SwayAdminInterface extends ethers.utils.Interface {
     "removeGovernor(address)": FunctionFragment;
     "renounceRole(bytes32,address)": FunctionFragment;
     "revokeRole(bytes32,address)": FunctionFragment;
-    "setDrop(address)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
     "unpause()": FunctionFragment;
   };
@@ -58,7 +56,7 @@ interface SwayAdminInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "addEventDrop",
-    values: [BigNumberish, BytesLike]
+    values: [BigNumberish, BytesLike, string]
   ): string;
   encodeFunctionData(
     functionFragment: "addEventMinter",
@@ -66,7 +64,6 @@ interface SwayAdminInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "addGovernor", values: [string]): string;
   encodeFunctionData(functionFragment: "createEvent", values: [string]): string;
-  encodeFunctionData(functionFragment: "drop", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "eventRoleMapping",
     values: [BigNumberish]
@@ -118,7 +115,6 @@ interface SwayAdminInterface extends ethers.utils.Interface {
     functionFragment: "revokeRole",
     values: [BytesLike, string]
   ): string;
-  encodeFunctionData(functionFragment: "setDrop", values: [string]): string;
   encodeFunctionData(
     functionFragment: "supportsInterface",
     values: [BytesLike]
@@ -149,7 +145,6 @@ interface SwayAdminInterface extends ethers.utils.Interface {
     functionFragment: "createEvent",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "drop", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "eventRoleMapping",
     data: BytesLike
@@ -192,7 +187,6 @@ interface SwayAdminInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "revokeRole", data: BytesLike): Result;
-  decodeFunctionResult(functionFragment: "setDrop", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "supportsInterface",
     data: BytesLike
@@ -209,7 +203,6 @@ interface SwayAdminInterface extends ethers.utils.Interface {
     "RoleAdminChanged(bytes32,bytes32,bytes32)": EventFragment;
     "RoleGranted(bytes32,address,address)": EventFragment;
     "RoleRevoked(bytes32,address,address)": EventFragment;
-    "SwayDropAddressUpdated(address)": EventFragment;
     "Unpaused(address)": EventFragment;
   };
 
@@ -222,7 +215,6 @@ interface SwayAdminInterface extends ethers.utils.Interface {
   getEvent(nameOrSignatureOrTopic: "RoleAdminChanged"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "RoleGranted"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "RoleRevoked"): EventFragment;
-  getEvent(nameOrSignatureOrTopic: "SwayDropAddressUpdated"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Unpaused"): EventFragment;
 }
 
@@ -262,10 +254,6 @@ export type RoleGrantedEvent = TypedEvent<
 
 export type RoleRevokedEvent = TypedEvent<
   [string, string, string] & { role: string; account: string; sender: string }
->;
-
-export type SwayDropAddressUpdatedEvent = TypedEvent<
-  [string] & { drop: string }
 >;
 
 export type UnpausedEvent = TypedEvent<[string] & { account: string }>;
@@ -321,6 +309,7 @@ export class SwayAdmin extends BaseContract {
     addEventDrop(
       eventId: BigNumberish,
       rootHash: BytesLike,
+      drop: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
@@ -339,8 +328,6 @@ export class SwayAdmin extends BaseContract {
       minter: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
-
-    drop(overrides?: CallOverrides): Promise<[string]>;
 
     eventRoleMapping(
       arg0: BigNumberish,
@@ -411,11 +398,6 @@ export class SwayAdmin extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    setDrop(
-      _drop: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
-
     supportsInterface(
       interfaceId: BytesLike,
       overrides?: CallOverrides
@@ -433,6 +415,7 @@ export class SwayAdmin extends BaseContract {
   addEventDrop(
     eventId: BigNumberish,
     rootHash: BytesLike,
+    drop: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
@@ -451,8 +434,6 @@ export class SwayAdmin extends BaseContract {
     minter: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
-
-  drop(overrides?: CallOverrides): Promise<string>;
 
   eventRoleMapping(
     arg0: BigNumberish,
@@ -523,11 +504,6 @@ export class SwayAdmin extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  setDrop(
-    _drop: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
-
   supportsInterface(
     interfaceId: BytesLike,
     overrides?: CallOverrides
@@ -545,6 +521,7 @@ export class SwayAdmin extends BaseContract {
     addEventDrop(
       eventId: BigNumberish,
       rootHash: BytesLike,
+      drop: string,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -557,8 +534,6 @@ export class SwayAdmin extends BaseContract {
     addGovernor(account: string, overrides?: CallOverrides): Promise<void>;
 
     createEvent(minter: string, overrides?: CallOverrides): Promise<void>;
-
-    drop(overrides?: CallOverrides): Promise<string>;
 
     eventRoleMapping(
       arg0: BigNumberish,
@@ -623,8 +598,6 @@ export class SwayAdmin extends BaseContract {
       account: string,
       overrides?: CallOverrides
     ): Promise<void>;
-
-    setDrop(_drop: string, overrides?: CallOverrides): Promise<void>;
 
     supportsInterface(
       interfaceId: BytesLike,
@@ -761,14 +734,6 @@ export class SwayAdmin extends BaseContract {
       { role: string; account: string; sender: string }
     >;
 
-    "SwayDropAddressUpdated(address)"(
-      drop?: string | null
-    ): TypedEventFilter<[string], { drop: string }>;
-
-    SwayDropAddressUpdated(
-      drop?: string | null
-    ): TypedEventFilter<[string], { drop: string }>;
-
     "Unpaused(address)"(
       account?: null
     ): TypedEventFilter<[string], { account: string }>;
@@ -784,6 +749,7 @@ export class SwayAdmin extends BaseContract {
     addEventDrop(
       eventId: BigNumberish,
       rootHash: BytesLike,
+      drop: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
@@ -802,8 +768,6 @@ export class SwayAdmin extends BaseContract {
       minter: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
-
-    drop(overrides?: CallOverrides): Promise<BigNumber>;
 
     eventRoleMapping(
       arg0: BigNumberish,
@@ -877,11 +841,6 @@ export class SwayAdmin extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
-    setDrop(
-      _drop: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
-
     supportsInterface(
       interfaceId: BytesLike,
       overrides?: CallOverrides
@@ -902,6 +861,7 @@ export class SwayAdmin extends BaseContract {
     addEventDrop(
       eventId: BigNumberish,
       rootHash: BytesLike,
+      drop: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
@@ -920,8 +880,6 @@ export class SwayAdmin extends BaseContract {
       minter: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
-
-    drop(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     eventRoleMapping(
       arg0: BigNumberish,
@@ -995,11 +953,6 @@ export class SwayAdmin extends BaseContract {
     revokeRole(
       role: BytesLike,
       account: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<PopulatedTransaction>;
-
-    setDrop(
-      _drop: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 

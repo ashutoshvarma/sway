@@ -91,7 +91,10 @@ function Form(): ReactElement {
               </div>
             </div>
             <div className={styles['FormSection']}>
-              <h3 className={styles['SectionTitle']} id={styles['Section4Title']}>
+              <h3
+                className={styles['SectionTitle']}
+                id={styles['Section4Title']}
+              >
                 4. Event Details {'&'} Description
               </h3>
               <div className={styles['Section4InputGrid']}>

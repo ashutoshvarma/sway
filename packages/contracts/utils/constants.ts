@@ -1,20 +1,8 @@
-export interface CommonConfig {
-  swayBaseUriExtension: string;
-  swayName: string;
-  swaySymbol: string;
-  // make sure url ends with trailing '/'
-  swayBaseUri: string;
-}
+import {CONFIGS, SwayConfig, SwayNetworkNames} from '@sway/common/src/config';
 
-export function getConfig(network: string): CommonConfig {
-  const config = {
-    swayName: 'Sway',
-    swaySymbol: 'SWAY',
-    swayBaseUriExtension: ""
-  };
+export function getConfig(network: string): SwayConfig {
+  if (!(network in SwayNetworkNames))
+    throw new Error(`Network ${network} not found in SwayNetworkNames`);
 
-  if (network === 'celo') return {swayBaseUri: 'https://static.sway.community/metadata/', ...config};
-  if (network === 'alfajores')
-    return {swayBaseUri: 'https://static.sway.community/metadata/', ...config};
-  return {swayBaseUri: 'https://static.sway.community/metadata/', ...config};
+  return CONFIGS[network as SwayNetworkNames];
 }
