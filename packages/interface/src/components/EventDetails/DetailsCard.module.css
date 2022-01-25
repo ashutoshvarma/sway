@@ -93,6 +93,28 @@
   /* margin-bottom: -100px; */
 }
 
+.EventJoined, .NotAvail, .Connect {
+  display: inline-block;
+  background: hsl(105deg 60% 86% / 52%);
+  color: #76893d;
+  /* background: hsl(80deg 32% 49%);
+  color: white; */
+  padding: 15px 40px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.Connect {
+  background: hsl(0deg 0% 53%);
+  color: white;
+}
+
+.NotAvail {
+  background: hsl(0deg 0% 94%);
+  color: #9f9f9f;
+
+}
+
 .JoinContainer button {
   cursor: pointer;
   padding: 24px 40px;
@@ -114,7 +136,7 @@
 
   margin-top: 20px;
   max-width: 800px;
-  /* justify-content: center; */
+  justify-content: center;
 }
 
 .Tags span {
@@ -172,7 +194,66 @@
   display: none;
 }
 
-@media (max-width: 1600px) {
+
+/* Loader */
+.Loader {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.Loader div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.Loader div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.Loader div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.Loader div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.Loader div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+
+@media (max-width: 2000px) {
   .Background {
     height: 180px;
   }
@@ -183,7 +264,6 @@
     margin-top: 20px;
   }
   .Card {
-    /* max-width: 800px; */
     margin: auto;
   }
 

@@ -38,22 +38,25 @@ export enum ClaimStatus {
   AVAIL,
   // cannot claim as not in list
   NOT_AVAIL,
+  // wallet not connected
+  NOT_CONNECTED,
 }
 
 export function useClaimStatus(
   eventId: string,
   participants?: SwayDropParticipants,
-): [ClaimStatus, boolean] {
+): [ClaimStatus, boolean, () => void] {
   const { network, address: account } = useContractKit()
   const chainId = network.chainId
   const library = useProvider()
   const [status, setStatus] = useState<ClaimStatus>(ClaimStatus.NOT_AVAIL)
   const [loading, setLoading] = useState<boolean>(true)
 
-  useEffect(() => {
+  const checkClaimStatus = () => {
     try {
       setLoading(true)
-      if (account && participants?.participants) {
+      if (!account) setStatus(ClaimStatus.NOT_CONNECTED)
+      else if (account && participants?.participants) {
         // check if account in drop list
         if (indexInParticipants(account, participants) !== -1) {
           // get if already claimed
@@ -65,15 +68,22 @@ export function useClaimStatus(
         } else {
           setStatus(ClaimStatus.NOT_AVAIL)
         }
+      } else {
+        setStatus(ClaimStatus.NOT_AVAIL)
       }
     } catch (error) {
       console.error(error, { account, eventId })
     } finally {
       setLoading(false)
     }
+  }
+
+  useEffect(() => {
+    checkClaimStatus()
+    // eslint-disable-next-line
   }, [account, participants, eventId, chainId, library])
 
-  return [status, loading]
+  return [status, loading, checkClaimStatus]
 }
 
 export function useClaimCallback(

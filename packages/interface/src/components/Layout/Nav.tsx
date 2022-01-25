@@ -17,6 +17,8 @@ function Nav({ dark }: Props): ReactElement {
   const toggleNav = () => {
     setNavOpen((state) => !state)
   }
+  const closeNav = () => setNavOpen(false)
+
   return (
     <nav>
       <button
@@ -36,9 +38,15 @@ function Nav({ dark }: Props): ReactElement {
           <img src={cross} alt="cross icon" />
         </button>
         <div className={styles['NavListContent']}>
-          <NavItem to="/gallery">Explore</NavItem>
-          <NavItem to="/event/create">Create</NavItem>
-          <NavItem to="/user_collection">My Account</NavItem>
+          <NavItem to="/gallery" click={closeNav}>
+            Explore
+          </NavItem>
+          <NavItem to="/event/create" click={closeNav}>
+            Create
+          </NavItem>
+          <NavItem to="/user_collection" click={closeNav}>
+            My Account
+          </NavItem>
           <NavItem
             to="#"
             primary
@@ -70,23 +78,22 @@ interface NavItemProps {
   children: React.ReactNode
   primary?: boolean
   to: string
-  click?: () => {}
+  click?: () => void
 }
 
 function NavItem({ children, to, primary, click }: NavItemProps): ReactElement {
   const classes = [styles['NavItem']]
-  if (primary) classes.push(styles['Primary'])
-
-  if (click)
+  if (primary) {
+    classes.push(styles['Primary'])
     return (
       <span onClick={click} className={classes.join(' ')}>
         {' '}
         {children}
       </span>
     )
-
+  }
   return (
-    <NavLink to={to} className={classes.join(' ')}>
+    <NavLink to={to} onClick={click} className={classes.join(' ')}>
       {children}
     </NavLink>
   )

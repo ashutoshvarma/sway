@@ -200,6 +200,7 @@ const api = {
           metadataUri: t.metadataUri,
           transactionHash: t.transfers[0]?.transaction,
           eventId: t.event.id,
+
         }
       }),
     }
