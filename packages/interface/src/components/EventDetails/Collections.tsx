@@ -1,4 +1,4 @@
-import { ReactElement,useEffect,useState } from 'react'
+import { ReactElement, useEffect, useState } from 'react'
 import styles from './Collections.module.css'
 
 import { explorerLink } from '../../utils/helpers'
@@ -6,7 +6,7 @@ import api, { CollectionInterface } from '../../utils/api'
 
 import moment from 'moment'
 
-interface Props{
+interface Props {
   eventId: string
 }
 
@@ -15,21 +15,22 @@ interface RowProps {
   loading?: boolean
 }
 
-function Collections({eventId:id}:Props): ReactElement {
+function Collections({ eventId: id }: Props): ReactElement {
   const [loading, setLoading] = useState<boolean>(true)
   const [collections, setCollection] = useState<
-  CollectionInterface[] | undefined
->()
+    CollectionInterface[] | undefined
+  >()
   //Fetching Collections
-    useEffect(() => {
-      ;(async () => {
-        setLoading(true)
-        let collectionsData = await api.getEventsTransfer(id)
-        setCollection(collectionsData)
-        setLoading(false)
-      })()
-    }, [id])
-  
+  useEffect(() => {
+    ;(async () => {
+      setLoading(true)
+      const collectionsData = (await api.getEventsTransfer(id)).sort(
+        (a, b) => Number(b.timestamp) - Number(a.timestamp),
+      )
+      setCollection(collectionsData)
+      setLoading(false)
+    })()
+  }, [id])
 
   return (
     <section className={styles['Collections']}>
@@ -80,7 +81,9 @@ function TableRow({ collection, loading }: RowProps) {
         </a>
       </td>
       <td className={styles['MobileLabel']}>Minting Date</td>
-      <td>{collection && moment(Number(collection.timestamp)*1000).fromNow()}</td>
+      <td>
+        {collection && moment(Number(collection.timestamp) * 1000).fromNow()}
+      </td>
       <td className={styles['MobileLabel']}>TX Count</td>
       <td>{collection?.transferCount}</td>
       <td className={styles['MobileLabel']}>Power</td>
