@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 import styles from './Card.module.css'
 import { Token } from './Collections'
-import { explorerLink, truncate } from '../../utils/helpers'
+import { explorerLink, shortenTxHash } from '../../utils/helpers'
 import { Link } from 'react-router-dom'
 
 import cardImg from '../../assets/illustrations/hero-illus.svg'
@@ -33,9 +33,6 @@ function Card({ loading, token }: Props): ReactElement {
           <span>#{token?.eventId}</span>
         </Link>
       </div>
-      <div className={styles['EventId']}>
-        <Link to={`/event/${token?.eventId}`}><span>#{token?.eventId}</span></Link>
-      </div>
       <div className={styles['DetailsGrid']}>
         <span className={styles['Head']}>Status</span>
         <span className={styles['Head']}>Transaction ID</span>
@@ -47,7 +44,7 @@ function Card({ loading, token }: Props): ReactElement {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {truncate(token.transactionHash, 10)}
+              {shortenTxHash(token.transactionHash, 6)}
             </a>
           ) : (
             '0iyjh8389dh..3iresw12'
