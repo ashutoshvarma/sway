@@ -36,7 +36,7 @@ function Footer(): ReactElement {
                   <Link to="/event/create">Create</Link>
                 </li>
                 <li>
-                  <Link to="/user_collection">My Account</Link>
+                  <Link to="/account">My Account</Link>
                 </li>
                 <li>
                   <Link to="/event">Details</Link>

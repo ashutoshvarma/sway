@@ -41,10 +41,7 @@ function Nav({ dark }: Props): ReactElement {
           <NavItem to="/gallery" click={closeNav}>
             Explore
           </NavItem>
-          <NavItem to="/event/create" click={closeNav}>
-            Create
-          </NavItem>
-          <NavItem to="/user_collection" click={closeNav}>
+          <NavItem to="/account" click={closeNav}>
             My Account
           </NavItem>
           <NavItem

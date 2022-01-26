@@ -43,7 +43,7 @@ function App(): ReactElement {
             element={withLayout(<CreateEvent />, true)}
           />
           <Route
-            path="/user_collection"
+            path="/account"
             element={withLayout(<UserCollectionPage />, true)}
           />
         </Routes>
