@@ -10,7 +10,6 @@ import {
   ContractKitProvider,
   Network as UCKNetwork,
 } from '@celo-tools/use-contractkit'
-import { Celo, Alfajores, Localhost } from '@sway/common/src'
 import { NETWORK } from './utils/environment'
 
 if (window.celo) {
@@ -28,11 +27,7 @@ ReactDOM.render(
         icon: icon,
       }}
       network={NETWORK as unknown as UCKNetwork}
-      networks={[
-        Celo as unknown as UCKNetwork,
-        Alfajores as unknown as UCKNetwork,
-        Localhost as unknown as UCKNetwork,
-      ]}
+      networks={[NETWORK as unknown as UCKNetwork]}
       connectModal={{
         reactModalProps: {
           style: {
