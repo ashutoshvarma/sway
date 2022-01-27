@@ -11,8 +11,10 @@
     "declaration": true,
     "declarationMap": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "src/deployments/**/*.json"],
   "exclude": ["node_modules", "dist"]
 }

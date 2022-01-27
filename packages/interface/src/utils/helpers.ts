@@ -1,5 +1,5 @@
 import { Mainnet } from '@celo-tools/use-contractkit'
-import { DEPLOYMENTS, NETWORK } from './environment'
+import { CONFIG, NETWORK, SUPPORTED_NETWORKS } from './environment'
 import { isAddress } from '@ethersproject/address'
 import { Contract } from '@ethersproject/contracts'
 import { AddressZero } from '@ethersproject/constants'
@@ -89,8 +89,8 @@ export function getContract(
 
 export function getSwayContract(library: Web3Provider, account?: string) {
   return getContract(
-    DEPLOYMENTS?.Sway.address!,
-    DEPLOYMENTS?.Sway.abi!,
+    CONFIG.deployments.sway.address,
+    CONFIG.deployments.sway.abi,
     library,
     account,
   ) as Sway
@@ -98,9 +98,13 @@ export function getSwayContract(library: Web3Provider, account?: string) {
 
 export function getSwayDropContract(library: Web3Provider, account?: string) {
   return getContract(
-    DEPLOYMENTS?.SwayDrop.address!,
-    DEPLOYMENTS?.SwayDrop.abi!,
+    CONFIG.deployments.swayDrop.address,
+    CONFIG.deployments.swayDrop.abi,
     library,
     account,
   ) as SwayDrop
+}
+
+export function isSupportedChain(chainId: number): boolean {
+  return SUPPORTED_NETWORKS.some((n) => n.chainId === chainId)
 }

@@ -1,3 +1,13 @@
+// celo
+import SwayCelo from './deployments/celo/Sway.json'
+import SwayDropCelo from './deployments/celo/SwayDrop.json'
+// alfajores
+import SwayAlfajores from './deployments/alfajores/Sway.json'
+import SwayDropAlfajores from './deployments/alfajores/SwayDrop.json'
+// localhost
+import SwayLocalhost from './deployments/localhost/Sway.json'
+import SwayDropLocalhost from './deployments/localhost/SwayDrop.json'
+
 export interface SwayConfig {
   contracts: {
     symbol: string
@@ -10,19 +20,23 @@ export interface SwayConfig {
     static: string
     subgraph: string
   }
+  deployments: {
+    sway: { address: string; abi: any[] }
+    swayDrop: { address: string; abi: any[] }
+  }
 }
 
 export enum SwayNetworkNames {
-  celo = 'celo',
-  alfajores = 'alfajores',
-  localhost = 'localhost',
-  hardhat = 'hardhat',
+  Celo = 'Celo',
+  Alfajores = 'Alfajores',
+  Localhost = 'Localhost',
+  Hardhat = 'Hardhat',
 }
 
 export const CONFIGS: {
   [key in SwayNetworkNames]: SwayConfig
 } = {
-  [SwayNetworkNames.celo]: {
+  [SwayNetworkNames.Celo]: {
     contracts: {
       symbol: 'SWAY',
       name: 'Sway Protocol',
@@ -34,8 +48,12 @@ export const CONFIGS: {
       static: 'https://static.sway.community/celo/',
       subgraph: '',
     },
+    deployments: {
+      sway: SwayCelo,
+      swayDrop: SwayDropCelo,
+    },
   },
-  [SwayNetworkNames.alfajores]: {
+  [SwayNetworkNames.Alfajores]: {
     contracts: {
       symbol: 'A-SWAY',
       name: 'Sway Protocol on Alfajores Testnet',
@@ -48,8 +66,12 @@ export const CONFIGS: {
       subgraph:
         'https://api.thegraph.com/subgraphs/name/ashutoshvarma/sway-alfajores',
     },
+    deployments: {
+      sway: SwayAlfajores,
+      swayDrop: SwayDropAlfajores,
+    },
   },
-  [SwayNetworkNames.localhost]: {
+  [SwayNetworkNames.Localhost]: {
     contracts: {
       symbol: 'SWAY',
       name: 'Sway Protocol',
@@ -62,8 +84,12 @@ export const CONFIGS: {
       subgraph:
         ' http://localhost:8000/subgraphs/name/ashutoshvarma/sway-localhost',
     },
+    deployments: {
+      sway: SwayLocalhost,
+      swayDrop: SwayDropLocalhost,
+    },
   },
-  [SwayNetworkNames.hardhat]: {
+  [SwayNetworkNames.Hardhat]: {
     contracts: {
       symbol: 'SWAY',
       name: 'Sway Protocol',
@@ -75,6 +101,10 @@ export const CONFIGS: {
       static: 'http://localhost:3001/localhost/',
       subgraph:
         ' http://localhost:8000/subgraphs/name/ashutoshvarma/sway-localhost',
+    },
+    deployments: {
+      sway: SwayLocalhost,
+      swayDrop: SwayDropLocalhost,
     },
   },
 }

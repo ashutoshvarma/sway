@@ -7,22 +7,14 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import {
-  Alfajores,
   ContractKitProvider,
-  Mainnet,
+  Network as UCKNetwork,
 } from '@celo-tools/use-contractkit'
+import { Celo, Alfajores, Localhost } from '@sway/common/src'
 import { NETWORK } from './utils/environment'
 
 if (window.celo) {
   window.celo.autoRefreshOnNetworkChange = false
-}
-
-if (!NETWORK) {
-  throw new Error('Please set the valid network')
-} else {
-  console.log(
-    `Using network ${NETWORK.name}, with config - ${JSON.stringify(NETWORK)}`,
-  )
 }
 
 ReactDOM.render(
@@ -35,8 +27,12 @@ ReactDOM.render(
         url: 'https://sway.community',
         icon: icon,
       }}
-      network={NETWORK}
-      networks={[Mainnet, Alfajores]}
+      network={NETWORK as unknown as UCKNetwork}
+      networks={[
+        Celo as unknown as UCKNetwork,
+        Alfajores as unknown as UCKNetwork,
+        Localhost as unknown as UCKNetwork,
+      ]}
       connectModal={{
         reactModalProps: {
           style: {

@@ -54,7 +54,7 @@ async function _generate(dirs: SwayStaticDirs) {
 
 async function main() {
   for (const network in SwayNetworkNames) {
-    if (network === SwayNetworkNames.hardhat) continue
+    if (network === SwayNetworkNames.Hardhat) continue
     await generateMetadata(network as SwayNetworkNames)
   }
 }
