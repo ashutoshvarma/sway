@@ -1,38 +1,31 @@
-import { Alfajores, Mainnet } from '@celo-tools/use-contractkit'
+import { CONFIGS, Celo, Alfajores, Localhost } from '@sway/common/src'
 
-// we don't have celo deployments so temporality using alfajores ones as
-// placeholder
-import SwayCelo from '@sway/contracts/deployments/alfajores/Sway.json'
-import SwayDropCelo from '@sway/contracts/deployments/alfajores/SwayDrop.json'
-// alfajores
-import SwayAlfajores from '@sway/contracts/deployments/alfajores/Sway.json'
-import SwayDropAlfajores from '@sway/contracts/deployments/alfajores/SwayDrop.json'
-import { CONFIGS, SwayNetworkNames } from '@sway/common/src'
-
+export const SUPPORTED_NETWORKS = [Alfajores, Celo, Localhost]
 export const NETWORK_CHAIN_ID = Number(
   process.env['REACT_APP_NETWORK_CHAIN_ID'],
 )
-export const NETWORK =
-  NETWORK_CHAIN_ID === Mainnet.chainId
-    ? Mainnet
-    : NETWORK_CHAIN_ID === Alfajores.chainId
-    ? Alfajores
-    : null
+export const NETWORK = getNetwork()
+export const CONFIG = CONFIGS[NETWORK.name]
 
-export const DEPLOYMENTS =
-  NETWORK && NETWORK.chainId === Mainnet.chainId
-    ? {
-        Sway: SwayCelo,
-        SwayDrop: SwayDropCelo,
-      }
-    : NETWORK && NETWORK.chainId === Alfajores.chainId
-    ? {
-        Sway: SwayAlfajores,
-        SwayDrop: SwayDropAlfajores,
-      }
-    : null
-
-export const CONFIG =
-  NETWORK && NETWORK.chainId === Mainnet.chainId
-    ? CONFIGS[SwayNetworkNames.celo]
-    : CONFIGS[SwayNetworkNames.alfajores]
+function getNetwork() {
+  const chainIds = SUPPORTED_NETWORKS.map((n) => n.chainId)
+  if (!isNaN(NETWORK_CHAIN_ID) && chainIds.includes(NETWORK_CHAIN_ID)) {
+    const network = SUPPORTED_NETWORKS.filter(
+      (n) => n.chainId === NETWORK_CHAIN_ID,
+    )
+    console.log(
+      `Using network ${network[0]?.name}, with config - ${JSON.stringify(
+        network,
+        null,
+        2,
+      )}`,
+    )
+    return network[0]!
+  } else {
+    throw new Error(
+      `Please set valid REACT_APP_NETWORK_CHAIN_ID. Supported chainIds are ${SUPPORTED_NETWORKS.map(
+        (n) => n.chainId,
+      )}`,
+    )
+  }
+}
