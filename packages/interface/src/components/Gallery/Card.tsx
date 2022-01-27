@@ -34,9 +34,9 @@ function Card({ event, loading }: Props): ReactElement {
         <span>#{event.id}</span>
       </div>
       <h3 className={styles['Title']}>{truncate(event.metadata.name, 50)}</h3>
-      <p className={styles['Desc']}>
+      {/* <p className={styles['Desc']}>
         {truncate(event.metadata.description, 100)}
-      </p>
+      </p> */}
       <div className={styles['AdditionalInfoRow']}>
         <div>
           <img src={calenderIcon} alt="calender icon" />

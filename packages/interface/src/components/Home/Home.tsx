@@ -27,7 +27,6 @@ import illus5 from '../../assets/illustrations/illus5.svg'
 import Faqs from './Faqs'
 
 function HomePage(): ReactElement {
-  console.log(styles)
   return (
     <>
       <section className={styles['HeroSection']}>
