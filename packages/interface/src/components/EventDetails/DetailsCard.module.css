@@ -149,6 +149,14 @@
   text-transform: capitalize;
 }
 
+.SuccessToast a:link{
+  color:  #e3c100;
+}
+
+.SuccessToast a:visited {
+  color: #ad9300;
+}
+
 /* Loading Styles */
 .Loading {
   --loading-color: #eaeaea;

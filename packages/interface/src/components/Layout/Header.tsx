@@ -1,6 +1,6 @@
 import { ReactElement } from 'react'
 import styles from './Header.module.css'
-import Logo from '../../assets/logos/sway.svg'
+import Logo from '../../assets/logos/white-logo.svg'
 import Shape1 from '../../assets/shapes/shape1.svg'
 import Shape1Dark from '../../assets/shapes/nav-shape-dark.svg'
 import Nav from './Nav'
@@ -22,7 +22,7 @@ function Header({ dark }: Props): ReactElement {
           />
           <Link to="/" className={styles['LogoDiv']}>
             <img src={Logo} alt="Sway-logo" />
-            <h1>Sway</h1>
+            {/* <h1>Sway</h1> */}
           </Link>
           <Nav dark={dark} />
         </div>

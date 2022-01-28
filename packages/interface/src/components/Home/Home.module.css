@@ -183,7 +183,7 @@
   }
 
   .Shape2 {
-    bottom: 110%;
+    /* bottom: 110%; */
   }
 }
 
@@ -202,6 +202,7 @@
     width: 50%;
   }
   .Shape2 {
+     /* bottom: 110%; */
     transform-origin: top;
     transform: translate(10%, 110%) scale(1.2, 1.3);
   }

@@ -30,7 +30,7 @@ function Card({ loading, token }: Props): ReactElement {
       </div>
       <div className={styles['EventId']}>
         <Link to={`/event/${token?.eventId}`}>
-          <span>#{token?.eventId}</span>
+          <span>#{token?.eventId || "No Id"}</span>
         </Link>
       </div>
       <div className={styles['DetailsGrid']}>
@@ -47,16 +47,17 @@ function Card({ loading, token }: Props): ReactElement {
               {shortenTxHash(token.transactionHash, 6)}
             </a>
           ) : (
-            '0iyjh8389dh..3iresw12'
+            '0i9dh..3i12'
           )}
         </span>
       </div>
       <h4 className={styles['Title']}>Collect Best NFT’s Quickly!</h4>
       <div className={styles['Share']}>
-        <img src={facebook} alt="facebook icon" />
-        <img src={twitter} alt="twitter icon" />
-        <img src={ig} alt="instagram icon" />
-        <img src={pinterest} alt="pinterest icon" />
+
+        <div><img src={facebook} alt="facebook icon" /></div>
+        <div><img src={twitter} alt="twitter icon" /></div>
+        <div><img src={ig} alt="instagram icon" /></div>
+        <div><img src={pinterest} alt="pinterest icon" /></div>
       </div>
     </div>
   )

@@ -14,6 +14,7 @@ import background from '../../assets/images/event-details-background.svg'
 import calender from '../../assets/icons/calender.svg'
 import nft from '../../assets/icons/nft.svg'
 import location from '../../assets/icons/location.svg'
+import { shortenTxHash, explorerLink } from '../../utils/helpers';
 
 interface Props {
   event: SwayEvent | undefined
@@ -28,13 +29,16 @@ function DetailsCard({ event, loading: eventLoading, claimStatus, claimLoading, 
   const [joinLoading, setJoinLoading] = useState(false);
   // toast.error(`Yey! Success!`)
 
+
+
+
   const joinEventHandler = async () => {
     if (!claimEvent) return;
     try {
       setJoinLoading(true)
       let hash = await claimEvent();
       forceCheckStatus()
-      toast.success(`Yey! Success!\n${hash}`)
+      toast.success(() => <div className={styles["SuccessToast"]}>Yey! Success! <br /> Txn Hash: <a target="_blank" rel="noreferrer" href={explorerLink(hash, true)}>{shortenTxHash(hash, 5)}</a></div>);
     }
     catch (error: any) {
       toast.error(error.message)

@@ -39,6 +39,11 @@
   margin: 10px 0;
 }
 
+.LogoDiv img {
+  margin: 10px 0;
+  height: 50px;
+}
+
 .Desc {
   line-height: 24px;
 }

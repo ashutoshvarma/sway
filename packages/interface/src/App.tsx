@@ -16,7 +16,7 @@ function withLayout(El: ReactNode, dark?: boolean) {
 }
 
 const ToastConfig = {
-  autoClose: 100000,
+  autoClose: 6000,
   closeOnClick: true,
   pauseOnHover: true,
   draggable: true,
