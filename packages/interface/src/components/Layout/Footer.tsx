@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 import styles from './Footer.module.css'
 import shape from '../../assets/shapes/footershape.svg'
-import logo from '../../assets/logos/white-logo.svg'
+import logo from '../../assets/logos/logonew.svg'
 import reddit from '../../assets/logos/reddit.svg'
 import discord from '../../assets/logos/discord.svg'
 import github from '../../assets/logos/github.svg'

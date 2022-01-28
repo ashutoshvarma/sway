@@ -83,6 +83,7 @@
 
 .Shape5 {
   top: -120px;
+
 }
 
 /* Logo Section Styles */
@@ -170,6 +171,10 @@
   }
   .LogoSection {
     margin-top: 400px;
+  }
+  .Shape5{
+    top: -180px;
+    transform: scaleY(0.9)
   }
 }
 
