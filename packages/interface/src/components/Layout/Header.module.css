@@ -90,6 +90,10 @@
 		transform: scale(0.4);
 	} */
 
+  .LogoDiv img {
+    height: 30px;
+  }
+
   .Shape {
     left: -437px;
     top: -494px;
