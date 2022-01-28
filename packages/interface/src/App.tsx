@@ -10,6 +10,7 @@ import CreateEvent from './components/CreateEvent/CreateEventContainer'
 import { ToastContainer, Theme } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './toasts.css'
+import { Helmet } from 'react-helmet'
 
 function withLayout(El: ReactNode, dark?: boolean) {
   return <Layout dark={dark}>{El}</Layout>
@@ -29,6 +30,9 @@ function App(): ReactElement {
 
   return (
     <>
+      <Helmet>
+        <title>Home | Sway</title>
+      </Helmet>
       <ToastContainer {...ToastConfig} />
       <BrowserRouter>
         <Routes>

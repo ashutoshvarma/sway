@@ -76,6 +76,13 @@
   border-top-color: #fff0;
 }
 
+@media (min-width: 1600px ) {
+  .Faq {
+    padding-bottom: 100px;
+  }
+}
+
+
 @media (max-width: 1000px) {
   .Accordion {
     flex-direction: column;

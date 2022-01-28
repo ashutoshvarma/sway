@@ -8,6 +8,7 @@ import {
 } from '@sway/events/src/events'
 import api from '../../utils/api'
 import { useClaimStatus, useClaimCallback } from '../../hooks/events'
+import { Helmet } from 'react-helmet'
 
 
 
@@ -46,27 +47,34 @@ function HeroSection({ id }: Props): ReactElement {
 
 
   return (
-    <section className={styles['HeroSection']}>
-      <div
-        className={styles['HeroSectionBG']}
-        style={{ backgroundImage: `url(${bg})` }}
-      ></div>
-      <div className="wrapper narrow">
-        <div className={styles['HeroContentDiv']}>
-          <h2>Event Id: #{id}</h2>
-          <div className={styles['EventDetails']}>
-            <DetailsCard
-              event={event}
-              loading={loading}
-              claimStatus={claimStatus}
-              claimLoading={claimLoading}
-              claimEvent={claimEvent}
-              forceCheckStatus={forceCheckStatus}
-            />
+    <>
+      <Helmet>
+        <title>{`${event?.name || ""} - Event ${id} | Sway`}</title>
+        <meta property="og:title" content={`${event?.name} - Event ${id} | Sway`} />
+        {event?.description && <meta name="description" content={event?.description}></meta>}
+      </Helmet>
+      <section className={styles['HeroSection']}>
+        <div
+          className={styles['HeroSectionBG']}
+          style={{ backgroundImage: `url(${bg})` }}
+        ></div>
+        <div className="wrapper narrow">
+          <div className={styles['HeroContentDiv']}>
+            <h2>Event Id: #{id}</h2>
+            <div className={styles['EventDetails']}>
+              <DetailsCard
+                event={event}
+                loading={loading}
+                claimStatus={claimStatus}
+                claimLoading={claimLoading}
+                claimEvent={claimEvent}
+                forceCheckStatus={forceCheckStatus}
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
 
