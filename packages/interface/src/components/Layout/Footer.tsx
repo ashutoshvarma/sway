@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 import styles from './Footer.module.css'
 import shape from '../../assets/shapes/footershape.svg'
-import logo from '../../assets/logos/sway.svg'
+import logo from '../../assets/logos/logonew.svg'
 import reddit from '../../assets/logos/reddit.svg'
 import discord from '../../assets/logos/discord.svg'
 import github from '../../assets/logos/github.svg'
@@ -17,7 +17,7 @@ function Footer(): ReactElement {
             <div>
               <div className={styles['LogoDiv']}>
                 <img src={logo} alt="sway logo" />
-                <h2>Sway</h2>
+                {/* <h2>Sway</h2> */}
               </div>
               <p className={styles['Desc']}>
                 There are many variations of passages of Lorem Ipsum available,

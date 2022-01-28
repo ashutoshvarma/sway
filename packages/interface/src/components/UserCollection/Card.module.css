@@ -80,25 +80,6 @@
   color: var(--primary-color);
 }
 
-.Loading .DetailsGrid .Completed,
-.Loading .DetailsGrid .Hash {
-  background-color: #e2e2e2;
-  border-radius: 5px;
-  max-width: 150px;
-  margin: 0px auto;
-  color: transparent;
-}
-
-.Loading .EventId a:link {
-  color: transparent;
-  pointer-events: none;
-}
-
-.Loading .EventId a:link {
-  color: transparent;
-  pointer-events: none;
-}
-
 .DetailsGrid .Head {
   color: #000000;
 }
@@ -113,10 +94,62 @@
   opacity: 0.5;
   cursor: pointer;
   transition: 0.1s ease-in-out;
+  display: block;
 }
 
 .Share img:hover {
   opacity: 1;
 }
+
+
+.Loading .CardThumbContainer {
+  background-color: #e2e2e2;
+  border-radius: 50%;
+}
+
+.Loading .CardThumb {
+  opacity: 0;
+}
+
+.Loading .EventId span {
+  background-color: #e2e2e2;
+}
+
+
+.Loading .DetailsGrid .Completed,
+.Loading .DetailsGrid .Hash,
+.Loading .DetailsGrid .Head {
+  background-color: #e2e2e2;
+  border-radius: 5px;
+  max-width: 150px;
+  margin: 0px auto;
+  color: transparent;
+  width: 100%;
+}
+
+.Loading .EventId a:link {
+  color: transparent;
+  pointer-events: none;
+}
+
+.Loading .EventId a:link {
+  color: transparent;
+  pointer-events: none;
+}
+
+.Loading .Share div {
+  background-color: #e2e2e2;
+  border-radius: 50%;
+}
+
+.Loading .Share img{
+  opacity: 0;
+}
+
+.Loading .Title {
+  display: none;
+}
+
+
 
 

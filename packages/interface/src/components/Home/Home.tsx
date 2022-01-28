@@ -25,10 +25,18 @@ import illus4 from '../../assets/illustrations/illus4.svg'
 import illus5 from '../../assets/illustrations/illus5.svg'
 
 import Faqs from './Faqs'
+import { Helmet } from 'react-helmet'
 
 function HomePage(): ReactElement {
   return (
     <>
+      <Helmet>
+        <title>Sway - Create and Collect Free
+          Souvenir NFTs!</title>
+        <meta property="og:title" content="Sway - Create and Collect Free
+          Souvenir NFTs!" />
+        <meta name="description" content="Create one of a kind, crypto secured digital memories in the form of NFTs and share with your friends"></meta>
+      </Helmet>
       <section className={styles['HeroSection']}>
         <div style={{ position: 'relative', width: '100%' }}>
           <div className={`wrapper ${styles['SectionContentWrapper']}`}>

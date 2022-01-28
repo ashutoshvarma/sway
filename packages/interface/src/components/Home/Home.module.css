@@ -48,7 +48,6 @@
 
 .IllusContainer img {
   width: 100%;
-  width: -webkit-fill-available;
 }
 
 .Shape2,
@@ -69,8 +68,9 @@
 }
 
 .Shape2 {
-  transform: translateY(100%);
-  bottom: 350px;
+  /* transform: translateY(100%); */
+  /* bottom: 350px; */
+  top: 20vh;
 }
 
 .Shape3 {
@@ -83,6 +83,7 @@
 
 .Shape5 {
   top: -120px;
+
 }
 
 /* Logo Section Styles */
@@ -137,11 +138,19 @@
   border: none;
 }
 
+.MidSection .SectionContentDiv {
+  flex: 1 1 50%;
+}
+
 #MidSection2 {
 }
 
 #MidSection3 {
   padding-top: 200px;
+}
+
+.MidSection .IllusContainer {
+  flex: 1 1 50%;
 }
 
 #MidSection2 .IllusContainer img,
@@ -153,7 +162,7 @@
 
 .FaqSection {
   position: relative;
-  padding-top: 200px;
+  padding-top: 300px;
   color: white;
 }
 
@@ -163,10 +172,28 @@
   font-size: bold;
 }
 
+
 @media (min-width: 1600px) {
+  .FaqSection {
+    padding-top: 250px;
+  }
   .LogoSection {
     margin-top: 400px;
   }
+  .Shape5{
+    top: -180px;
+    transform: scaleY(0.9)
+  }
+
+
+}
+
+@media (max-width: 1600px) {
+  .Shape2{
+    transform-origin: top;
+    transform: scale(1.2, 1.1);
+  }
+  
 }
 
 @media (min-width: 1400px) {
@@ -183,7 +210,7 @@
   }
 
   .Shape2 {
-    bottom: 110%;
+    /* bottom: 110%; */
   }
 }
 
@@ -202,8 +229,9 @@
     width: 50%;
   }
   .Shape2 {
+     /* bottom: 110%; */
     transform-origin: top;
-    transform: translate(10%, 110%) scale(1.2, 1.3);
+    transform: translate(10%) scale(1.2, 1.4);
   }
   .Shape4 {
     transform-origin: top;

@@ -18,12 +18,29 @@
   gap: 10px;
   align-items: center;
   text-decoration: none;
-  color:white
+  color:white;
+  transition: transform 0.1s ease-in-out 0.3s;
 }
 
 .LogoDiv h1 {
   font-size: 32px;
 }
+
+.LogoDiv img {
+  height: 50px;
+  margin-top: 20px;
+  
+}
+
+.LogoDiv:hover {
+  transition: transform 0.1s ease-in-out;
+  transform: scale(1.1);
+}
+
+.LogoDiv:active{
+  transform: scale(1.05);
+}
+
 
 .Shape {
   position: absolute;
@@ -55,7 +72,8 @@
   }
 
   .LogoDiv img {
-    height: 30px;
+    height: 40px;
+    margin-top: 0;
   }
 
   .Shape {
@@ -71,6 +89,10 @@
 		top: -494px;
 		transform: scale(0.4);
 	} */
+
+  .LogoDiv img {
+    height: 30px;
+  }
 
   .Shape {
     left: -437px;

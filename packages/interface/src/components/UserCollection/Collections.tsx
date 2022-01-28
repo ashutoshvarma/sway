@@ -30,7 +30,7 @@ function Collections(): ReactElement {
   const [sorting, setSorting] = useState<string>(options[0])
   const [tokenLoading, setTokenLoading] = useState<Boolean>(false)
   useEffect(() => {
-    ;(async () => {
+    ; (async () => {
       if (address) {
         setTokenLoading(true)
         let data = await api.getUserTokenInfo(address)
