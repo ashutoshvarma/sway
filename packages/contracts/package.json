@@ -19,6 +19,11 @@
     "NFT",
     "collectibles"
   ],
+  "files": [
+    "deployments",
+    "typechain",
+    "artifact"
+  ],
   "devDependencies": {
     "@celo/contractkit": "^1.2.5",
     "@ethersproject/address": "^5.5.0",
