@@ -10,3 +10,5 @@
 # !/.yarn/ng-cache
 /.pnp.*
 node_modules
+
+tsconfig.tsbuildinfo

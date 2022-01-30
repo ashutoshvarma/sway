@@ -11,6 +11,7 @@ import { ToastContainer, Theme } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './toasts.css'
 import { Helmet } from 'react-helmet'
+import { MembershipDemo } from './components/Membership'
 
 function withLayout(El: ReactNode, dark?: boolean) {
   return <Layout dark={dark}>{El}</Layout>
@@ -23,11 +24,10 @@ const ToastConfig = {
   draggable: true,
   progress: undefined,
   hideProgressBar: true,
-  theme: "dark" as Theme
+  theme: 'dark' as Theme,
 }
 
 function App(): ReactElement {
-
   return (
     <>
       <Helmet>
@@ -49,6 +49,10 @@ function App(): ReactElement {
           <Route
             path="/account"
             element={withLayout(<UserCollectionPage />, true)}
+          />
+          <Route
+            path="/_membership"
+            element={withLayout(<MembershipDemo />, true)}
           />
         </Routes>
       </BrowserRouter>

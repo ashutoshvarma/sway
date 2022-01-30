@@ -21,7 +21,7 @@
     "resolveJsonModule": true,
     "declarationMap": true,
     "declaration": true,
-    "experimentalDecorators": true,
+    "experimentalDecorators": true
     // "paths": {
     //   "@sway/*": ["packages/*/src/index.ts"]
     // }
@@ -29,6 +29,9 @@
   "references": [
     {
       "path": "packages/interface"
+    },
+    {
+      "path": "packages/sdk"
     },
     {
       "path": "packages/events"
