@@ -39,7 +39,7 @@ export function handleTransfer(ev: TransferEvent): void {
   log.info('handleTransfer', [])
   const token = getOrInitToken(ev.params.tokenId, ev)
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const event = getOrInitEvent(BigInt.fromString(token.event!), ev)
+  const event = getOrInitEvent(BigInt.fromString(token.event), ev)
   const from = getOrInitAccount(ev.params.from)
   const to = getOrInitAccount(ev.params.to)
   const transfer = new Transfer(createTransferID(ev))
