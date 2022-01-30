@@ -21,9 +21,12 @@
     "dist/"
   ],
   "scripts": {
-    "build": "yarn clean && yarn tsc -b",
+    "build": "yarn tsc -b",
     "clean": "(rm -r ./dist || true)",
     "lint": "eslint ."
+  },
+  "dependencies": {
+    "@sway/contracts": "^0.1.0"
   },
   "devDependencies": {
     "@types/node": "^16.11.10",
