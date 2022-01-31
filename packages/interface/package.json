@@ -34,8 +34,8 @@
   "scripts": {
     "sdk:build": "yarn workspace @sway/sdk build",
     "start": "yarn sdk:build && craco start",
-    "build": "craco build",
-    "test": "craco test",
+    "build": "yarn sdk:build && craco build",
+    "test": "yarn sdk:build && craco test",
     "eject": "react-scripts eject",
     "deploy": "yarn build && gh-pages -d build"
   },
