@@ -2911,23 +2911,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@openzeppelin/hardhat-upgrades@npm:1.10.0":
-  version: 1.10.0
-  resolution: "@openzeppelin/hardhat-upgrades@npm:1.10.0"
+"@openzeppelin/hardhat-upgrades@npm:1.14.0":
+  version: 1.14.0
+  resolution: "@openzeppelin/hardhat-upgrades@npm:1.14.0"
   dependencies:
-    "@openzeppelin/upgrades-core": ^1.9.0
+    "@openzeppelin/upgrades-core": ^1.12.0
+    chalk: ^4.1.0
   peerDependencies:
     "@nomiclabs/hardhat-ethers": ^2.0.0
     hardhat: ^2.0.2
   bin:
     migrate-oz-cli-project: dist/scripts/migrate-oz-cli-project.js
-  checksum: e1f1fea2258a5d2f7c04025412752bc5d6096b9645003389cae79334cb07ac0870815a14e0bf8f12f77bc1c30fadd10a92e9792c3bd2dc04253ded5307b2e371
+  checksum: 694c9678aedf2c40478e433a969ead9c3431916f60d4519d615d1488ade3b5712da2eba966f32eb168831e60bf49cb598ccd22270c7980afaada6491fa296ede
   languageName: node
   linkType: hard
 
-"@openzeppelin/upgrades-core@npm:^1.9.0":
-  version: 1.11.1
-  resolution: "@openzeppelin/upgrades-core@npm:1.11.1"
+"@openzeppelin/upgrades-core@npm:^1.12.0":
+  version: 1.12.0
+  resolution: "@openzeppelin/upgrades-core@npm:1.12.0"
   dependencies:
     bn.js: ^5.1.2
     cbor: ^8.0.0
@@ -2937,7 +2938,7 @@ __metadata:
     ethereumjs-util: ^7.0.3
     proper-lockfile: ^4.1.1
     solidity-ast: ^0.4.15
-  checksum: 7fb6e98044bb20726d0b5e34aa7e91ca50d4bc60777719336e443a6ab23b6098995689688740b2000ce545aefdc9ab9a78cc55985e137db020b618cb9ea2933a
+  checksum: c1e3418921a10f68ceffed60b8c9c2882e59929ab8a9e6bfb097a778a39c4b176c542594f8284b3989872e372a843d8b4c2f4c553d9ce48f232ee34edb0e6458
   languageName: node
   linkType: hard
 
@@ -3471,7 +3472,7 @@ __metadata:
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@0.3.0-beta.11"
     "@openzeppelin/contracts": 4.3.2
     "@openzeppelin/contracts-upgradeable": 4.3.2
-    "@openzeppelin/hardhat-upgrades": 1.10.0
+    "@openzeppelin/hardhat-upgrades": 1.14.0
     "@sway/common": ^0.1.0
     "@sway/events": ^0.1.0
     "@typechain/ethers-v5": ^7.0.1
