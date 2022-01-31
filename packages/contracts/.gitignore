@@ -23,7 +23,7 @@ yalc.lock
 
 contractsInfo.json
 deployments/hardhat
-deployments/localhost
+# deployments/localhost
 deployments.json
 
 .openzeppelin/unknown-31337.json
