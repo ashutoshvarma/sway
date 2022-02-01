@@ -22,10 +22,10 @@ function Footer(): ReactElement {
                 {/* <h2>Sway</h2> */}
               </div>
               <p className={styles['Desc']}>
-                There are many variations of passages of Lorem Ipsum available,
-                but the majority have suffered alteration in some form, by
-                injected humour, or randomised words which don't look even
-                slightly believable you are going to use a passage.
+                Sway NFTs is an initiative that helps people
+                create and distribute NFTs easily. Ask your 
+                community manager to connect with SWAY and 
+                make unlimited NFT events.
               </p>
             </div>
             <div className={styles['Menu']}>
@@ -34,31 +34,28 @@ function Footer(): ReactElement {
                 <li>
                   <Link to="/gallery">Explore</Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link to="/event/create">Create</Link>
-                </li>
+                </li> */}
                 <li>
-                  <Link to="/account">My Account</Link>
+                  <Link to="/account">My Collection</Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link to="/event">Details</Link>
                 </li>
                 <li>
                   <Link to="#">Career</Link>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className={styles['Contact1']}>
-              <h4>Contact us</h4>
-              <p>Mobile: +44 9089 8765-32</p>
-              <p>Email: mailbox@address.com</p>
-              <p>
-                Address: 10/A, Jonshon Street,
-                <br /> New York, USA - 34657
-              </p>
+              <h4>Mail us at</h4>
+              
+              <p>info@sway.community</p>
+              
             </div>
             <div className={styles['Contact2']}>
-              <h4>Contact us</h4>
+              <h4>Join us at</h4>
               <div className={styles['ContactLinksContainer']}>
                 {/* <a href="#sdsd">
                   <img src={reddit} alt="reddit" />
@@ -82,7 +79,7 @@ function Footer(): ReactElement {
         </div>
       </div>
       <div className={styles['Footnote']}>
-        <div className="wrapper">Copyright © 2021 | All Rights Reserved</div>
+        <div className="wrapper">Copyright © 2022 | All Rights Reserved</div>
       </div>
     </footer>
   )

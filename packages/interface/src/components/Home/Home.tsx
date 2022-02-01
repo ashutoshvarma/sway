@@ -11,13 +11,13 @@ import shape3mobile from '../../assets/shapes/shape3mobile.svg'
 import shape4mobile from '../../assets/shapes/shape4mobile.svg'
 import shape5mobile from '../../assets/shapes/shape5mobile.svg'
 
-import netflix from '../../assets/logos/netflix.png'
-import google from '../../assets/logos/google.png'
-import dropbox from '../../assets/logos/dropbox.png'
-import intrum from '../../assets/logos/intrum.png'
-import bitcoin from '../../assets/logos/bitcoin.png'
-import reformation from '../../assets/logos/reformation.png'
-import intercom from '../../assets/logos/intercom.png'
+// import netflix from '../../assets/logos/netflix.png'
+// import google from '../../assets/logos/google.png'
+// import dropbox from '../../assets/logos/dropbox.png'
+// import intrum from '../../assets/logos/intrum.png'
+// import bitcoin from '../../assets/logos/bitcoin.png'
+// import reformation from '../../assets/logos/reformation.png'
+// import intercom from '../../assets/logos/intercom.png'
 
 import illus2 from '../../assets/illustrations/illus2.svg'
 import illus3 from '../../assets/illustrations/illus3.svg'
@@ -33,29 +33,23 @@ function HomePage(): ReactElement {
   return (
     <>
       <Helmet>
-        <title>Sway - Create and Collect Free Souvenir NFTs!</title>
-        <meta
-          property="og:title"
-          content="Sway - Create and Collect Free
-          Souvenir NFTs!"
-        />
-        <meta
-          name="description"
-          content="Create one of a kind, crypto secured digital memories in the form of NFTs and share with your friends"
-        ></meta>
+        <title>Sway - Free Souvenir NFTs!</title>
+        <meta property="og:title" content="Sway - Create and Collect Free
+          Souvenir NFTs!" />
+        <meta name="description" content="Create one of a kind, crypto secured digital memories in the form of NFTs and share with your friends"></meta>
       </Helmet>
       <section className={styles['HeroSection']}>
         <div style={{ position: 'relative', width: '100%' }}>
           <div className={`wrapper ${styles['SectionContentWrapper']}`}>
             <div className={styles['SectionContentDiv']}>
               <h2>
-                <span className={styles['Primary']}>Create</span> and{' '}
-                <span className={styles['Primary']}>Collect</span> Free
-                <br /> Souvenir NFTs!
+                <span className={styles['Primary']}>CREATE</span> &{' '}
+                <span className={styles['Primary']}>COLLECT</span> 
+                <br /> Free NFTs!
               </h2>
               <p>
-                Create one of a kind, crypto secured digital memories in the
-                form of NFTs and share with your friends
+                SWAY creates one of a kind, crypto secured digital memories in the
+                form of NFTs that is stored on blockchain forever.
               </p>
             </div>
             <div className={styles['IllusContainer']}>
@@ -67,7 +61,7 @@ function HomePage(): ReactElement {
         </div>
       </section>
 
-      <section className={`wrapper ${styles['LogoSection']}`}>
+      {/* <section className={`wrapper ${styles['LogoSection']}`}>
         <img src={google} alt="google" />
         <img src={dropbox} alt="dropbox" />
         <img src={intercom} alt="intercom" />
@@ -75,7 +69,7 @@ function HomePage(): ReactElement {
         <img src={intrum} alt="intrum" />
         <img src={reformation} alt="reformation" />
         <img src={netflix} alt="netflix" />
-      </section>
+      </section> */}
 
       <section className={styles['MidSection']}>
         <div
@@ -86,14 +80,14 @@ function HomePage(): ReactElement {
             <img src={illus2} style={{ marginLeft: -20 }} alt="illustration" />
           </div>
           <div className={styles['SectionContentDiv']}>
-            <h3>NFTs That Define You</h3>
-            <h4>Every human is unique and so are NFTs</h4>
-            <p>
+            <h3>BUILD YOUR NFT COLLECTION</h3>
+            <h4>Join the events you like and claim your NFTs</h4>
+            {/* <p>
               LNFTs are a wonderful thing and can be used to represent any
               event. Use SWAY to create and collect NFTs for Meaningful Events
               that define you.
-            </p>
-            <button onClick={() => navigate('/gallery')}>Get started</button>
+            </p> */}
+            {/* <button>Get started</button> */}
           </div>
         </div>
       </section>
@@ -101,13 +95,13 @@ function HomePage(): ReactElement {
       <section className={styles['MidSection']} id={styles['MidSection2']}>
         <div className={`wrapper narrow ${styles['SectionContentWrapper']}`}>
           <div className={styles['SectionContentDiv']}>
-            <h3>Earn The Bragging Rights</h3>
-            <h4>Share your NFT collection with your friends</h4>
-            <p>
+            <h3>EARN THE BRAGGING RIGHTS</h3>
+            <h4>Share your unique NFTs   with your friends</h4>
+            {/* <p>
               The NFT you own will define your identity in the pseudo-anonymous
               world of blockchain. Build your social reputation using SWAY.
-            </p>
-            <button onClick={() => navigate('/gallery')}>Get started</button>
+            </p> */}
+            {/* <button>Get started</button> */}
           </div>
           <div className={styles['IllusContainer']}>
             <img src={illus3} alt="illustration" />
@@ -120,17 +114,12 @@ function HomePage(): ReactElement {
       <section className={styles['MidSection']} id={styles['MidSection3']}>
         <div className={`wrapper narrow ${styles['SectionContentWrapper']}`}>
           <div className={styles['SectionContentDiv']}>
-            <h3>How does Sway work?</h3>
+            <h3>BUILD YOUR COMMUNITY</h3>
             <p>
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form, by
-              injected humour, or randomised words which don't look even
-              slightly believable you are going to use a passage.
+              Celebrate your community with new and unique NFTs
               <br />
               <br />
-              Randomised words which don’t look even slightly believable. If you
-              are going to use a passage of Lorem Ipsum, you need to be sure
-              there isn’t anything embarrassing hidden.
+              
             </p>
           </div>
           <div className={styles['IllusContainer']}>
@@ -151,12 +140,10 @@ function HomePage(): ReactElement {
             <img src={illus5} alt="illustration" />
           </div>
           <div className={styles['SectionContentDiv']}>
-            <h3>Make Your Step Toward Sway!</h3>
+            <h3>Start Swaying for all your events</h3>
             <p>
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form, by
-              injected humour, or randomised words which don't look even
-              slightly believable you are going to use a passage.
+              Ask your Event Creators to use SWAY for all their events
+              and start claiming your free NFTs
             </p>
             <button onClick={() => navigate('/gallery')}>Get started</button>
           </div>

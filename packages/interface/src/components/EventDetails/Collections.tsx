@@ -35,13 +35,13 @@ function Collections({ eventId: id }: Props): ReactElement {
   return (
     <section className={styles['Collections']}>
       <div className="wrapper narrow">
-        <h3>Collection</h3>
+        <h3>Details</h3>
         <table className={styles['CollectionGrid']}>
           <thead>
             <tr>
               <th className={styles['TableHeader']}>SwayId</th>
-              <th className={styles['TableHeader']}>Collections</th>
-              <th className={styles['TableHeader']}>Minting Date</th>
+              <th className={styles['TableHeader']}>Transaction</th>
+              <th className={styles['TableHeader']}>Minted</th>
               <th className={styles['TableHeader']}>TX Count</th>
               <th className={styles['TableHeader']}>
                 Power
@@ -78,7 +78,7 @@ function TableRow({ collection, loading }: RowProps) {
     <tr className={loading ? styles['Loading'] : undefined}>
       <td className={styles['MobileLabel']}>SwayId</td>
       <td>{collection?.tokenId}</td>
-      <td className={styles['MobileLabel']}>Collections</td>
+      <td className={styles['MobileLabel']}>Transaction</td>
       <td>
         <a
           href={collection?.collection && explorerLink(collection?.collection)}
@@ -89,13 +89,13 @@ function TableRow({ collection, loading }: RowProps) {
           {collection?.collection}
         </a>
       </td>
-      <td className={styles['MobileLabel']}>Minting Date</td>
+      <td className={styles['MobileLabel']}>Minted</td>
       <td>
         {collection && moment(Number(collection.timestamp) * 1000).fromNow()}
       </td>
       <td className={styles['MobileLabel']}>TX Count</td>
       <td>{collection?.transferCount}</td>
-      <td className={styles['MobileLabel']}>Power</td>
+      <td className={styles['MobileLabel']}>Total SWAY</td>
       <td>{collection?.userTokenCount}</td>
     </tr>
   )

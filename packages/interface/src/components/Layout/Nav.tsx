@@ -41,11 +41,8 @@ function Nav({ dark }: Props): ReactElement {
           <NavItem to="/gallery" click={closeNav}>
             Explore
           </NavItem>
-          <NavItem
-            to={address ? `/account/${address}` : `/account`}
-            click={closeNav}
-          >
-            My Account
+          <NavItem to="/account" click={closeNav}>
+            My Collection
           </NavItem>
           <NavItem
             to="#"
