@@ -3579,7 +3579,7 @@ __metadata:
     react-router-dom: 6.2.1
     react-scripts: 4.0.3
     react-toastify: 8.1.0
-    ts-loader: 8.2.0
+    ts-loader: 8.3.0
     typescript: 4.5.5
     web-vitals: 1.1.2
   languageName: unknown
@@ -22980,9 +22980,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-loader@npm:8.2.0":
-  version: 8.2.0
-  resolution: "ts-loader@npm:8.2.0"
+"ts-loader@npm:8.3.0":
+  version: 8.3.0
+  resolution: "ts-loader@npm:8.3.0"
   dependencies:
     chalk: ^4.1.0
     enhanced-resolve: ^4.0.0
@@ -22992,7 +22992,7 @@ __metadata:
   peerDependencies:
     typescript: "*"
     webpack: "*"
-  checksum: 976504f95f2e4568fc04a596dad7b57d943b23199011c4cb30eba42e7ba12489f9b310839964f5f16b356e4e3f6d28faf7a46d8c62d3934a07db0b23768ea434
+  checksum: 93dd15b553a2621f969c4c834e7eb085b9b079adb702cba68a7ee516bcd2c67620e62cc5a8c57345e90c644ff6b689ee5a09f0702e440284fdfe872e9aaeefd8
   languageName: node
   linkType: hard
 
