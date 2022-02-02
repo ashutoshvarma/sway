@@ -5,15 +5,14 @@ import "@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgrad
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol";
-
-interface ISwayDrop {
-    function addEvent(uint256 _eventId, bytes32 _roothash) external;
-}
+import "./interfaces/ISwayDrop.sol";
+import "./interfaces/ISwayAdmin.sol";
 
 contract SwayAdmin is
     Initializable,
     AccessControlEnumerableUpgradeable,
-    PausableUpgradeable
+    PausableUpgradeable,
+    ISwayAdmin
 {
     using StringsUpgradeable for uint256;
 
@@ -93,22 +92,27 @@ contract SwayAdmin is
     /**
      * @dev called by the governor to pause, triggers stopped state
      */
-    function pause() public onlyGovernor whenNotPaused {
+    function pause() public override onlyGovernor whenNotPaused {
         _pause();
     }
 
     /**
      * @dev called by the governor to unpause, returns to normal state
      */
-    function unpause() public onlyGovernor whenPaused {
+    function unpause() public override onlyGovernor whenPaused {
         _unpause();
     }
 
-    function isGovernor(address _addr) public view returns (bool) {
+    function isGovernor(address _addr) public view override returns (bool) {
         return hasRole(GOVERNOR_ROLE, _addr);
     }
 
-    function isEventMinter(uint256 eventId, address _addr) public view returns (bool) {
+    function isEventMinter(uint256 eventId, address _addr)
+        public
+        view
+        override
+        returns (bool)
+    {
         return hasRole(eventRoleMapping[eventId], _addr) || isGovernor(_addr);
     }
 
@@ -125,23 +129,31 @@ contract SwayAdmin is
         _;
     }
 
-    function createEvent(address minter) public onlyGovernor {
+    function createEvent(address minter) external override onlyGovernor {
         _createEvent(minter);
     }
 
-    function addEventMinter(uint256 eventId, address account) public onlyGovernor {
+    function addEventMinter(uint256 eventId, address account)
+        external
+        override
+        onlyGovernor
+    {
         _addEventMinter(eventId, account);
     }
 
-    function removeEventMinter(uint256 eventId, address account) public onlyGovernor {
+    function removeEventMinter(uint256 eventId, address account)
+        external
+        override
+        onlyGovernor
+    {
         _removeEventMinter(eventId, account);
     }
 
-    function addGovernor(address account) public onlyGovernor {
+    function addGovernor(address account) external override onlyGovernor {
         _addGovernor(account);
     }
 
-    function removeGovernor(address account) public onlyGovernor {
+    function removeGovernor(address account) external override onlyGovernor {
         _removeGovernor(account);
     }
 
@@ -149,7 +161,7 @@ contract SwayAdmin is
         uint256 eventId,
         bytes32 rootHash,
         ISwayDrop drop
-    ) public onlyGovernor {
+    ) external override onlyGovernor {
         require(
             address(drop) != address(0),
             "SwayAdmin: drop address should not be zero"

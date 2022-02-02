@@ -69,18 +69,36 @@ const _abi = [
         type: "bool",
       },
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
       {
         internalType: "address",
-        name: "_sway",
+        name: "_swayAddr",
         type: "address",
       },
     ],
     name: "setSway",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_eventId",
+        type: "uint256",
+      },
+      {
+        internalType: "bytes32",
+        name: "_roothash",
+        type: "bytes32",
+      },
+    ],
+    name: "updateEvent",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",

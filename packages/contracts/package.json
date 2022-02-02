@@ -88,6 +88,10 @@
     "fork:dev": "node ./_scripts.js fork:dev",
     "fork:node": "node ./_scripts.js fork:node",
     "fork:test": "node ./_scripts.js fork:test",
-    "subgraph:config": "hardhat export --export-all deployments.json && node ./_scripts.js subgraph:config"
+    "compile:clean": "rm -fr artifacts/ cache/",
+    "subgraph:config": "hardhat export --export-all deployments.json && node ./_scripts.js subgraph:config",
+    "pre:test:slither": "rm -f @openzeppelin && rm -f hardhat && yarn compile:clean && yarn compile --force && ln -s ../../node_modules/@openzeppelin @openzeppelin && ln -s ../../node_modules/hardhat hardhat",
+    "post:test:slither": "rm -f @openzeppelin && rm -f hardhat",
+    "test:slither": "yarn pre:test:slither && slither . && yarn post:test:slither"
   }
 }

@@ -6,8 +6,15 @@ import "@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import "./SwayAdmin.sol";
+import "./interfaces/ISway.sol";
 
-contract Sway is Initializable, UUPSUpgradeable, ERC721EnumerableUpgradeable, SwayAdmin {
+contract Sway is
+    Initializable,
+    UUPSUpgradeable,
+    ERC721EnumerableUpgradeable,
+    SwayAdmin,
+    ISway
+{
     using StringsUpgradeable for uint256;
 
     // used to generate new ids
@@ -34,7 +41,7 @@ contract Sway is Initializable, UUPSUpgradeable, ERC721EnumerableUpgradeable, Sw
         string memory __baseURI,
         string memory __baseURIExtension,
         address governor
-    ) public initializer {
+    ) external initializer {
         _baseURIextendend = __baseURI;
         _baseURIExtension = __baseURIExtension;
 
@@ -47,104 +54,6 @@ contract Sway is Initializable, UUPSUpgradeable, ERC721EnumerableUpgradeable, Sw
     }
 
     function _authorizeUpgrade(address) internal override onlyGovernor {}
-
-    function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        virtual
-        override(ERC721EnumerableUpgradeable, AccessControlEnumerableUpgradeable)
-        returns (bool)
-    {
-        return
-            ERC721EnumerableUpgradeable.supportsInterface(interfaceId) ||
-            AccessControlEnumerableUpgradeable.supportsInterface(interfaceId);
-    }
-
-    function setBaseURI(string memory baseURI) public onlyGovernor whenNotPaused {
-        _baseURIextendend = baseURI;
-    }
-
-    function setBaseURIExtension(string memory baseURIExtension)
-        public
-        onlyGovernor
-        whenNotPaused
-    {
-        _baseURIExtension = baseURIExtension;
-    }
-
-    /**
-     * @dev Gets the token ID at a given index of the tokens list of the requested owner
-     * @param owner address owning the tokens list to be accessed
-     * @param index uint256 representing the index to be accessed of the requested tokens list
-     */
-    function tokenDetailsOfOwnerByIndex(address owner, uint256 index)
-        public
-        view
-        returns (uint256 tokenId, uint256 eventId)
-    {
-        tokenId = tokenOfOwnerByIndex(owner, index);
-        eventId = tokenEvent[tokenId];
-    }
-
-    /**
-     * @dev Gets the token uri
-     * @return string representing the token uri
-     */
-    function tokenURI(uint256 tokenId) public view override returns (string memory) {
-        require(_exists(tokenId), "Sway: URI query for nonexistent token");
-
-        uint256 eventId = tokenEvent[tokenId];
-        return
-            string(
-                abi.encodePacked(
-                    _baseURI(),
-                    eventId.toString(),
-                    "/",
-                    tokenId.toString(),
-                    _baseURIExtension
-                )
-            );
-    }
-
-    /**
-     * @dev Function to mint tokens
-     * @param eventId EventId for the new token
-     * @param to The address that will receive the minted tokens.
-     * @return A boolean that indicates if the operation was successful.
-     */
-    function mintToken(uint256 eventId, address to)
-        public
-        whenNotPaused
-        onlyEventMinter(eventId)
-        returns (bool)
-    {
-        lastId += 1;
-        return _mintToken(eventId, lastId, to);
-    }
-
-    /**
-     * @dev Function to mint tokens with a specific id
-     * @param eventId EventId for the new token
-     * @param tokenId TokenId for the new token
-     * @param to The address that will receive the minted tokens.
-     * @return A boolean that indicates if the operation was successful.
-     */
-    function mintToken(
-        uint256 eventId,
-        uint256 tokenId,
-        address to
-    ) public whenNotPaused onlyEventMinter(eventId) returns (bool) {
-        return _mintToken(eventId, tokenId, to);
-    }
-
-    function burn(uint256 tokenId) public {
-        //solhint-disable-next-line max-line-length
-        require(
-            _isApprovedOrOwner(_msgSender(), tokenId),
-            "Sway: caller is not owner nor approved"
-        );
-        _burn(tokenId);
-    }
 
     function _baseURI() internal view override returns (string memory) {
         return _baseURIextendend;
@@ -187,6 +96,117 @@ contract Sway is Initializable, UUPSUpgradeable, ERC721EnumerableUpgradeable, Sw
         super._beforeTokenTransfer(from, to, tokenId);
 
         require(!paused(), "Sway: token transfer while paused");
+    }
+
+    // TODO: broken, fix this
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        virtual
+        override(
+            ERC721EnumerableUpgradeable,
+            AccessControlEnumerableUpgradeable,
+            IERC165Upgradeable
+        )
+        returns (bool)
+    {
+        return
+            ERC721EnumerableUpgradeable.supportsInterface(interfaceId) ||
+            super.supportsInterface(interfaceId);
+    }
+
+    function setBaseURI(string memory baseURI)
+        external
+        override
+        onlyGovernor
+        whenNotPaused
+    {
+        _baseURIextendend = baseURI;
+    }
+
+    function setBaseURIExtension(string memory baseURIExtension)
+        external
+        override
+        onlyGovernor
+        whenNotPaused
+    {
+        _baseURIExtension = baseURIExtension;
+    }
+
+    /**
+     * @dev Gets the token ID at a given index of the tokens list of the requested owner
+     * @param owner address owning the tokens list to be accessed
+     * @param index uint256 representing the index to be accessed of the requested tokens list
+     */
+    function tokenDetailsOfOwnerByIndex(address owner, uint256 index)
+        external
+        view
+        override
+        returns (uint256 tokenId, uint256 eventId)
+    {
+        tokenId = tokenOfOwnerByIndex(owner, index);
+        eventId = tokenEvent[tokenId];
+    }
+
+    /**
+     * @dev Gets the token uri
+     * @return string representing the token uri
+     */
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
+        require(_exists(tokenId), "Sway: URI query for nonexistent token");
+
+        uint256 eventId = tokenEvent[tokenId];
+        return
+            string(
+                abi.encodePacked(
+                    _baseURI(),
+                    eventId.toString(),
+                    "/",
+                    tokenId.toString(),
+                    _baseURIExtension
+                )
+            );
+    }
+
+    /**
+     * @dev Function to mint tokens
+     * @param eventId EventId for the new token
+     * @param to The address that will receive the minted tokens.
+     * @return A boolean that indicates if the operation was successful.
+     */
+    function mintToken(uint256 eventId, address to)
+        external
+        override
+        whenNotPaused
+        onlyEventMinter(eventId)
+        returns (bool)
+    {
+        lastId += 1;
+        return _mintToken(eventId, lastId, to);
+    }
+
+    /**
+     * @dev Function to mint tokens with a specific id
+     * @param eventId EventId for the new token
+     * @param tokenId TokenId for the new token
+     * @param to The address that will receive the minted tokens.
+     * @return A boolean that indicates if the operation was successful.
+     */
+    function mintToken(
+        uint256 eventId,
+        uint256 tokenId,
+        address to
+    ) external override whenNotPaused onlyEventMinter(eventId) returns (bool) {
+        return _mintToken(eventId, tokenId, to);
+    }
+
+    function burn(uint256 tokenId) external override {
+        //solhint-disable-next-line max-line-length
+        require(
+            _isApprovedOrOwner(_msgSender(), tokenId),
+            "Sway: caller is not owner nor approved"
+        );
+        _burn(tokenId);
     }
 
     uint256[50] private __gap;

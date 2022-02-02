@@ -28,10 +28,12 @@ interface SwayDropInterface extends ethers.utils.Interface {
     "initialize(string,address)": FunctionFragment;
     "isEventAdded(uint256)": FunctionFragment;
     "name()": FunctionFragment;
+    "pause()": FunctionFragment;
     "paused()": FunctionFragment;
     "rootHash(uint256)": FunctionFragment;
     "setSway(address)": FunctionFragment;
     "swayAddr()": FunctionFragment;
+    "unpause()": FunctionFragment;
     "updateEvent(uint256,bytes32)": FunctionFragment;
     "upgradeTo(address)": FunctionFragment;
     "upgradeToAndCall(address,bytes)": FunctionFragment;
@@ -58,6 +60,7 @@ interface SwayDropInterface extends ethers.utils.Interface {
     values: [BigNumberish]
   ): string;
   encodeFunctionData(functionFragment: "name", values?: undefined): string;
+  encodeFunctionData(functionFragment: "pause", values?: undefined): string;
   encodeFunctionData(functionFragment: "paused", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "rootHash",
@@ -65,6 +68,7 @@ interface SwayDropInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "setSway", values: [string]): string;
   encodeFunctionData(functionFragment: "swayAddr", values?: undefined): string;
+  encodeFunctionData(functionFragment: "unpause", values?: undefined): string;
   encodeFunctionData(
     functionFragment: "updateEvent",
     values: [BigNumberish, BytesLike]
@@ -84,10 +88,12 @@ interface SwayDropInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "pause", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "paused", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "rootHash", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "setSway", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "swayAddr", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "unpause", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "updateEvent",
     data: BytesLike
@@ -102,6 +108,7 @@ interface SwayDropInterface extends ethers.utils.Interface {
     "AdminChanged(address,address)": EventFragment;
     "BeaconUpgraded(address)": EventFragment;
     "Paused(address)": EventFragment;
+    "SwayAddressChanged(address,address)": EventFragment;
     "TokenClaimed(uint256,address)": EventFragment;
     "Unpaused(address)": EventFragment;
     "Upgraded(address)": EventFragment;
@@ -110,6 +117,7 @@ interface SwayDropInterface extends ethers.utils.Interface {
   getEvent(nameOrSignatureOrTopic: "AdminChanged"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "BeaconUpgraded"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Paused"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "SwayAddressChanged"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "TokenClaimed"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Unpaused"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "Upgraded"): EventFragment;
@@ -122,6 +130,10 @@ export type AdminChangedEvent = TypedEvent<
 export type BeaconUpgradedEvent = TypedEvent<[string] & { beacon: string }>;
 
 export type PausedEvent = TypedEvent<[string] & { account: string }>;
+
+export type SwayAddressChangedEvent = TypedEvent<
+  [string, string] & { newAddress: string; oldAddress: string }
+>;
 
 export type TokenClaimedEvent = TypedEvent<
   [BigNumber, string] & { eventId: BigNumber; to: string }
@@ -208,6 +220,10 @@ export class SwayDrop extends BaseContract {
 
     name(overrides?: CallOverrides): Promise<[string]>;
 
+    pause(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
     paused(overrides?: CallOverrides): Promise<[boolean]>;
 
     rootHash(arg0: BigNumberish, overrides?: CallOverrides): Promise<[string]>;
@@ -218,6 +234,10 @@ export class SwayDrop extends BaseContract {
     ): Promise<ContractTransaction>;
 
     swayAddr(overrides?: CallOverrides): Promise<[string]>;
+
+    unpause(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
 
     updateEvent(
       _eventId: BigNumberish,
@@ -270,6 +290,10 @@ export class SwayDrop extends BaseContract {
 
   name(overrides?: CallOverrides): Promise<string>;
 
+  pause(
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
   paused(overrides?: CallOverrides): Promise<boolean>;
 
   rootHash(arg0: BigNumberish, overrides?: CallOverrides): Promise<string>;
@@ -280,6 +304,10 @@ export class SwayDrop extends BaseContract {
   ): Promise<ContractTransaction>;
 
   swayAddr(overrides?: CallOverrides): Promise<string>;
+
+  unpause(
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
 
   updateEvent(
     _eventId: BigNumberish,
@@ -332,6 +360,8 @@ export class SwayDrop extends BaseContract {
 
     name(overrides?: CallOverrides): Promise<string>;
 
+    pause(overrides?: CallOverrides): Promise<void>;
+
     paused(overrides?: CallOverrides): Promise<boolean>;
 
     rootHash(arg0: BigNumberish, overrides?: CallOverrides): Promise<string>;
@@ -339,6 +369,8 @@ export class SwayDrop extends BaseContract {
     setSway(_swayAddr: string, overrides?: CallOverrides): Promise<void>;
 
     swayAddr(overrides?: CallOverrides): Promise<string>;
+
+    unpause(overrides?: CallOverrides): Promise<void>;
 
     updateEvent(
       _eventId: BigNumberish,
@@ -388,6 +420,22 @@ export class SwayDrop extends BaseContract {
     ): TypedEventFilter<[string], { account: string }>;
 
     Paused(account?: null): TypedEventFilter<[string], { account: string }>;
+
+    "SwayAddressChanged(address,address)"(
+      newAddress?: string | null,
+      oldAddress?: string | null
+    ): TypedEventFilter<
+      [string, string],
+      { newAddress: string; oldAddress: string }
+    >;
+
+    SwayAddressChanged(
+      newAddress?: string | null,
+      oldAddress?: string | null
+    ): TypedEventFilter<
+      [string, string],
+      { newAddress: string; oldAddress: string }
+    >;
 
     "TokenClaimed(uint256,address)"(
       eventId?: BigNumberish | null,
@@ -454,6 +502,10 @@ export class SwayDrop extends BaseContract {
 
     name(overrides?: CallOverrides): Promise<BigNumber>;
 
+    pause(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
     paused(overrides?: CallOverrides): Promise<BigNumber>;
 
     rootHash(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
@@ -464,6 +516,10 @@ export class SwayDrop extends BaseContract {
     ): Promise<BigNumber>;
 
     swayAddr(overrides?: CallOverrides): Promise<BigNumber>;
+
+    unpause(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
 
     updateEvent(
       _eventId: BigNumberish,
@@ -517,6 +573,10 @@ export class SwayDrop extends BaseContract {
 
     name(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
+    pause(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
     paused(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     rootHash(
@@ -530,6 +590,10 @@ export class SwayDrop extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     swayAddr(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    unpause(
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
 
     updateEvent(
       _eventId: BigNumberish,

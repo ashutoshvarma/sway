@@ -25,6 +25,7 @@ interface ISwayDropInterface extends ethers.utils.Interface {
     "claim(uint256,uint256,address,bytes32[])": FunctionFragment;
     "isEventAdded(uint256)": FunctionFragment;
     "setSway(address)": FunctionFragment;
+    "updateEvent(uint256,bytes32)": FunctionFragment;
   };
 
   encodeFunctionData(
@@ -40,6 +41,10 @@ interface ISwayDropInterface extends ethers.utils.Interface {
     values: [BigNumberish]
   ): string;
   encodeFunctionData(functionFragment: "setSway", values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "updateEvent",
+    values: [BigNumberish, BytesLike]
+  ): string;
 
   decodeFunctionResult(functionFragment: "addEvent", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "claim", data: BytesLike): Result;
@@ -48,6 +53,10 @@ interface ISwayDropInterface extends ethers.utils.Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "setSway", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "updateEvent",
+    data: BytesLike
+  ): Result;
 
   events: {};
 }
@@ -112,11 +121,17 @@ export class ISwayDrop extends BaseContract {
 
     isEventAdded(
       eventId: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
+    setSway(
+      _swayAddr: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
-    setSway(
-      _sway: string,
+    updateEvent(
+      _eventId: BigNumberish,
+      _roothash: BytesLike,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
   };
@@ -137,11 +152,17 @@ export class ISwayDrop extends BaseContract {
 
   isEventAdded(
     eventId: BigNumberish,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
+
+  setSway(
+    _swayAddr: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
-  setSway(
-    _sway: string,
+  updateEvent(
+    _eventId: BigNumberish,
+    _roothash: BytesLike,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
@@ -165,7 +186,13 @@ export class ISwayDrop extends BaseContract {
       overrides?: CallOverrides
     ): Promise<boolean>;
 
-    setSway(_sway: string, overrides?: CallOverrides): Promise<void>;
+    setSway(_swayAddr: string, overrides?: CallOverrides): Promise<void>;
+
+    updateEvent(
+      _eventId: BigNumberish,
+      _roothash: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<void>;
   };
 
   filters: {};
@@ -187,11 +214,17 @@ export class ISwayDrop extends BaseContract {
 
     isEventAdded(
       eventId: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
+      overrides?: CallOverrides
     ): Promise<BigNumber>;
 
     setSway(
-      _sway: string,
+      _swayAddr: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    updateEvent(
+      _eventId: BigNumberish,
+      _roothash: BytesLike,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
   };
@@ -213,11 +246,17 @@ export class ISwayDrop extends BaseContract {
 
     isEventAdded(
       eventId: BigNumberish,
-      overrides?: Overrides & { from?: string | Promise<string> }
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     setSway(
-      _sway: string,
+      _swayAddr: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    updateEvent(
+      _eventId: BigNumberish,
+      _roothash: BytesLike,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
   };
