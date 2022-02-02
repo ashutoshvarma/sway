@@ -3034,9 +3034,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@restart/ui@npm:^0.2.5":
-  version: 0.2.6
-  resolution: "@restart/ui@npm:0.2.6"
+"@restart/ui@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@restart/ui@npm:1.0.1"
   dependencies:
     "@babel/runtime": ^7.13.16
     "@popperjs/core": ^2.10.1
@@ -3051,7 +3051,7 @@ __metadata:
   peerDependencies:
     react: ">=16.14.0"
     react-dom: ">=16.14.0"
-  checksum: 41109c787c4af2615fc7558d4cf83af58aaac336683cd0202f3a1544b434d4493e0a51dcb39a1e3f7786b6ac133be75edc6c4e9bec49d237a11e15c233a367f8
+  checksum: ed96f4ff66f1252389ee2d6307c983830a65e2f2478b5a279b6ed8312f6eaf3f8c6e867f6ce0db2395edec0003080018c7adf55f27001c2f65351d918c995cdb
   languageName: node
   linkType: hard
 
@@ -3599,7 +3599,7 @@ __metadata:
     moment: 2.29.1
     react: 17.0.2
     react-accessible-accordion: 4.0.0
-    react-bootstrap: 2.1.1
+    react-bootstrap: 2.1.2
     react-dom: 17.0.2
     react-dropdown: 1.9.2
     react-dropdown-now: 6.0.1
@@ -19692,13 +19692,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-bootstrap@npm:2.1.1":
-  version: 2.1.1
-  resolution: "react-bootstrap@npm:2.1.1"
+"react-bootstrap@npm:2.1.2":
+  version: 2.1.2
+  resolution: "react-bootstrap@npm:2.1.2"
   dependencies:
     "@babel/runtime": ^7.14.0
     "@restart/hooks": ^0.4.5
-    "@restart/ui": ^0.2.5
+    "@restart/ui": ^1.0.1
     "@types/invariant": ^2.2.33
     "@types/prop-types": ^15.7.3
     "@types/react": ">=16.14.8"
@@ -19715,7 +19715,7 @@ __metadata:
   peerDependencies:
     react: ">=16.14.0"
     react-dom: ">=16.14.0"
-  checksum: 9d25fcd9dbfdcb930f40e6792f0e5124a1d0dfdf97ff030042b0053cb8b8682debda6576abf8f59cd4c7e2890ef0ab5730496973e568642d76b32a1f16e8127c
+  checksum: 68abcd9dfbd15966884f2cf24aad2e9f803f0ef977b7bb646f4a345ed5ec99a309262e6ded72f341a982129a593c019be535c0e2a0e05f7ccafdf4efcf69341e
   languageName: node
   linkType: hard
 
