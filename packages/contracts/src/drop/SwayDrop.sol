@@ -116,7 +116,12 @@ contract SwayDrop is
         _updateEvent(_eventId, _roothash);
     }
 
-    function setSway(address _swayAddr) external override nonReentrant onlyGovernorOrSway {
+    function setSway(address _swayAddr)
+        external
+        override
+        nonReentrant
+        onlyGovernorOrSway
+    {
         _setSway(_swayAddr);
     }
 
