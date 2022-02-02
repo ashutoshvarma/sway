@@ -2459,9 +2459,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphprotocol/graph-cli@npm:0.25.1":
-  version: 0.25.1
-  resolution: "@graphprotocol/graph-cli@npm:0.25.1"
+"@graphprotocol/graph-cli@npm:0.26.0":
+  version: 0.26.0
+  resolution: "@graphprotocol/graph-cli@npm:0.26.0"
   dependencies:
     assemblyscript: 0.19.10
     binary-install-raw: 0.0.13
@@ -2472,7 +2472,7 @@ __metadata:
     dockerode: ^2.5.8
     fs-extra: ^9.0.0
     glob: ^7.1.2
-    gluegun: ^4.3.1
+    gluegun: "git+https://github.com/edgeandnode/gluegun.git#v4.3.1-pin-colors-dep"
     graphql: ^15.5.0
     immutable: ^3.8.2
     ipfs-http-client: ^34.0.0
@@ -2488,7 +2488,7 @@ __metadata:
     yaml: ^1.5.1
   bin:
     graph: bin/graph
-  checksum: 85ba35cbf3026eea3bed45fbc862b7605020371eb440d40e842de424f74ff0d2657e8879fbcb9bbb3b5c991273b9872bfd83ba1cdce0dcb38f68fa42fc7e544b
+  checksum: 364119043ca60b848a9e008c50cd14bf83590d70563aafe55b10d3de75d6ca5c383d2963bfcb6c98cde632cca4c9ed91f29e8ce558a5bbbdcb4c88f4b5744d83
   languageName: node
   linkType: hard
 
@@ -3638,7 +3638,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@sway/subgraph@workspace:packages/subgraph"
   dependencies:
-    "@graphprotocol/graph-cli": 0.25.1
+    "@graphprotocol/graph-cli": 0.26.0
     "@graphprotocol/graph-ts": 0.24.1
     "@types/mustache": 4.1.2
     mustache: 4.2.0
@@ -5727,12 +5727,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"apisauce@npm:^2.1.5":
-  version: 2.1.5
-  resolution: "apisauce@npm:2.1.5"
+"apisauce@npm:^1.0.1":
+  version: 1.1.5
+  resolution: "apisauce@npm:1.1.5"
   dependencies:
-    axios: ^0.21.4
-  checksum: dfeb989f922291f5bc81194c7396283cb56e93686ae97fd0feb0acc627db763fd6ae2e05349fdb305a42edf7b083d604bbaf2e84aad3199180fdf9d88b6f757e
+    axios: ^0.21.2
+    ramda: ^0.25.0
+  checksum: 4bac8117b484616c82e102d238580f835ffabee15da4527e845d091c12618f3b85293fb96c2357a119efede4ac1695d1ec78cc2ae5e3774f1522e1e1b1852365
   languageName: node
   linkType: hard
 
@@ -6178,7 +6179,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.21.1, axios@npm:^0.21.4":
+"axios@npm:^0.21.1, axios@npm:^0.21.2":
   version: 0.21.4
   resolution: "axios@npm:0.21.4"
   dependencies:
@@ -7815,7 +7816,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"colors@npm:1.4.0, colors@npm:^1.1.2, colors@npm:^1.3.3":
+"colors@npm:1.3.3":
+  version: 1.3.3
+  resolution: "colors@npm:1.3.3"
+  checksum: c57f0aa2b71a836435fb0cd8ac4b9f4025ff5411cb027ffcbaa2274347fd00ed52b9d66904f46be73086c27ac31bad9500da675250c95182568454b392f87ee5
+  languageName: node
+  linkType: hard
+
+"colors@npm:1.4.0, colors@npm:^1.1.2":
   version: 1.4.0
   resolution: "colors@npm:1.4.0"
   checksum: 98aa2c2418ad87dedf25d781be69dc5fc5908e279d9d30c34d8b702e586a0474605b3a189511482b9d5ed0d20c867515d22749537f7bc546256c6014f3ebdcec
@@ -12114,14 +12122,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gluegun@npm:^4.3.1":
-  version: 4.7.1
-  resolution: "gluegun@npm:4.7.1"
+"gluegun@git+https://github.com/edgeandnode/gluegun.git#v4.3.1-pin-colors-dep":
+  version: 4.3.1
+  resolution: "gluegun@https://github.com/edgeandnode/gluegun.git#commit=b34b9003d7bf556836da41b57ef36eb21570620a"
   dependencies:
-    apisauce: ^2.1.5
+    apisauce: ^1.0.1
     app-module-path: ^2.2.0
     cli-table3: ~0.5.0
-    colors: ^1.3.3
+    colors: 1.3.3
     cosmiconfig: 6.0.0
     cross-spawn: ^7.0.0
     ejs: ^2.6.1
@@ -12145,12 +12153,13 @@ __metadata:
     lodash.upperfirst: ^4.3.1
     ora: ^4.0.0
     pluralize: ^8.0.0
+    ramdasauce: ^2.1.0
     semver: ^7.0.0
     which: ^2.0.0
     yargs-parser: ^16.1.0
   bin:
     gluegun: bin/gluegun
-  checksum: 1e67278ba7208025b5fcc54824427afc2de44223f03fba1eb6318763e72d0b384b55e01fb83fade693a2ce52656d958de15d011e7608f93955aef67372ae5e13
+  checksum: 872685026db07ad1687056a78388f17c6a9bcd22bbf9d99d1e2b21e2d196c6e99a128bcff48063b3f0cf692a4365142fae9dd06cf8c532bc557a45f8ac853308
   languageName: node
   linkType: hard
 
@@ -19656,6 +19665,29 @@ __metadata:
   dependencies:
     performance-now: ^2.1.0
   checksum: 50ba284e481c8185dbcf45fc4618ba3aec580bb50c9121385d5698cb6012fe516d2015b1df6dd407a7b7c58d44be8086108236affbce1861edd6b44637c8cd52
+  languageName: node
+  linkType: hard
+
+"ramda@npm:^0.24.1":
+  version: 0.24.1
+  resolution: "ramda@npm:0.24.1"
+  checksum: c2dc048f5a0f61872eec7925f76cdf8e7b7cf7a4f457e274d915d8bf86bd108938795d92061d56eae315a4818ea65276a87c9db336356191aaf879647afd8c82
+  languageName: node
+  linkType: hard
+
+"ramda@npm:^0.25.0":
+  version: 0.25.0
+  resolution: "ramda@npm:0.25.0"
+  checksum: 008abbcc69aefd89a2a4a0c9f4cf9f8da2ec490a0e1e261b4c88de8540ef0c383d469bfdf71b758b559377c71bfa8efea164fdb1779169359a86b46f7cb23cb1
+  languageName: node
+  linkType: hard
+
+"ramdasauce@npm:^2.1.0":
+  version: 2.1.3
+  resolution: "ramdasauce@npm:2.1.3"
+  dependencies:
+    ramda: ^0.24.1
+  checksum: e4b7be3b7dd9f0b986a99ec5946a980e26be550644957980c05d518e158512175bf0027b12d300d87dfb600ad8c548888c551e1836dd0a2c42735dda7dccca1a
   languageName: node
   linkType: hard
 
