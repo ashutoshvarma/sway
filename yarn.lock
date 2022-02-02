@@ -3557,7 +3557,7 @@ __metadata:
     "@testing-library/user-event": 12.8.3
     "@types/flexsearch": 0.7.2
     "@types/jest": 26.0.24
-    "@types/node": 12.20.42
+    "@types/node": 12.20.43
     "@types/react": 17.0.38
     "@types/react-dom": 17.0.11
     "@types/react-helmet": 6.1.5
@@ -4171,10 +4171,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:12.20.42, @types/node@npm:^12.11.7, @types/node@npm:^12.12.54, @types/node@npm:^12.12.6":
-  version: 12.20.42
-  resolution: "@types/node@npm:12.20.42"
-  checksum: 395b561315cffbffb57bedbdf69cf575cea6439b1f25307062356d8a1c21c0d07bc4483f480470030cd22ea1de35b909642bde52b309d9bd72ddeb3e1fecc64f
+"@types/node@npm:12.20.43":
+  version: 12.20.43
+  resolution: "@types/node@npm:12.20.43"
+  checksum: 8d0d6cfdfcdb54b6d0bbae82b2754535b886e16ca461e305c13bc43cdab52d2ed894bd1d932f0e9be272d8b8c13b14bbb9f61a47d559465a50615700c33dfe8f
   languageName: node
   linkType: hard
 
@@ -4196,6 +4196,13 @@ __metadata:
   version: 10.17.60
   resolution: "@types/node@npm:10.17.60"
   checksum: 2cdb3a77d071ba8513e5e8306fa64bf50e3c3302390feeaeff1fd325dd25c8441369715dfc8e3701011a72fed5958c7dfa94eb9239a81b3c286caa4d97db6eef
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^12.11.7, @types/node@npm:^12.12.54, @types/node@npm:^12.12.6":
+  version: 12.20.42
+  resolution: "@types/node@npm:12.20.42"
+  checksum: 395b561315cffbffb57bedbdf69cf575cea6439b1f25307062356d8a1c21c0d07bc4483f480470030cd22ea1de35b909642bde52b309d9bd72ddeb3e1fecc64f
   languageName: node
   linkType: hard
 
