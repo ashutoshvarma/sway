@@ -3575,7 +3575,7 @@ __metadata:
     "@ethersproject/address": 5.5.0
     "@ethersproject/constants": 5.5.0
     "@ethersproject/contracts": 5.5.0
-    "@ethersproject/providers": 5.5.2
+    "@ethersproject/providers": 5.5.3
     "@sway/common": ^0.1.0
     "@sway/contracts": ^0.1.0
     "@sway/events": ^0.1.0
