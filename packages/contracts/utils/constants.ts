@@ -1,4 +1,4 @@
-import {CONFIGS, SwayConfig, SwayNetworkNames} from '@sway/common/src/config';
+import {CONFIGS, SwayConfig, SwayNetworkNames} from '../src/config';
 
 export function getConfig(network: string): SwayConfig {
   // convert to camel case

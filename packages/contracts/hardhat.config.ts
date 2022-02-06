@@ -6,7 +6,6 @@ import {
   HardhatUserConfig,
   RunSuperFunction,
 } from 'hardhat/types';
-import {TASK_DEPLOY_RUN_DEPLOY} from 'hardhat-deploy';
 import {task, types} from 'hardhat/config';
 import '@openzeppelin/hardhat-upgrades';
 import 'hardhat-deploy';
@@ -140,37 +139,6 @@ task(
   }
 );
 
-task(
-  TASK_DEPLOY_RUN_DEPLOY,
-  async (
-    taskArguments: never,
-    hre: HardhatRuntimeEnvironment,
-    runSuper: RunSuperFunction<never>
-  ) => {
-    await runSuper(taskArguments);
-    const {deployments} = hre;
-    const networkName =
-      hre.network.name === 'hardhat' ? 'localhost' : hre.network.name;
-    const commonPath = path.join(
-      __dirname,
-      '../common/src/deployments',
-      networkName
-    );
-    const swayDeployment = await deployments.get('Sway');
-    const swayDropDeployment = await deployments.get('SwayDrop');
-
-    fs.mkdirSync(commonPath, {recursive: true});
-
-    fs.writeFileSync(
-      path.resolve(commonPath, 'Sway.json'),
-      JSON.stringify(swayDeployment, null, 2)
-    );
-    fs.writeFileSync(
-      path.resolve(commonPath, 'SwayDrop.json'),
-      JSON.stringify(swayDropDeployment, null, 2)
-    );
-  }
-);
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -242,7 +210,7 @@ const config: HardhatUserConfig = {
     },
   },
   paths: {
-    sources: 'src',
+    sources: 'contracts',
   },
   gasReporter: {
     currency: 'USD',

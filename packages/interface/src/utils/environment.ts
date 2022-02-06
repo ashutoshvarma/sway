@@ -1,4 +1,4 @@
-import { CONFIGS, Celo, Alfajores, Localhost } from '@sway/common/src'
+import { CONFIGS, Celo, Alfajores, Localhost } from '@sway/contracts/src'
 
 export const SUPPORTED_NETWORKS = [Alfajores, Celo, Localhost]
 export const NETWORK_CHAIN_ID = Number(

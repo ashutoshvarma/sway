@@ -1,12 +1,12 @@
 // celo
-import SwayCelo from './deployments/celo/Sway.json'
-import SwayDropCelo from './deployments/celo/SwayDrop.json'
+import SwayCelo from '../deployments/celo/Sway.json'
+import SwayDropCelo from '../deployments/celo/SwayDrop.json'
 // alfajores
-import SwayAlfajores from './deployments/alfajores/Sway.json'
-import SwayDropAlfajores from './deployments/alfajores/SwayDrop.json'
+import SwayAlfajores from '../deployments/alfajores/Sway.json'
+import SwayDropAlfajores from '../deployments/alfajores/SwayDrop.json'
 // localhost
-import SwayLocalhost from './deployments/localhost/Sway.json'
-import SwayDropLocalhost from './deployments/localhost/SwayDrop.json'
+import SwayLocalhost from '../deployments/localhost/Sway.json'
+import SwayDropLocalhost from '../deployments/localhost/SwayDrop.json'
 
 export interface SwayConfig {
   contracts: {
