@@ -1,44 +1,44 @@
-import {BigNumberish} from 'ethers';
-import * as ethers from 'ethers';
-import MerkleTree from 'merkletreejs';
-import keccak256 from 'keccak256';
+import { BigNumberish } from 'ethers'
+import * as ethers from 'ethers'
+import MerkleTree from 'merkletreejs'
+import keccak256 from 'keccak256'
 
 export function calculateMerkleLeaf(
   index: BigNumberish,
   eventId: BigNumberish,
-  recipient: string
+  recipient: string,
 ): string {
   return ethers.utils.solidityKeccak256(
     ['uint256', 'uint256', 'address'],
-    [index, eventId, recipient]
-  );
+    [index, eventId, recipient],
+  )
 }
 
 export function getMerkleTree(
   participants: string[],
-  eventId: BigNumberish
+  eventId: BigNumberish,
 ): [MerkleTree, string[]] {
-  const leafs = participants.map((p, i) => calculateMerkleLeaf(i, eventId, p));
-  const tree = new MerkleTree(leafs, keccak256, {sort: true});
-  return [tree, leafs];
+  const leafs = participants.map((p, i) => calculateMerkleLeaf(i, eventId, p))
+  const tree = new MerkleTree(leafs, keccak256, { sort: true })
+  return [tree, leafs]
 }
 
 export function getMerkleProof(
   index: number,
   eventId: BigNumberish,
-  participants: string[]
+  participants: string[],
 ): string[] {
-  const [tree, leaves] = getMerkleTree(participants, eventId);
-  const leaf = leaves[index];
+  const [tree, leaves] = getMerkleTree(participants, eventId)
+  const leaf = leaves[index]
   if (!leaf) {
-    throw new Error(`Leaf with index ${index} not found`);
+    throw new Error(`Leaf with index ${index} not found`)
   }
-  return tree.getHexProof(leaf);
+  return tree.getHexProof(leaf)
 }
 
 export function getMerkleRoot(
   participants: string[],
-  eventId: BigNumberish
+  eventId: BigNumberish,
 ): string {
-  return getMerkleTree(participants, eventId)[0].getHexRoot();
+  return getMerkleTree(participants, eventId)[0].getHexRoot()
 }

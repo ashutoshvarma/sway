@@ -1,14 +1,14 @@
-import {expect} from './chai-setup';
-import {defaultFixture} from './fixture';
-import * as hre from 'hardhat';
-import {Sway} from '../typechain';
+import { expect } from './chai-setup'
+import { defaultFixture } from './fixture'
+import * as hre from 'hardhat'
+import { Sway } from '../typechain'
 // import {getConfig} from '../utils/constants';
 
 describe('Proxy', () => {
   it('Sway should be initialized properly', async () => {
-    const {ethers} = hre;
-    const {governor} = await defaultFixture();
-    const swayImpl = (await ethers.getContract('Sway_Implementation')) as Sway;
+    const { ethers } = hre
+    const { governor } = await defaultFixture()
+    const swayImpl = (await ethers.getContract('Sway_Implementation')) as Sway
     // const config = getConfig(hre.network.name);
 
     // expect(await swayImpl.name()).equals(config.swayName);
@@ -21,8 +21,8 @@ describe('Proxy', () => {
         'TEST',
         'TEST',
         'TEST',
-        await governor.getAddress()
-      )
-    ).to.reverted;
-  });
-});
+        await governor.getAddress(),
+      ),
+    ).to.reverted
+  })
+})

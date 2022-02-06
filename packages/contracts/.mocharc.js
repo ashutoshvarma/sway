@@ -1,5 +1,5 @@
-'use strict';
-process.env.TS_NODE_FILES = true;
+'use strict'
+process.env.TS_NODE_FILES = true
 module.exports = {
   'allow-uncaught': true,
   diff: true,
@@ -13,4 +13,4 @@ module.exports = {
   ui: 'bdd',
   watch: false,
   'watch-files': ['src/**/*.sol', 'test/**/*.ts'],
-};
+}

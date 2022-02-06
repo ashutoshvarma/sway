@@ -1,24 +1,24 @@
-import 'dotenv/config';
-import * as path from 'path';
-import * as fs from 'fs';
+import 'dotenv/config'
+import * as path from 'path'
+import * as fs from 'fs'
 import {
   HardhatRuntimeEnvironment,
   HardhatUserConfig,
   RunSuperFunction,
-} from 'hardhat/types';
-import {task, types} from 'hardhat/config';
-import '@openzeppelin/hardhat-upgrades';
-import 'hardhat-deploy';
-import '@nomiclabs/hardhat-ethers';
-import 'hardhat-gas-reporter';
-import 'hardhat-contract-sizer';
-import 'hardhat-tracer';
-import '@typechain/hardhat';
-import 'solidity-coverage';
-import '@ubeswap/hardhat-celo';
-import {fornoURLs, ICeloNetwork, derivationPath} from '@ubeswap/hardhat-celo';
-import {node_url, accounts} from './utils/network';
-import {balances} from './tasks/accounts';
+} from 'hardhat/types'
+import { task, types } from 'hardhat/config'
+import '@openzeppelin/hardhat-upgrades'
+import 'hardhat-deploy'
+import '@nomiclabs/hardhat-ethers'
+import 'hardhat-gas-reporter'
+import 'hardhat-contract-sizer'
+import 'hardhat-tracer'
+import '@typechain/hardhat'
+import 'solidity-coverage'
+import '@ubeswap/hardhat-celo'
+import { fornoURLs, ICeloNetwork, derivationPath } from '@ubeswap/hardhat-celo'
+import { node_url, accounts } from './utils/network'
+import { balances } from './tasks/accounts'
 import {
   create_event,
   add_event_drop,
@@ -26,23 +26,23 @@ import {
   claim,
   minter,
   event_info,
-} from './tasks/events';
-import {toggle_pause, debug} from './tasks/governance';
+} from './tasks/events'
+import { toggle_pause, debug } from './tasks/governance'
 
 task('accounts', 'Prints the list of accounts', async (_args, hre) => {
-  const accounts = await hre.ethers.getSigners();
+  const accounts = await hre.ethers.getSigners()
 
   for (const account of accounts) {
-    console.log(await account.address);
+    console.log(await account.address)
   }
-});
+})
 task('balances', 'Print Native Token Balance of all address').setAction(
-  balances
-);
+  balances,
+)
 
 // Governance
-task('gov:pause', 'Toggle protocol pause state').setAction(toggle_pause);
-task('gov:debug', 'Print Protocol Debug Info').setAction(debug);
+task('gov:pause', 'Toggle protocol pause state').setAction(toggle_pause)
+task('gov:debug', 'Print Protocol Debug Info').setAction(debug)
 
 // Events
 task('event:create', 'Create a new Sway Event')
@@ -50,19 +50,19 @@ task('event:create', 'Create a new Sway Event')
     'minter',
     'Minter address for the new event',
     undefined,
-    types.string
+    types.string,
   )
-  .setAction(create_event);
+  .setAction(create_event)
 task('event:addDrop', 'Add a SwayDrop for the Event')
   .addParam('event', 'Event ID', undefined, types.int)
   .addOptionalParam(
     'json',
     'SwayDrop Participants JSON File',
     undefined,
-    types.inputFile
+    types.inputFile,
   )
   .addFlag('update', 'Update the Merkle Root')
-  .setAction(add_event_drop);
+  .setAction(add_event_drop)
 task('event:mint', 'Mint token for a event')
   .addParam('event', 'Event ID', undefined, types.int)
   .addParam('to', 'Address of token recipient', undefined, types.string)
@@ -70,9 +70,9 @@ task('event:mint', 'Mint token for a event')
     'minter',
     'Minter account index for the event',
     1,
-    types.int
+    types.int,
   )
-  .setAction(mint);
+  .setAction(mint)
 task('event:claim', 'Mint token for a event')
   .addParam('event', 'Event ID', undefined, types.int)
   .addParam('to', 'Address of token recipient', undefined, types.string)
@@ -80,26 +80,26 @@ task('event:claim', 'Mint token for a event')
     'json',
     'SwayDrop Participants JSON File',
     undefined,
-    types.inputFile
+    types.inputFile,
   )
-  .setAction(claim);
+  .setAction(claim)
 task('event:minter', 'Add/Revoke minter from a Event')
   .addParam('event', 'Event ID', undefined, types.int)
   .addParam(
     'minter',
     'Minter address for the new event',
     undefined,
-    types.string
+    types.string,
   )
   .addFlag('remove', 'Remove Minter')
-  .setAction(minter);
+  .setAction(minter)
 task('event:info', 'Add/Revoke minter from a Event')
   .addParam('event', 'Event ID', undefined, types.int)
-  .setAction(event_info);
+  .setAction(event_info)
 
 // While waiting for hardhat PR: https://github.com/nomiclabs/hardhat/pull/1542
 if (process.env['HARDHAT_FORK']) {
-  process.env['HARDHAT_DEPLOY_FORK'] = process.env['HARDHAT_FORK'];
+  process.env['HARDHAT_DEPLOY_FORK'] = process.env['HARDHAT_FORK']
 }
 
 // Simple hack to verify ERC1967Proxy though sourcify
@@ -109,36 +109,35 @@ task(
   async (
     taskArguments: never,
     hre: HardhatRuntimeEnvironment,
-    runSuper: RunSuperFunction<never>
+    runSuper: RunSuperFunction<never>,
   ) => {
-    await runSuper(taskArguments);
-    const {artifacts} = hre;
+    await runSuper(taskArguments)
+    const { artifacts } = hre
     const UPGRADES_PROXY_ARTIFACT_PATH = path.resolve(
       __dirname,
-      '../../node_modules/@openzeppelin/upgrades-core/artifacts/@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol/ERC1967Proxy.json'
-    );
+      '../../node_modules/@openzeppelin/upgrades-core/artifacts/@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol/ERC1967Proxy.json',
+    )
     const ERC1967_FULLY_QUALIFIED_NAME =
-      '@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol:ERC1967Proxy';
+      '@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol:ERC1967Proxy'
     const proxyArtifact = await artifacts.readArtifact(
-      ERC1967_FULLY_QUALIFIED_NAME
-    );
+      ERC1967_FULLY_QUALIFIED_NAME,
+    )
 
     if (!fs.existsSync(UPGRADES_PROXY_ARTIFACT_PATH)) {
-      console.error('ERROR: UPGRADES_PROXY_ARTIFACT_PATH not found');
-      return;
+      console.error('ERROR: UPGRADES_PROXY_ARTIFACT_PATH not found')
+      return
     }
 
     fs.writeFileSync(
       UPGRADES_PROXY_ARTIFACT_PATH,
-      JSON.stringify(proxyArtifact, null, 2)
-    );
+      JSON.stringify(proxyArtifact, null, 2),
+    )
 
     console.log(
-      'Successfully updated @openzeppelin/upgrades-core ERC1976Proxy artifact'
-    );
-  }
-);
-
+      'Successfully updated @openzeppelin/upgrades-core ERC1976Proxy artifact',
+    )
+  },
+)
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -229,6 +228,6 @@ const config: HardhatUserConfig = {
   contractSizer: {
     runOnCompile: true,
   },
-};
+}
 
-export default config;
+export default config
