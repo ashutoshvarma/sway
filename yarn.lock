@@ -3526,7 +3526,7 @@ __metadata:
     "@typechain/ethers-v5": 9.0.0
     "@typechain/hardhat": 2.3.1
     "@types/chai": 4.3.0
-    "@types/mocha": 8.2.3
+    "@types/mocha": 9.1.0
     "@types/node": 16.11.22
     "@typescript-eslint/eslint-plugin": 5.10.2
     "@typescript-eslint/parser": 5.10.2
@@ -3549,7 +3549,7 @@ __metadata:
     hardhat-tracer: 1.0.0-alpha.6
     keccak256: 1.0.6
     merkletreejs: 0.2.27
-    mocha: 9.2.0
+    mocha: 9.2.1
     prettier: 2.5.1
     prettier-plugin-solidity: 1.0.0-beta.19
     reflect-metadata: 0.1.13
@@ -4167,10 +4167,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mocha@npm:8.2.3":
-  version: 8.2.3
-  resolution: "@types/mocha@npm:8.2.3"
-  checksum: b43ed1b642a2ee62bf10792a07d5d21d66ab8b4d2cf5d822c8a7643e77b90009aecc000eefab5f6ddc9eb69004192f84119a6f97a8499e1a13ea082e7a5e71bf
+"@types/mocha@npm:9.1.0":
+  version: 9.1.0
+  resolution: "@types/mocha@npm:9.1.0"
+  checksum: 21e1000dafcfe387c6812be41c44a47b48c27a74d5a70c3d5ef1bb5c88eadadfc74dba06e93f160e7248c8a57b3977b590f82504c801c9927816ecd4668023c0
   languageName: node
   linkType: hard
 
@@ -16478,9 +16478,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mocha@npm:9.2.0":
-  version: 9.2.0
-  resolution: "mocha@npm:9.2.0"
+"mocha@npm:9.2.1":
+  version: 9.2.1
+  resolution: "mocha@npm:9.2.1"
   dependencies:
     "@ungap/promise-all-settled": 1.1.2
     ansi-colors: 4.1.1
@@ -16509,7 +16509,7 @@ __metadata:
   bin:
     _mocha: bin/_mocha
     mocha: bin/mocha
-  checksum: 49efc4724cf17087c7e107bc8f6890db24525e6dcc153b801da58de3c2a2f940e22f7600ef195b8ac62a0dfd7baee5cf289fc4641a6b1fdf8bc9c819efc1a8ba
+  checksum: 10debdf2ee2232368852d80d8a7650a2c10d2bf5f47022c4d8111323b7fcd3115b2153f760b841d39207347a4d2df602fe96013f855587d80ff23332261b260e
   languageName: node
   linkType: hard
 
