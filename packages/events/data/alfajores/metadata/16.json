@@ -1,0 +1,46 @@
+{
+  "eventId": "16",
+  "description": "This badge is meant for all the people who put their sweat & blood in making the Sway Protocol possible.",
+  "external_url": "https://sway.community/",
+  "home_url": "https://www.sway.community/",
+  "image_url": "https://static.sway.community/alfajores/badges/1",
+  "image": "https://static.sway.community/alfajores/badges/1",
+  "name": "Founder's Badge",
+  "year": 2022,
+  "tags": [
+    "sway",
+    "event"
+  ],
+  "start_date": "2021-12-22",
+  "end_date": "2022-02-26",
+  "virtual_event": true,
+  "city": "USICT, Delhi",
+  "country": "India",
+  "event_url": "https://www.sway.community/",
+  "attributes": [
+    {
+      "trait_type": "start_date",
+      "value": "2021-12-22"
+    },
+    {
+      "trait_type": "end_date",
+      "value": "2022-02-26"
+    },
+    {
+      "trait_type": "virtual_event",
+      "value": "true"
+    },
+    {
+      "trait_type": "city",
+      "value": "USICT, Delhi"
+    },
+    {
+      "trait_type": "country",
+      "value": "India"
+    },
+    {
+      "trait_type": "event_url",
+      "value": "https://www.sway.community/"
+    }
+  ]
+}

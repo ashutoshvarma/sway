@@ -18,7 +18,7 @@ export interface SwayStaticDirs {
 }
 
 export function getStaticDirs(network: SwayNetworkNames): SwayStaticDirs {
-  const baseData = path.resolve(DIR_DATA, network)
+  const baseData = path.resolve(DIR_DATA, network.toLowerCase())
   return {
     baseData,
     details: path.resolve(baseData, 'details'),
