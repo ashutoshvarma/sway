@@ -29,7 +29,11 @@ export function getStaticDirs(network: SwayNetworkNames): SwayStaticDirs {
 }
 
 export function getEventMerkleJSONPath(id: number, network: string): string {
-  if (Object.values(SwayNetworkNames).includes(network as SwayNetworkNames)) {
+  if (
+    Object.values(SwayNetworkNames)
+      .map((v) => v.toLowerCase())
+      .includes(network as SwayNetworkNames)
+  ) {
     const merkleDir = getStaticDirs(network as SwayNetworkNames).merkle
     const p = path.resolve(merkleDir, `${id.toString()}.json`)
     if (!fs.existsSync(p))
