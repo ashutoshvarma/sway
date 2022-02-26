@@ -216,7 +216,7 @@ async function performAction(rawArgs) {
     const config = JSON.parse(fs.readFileSync(configPath));
     const deployments = JSON.parse(
       fs.readFileSync(path.resolve(__dirname, 'deployments.json'))
-    )[CHAIN_ID_MAPPING[network]][network].contracts;
+    )[CHAIN_ID_MAPPING[network]][0].contracts;
 
     config.network =
       network === 'localhost' ? 'celo' : SUBGRAPH_NETWORK_MAPPING[network];

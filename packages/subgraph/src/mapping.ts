@@ -21,7 +21,8 @@ import {
 import { createTransferID, One } from './helpers/utils'
 
 export function handleEventAdded(ev: EventAdded): void {
-  getOrInitEvent(ev.params.eventId, ev)
+  const event = getOrInitEvent(ev.params.eventId, ev)
+  event.save()
 }
 
 export function handleEventToken(ev: EventToken): void {
