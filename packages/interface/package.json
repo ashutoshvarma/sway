@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@celo-tools/use-contractkit": "2.1.2",
+    "@celo-tools/use-contractkit": "3.0.1",
     "@ethersproject/address": "5.5.0",
     "@ethersproject/constants": "5.5.0",
     "@ethersproject/contracts": "5.5.0",
