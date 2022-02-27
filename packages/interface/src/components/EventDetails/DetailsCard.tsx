@@ -1,9 +1,7 @@
 import { ReactElement, useState } from 'react'
 import styles from './DetailsCard.module.css'
 
-import {
-  Event as SwayEvent
-} from '@sway/events/src/events'
+import { Event as SwayEvent } from '@sway/events/src/events'
 import { ClaimStatus } from '../../hooks/events'
 import moment from 'moment'
 import { truncate } from '../../utils/helpers'
@@ -14,53 +12,72 @@ import background from '../../assets/images/event-details-background.svg'
 import calender from '../../assets/icons/calender.svg'
 import nft from '../../assets/icons/nft.svg'
 import location from '../../assets/icons/location.svg'
-import { shortenTxHash, explorerLink } from '../../utils/helpers';
+import { shortenTxHash, explorerLink } from '../../utils/helpers'
 
 interface Props {
   event: SwayEvent | undefined
   loading?: boolean
+  nftCount: string | undefined
   claimStatus: ClaimStatus
-  claimLoading: Boolean,
+  claimLoading: Boolean
   claimEvent: (() => Promise<string>) | null
-  forceCheckStatus: (() => void)
+  forceCheckStatus: () => void
 }
 
-function DetailsCard({ event, loading: eventLoading, claimStatus, claimLoading, claimEvent, forceCheckStatus }: Props): ReactElement {
-  const [joinLoading, setJoinLoading] = useState(false);
+function DetailsCard({
+  event,
+  nftCount,
+  loading: eventLoading,
+  claimStatus,
+  claimLoading,
+  claimEvent,
+  forceCheckStatus,
+}: Props): ReactElement {
+  const [joinLoading, setJoinLoading] = useState(false)
   // toast.error(`Yey! Success!`)
 
-
-
-
   const joinEventHandler = async () => {
-    if (!claimEvent) return;
+    if (!claimEvent) return
     try {
       setJoinLoading(true)
-      let hash = await claimEvent();
+      let hash = await claimEvent()
       forceCheckStatus()
-      toast.success(() => <div className={styles["SuccessToast"]}>Yey! Success! <br /> Txn Hash: <a target="_blank" rel="noreferrer" href={explorerLink(hash, true)}>{shortenTxHash(hash, 5)}</a></div>);
-    }
-    catch (error: any) {
+      toast.success(() => (
+        <div className={styles['SuccessToast']}>
+          Yey! Success! <br /> Txn Hash:{' '}
+          <a target="_blank" rel="noreferrer" href={explorerLink(hash, true)}>
+            {shortenTxHash(hash, 5)}
+          </a>
+        </div>
+      ))
+    } catch (error: any) {
       toast.error(error.message)
-    }
-    finally {
+    } finally {
       setJoinLoading(false)
     }
   }
 
   const renderClaimSection = () => {
-
     if (claimLoading || eventLoading) return null
     if (claimStatus === ClaimStatus.AVAIL)
-      return (<div className={styles['JoinContainer']}>
-        <button onClick={joinEventHandler}>Join the event</button>
-      </div>)
+      return (
+        <div className={styles['JoinContainer']}>
+          <button onClick={joinEventHandler}>Join the event</button>
+        </div>
+      )
     else if (claimStatus === ClaimStatus.CLAIMED)
-      return <div className={styles['EventJoined']}>You've already joined this event!</div>
+      return (
+        <div className={styles['EventJoined']}>
+          You've already joined this event!
+        </div>
+      )
     else if (claimStatus === ClaimStatus.NOT_CONNECTED)
-      return <div className={styles['Connect']}>Connect a wallet to join the event</div>
-    else
-      return <div className={styles['NotAvail']}>Not available</div>
+      return (
+        <div className={styles['Connect']}>
+          Connect a wallet to join the event
+        </div>
+      )
+    else return <div className={styles['NotAvail']}>Not available</div>
   }
 
   let classes = [styles['Card']]
@@ -112,13 +129,20 @@ function DetailsCard({ event, loading: eventLoading, claimStatus, claimLoading, 
           <img src={nft} alt="nft icon" />
           <div>
             <span className={styles['NoNftsLabel']}>Number Of NFT's</span>
-            <span className={styles['NoNftsValue']}>
-              {/* {event?.virtual_event} */}2022
-            </span>
+            <span className={styles['NoNftsValue']}>{nftCount}</span>
           </div>
         </div>
       </div>
-      {joinLoading ? <div className={styles['Loader']}><div></div><div></div><div></div><div></div></div> : renderClaimSection()}
+      {joinLoading ? (
+        <div className={styles['Loader']}>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      ) : (
+        renderClaimSection()
+      )}
     </div>
   )
 }

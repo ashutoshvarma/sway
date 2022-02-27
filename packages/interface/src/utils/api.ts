@@ -19,13 +19,17 @@ interface EventTransferResponse {
   }[]
 }
 
+interface EventData {
+  id: string
+  tokenCount: string
+  transferCount: string
+  created: string
+}
 interface EventDataResponse {
-  events: {
-    id: string
-    tokenCount: string
-    transferCount: string
-    created: string
-  }[]
+  event: EventData
+}
+interface EventsDataResponse {
+  events: EventData[]
 }
 
 interface UserTokenDataResponse {
@@ -67,6 +71,17 @@ export const eventsQuery = gql`
       first: $maxCount
       where: { created_lt: $lastCreated }
     ) {
+      id
+      tokenCount
+      transferCount
+      created
+    }
+  }
+`
+
+export const singleEventQuery = gql`
+  query getEvent($id: String) {
+    event(id: $id) {
       id
       tokenCount
       transferCount
@@ -120,6 +135,17 @@ const api = {
     return await (await fetch(`${METADATA_URL}/${eventId}`)).json()
   },
 
+  getEventOnChainDetails: async (eventId: string): Promise<EventData> => {
+    const { event } = await request<EventDataResponse>(
+      SUBGRAPH_URL,
+      singleEventQuery,
+      {
+        id: eventId,
+      },
+    )
+    return event
+  },
+
   getEventMerkleDetails: async (
     eventId: string,
   ): Promise<SwayDropParticipants> => {
@@ -149,7 +175,7 @@ const api = {
   ): Promise<EventInterface[]> => {
     // run the graphql query to fetch event ids
     const events = (
-      await request<EventDataResponse>(SUBGRAPH_URL, eventsQuery, {
+      await request<EventsDataResponse>(SUBGRAPH_URL, eventsQuery, {
         maxCount,
         lastCreated: last.created,
       })
@@ -200,7 +226,6 @@ const api = {
           metadataUri: t.metadataUri,
           transactionHash: t.transfers[0]?.transaction,
           eventId: t.event.id,
-
         }
       }),
     }

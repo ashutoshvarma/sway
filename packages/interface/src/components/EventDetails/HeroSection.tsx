@@ -19,6 +19,7 @@ interface Props {
 function HeroSection({ id }: Props): ReactElement {
 
   const [event, setEvent] = useState<SwayEvent>()
+  const [nftCount, setNftCount] = useState<string>()
   const [loading, setLoading] = useState<boolean>(true)
   const [swayParticipants, setSwayParticpants] = useState<
     SwayDropParticipants | undefined
@@ -32,7 +33,9 @@ function HeroSection({ id }: Props): ReactElement {
     ; (async () => {
       setLoading(true)
       let eventData = await api.getEventMetadata(id)
+      let count = '-'
       try {
+        count = await (await api.getEventOnChainDetails(id)).tokenCount
         let sway_participants = await api.getEventMerkleDetails(id)
         setSwayParticpants(sway_participants)
       }
@@ -40,6 +43,7 @@ function HeroSection({ id }: Props): ReactElement {
       finally {
         setEvent(eventData)
         setLoading(false)
+        setNftCount(count)
       }
     })()
   }, [id])
@@ -49,7 +53,7 @@ function HeroSection({ id }: Props): ReactElement {
   return (
     <>
       <Helmet>
-        <title>{`${event?.name || ""} - Event ${id} | Sway`}</title>
+        <title>{`${event?.name || ""} | Sway`}</title>
         <meta property="og:title" content={`${event?.name} - Event ${id} | Sway`} />
         {event?.description && <meta name="description" content={event?.description}></meta>}
       </Helmet>
@@ -60,10 +64,11 @@ function HeroSection({ id }: Props): ReactElement {
         ></div>
         <div className="wrapper narrow">
           <div className={styles['HeroContentDiv']}>
-            <h2>Event Id: #{id}</h2>
+            <h2>#{id}</h2>
             <div className={styles['EventDetails']}>
               <DetailsCard
                 event={event}
+                nftCount={nftCount}
                 loading={loading}
                 claimStatus={claimStatus}
                 claimLoading={claimLoading}
