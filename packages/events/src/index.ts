@@ -5,7 +5,7 @@ import { plainToInstance } from 'class-transformer'
 import { SwayDropParticipants } from './events'
 import { validateOrReject } from 'class-validator'
 import { isAddress } from '@ethersproject/address'
-import { SwayNetworkNames } from '@sway/common/src'
+import { SwayNetworkNames } from '@sway/contracts/src'
 
 export const DIR_DATA = path.resolve(__dirname, '..', 'data')
 export const IMG_EXT = 'png'

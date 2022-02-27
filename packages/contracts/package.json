@@ -8,16 +8,22 @@
   "repository": "github:SwayNFT/contracts",
   "author": "Sway Team",
   "license": "AGPL-3.0-or-later",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "keywords": [
     "ethereum",
     "celo",
     "smart-contracts",
-    "template",
-    "boilerplate",
     "hardhat",
     "solidity",
     "NFT",
     "collectibles"
+  ],
+  "files": [
+    "contracts",
+    "deployments",
+    "artifacts",
+    "dist"
   ],
   "devDependencies": {
     "@celo/contractkit": "1.5.2",
@@ -27,7 +33,6 @@
     "@openzeppelin/contracts": "4.4.2",
     "@openzeppelin/contracts-upgradeable": "4.4.2",
     "@openzeppelin/hardhat-upgrades": "1.14.0",
-    "@sway/common": "^0.1.0",
     "@sway/events": "^0.1.0",
     "@typechain/ethers-v5": "9.0.0",
     "@typechain/hardhat": "4.0.0",
@@ -69,8 +74,8 @@
   },
   "scripts": {
     "prepare": "node ./.setup.js && hardhat typechain",
-    "lint": "eslint \"**/*.{js,ts}\" && solhint src/**/*.sol",
-    "lint:fix": "eslint --fix \"**/*.{js,ts}\" && solhint --fix src/**/*.sol",
+    "lint": "eslint \"**/*.{js,ts}\" && solhint contracts/**/*.sol",
+    "lint:fix": "eslint --fix \"**/*.{js,ts}\" && solhint --fix contracts/**/*.sol",
     "format": "prettier --check \"**/*.{ts,js,sol}\"",
     "format:fix": "prettier --write \"**/*.{ts,js,sol}\"",
     "compile": "hardhat compile",
@@ -92,6 +97,9 @@
     "subgraph:config": "hardhat export --export-all deployments.json && node ./_scripts.js subgraph:config",
     "pre:test:slither": "rm -f @openzeppelin && rm -f hardhat && yarn compile:clean && yarn compile --force && ln -s ../../node_modules/@openzeppelin @openzeppelin && ln -s ../../node_modules/hardhat hardhat",
     "post:test:slither": "rm -f @openzeppelin && rm -f hardhat",
-    "test:slither": "yarn pre:test:slither && slither . && yarn post:test:slither"
+    "test:slither": "yarn pre:test:slither && slither . && yarn post:test:slither",
+    "build:typescript": "yarn tsc -p ./tsconfig.build.json",
+    "build:contracts": "yarn hardhat compile",
+    "build": "yarn build:typescript && yarn build:contracts"
   }
 }

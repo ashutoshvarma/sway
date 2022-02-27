@@ -5,7 +5,7 @@ import { glob } from 'glob'
 import { plainToInstance } from 'class-transformer'
 import { Event as SwayEvent } from './events'
 import { validateOrReject } from 'class-validator'
-import { SwayNetworkNames } from '@sway/common/src'
+import { SwayNetworkNames } from '@sway/contracts/src'
 import { getStaticDirs, SwayStaticDirs } from './index'
 
 export async function generateMetadata(network: SwayNetworkNames) {
@@ -21,6 +21,7 @@ async function _generate(dirs: SwayStaticDirs) {
       err === null ? resolve(files) : reject(err),
     )
   })
+  console.log({ dirs })
   for (const fname of files) {
     const fpath = path.resolve(dirs.details, fname)
     // const fmeta = path.resolve(DIR_METADATA, fname.split('.')[0])

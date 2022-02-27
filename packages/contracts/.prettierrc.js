@@ -1,6 +1,8 @@
 module.exports = {
   singleQuote: true,
-  bracketSpacing: false,
+  trailingComma: 'all',
+  tabWidth: 2,
+  semi: false,
   overrides: [
     {
       files: '*.sol',
@@ -14,4 +16,4 @@ module.exports = {
       },
     },
   ],
-};
+}

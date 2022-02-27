@@ -3407,22 +3407,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sway/common@^0.1.0, @sway/common@workspace:packages/common":
-  version: 0.0.0-use.local
-  resolution: "@sway/common@workspace:packages/common"
-  dependencies:
-    "@types/node": 16.11.22
-    "@typescript-eslint/eslint-plugin": 5.10.2
-    "@typescript-eslint/parser": 5.10.2
-    eslint: 8.7.0
-    eslint-config-prettier: 8.3.0
-    eslint-plugin-prettier: 4.0.0
-    prettier: 2.5.1
-    ts-node: 10.4.0
-    typescript: 4.5.5
-  languageName: unknown
-  linkType: soft
-
 "@sway/contracts@^0.1.0, @sway/contracts@workspace:packages/contracts":
   version: 0.0.0-use.local
   resolution: "@sway/contracts@workspace:packages/contracts"
@@ -3434,7 +3418,6 @@ __metadata:
     "@openzeppelin/contracts": 4.4.2
     "@openzeppelin/contracts-upgradeable": 4.4.2
     "@openzeppelin/hardhat-upgrades": 1.14.0
-    "@sway/common": ^0.1.0
     "@sway/events": ^0.1.0
     "@typechain/ethers-v5": 9.0.0
     "@typechain/hardhat": 4.0.0
@@ -3481,7 +3464,7 @@ __metadata:
   resolution: "@sway/events@workspace:packages/events"
   dependencies:
     "@ethersproject/address": ^5.5.0
-    "@sway/common": ^0.1.0
+    "@sway/contracts": ^0.1.0
     "@types/node": 16.11.22
     "@types/node-fetch": 2
     "@typescript-eslint/eslint-plugin": 5.10.2
@@ -3510,7 +3493,6 @@ __metadata:
     "@ethersproject/constants": 5.5.0
     "@ethersproject/contracts": 5.5.0
     "@ethersproject/providers": 5.5.3
-    "@sway/common": ^0.1.0
     "@sway/contracts": ^0.1.0
     "@sway/events": ^0.1.0
     "@testing-library/jest-dom": 5.16.1
