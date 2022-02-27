@@ -1,7 +1,13 @@
 {
   "name": "sway",
+  "version": "1.0.0",
   "packageManager": "yarn@3.1.1",
+  "license": "AGPL",
   "scripts": {
+    "g:tsc": "cd $INIT_CWD && tsc",
+    "g:eslint": "cd $INIT_CWD && eslint",
+    "g:prettier": "cd $INIT_CWD && prettier",
+    "g:ts-node": "cd $INIT_CWD && ts-node",
     "events": "yarn workspace @sway/events",
     "contracts": "yarn workspace @sway/contracts",
     "subgraph": "yarn workspace @sway/subgraph",

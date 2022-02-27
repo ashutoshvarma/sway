@@ -21,7 +21,9 @@ import type { TypedEventFilter, TypedEvent, TypedListener } from "./common";
 
 interface ISwayAdminInterface extends ethers.utils.Interface {
   functions: {
+    "addEventDrop(uint256,bytes32,address)": FunctionFragment;
     "addEventMinter(uint256,address)": FunctionFragment;
+    "addGovernor(address)": FunctionFragment;
     "createEvent(address)": FunctionFragment;
     "getRoleAdmin(bytes32)": FunctionFragment;
     "getRoleMember(bytes32,uint256)": FunctionFragment;
@@ -30,16 +32,23 @@ interface ISwayAdminInterface extends ethers.utils.Interface {
     "hasRole(bytes32,address)": FunctionFragment;
     "isEventMinter(uint256,address)": FunctionFragment;
     "isGovernor(address)": FunctionFragment;
-    "pause(address)": FunctionFragment;
+    "pause()": FunctionFragment;
+    "removeEventMinter(uint256,address)": FunctionFragment;
+    "removeGovernor(address)": FunctionFragment;
     "renounceRole(bytes32,address)": FunctionFragment;
     "revokeRole(bytes32,address)": FunctionFragment;
-    "unpause(address)": FunctionFragment;
+    "unpause()": FunctionFragment;
   };
 
+  encodeFunctionData(
+    functionFragment: "addEventDrop",
+    values: [BigNumberish, BytesLike, string]
+  ): string;
   encodeFunctionData(
     functionFragment: "addEventMinter",
     values: [BigNumberish, string]
   ): string;
+  encodeFunctionData(functionFragment: "addGovernor", values: [string]): string;
   encodeFunctionData(functionFragment: "createEvent", values: [string]): string;
   encodeFunctionData(
     functionFragment: "getRoleAdmin",
@@ -66,7 +75,15 @@ interface ISwayAdminInterface extends ethers.utils.Interface {
     values: [BigNumberish, string]
   ): string;
   encodeFunctionData(functionFragment: "isGovernor", values: [string]): string;
-  encodeFunctionData(functionFragment: "pause", values: [string]): string;
+  encodeFunctionData(functionFragment: "pause", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "removeEventMinter",
+    values: [BigNumberish, string]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "removeGovernor",
+    values: [string]
+  ): string;
   encodeFunctionData(
     functionFragment: "renounceRole",
     values: [BytesLike, string]
@@ -75,10 +92,18 @@ interface ISwayAdminInterface extends ethers.utils.Interface {
     functionFragment: "revokeRole",
     values: [BytesLike, string]
   ): string;
-  encodeFunctionData(functionFragment: "unpause", values: [string]): string;
+  encodeFunctionData(functionFragment: "unpause", values?: undefined): string;
 
   decodeFunctionResult(
+    functionFragment: "addEventDrop",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "addEventMinter",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "addGovernor",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -105,6 +130,14 @@ interface ISwayAdminInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "isGovernor", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "pause", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "removeEventMinter",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "removeGovernor",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "renounceRole",
     data: BytesLike
@@ -183,8 +216,20 @@ export class ISwayAdmin extends BaseContract {
   interface: ISwayAdminInterface;
 
   functions: {
+    addEventDrop(
+      eventId: BigNumberish,
+      rootHash: BytesLike,
+      drop: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
     addEventMinter(
       eventId: BigNumberish,
+      account: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    addGovernor(
       account: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
@@ -222,16 +267,23 @@ export class ISwayAdmin extends BaseContract {
     isEventMinter(
       eventId: BigNumberish,
       _addr: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
 
-    isGovernor(
-      _addr: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<ContractTransaction>;
+    isGovernor(_addr: string, overrides?: CallOverrides): Promise<[boolean]>;
 
     pause(
-      _addr: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    removeEventMinter(
+      eventId: BigNumberish,
+      account: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
+
+    removeGovernor(
+      account: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
@@ -248,13 +300,24 @@ export class ISwayAdmin extends BaseContract {
     ): Promise<ContractTransaction>;
 
     unpause(
-      _addr: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
   };
 
+  addEventDrop(
+    eventId: BigNumberish,
+    rootHash: BytesLike,
+    drop: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
   addEventMinter(
     eventId: BigNumberish,
+    account: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  addGovernor(
     account: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
@@ -292,16 +355,23 @@ export class ISwayAdmin extends BaseContract {
   isEventMinter(
     eventId: BigNumberish,
     _addr: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+    overrides?: CallOverrides
+  ): Promise<boolean>;
 
-  isGovernor(
-    _addr: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<ContractTransaction>;
+  isGovernor(_addr: string, overrides?: CallOverrides): Promise<boolean>;
 
   pause(
-    _addr: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  removeEventMinter(
+    eventId: BigNumberish,
+    account: string,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
+
+  removeGovernor(
+    account: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
@@ -318,18 +388,26 @@ export class ISwayAdmin extends BaseContract {
   ): Promise<ContractTransaction>;
 
   unpause(
-    _addr: string,
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
   callStatic: {
+    addEventDrop(
+      eventId: BigNumberish,
+      rootHash: BytesLike,
+      drop: string,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
     addEventMinter(
       eventId: BigNumberish,
       account: string,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    createEvent(minter: string, overrides?: CallOverrides): Promise<BigNumber>;
+    addGovernor(account: string, overrides?: CallOverrides): Promise<void>;
+
+    createEvent(minter: string, overrides?: CallOverrides): Promise<void>;
 
     getRoleAdmin(role: BytesLike, overrides?: CallOverrides): Promise<string>;
 
@@ -364,7 +442,15 @@ export class ISwayAdmin extends BaseContract {
 
     isGovernor(_addr: string, overrides?: CallOverrides): Promise<boolean>;
 
-    pause(_addr: string, overrides?: CallOverrides): Promise<void>;
+    pause(overrides?: CallOverrides): Promise<void>;
+
+    removeEventMinter(
+      eventId: BigNumberish,
+      account: string,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    removeGovernor(account: string, overrides?: CallOverrides): Promise<void>;
 
     renounceRole(
       role: BytesLike,
@@ -378,7 +464,7 @@ export class ISwayAdmin extends BaseContract {
       overrides?: CallOverrides
     ): Promise<void>;
 
-    unpause(_addr: string, overrides?: CallOverrides): Promise<void>;
+    unpause(overrides?: CallOverrides): Promise<void>;
   };
 
   filters: {
@@ -438,8 +524,20 @@ export class ISwayAdmin extends BaseContract {
   };
 
   estimateGas: {
+    addEventDrop(
+      eventId: BigNumberish,
+      rootHash: BytesLike,
+      drop: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
     addEventMinter(
       eventId: BigNumberish,
+      account: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    addGovernor(
       account: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
@@ -480,16 +578,23 @@ export class ISwayAdmin extends BaseContract {
     isEventMinter(
       eventId: BigNumberish,
       _addr: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
+      overrides?: CallOverrides
     ): Promise<BigNumber>;
 
-    isGovernor(
-      _addr: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
-    ): Promise<BigNumber>;
+    isGovernor(_addr: string, overrides?: CallOverrides): Promise<BigNumber>;
 
     pause(
-      _addr: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    removeEventMinter(
+      eventId: BigNumberish,
+      account: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<BigNumber>;
+
+    removeGovernor(
+      account: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
@@ -506,14 +611,25 @@ export class ISwayAdmin extends BaseContract {
     ): Promise<BigNumber>;
 
     unpause(
-      _addr: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
   };
 
   populateTransaction: {
+    addEventDrop(
+      eventId: BigNumberish,
+      rootHash: BytesLike,
+      drop: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
     addEventMinter(
       eventId: BigNumberish,
+      account: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    addGovernor(
       account: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
@@ -554,16 +670,26 @@ export class ISwayAdmin extends BaseContract {
     isEventMinter(
       eventId: BigNumberish,
       _addr: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     isGovernor(
       _addr: string,
-      overrides?: Overrides & { from?: string | Promise<string> }
+      overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
     pause(
-      _addr: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    removeEventMinter(
+      eventId: BigNumberish,
+      account: string,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<PopulatedTransaction>;
+
+    removeGovernor(
+      account: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
@@ -580,7 +706,6 @@ export class ISwayAdmin extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     unpause(
-      _addr: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
   };

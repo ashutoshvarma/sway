@@ -11,7 +11,16 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const {save} = deployments;
   const config = getConfig(hre.network.name);
 
-  console.log(`Deploy Config: ${JSON.stringify(config, null, 2)}`);
+  console.log(
+    `Deploy Config: ${JSON.stringify(
+      {
+        server: config.server,
+        contracts: config.contracts,
+      },
+      null,
+      2
+    )}`
+  );
 
   const Sway = await (
     await ethers.getContractFactory<Sway__factory>('Sway')

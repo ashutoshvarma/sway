@@ -90,6 +90,29 @@ const _abi = [
         type: "uint256",
       },
       {
+        internalType: "bytes32",
+        name: "rootHash",
+        type: "bytes32",
+      },
+      {
+        internalType: "contract ISwayDrop",
+        name: "drop",
+        type: "address",
+      },
+    ],
+    name: "addEventDrop",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "eventId",
+        type: "uint256",
+      },
+      {
         internalType: "address",
         name: "account",
         type: "address",
@@ -104,18 +127,25 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
+        name: "account",
+        type: "address",
+      },
+    ],
+    name: "addGovernor",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
         name: "minter",
         type: "address",
       },
     ],
     name: "createEvent",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
+    outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
@@ -244,7 +274,7 @@ const _abi = [
         type: "bool",
       },
     ],
-    stateMutability: "nonpayable",
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -263,6 +293,31 @@ const _abi = [
         type: "bool",
       },
     ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "pause",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "eventId",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
+    ],
+    name: "removeEventMinter",
+    outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
@@ -270,11 +325,11 @@ const _abi = [
     inputs: [
       {
         internalType: "address",
-        name: "_addr",
+        name: "account",
         type: "address",
       },
     ],
-    name: "pause",
+    name: "removeGovernor",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -316,13 +371,7 @@ const _abi = [
     type: "function",
   },
   {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_addr",
-        type: "address",
-      },
-    ],
+    inputs: [],
     name: "unpause",
     outputs: [],
     stateMutability: "nonpayable",

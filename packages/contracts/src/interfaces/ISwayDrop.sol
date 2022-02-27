@@ -5,11 +5,13 @@ import "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/IERC721Enume
 import "@openzeppelin/contracts-upgradeable/access/IAccessControlEnumerableUpgradeable.sol";
 
 interface ISwayDrop {
-    function isEventAdded(uint256 eventId) external returns (bool);
+    function isEventAdded(uint256 eventId) external view returns (bool);
 
     function addEvent(uint256 _eventId, bytes32 _roothash) external;
 
-    function setSway(address _sway) external;
+    function updateEvent(uint256 _eventId, bytes32 _roothash) external;
+
+    function setSway(address _swayAddr) external;
 
     function claim(
         uint256 _index,
