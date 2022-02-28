@@ -6,6 +6,10 @@
   text-decoration: none;
 }
 
+.Dark .NavItem {
+  color: #c2c2c2;
+}
+
 .NavItem:hover {
   text-decoration: underline;
 }
