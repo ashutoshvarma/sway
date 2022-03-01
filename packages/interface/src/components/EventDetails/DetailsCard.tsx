@@ -14,6 +14,8 @@ import nft from '../../assets/icons/nft.svg'
 import location from '../../assets/icons/location.svg'
 import { shortenTxHash, explorerLink } from '../../utils/helpers'
 import { useContractKit } from '@celo-tools/use-contractkit'
+import { useEffect } from 'react'
+import confetti from 'canvas-confetti'
 
 interface Props {
   event: SwayEvent | undefined
@@ -23,6 +25,37 @@ interface Props {
   claimLoading: Boolean
   claimEvent: (() => Promise<string>) | null
   forceCheckStatus: () => void
+}
+
+const shootConfetti = () => {
+  confetti({
+    particleCount: 50,
+    spread: 60,
+    angle: 20,
+    origin: { y: 0.8, x: -0.1 },
+    colors: ['#e8cd00', '#ccc'],
+  })
+  confetti({
+    particleCount: 200,
+    spread: 120,
+    angle: 60,
+    origin: { y: 0.6, x: 0.1 },
+    colors: ['#e8cd00', '#ccc'],
+  })
+  confetti({
+    particleCount: 200,
+    spread: 120,
+    angle: 120,
+    origin: { y: 0.6, x: 0.9 },
+    colors: ['#e8cd00', '#ccc'],
+  })
+  confetti({
+    particleCount: 50,
+    spread: 60,
+    angle: 160,
+    origin: { y: 0.8, x: 1.1 },
+    colors: ['#e8cd00', '#ccc'],
+  })
 }
 
 function DetailsCard({
@@ -38,12 +71,17 @@ function DetailsCard({
   const { connect } = useContractKit()
   // toast.error(`Yey! Success!`)
 
+  useEffect(() => {
+    shootConfetti()
+  }, [])
+
   const joinEventHandler = async () => {
     if (!claimEvent) return
     try {
       setJoinLoading(true)
       let hash = await claimEvent()
       forceCheckStatus()
+      shootConfetti()
       toast.success(() => (
         <div className={styles['SuccessToast']}>
           Yey! Success! <br /> Txn Hash:{' '}
