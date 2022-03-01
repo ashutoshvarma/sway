@@ -36,7 +36,6 @@ body {
 }
 
 main {
-
 }
 
 .wrapper {
@@ -78,6 +77,67 @@ button:hover {
 button:active {
   transform: scale(0.95);
   box-shadow: 1px 1px 48px -100px #c2c2c2;
+}
+
+.popover-container {
+  position: relative;
+}
+
+.popover-container:hover .popover-content {
+  display: block;
+}
+
+.popover-content {
+  position: absolute;
+  top: -10px;
+  transform: translate(-50%, -100%);
+  background-color: #444444;
+  font-size: 12px;
+  font-weight: 100;
+  padding: 7px;
+  /* width: 201px; */
+  font-family: arial;
+  border-radius: 4px;
+  left: 50%;
+  animation: 0.1s ease-in-out fade-in;
+  display: none;
+  white-space: nowrap;
+}
+
+.popover-content.left {
+  left: -10px;
+  top: 50%;
+  transform: translate(-100%, -50%);
+}
+
+.popover-content::before {
+  content: '';
+  background-color: #444444;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  bottom: -7px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  border-radius: 20px 0px 4px 0px;
+  z-index: -1;
+}
+
+.popover-content.left::before {
+  right: -7px;
+  bottom: unset;
+  left: unset;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 1600px) {

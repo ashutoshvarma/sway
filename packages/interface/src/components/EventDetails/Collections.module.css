@@ -13,12 +13,15 @@
   display: contents;
 }
 
-.CollectionGrid th,
 .CollectionGrid td {
   padding: 16px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.CollectionGrid th {
+  padding: 16px;
 }
 
 .CollectionGrid th {
@@ -50,6 +53,43 @@
   width: 100%;
   height: 1.2em;
   border-radius: 2px;
+}
+
+.Info {
+  background-color: #000;
+  color: white;
+  height: 17px;
+  width: 18px;
+  margin-left: 5px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.Link,
+.Link:active,
+.Link:visited {
+  color: rgb(0, 75, 145);
+  text-decoration: none;
+}
+
+.Link:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 800px) and (max-width: 1250px) {
+  .InfoContent {
+    left: -10px;
+    top: 50%;
+    transform: translate(-100%, -50%);
+  }
+
+  .InfoContent::before {
+    right: -7px;
+    bottom: unset;
+    left: unset;
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+  }
 }
 
 @media (max-width: 800px) {
