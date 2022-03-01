@@ -76,6 +76,7 @@ export function useClaimStatus(
     } finally {
       setLoading(false)
     }
+    console.log('force checking')
   }
 
   useEffect(() => {

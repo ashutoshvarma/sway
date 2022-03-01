@@ -13,6 +13,7 @@ import calender from '../../assets/icons/calender.svg'
 import nft from '../../assets/icons/nft.svg'
 import location from '../../assets/icons/location.svg'
 import { shortenTxHash, explorerLink } from '../../utils/helpers'
+import { useContractKit } from '@celo-tools/use-contractkit'
 
 interface Props {
   event: SwayEvent | undefined
@@ -34,6 +35,7 @@ function DetailsCard({
   forceCheckStatus,
 }: Props): ReactElement {
   const [joinLoading, setJoinLoading] = useState(false)
+  const { connect } = useContractKit()
   // toast.error(`Yey! Success!`)
 
   const joinEventHandler = async () => {
@@ -73,9 +75,9 @@ function DetailsCard({
       )
     else if (claimStatus === ClaimStatus.NOT_CONNECTED)
       return (
-        <div className={styles['Connect']}>
+        <button className={styles['Connect']} onClick={connect}>
           Connect a wallet to join the event
-        </div>
+        </button>
       )
     else return <div className={styles['NotAvail']}>Not available</div>
   }
