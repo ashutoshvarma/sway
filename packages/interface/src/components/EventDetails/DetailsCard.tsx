@@ -62,7 +62,7 @@ function DetailsCard({
     if (claimStatus === ClaimStatus.AVAIL)
       return (
         <div className={styles['JoinContainer']}>
-          <button onClick={joinEventHandler}>Join the event</button>
+          <button onClick={joinEventHandler}>Join</button>
         </div>
       )
     else if (claimStatus === ClaimStatus.CLAIMED)
