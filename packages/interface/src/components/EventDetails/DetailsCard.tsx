@@ -14,7 +14,6 @@ import nft from '../../assets/icons/nft.svg'
 import location from '../../assets/icons/location.svg'
 import { shortenTxHash, explorerLink } from '../../utils/helpers'
 import { useContractKit } from '@celo-tools/use-contractkit'
-import { useEffect } from 'react'
 import confetti from 'canvas-confetti'
 
 interface Props {
