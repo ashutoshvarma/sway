@@ -71,10 +71,6 @@ function DetailsCard({
   const { connect } = useContractKit()
   // toast.error(`Yey! Success!`)
 
-  useEffect(() => {
-    shootConfetti()
-  }, [])
-
   const joinEventHandler = async () => {
     if (!claimEvent) return
     try {
