@@ -93,7 +93,9 @@
   /* margin-bottom: -100px; */
 }
 
-.EventJoined, .NotAvail, .Connect {
+.EventJoined,
+.NotAvail,
+.Connect {
   display: inline-block;
   background: hsl(105deg 60% 86% / 52%);
   color: #76893d;
@@ -107,12 +109,13 @@
 .Connect {
   background: hsl(0deg 0% 53%);
   color: white;
+  border: none;
+  margin: 30px;
 }
 
 .NotAvail {
   background: hsl(0deg 0% 94%);
   color: #9f9f9f;
-
 }
 
 .JoinContainer button {
@@ -149,8 +152,8 @@
   text-transform: capitalize;
 }
 
-.SuccessToast a:link{
-  color:  #e3c100;
+.SuccessToast a:link {
+  color: #e3c100;
 }
 
 .SuccessToast a:visited {
@@ -201,7 +204,6 @@
 .Loading .JoinContainer {
   display: none;
 }
-
 
 /* Loader */
 .Loader {
@@ -259,7 +261,6 @@
     transform: translate(24px, 0);
   }
 }
-
 
 @media (max-width: 2000px) {
   .Background {

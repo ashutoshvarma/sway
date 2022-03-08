@@ -13,6 +13,8 @@ import calender from '../../assets/icons/calender.svg'
 import nft from '../../assets/icons/nft.svg'
 import location from '../../assets/icons/location.svg'
 import { shortenTxHash, explorerLink } from '../../utils/helpers'
+import { useContractKit } from '@celo-tools/use-contractkit'
+import confetti from 'canvas-confetti'
 
 interface Props {
   event: SwayEvent | undefined
@@ -22,6 +24,37 @@ interface Props {
   claimLoading: Boolean
   claimEvent: (() => Promise<string>) | null
   forceCheckStatus: () => void
+}
+
+const shootConfetti = () => {
+  confetti({
+    particleCount: 50,
+    spread: 60,
+    angle: 20,
+    origin: { y: 0.8, x: -0.1 },
+    colors: ['#e8cd00', '#ccc'],
+  })
+  confetti({
+    particleCount: 200,
+    spread: 120,
+    angle: 60,
+    origin: { y: 0.6, x: 0.1 },
+    colors: ['#e8cd00', '#ccc'],
+  })
+  confetti({
+    particleCount: 200,
+    spread: 120,
+    angle: 120,
+    origin: { y: 0.6, x: 0.9 },
+    colors: ['#e8cd00', '#ccc'],
+  })
+  confetti({
+    particleCount: 50,
+    spread: 60,
+    angle: 160,
+    origin: { y: 0.8, x: 1.1 },
+    colors: ['#e8cd00', '#ccc'],
+  })
 }
 
 function DetailsCard({
@@ -34,6 +67,7 @@ function DetailsCard({
   forceCheckStatus,
 }: Props): ReactElement {
   const [joinLoading, setJoinLoading] = useState(false)
+  const { connect } = useContractKit()
   // toast.error(`Yey! Success!`)
 
   const joinEventHandler = async () => {
@@ -42,6 +76,7 @@ function DetailsCard({
       setJoinLoading(true)
       let hash = await claimEvent()
       forceCheckStatus()
+      shootConfetti()
       toast.success(() => (
         <div className={styles['SuccessToast']}>
           Yey! Success! <br /> Txn Hash:{' '}
@@ -73,9 +108,9 @@ function DetailsCard({
       )
     else if (claimStatus === ClaimStatus.NOT_CONNECTED)
       return (
-        <div className={styles['Connect']}>
+        <button className={styles['Connect']} onClick={connect}>
           Connect a wallet to join the event
-        </div>
+        </button>
       )
     else return <div className={styles['NotAvail']}>Not available</div>
   }

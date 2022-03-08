@@ -20,7 +20,7 @@ function Nav({ dark }: Props): ReactElement {
   const closeNav = () => setNavOpen(false)
 
   return (
-    <nav>
+    <nav className={dark ? styles['Dark'] : ''}>
       <button
         className={[styles['Hamburger'], dark ? styles['Dark'] : null].join(
           ' ',

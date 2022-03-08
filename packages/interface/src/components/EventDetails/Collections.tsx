@@ -43,7 +43,15 @@ function Collections({ eventId: id }: Props): ReactElement {
               <th className={styles['TableHeader']}>Collections</th>
               <th className={styles['TableHeader']}>Minting Date</th>
               <th className={styles['TableHeader']}>TX Count</th>
-              <th className={styles['TableHeader']}>Power</th>
+              <th className={styles['TableHeader']}>
+                Power
+                <span className={`${styles['Info']} popover-container`}>
+                  ?
+                  <div className={`${styles['InfoContent']} popover-content`}>
+                    Total amount of PDAPs held by this address
+                  </div>
+                </span>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -76,6 +84,7 @@ function TableRow({ collection, loading }: RowProps) {
           href={collection?.collection && explorerLink(collection?.collection)}
           target="_blank"
           rel="noreferrer"
+          className={styles['Link']}
         >
           {collection?.collection}
         </a>
