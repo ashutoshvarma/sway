@@ -39,7 +39,6 @@ function App(): ReactElement {
         <title>Home | Sway</title>
       </Helmet>
       <ToastContainer {...ToastConfig} />
-
       <Routes>
         <Route path="/" element={withLayout(<HomePage />)} />
         <Route path="/gallery" element={withLayout(<GalleryPage />)} />
@@ -53,6 +52,10 @@ function App(): ReactElement {
         />
         <Route
           path="/account"
+          element={withLayout(<UserCollectionPage />, true)}
+        />
+        <Route
+          path="/account/:address"
           element={withLayout(<UserCollectionPage />, true)}
         />
       </Routes>
