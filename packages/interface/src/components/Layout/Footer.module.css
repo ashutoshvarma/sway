@@ -76,6 +76,11 @@
 
 .ContactLinksContainer img {
   margin-right: 5px;
+  height: 20px;
+}
+
+.ContactLinksContainer a {
+  display: inline-flex;
 }
 
 .Menu,

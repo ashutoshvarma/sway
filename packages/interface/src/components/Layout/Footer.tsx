@@ -2,9 +2,11 @@ import { ReactElement } from 'react'
 import styles from './Footer.module.css'
 import shape from '../../assets/shapes/footershape.svg'
 import logo from '../../assets/logos/logonew.svg'
-import reddit from '../../assets/logos/reddit.svg'
-import discord from '../../assets/logos/discord.svg'
-import github from '../../assets/logos/github.svg'
+// import reddit from '../../assets/logos/reddit.svg'
+// import discord from '../../assets/logos/discord.svg'
+// import github from '../../assets/logos/github.svg'
+import twitter from '../../assets/logos/twitter.svg'
+
 import { Link } from 'react-router-dom'
 
 function Footer(): ReactElement {
@@ -58,7 +60,7 @@ function Footer(): ReactElement {
             <div className={styles['Contact2']}>
               <h4>Contact us</h4>
               <div className={styles['ContactLinksContainer']}>
-                <a href="#sdsd">
+                {/* <a href="#sdsd">
                   <img src={reddit} alt="reddit" />
                   <span>Reddit</span>
                 </a>
@@ -69,6 +71,10 @@ function Footer(): ReactElement {
                 <a href="#sdf">
                   <img src={discord} alt="discord" />
                   <span>Discord</span>
+                </a> */}
+                <a href="#sdf">
+                  <img src={twitter} alt="twitter" />
+                  <span>Twitter</span>
                 </a>
               </div>
             </div>
