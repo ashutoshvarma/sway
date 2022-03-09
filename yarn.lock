@@ -3095,15 +3095,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@solidity-parser/parser@npm:^0.13.2":
-  version: 0.13.2
-  resolution: "@solidity-parser/parser@npm:0.13.2"
-  dependencies:
-    antlr4ts: ^0.5.0-alpha.4
-  checksum: bfdd8ec7f7b88f3cc75e333e03202cde5e5dacbec7f00612f22dec5e22b0995713637872ce202064d182bae56a274fcb2ca8715ad5482af5e8b38728a0216cf7
-  languageName: node
-  linkType: hard
-
 "@solidity-parser/parser@npm:^0.14.0, @solidity-parser/parser@npm:^0.14.1":
   version: 0.14.1
   resolution: "@solidity-parser/parser@npm:0.14.1"
@@ -3368,7 +3359,7 @@ __metadata:
     "@types/node-fetch": 2
     "@typescript-eslint/eslint-plugin": 5.10.2
     "@typescript-eslint/parser": 5.10.2
-    "@vercel/node": 1.12.1
+    "@vercel/node": 1.13.0
     class-transformer: ^0.5.1
     class-validator: ^0.13.2
     eslint: 8.7.0
@@ -4729,14 +4720,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/node@npm:1.12.1":
-  version: 1.12.1
-  resolution: "@vercel/node@npm:1.12.1"
+"@vercel/node@npm:1.13.0":
+  version: 1.13.0
+  resolution: "@vercel/node@npm:1.13.0"
   dependencies:
     "@types/node": "*"
     ts-node: 8.9.1
     typescript: 4.3.4
-  checksum: 15a0bae4af01e4eb96dfc4b097db70125a2945c606ab1290b4644484a242ddd262705bf4745cec016f2ca62649f8eb7079025f39027210d3aa0d7739d7509255
+  checksum: 54ee2f1b51f658d241b049e5c698d8fb1f70f9740bbbb0e4f83c44c11f5538eabcfdde767f6b1b2311a31c8242b1e1904bf2a2800f258c98faf013bad4425fe0
   languageName: node
   linkType: hard
 
