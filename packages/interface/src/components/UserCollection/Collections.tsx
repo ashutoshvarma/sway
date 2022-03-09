@@ -6,6 +6,8 @@ import api from '../../utils/api'
 import { useContractKit } from '@celo-tools/use-contractkit'
 import 'react-dropdown/style.css'
 import Dropdown from 'react-dropdown'
+import { useParams } from 'react-router-dom'
+import { isAddress } from '@ethersproject/address'
 
 const options: [string, string, string, string] = [
   'Created: High to Low',
@@ -25,12 +27,18 @@ export interface Token {
 }
 
 function Collections(): ReactElement {
-  const { connect, address } = useContractKit()
+  const params = useParams()
+  const pathAddress = params['address'] as string | undefined
+  const { connect, address: kitAddress } = useContractKit()
+
+  const address =
+    pathAddress && isAddress(pathAddress) ? pathAddress : kitAddress
+
   const [tokens, setTokens] = useState<Token[] | null>(null)
   const [sorting, setSorting] = useState<string>(options[0])
   const [tokenLoading, setTokenLoading] = useState<Boolean>(false)
   useEffect(() => {
-    ; (async () => {
+    ;(async () => {
       if (address) {
         setTokenLoading(true)
         let data = await api.getUserTokenInfo(address)

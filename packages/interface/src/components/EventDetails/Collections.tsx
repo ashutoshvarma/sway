@@ -48,7 +48,7 @@ function Collections({ eventId: id }: Props): ReactElement {
                 <span className={`${styles['Info']} popover-container`}>
                   ?
                   <div className={`${styles['InfoContent']} popover-content`}>
-                    Total amount of PDAPs held by this address
+                    Total amount of SWAY held by this address
                   </div>
                 </span>
               </th>

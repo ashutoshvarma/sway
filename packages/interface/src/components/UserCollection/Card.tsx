@@ -3,20 +3,25 @@ import styles from './Card.module.css'
 import { Token } from './Collections'
 import { explorerLink, shortenTxHash } from '../../utils/helpers'
 import { Link } from 'react-router-dom'
+import { FacebookShareButton, TwitterShareButton } from 'react-share'
 
 import cardImg from '../../assets/illustrations/hero-illus.svg'
-import ig from '../../assets/icons/ig.svg'
+// import ig from '../../assets/icons/ig.svg'
 import facebook from '../../assets/icons/facebook.svg'
-import pinterest from '../../assets/icons/pinterest.svg'
+// import pinterest from '../../assets/icons/pinterest.svg'
 import twitter from '../../assets/icons/twitter.svg'
+// import { useContractKit } from '@celo-tools/use-contractkit'
 
+const getSocialQuote = () =>
+  `Hey there, checkout this NFT that I just minted on SWAY. Create and Collect events' NFT on SWAY for free.`
 interface Props {
   loading?: boolean
   token?: Token
 }
 
 function Card({ loading, token }: Props): ReactElement {
-  let classes = [styles['Card']]
+  // const { account } = useContractKit()
+  const classes = [styles['Card']]
   if (loading) classes.push(styles['Loading'])
 
   return (
@@ -30,7 +35,7 @@ function Card({ loading, token }: Props): ReactElement {
       </div>
       <div className={styles['EventId']}>
         <Link to={`/event/${token?.eventId}`}>
-          <span>#{token?.eventId || "No Id"}</span>
+          <span>#{token?.eventId || 'No Id'}</span>
         </Link>
       </div>
       <div className={styles['DetailsGrid']}>
@@ -53,11 +58,40 @@ function Card({ loading, token }: Props): ReactElement {
       </div>
       <h4 className={styles['Title']}>Collect Best NFT’s Quickly!</h4>
       <div className={styles['Share']}>
-
-        <div><img src={facebook} alt="facebook icon" /></div>
-        <div><img src={twitter} alt="twitter icon" /></div>
-        <div><img src={ig} alt="instagram icon" /></div>
-        <div><img src={pinterest} alt="pinterest icon" /></div>
+        <div>
+          <FacebookShareButton
+            url={
+              new URL(
+                `/event/${token?.eventId.toString()}`,
+                window.location.href,
+              ).href
+            }
+            quote={getSocialQuote()}
+            hashtag="#swaynft"
+          >
+            <img src={facebook} alt="facebook icon" />
+          </FacebookShareButton>
+        </div>
+        <div>
+          <TwitterShareButton
+            url={
+              new URL(
+                `/event/${token?.eventId.toString()}`,
+                window.location.href,
+              ).href
+            }
+            title={getSocialQuote()}
+            hashtags={['sway', 'swaynft']}
+          >
+            <img src={twitter} alt="twitter icon" />
+          </TwitterShareButton>
+        </div>
+        {/* <div>
+          <img src={ig} alt="instagram icon" />
+        </div> */}
+        {/* <div>
+          <img src={pinterest} alt="pinterest icon" />
+        </div> */}
       </div>
     </div>
   )
