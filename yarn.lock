@@ -3353,7 +3353,7 @@ __metadata:
     solidity-coverage: 0.7.18
     ts-generator: 0.1.1
     ts-node: 10.4.0
-    typechain: 7.0.0
+    typechain: 7.0.1
     typescript: 4.5.5
   languageName: unknown
   linkType: soft
@@ -22885,7 +22885,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typechain@npm:*, typechain@npm:7.0.0":
+"typechain@npm:*":
   version: 7.0.0
   resolution: "typechain@npm:7.0.0"
   dependencies:
@@ -22904,6 +22904,28 @@ __metadata:
   bin:
     typechain: dist/cli/cli.js
   checksum: a6d67427d01b82d2f224e8b4b83c2e84df81b2a12b5a1df9907092d0668a8a747e12474b4367b8887ff60a8f9a055b22f6dc46b31383623d52ceccce84a3b618
+  languageName: node
+  linkType: hard
+
+"typechain@npm:7.0.1":
+  version: 7.0.1
+  resolution: "typechain@npm:7.0.1"
+  dependencies:
+    "@types/prettier": ^2.1.1
+    debug: ^4.1.1
+    fs-extra: ^7.0.0
+    glob: ^7.1.6
+    js-sha3: ^0.8.0
+    lodash: ^4.17.15
+    mkdirp: ^1.0.4
+    prettier: ^2.1.2
+    ts-command-line-args: ^2.2.0
+    ts-essentials: ^7.0.1
+  peerDependencies:
+    typescript: ">=4.1.0"
+  bin:
+    typechain: dist/cli/cli.js
+  checksum: 86f13506bdd94ec6168ef015584aa7950d3aa745aed7ba89b1eb2e21af9e51fcc2efb8e7d5acb86e3e9a44ce9f715ce1b0a43b70024cf6de672fba371bc551af
   languageName: node
   linkType: hard
 
