@@ -26,16 +26,23 @@ import illus5 from '../../assets/illustrations/illus5.svg'
 
 import Faqs from './Faqs'
 import { Helmet } from 'react-helmet'
+import { useNavigate } from 'react-router-dom'
 
 function HomePage(): ReactElement {
+  const navigate = useNavigate()
   return (
     <>
       <Helmet>
-        <title>Sway - Create and Collect Free
-          Souvenir NFTs!</title>
-        <meta property="og:title" content="Sway - Create and Collect Free
-          Souvenir NFTs!" />
-        <meta name="description" content="Create one of a kind, crypto secured digital memories in the form of NFTs and share with your friends"></meta>
+        <title>Sway - Create and Collect Free Souvenir NFTs!</title>
+        <meta
+          property="og:title"
+          content="Sway - Create and Collect Free
+          Souvenir NFTs!"
+        />
+        <meta
+          name="description"
+          content="Create one of a kind, crypto secured digital memories in the form of NFTs and share with your friends"
+        ></meta>
       </Helmet>
       <section className={styles['HeroSection']}>
         <div style={{ position: 'relative', width: '100%' }}>
@@ -86,7 +93,7 @@ function HomePage(): ReactElement {
               event. Use SWAY to create and collect NFTs for Meaningful Events
               that define you.
             </p>
-            <button>Get started</button>
+            <button onClick={() => navigate('/gallery')}>Get started</button>
           </div>
         </div>
       </section>
@@ -100,7 +107,7 @@ function HomePage(): ReactElement {
               The NFT you own will define your identity in the pseudo-anonymous
               world of blockchain. Build your social reputation using SWAY.
             </p>
-            <button>Get started</button>
+            <button onClick={() => navigate('/gallery')}>Get started</button>
           </div>
           <div className={styles['IllusContainer']}>
             <img src={illus3} alt="illustration" />
@@ -151,7 +158,7 @@ function HomePage(): ReactElement {
               injected humour, or randomised words which don't look even
               slightly believable you are going to use a passage.
             </p>
-            <button>Get started</button>
+            <button onClick={() => navigate('/gallery')}>Get started</button>
           </div>
         </div>
       </section>
