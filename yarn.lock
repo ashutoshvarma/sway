@@ -3095,15 +3095,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@solidity-parser/parser@npm:^0.13.2":
-  version: 0.13.2
-  resolution: "@solidity-parser/parser@npm:0.13.2"
-  dependencies:
-    antlr4ts: ^0.5.0-alpha.4
-  checksum: bfdd8ec7f7b88f3cc75e333e03202cde5e5dacbec7f00612f22dec5e22b0995713637872ce202064d182bae56a274fcb2ca8715ad5482af5e8b38728a0216cf7
-  languageName: node
-  linkType: hard
-
 "@solidity-parser/parser@npm:^0.14.0, @solidity-parser/parser@npm:^0.14.1":
   version: 0.14.1
   resolution: "@solidity-parser/parser@npm:0.14.1"
@@ -3340,7 +3331,7 @@ __metadata:
     hardhat: 2.8.3
     hardhat-contract-sizer: 2.4.0
     hardhat-deploy: 0.10.5
-    hardhat-gas-reporter: 1.0.7
+    hardhat-gas-reporter: 1.0.8
     hardhat-tracer: 1.0.0-alpha.6
     keccak256: 1.0.6
     merkletreejs: 0.2.30
@@ -11993,16 +11984,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hardhat-gas-reporter@npm:1.0.7":
-  version: 1.0.7
-  resolution: "hardhat-gas-reporter@npm:1.0.7"
+"hardhat-gas-reporter@npm:1.0.8":
+  version: 1.0.8
+  resolution: "hardhat-gas-reporter@npm:1.0.8"
   dependencies:
     array-uniq: 1.0.3
     eth-gas-reporter: ^0.2.24
     sha1: ^1.1.1
   peerDependencies:
     hardhat: ^2.0.2
-  checksum: 0e077e6ed587a6d5a360a121964957fe92c995741b8bfac87d34d127f50d76efdb5875f17a6376189ec07684e3bc72c7a6a27f5995c02e59b325caff80ec5592
+  checksum: bf18aacd08e0bdef81b180f3c97f76fcab885de3e92ed2dc014712e671c83ee7f77755c0e6c0f923a95f8372714cfcb7cdaa019afc42984c159603f8a8d724cf
   languageName: node
   linkType: hard
 
