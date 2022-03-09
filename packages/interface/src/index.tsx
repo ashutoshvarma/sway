@@ -12,6 +12,8 @@ import {
 } from '@celo-tools/use-contractkit'
 import { NETWORK } from './utils/environment'
 
+import { BrowserRouter } from 'react-router-dom'
+
 if (window.celo) {
   window.celo.autoRefreshOnNetworkChange = false
 }
@@ -52,7 +54,9 @@ ReactDOM.render(
         },
       }}
     >
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ContractKitProvider>
   </React.StrictMode>,
   document.getElementById('root'),
