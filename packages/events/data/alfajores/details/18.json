@@ -1,0 +1,16 @@
+{
+  "description": "Celo Early Adopters are the people who hold atleast one of the major celo native tokens.",
+  "external_url": "https://sway.community/event/18",
+  "home_url": "https://www.sway.community/",
+  "image_url": "https://static.sway.community/alfajores/badges/celo_early",
+  "image": "https://static.sway.community/alfajores/badges/celo_early",
+  "name": "Celo Early Adopters",
+  "year": 2022,
+  "tags": ["celo"],
+  "start_date": "2021-12-22",
+  "end_date": "2022-02-26",
+  "virtual_event": true,
+  "city": "",
+  "country": "Celo",
+  "event_url": "https://www.sway.community/"
+}
