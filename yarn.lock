@@ -2824,9 +2824,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@openzeppelin/hardhat-upgrades@npm:1.16.0":
-  version: 1.16.0
-  resolution: "@openzeppelin/hardhat-upgrades@npm:1.16.0"
+"@openzeppelin/hardhat-upgrades@npm:1.16.1":
+  version: 1.16.1
+  resolution: "@openzeppelin/hardhat-upgrades@npm:1.16.1"
   dependencies:
     "@openzeppelin/upgrades-core": ^1.13.1
     chalk: ^4.1.0
@@ -2836,7 +2836,7 @@ __metadata:
     hardhat: ^2.0.2
   bin:
     migrate-oz-cli-project: dist/scripts/migrate-oz-cli-project.js
-  checksum: 173bd5ee82dda22b9326fcb95ea0d71f503739f5b0b914f8cc09022b0ae36d11a13cf1999882069802e9f99d7b3511c886ad84d959f8d6c444fa40e37454c28c
+  checksum: e9fb526b9bd278dea5e0f86d0b85008499bf753598507826ac1b6bc704da9214888e68a4c40dddd12ce86e944ae5023a31ec173fc88a299c85a6518ab26c54da
   languageName: node
   linkType: hard
 
@@ -3308,7 +3308,7 @@ __metadata:
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@0.3.0-beta.13"
     "@openzeppelin/contracts": 4.5.0
     "@openzeppelin/contracts-upgradeable": 4.5.2
-    "@openzeppelin/hardhat-upgrades": 1.16.0
+    "@openzeppelin/hardhat-upgrades": 1.16.1
     "@sway/events": ^0.1.0
     "@typechain/ethers-v5": 9.0.0
     "@typechain/hardhat": 4.0.0
