@@ -3344,7 +3344,7 @@ __metadata:
     glob: 7.2.0
     hardhat: 2.8.4
     hardhat-contract-sizer: 2.4.0
-    hardhat-deploy: 0.10.5
+    hardhat-deploy: 0.10.6
     hardhat-gas-reporter: 1.0.8
     hardhat-tracer: 1.0.0-alpha.6
     keccak256: 1.0.6
@@ -11955,9 +11955,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hardhat-deploy@npm:0.10.5":
-  version: 0.10.5
-  resolution: "hardhat-deploy@npm:0.10.5"
+"hardhat-deploy@npm:0.10.6":
+  version: 0.10.6
+  resolution: "hardhat-deploy@npm:0.10.6"
   dependencies:
     "@ethersproject/abi": ^5.4.0
     "@ethersproject/abstract-signer": ^5.4.1
@@ -11984,7 +11984,7 @@ __metadata:
   peerDependencies:
     "@ethersproject/hardware-wallets": ^5.0.14
     hardhat: ^2.6.8
-  checksum: e0e54d50f4632c7b47a716da50b55ce6c2938dfd825b22a8766fcee35ac1c393e0da652212283ad7a7380866e55f72bdf84bb8ef9ed5b5e776b8d33718d1d762
+  checksum: dd82fafd74da7f7d180c529ea7a044b8c9c9c0d65d5e05285bafeeb3f864492ffb2271174bc2ac4ed963d60f4bc3e95e4b70e4e063ee23807f34fbf6a29a8681
   languageName: node
   linkType: hard
 
