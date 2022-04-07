@@ -3348,7 +3348,7 @@ __metadata:
     hardhat-gas-reporter: 1.0.8
     hardhat-tracer: 1.0.0-alpha.6
     keccak256: 1.0.6
-    merkletreejs: 0.2.30
+    merkletreejs: 0.2.31
     mocha: 9.2.2
     prettier: 2.5.1
     prettier-plugin-solidity: 1.0.0-beta.19
@@ -15706,16 +15706,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"merkletreejs@npm:0.2.30":
-  version: 0.2.30
-  resolution: "merkletreejs@npm:0.2.30"
+"merkletreejs@npm:0.2.31":
+  version: 0.2.31
+  resolution: "merkletreejs@npm:0.2.31"
   dependencies:
     bignumber.js: ^9.0.1
     buffer-reverse: ^1.0.1
     crypto-js: ^3.1.9-1
     treeify: ^1.1.0
     web3-utils: ^1.3.4
-  checksum: cbd4858e94f00939a7b7f26e3095d5a85f5f38b60aab40dbbd9e376083b41ce394620f98524ff591f34fec842d9541e8e74335599250bbe9affac3d9e0a0da05
+  checksum: d84a7d8b07b6ec37f8de8e6b9d1cfb361e49d75e30be1e1e9e269e8847408535265df1bb99be88b8d260362e6513491cdf07a5a5a03d4980faa5f23341ae3909
   languageName: node
   linkType: hard
 
