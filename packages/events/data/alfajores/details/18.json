@@ -1,0 +1,16 @@
+{
+  "description": "Event for Major Project Internal Evaluation.",
+  "external_url": "https://sway.community/",
+  "home_url": "https://www.sway.community/",
+  "image_url": "https://static.sway.community/alfajores/badges/2",
+  "image": "https://static.sway.community/alfajores/badges/2",
+  "name": "Major Project 2022 [Internal]",
+  "year": 2022,
+  "tags": ["sway", "event"],
+  "start_date": "2021-12-22",
+  "end_date": "2022-02-26",
+  "virtual_event": true,
+  "city": "Delhi",
+  "country": "India",
+  "event_url": "https://www.sway.community/"
+}
