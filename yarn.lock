@@ -3373,7 +3373,7 @@ __metadata:
     "@types/node-fetch": 2
     "@typescript-eslint/eslint-plugin": 5.10.2
     "@typescript-eslint/parser": 5.10.2
-    "@vercel/node": 1.13.0
+    "@vercel/node": 1.15.4
     class-transformer: ^0.5.1
     class-validator: ^0.13.2
     eslint: 8.7.0
@@ -4745,14 +4745,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vercel/node@npm:1.13.0":
-  version: 1.13.0
-  resolution: "@vercel/node@npm:1.13.0"
+"@vercel/node-bridge@npm:2.2.2":
+  version: 2.2.2
+  resolution: "@vercel/node-bridge@npm:2.2.2"
+  checksum: a512cf631f82a27dee0a0addba0be13431980f97ef3e1733f0e6dd8a8e7cf55629fc520c9135a4d3859c1721db4929608fb4b6acc72a00b97560536bcc47a6df
+  languageName: node
+  linkType: hard
+
+"@vercel/node@npm:1.15.4":
+  version: 1.15.4
+  resolution: "@vercel/node@npm:1.15.4"
   dependencies:
     "@types/node": "*"
+    "@vercel/node-bridge": 2.2.2
     ts-node: 8.9.1
     typescript: 4.3.4
-  checksum: 54ee2f1b51f658d241b049e5c698d8fb1f70f9740bbbb0e4f83c44c11f5538eabcfdde767f6b1b2311a31c8242b1e1904bf2a2800f258c98faf013bad4425fe0
+  checksum: c8f384c26979248b215c3ebbc393f9ad7902f841b3cb8f90346eaf4a49a77b2959213f441f1353897b906dde106457bab28eb432eb5115e3ed291e20405284a7
   languageName: node
   linkType: hard
 
