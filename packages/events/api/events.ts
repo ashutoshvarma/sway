@@ -14,6 +14,7 @@ const EVENTS_METADATA = fs
         }),
       )
     }
+    return undefined
   })
 
 export default async (_request: VercelRequest, response: VercelResponse) => {
