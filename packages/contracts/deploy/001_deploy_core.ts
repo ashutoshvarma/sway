@@ -52,10 +52,10 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       kind: 'uups',
     },
   )
-  swayDropProxy.deployed()
+  await swayDropProxy.deployed()
   console.log(`deploy SwayDrop with Proxy at ${swayDropProxy.address}`)
 
-  sleep(2000)
+  await sleep(5000)
 
   const swayDropImplAddr = await upgrades.erc1967.getImplementationAddress(
     swayDropProxy.address,

@@ -20,16 +20,25 @@ import { TypedEventFilter, TypedEvent, TypedListener, OnEvent } from "./common";
 export interface UUPSUpgradeableInterface extends utils.Interface {
   contractName: "UUPSUpgradeable";
   functions: {
+    "proxiableUUID()": FunctionFragment;
     "upgradeTo(address)": FunctionFragment;
     "upgradeToAndCall(address,bytes)": FunctionFragment;
   };
 
+  encodeFunctionData(
+    functionFragment: "proxiableUUID",
+    values?: undefined
+  ): string;
   encodeFunctionData(functionFragment: "upgradeTo", values: [string]): string;
   encodeFunctionData(
     functionFragment: "upgradeToAndCall",
     values: [string, BytesLike]
   ): string;
 
+  decodeFunctionResult(
+    functionFragment: "proxiableUUID",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "upgradeTo", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "upgradeToAndCall",
@@ -90,6 +99,8 @@ export interface UUPSUpgradeable extends BaseContract {
   removeListener: OnEvent<this>;
 
   functions: {
+    proxiableUUID(overrides?: CallOverrides): Promise<[string]>;
+
     upgradeTo(
       newImplementation: string,
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -101,6 +112,8 @@ export interface UUPSUpgradeable extends BaseContract {
       overrides?: PayableOverrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
   };
+
+  proxiableUUID(overrides?: CallOverrides): Promise<string>;
 
   upgradeTo(
     newImplementation: string,
@@ -114,6 +127,8 @@ export interface UUPSUpgradeable extends BaseContract {
   ): Promise<ContractTransaction>;
 
   callStatic: {
+    proxiableUUID(overrides?: CallOverrides): Promise<string>;
+
     upgradeTo(
       newImplementation: string,
       overrides?: CallOverrides
@@ -146,6 +161,8 @@ export interface UUPSUpgradeable extends BaseContract {
   };
 
   estimateGas: {
+    proxiableUUID(overrides?: CallOverrides): Promise<BigNumber>;
+
     upgradeTo(
       newImplementation: string,
       overrides?: Overrides & { from?: string | Promise<string> }
@@ -159,6 +176,8 @@ export interface UUPSUpgradeable extends BaseContract {
   };
 
   populateTransaction: {
+    proxiableUUID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     upgradeTo(
       newImplementation: string,
       overrides?: Overrides & { from?: string | Promise<string> }
