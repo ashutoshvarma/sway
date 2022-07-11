@@ -202,7 +202,7 @@ const config: HardhatUserConfig = {
         count: 8,
         path: derivationPath,
       },
-      chainId: ICeloNetwork.ALFAJORES,
+      chainId: ICeloNetwork.MAINNET,
       live: true,
       gasPrice: 0.5 * 10 ** 9,
       gas: 8000000,

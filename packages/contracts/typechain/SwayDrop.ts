@@ -29,6 +29,7 @@ export interface SwayDropInterface extends utils.Interface {
     "name()": FunctionFragment;
     "pause()": FunctionFragment;
     "paused()": FunctionFragment;
+    "proxiableUUID()": FunctionFragment;
     "rootHash(uint256)": FunctionFragment;
     "setSway(address)": FunctionFragment;
     "swayAddr()": FunctionFragment;
@@ -62,6 +63,10 @@ export interface SwayDropInterface extends utils.Interface {
   encodeFunctionData(functionFragment: "pause", values?: undefined): string;
   encodeFunctionData(functionFragment: "paused", values?: undefined): string;
   encodeFunctionData(
+    functionFragment: "proxiableUUID",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
     functionFragment: "rootHash",
     values: [BigNumberish]
   ): string;
@@ -89,6 +94,10 @@ export interface SwayDropInterface extends utils.Interface {
   decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "pause", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "paused", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "proxiableUUID",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "rootHash", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "setSway", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "swayAddr", data: BytesLike): Result;
@@ -227,6 +236,8 @@ export interface SwayDrop extends BaseContract {
 
     paused(overrides?: CallOverrides): Promise<[boolean]>;
 
+    proxiableUUID(overrides?: CallOverrides): Promise<[string]>;
+
     rootHash(arg0: BigNumberish, overrides?: CallOverrides): Promise<[string]>;
 
     setSway(
@@ -297,6 +308,8 @@ export interface SwayDrop extends BaseContract {
 
   paused(overrides?: CallOverrides): Promise<boolean>;
 
+  proxiableUUID(overrides?: CallOverrides): Promise<string>;
+
   rootHash(arg0: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
   setSway(
@@ -364,6 +377,8 @@ export interface SwayDrop extends BaseContract {
     pause(overrides?: CallOverrides): Promise<void>;
 
     paused(overrides?: CallOverrides): Promise<boolean>;
+
+    proxiableUUID(overrides?: CallOverrides): Promise<string>;
 
     rootHash(arg0: BigNumberish, overrides?: CallOverrides): Promise<string>;
 
@@ -474,6 +489,8 @@ export interface SwayDrop extends BaseContract {
 
     paused(overrides?: CallOverrides): Promise<BigNumber>;
 
+    proxiableUUID(overrides?: CallOverrides): Promise<BigNumber>;
+
     rootHash(arg0: BigNumberish, overrides?: CallOverrides): Promise<BigNumber>;
 
     setSway(
@@ -544,6 +561,8 @@ export interface SwayDrop extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     paused(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    proxiableUUID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     rootHash(
       arg0: BigNumberish,

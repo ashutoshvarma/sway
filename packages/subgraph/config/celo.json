@@ -1,5 +1,7 @@
 {
   "network": "celo",
   "rpc": "https://forno.celo.org",
-  "startBlock": 0
+  "startBlock": 13995205,
+  "SwayAddress": "0x5214A04E24eAf78010330Cd9C290FaacC35490a1",
+  "SwayDropAddress": "0x75e862Cbb8862eA4D66eE3ea8926AcdB94062159"
 }

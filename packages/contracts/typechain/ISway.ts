@@ -308,7 +308,7 @@ export interface ISway extends BaseContract {
       owner: string,
       index: BigNumberish,
       overrides?: CallOverrides
-    ): Promise<[BigNumber] & { tokenId: BigNumber }>;
+    ): Promise<[BigNumber]>;
 
     totalSupply(overrides?: CallOverrides): Promise<[BigNumber]>;
 

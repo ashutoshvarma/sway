@@ -47,6 +47,7 @@ export interface SwayInterface extends utils.Interface {
     "ownerOf(uint256)": FunctionFragment;
     "pause()": FunctionFragment;
     "paused()": FunctionFragment;
+    "proxiableUUID()": FunctionFragment;
     "removeEventMinter(uint256,address)": FunctionFragment;
     "removeGovernor(address)": FunctionFragment;
     "renounceRole(bytes32,address)": FunctionFragment;
@@ -149,6 +150,10 @@ export interface SwayInterface extends utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "pause", values?: undefined): string;
   encodeFunctionData(functionFragment: "paused", values?: undefined): string;
+  encodeFunctionData(
+    functionFragment: "proxiableUUID",
+    values?: undefined
+  ): string;
   encodeFunctionData(
     functionFragment: "removeEventMinter",
     values: [BigNumberish, string]
@@ -286,6 +291,10 @@ export interface SwayInterface extends utils.Interface {
   decodeFunctionResult(functionFragment: "ownerOf", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "pause", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "paused", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "proxiableUUID",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "removeEventMinter",
     data: BytesLike
@@ -643,6 +652,8 @@ export interface Sway extends BaseContract {
 
     paused(overrides?: CallOverrides): Promise<[boolean]>;
 
+    proxiableUUID(overrides?: CallOverrides): Promise<[string]>;
+
     removeEventMinter(
       eventId: BigNumberish,
       account: string,
@@ -881,6 +892,8 @@ export interface Sway extends BaseContract {
 
   paused(overrides?: CallOverrides): Promise<boolean>;
 
+  proxiableUUID(overrides?: CallOverrides): Promise<string>;
+
   removeEventMinter(
     eventId: BigNumberish,
     account: string,
@@ -1101,6 +1114,8 @@ export interface Sway extends BaseContract {
     pause(overrides?: CallOverrides): Promise<void>;
 
     paused(overrides?: CallOverrides): Promise<boolean>;
+
+    proxiableUUID(overrides?: CallOverrides): Promise<string>;
 
     removeEventMinter(
       eventId: BigNumberish,
@@ -1470,6 +1485,8 @@ export interface Sway extends BaseContract {
 
     paused(overrides?: CallOverrides): Promise<BigNumber>;
 
+    proxiableUUID(overrides?: CallOverrides): Promise<BigNumber>;
+
     removeEventMinter(
       eventId: BigNumberish,
       account: string,
@@ -1720,6 +1737,8 @@ export interface Sway extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     paused(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    proxiableUUID(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     removeEventMinter(
       eventId: BigNumberish,
