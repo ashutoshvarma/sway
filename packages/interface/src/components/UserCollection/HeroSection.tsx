@@ -11,11 +11,11 @@ function HeroSection(): ReactElement {
       <div className={styles['HeroSectionBG']}></div>
       <div className="wrapper narrow">
         <div className={styles['HeroContentDiv']}>
-          <h2>User Collection</h2>
+          <h2>NFT Collection</h2>
           <p>
-            There are many variations of passages of Lorem Ipsum available, but
-            the majority have suffered alteration in some form, by injected
-            humour, or randomised words.
+           All the SWAY NFTs owned by your cryto wallet are listed here,
+           every NFT is unique and stored on celo blockchain,
+           you can verify each one of them on celo block explorer.
           </p>
         </div>
       </div>

@@ -24,54 +24,43 @@ function Faqs(): ReactElement {
           <AccordionItem className={styles['AccordionItem']}>
             <AccordionItemHeading>
               <AccordionItemButton className={styles['AccordionItemButton']}>
-                Accordion Item #1
+                What is NFT ?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel className={styles['AccordionPanel']}>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+              A non-fungible token (NFT) is a non-interchangeable unit of data
+              stored on a blockchain.
               </p>
             </AccordionItemPanel>
           </AccordionItem>
           <AccordionItem className={styles['AccordionItem']}>
             <AccordionItemHeading>
               <AccordionItemButton className={styles['AccordionItemButton']}>
-                Accordion Item #1
+                How can I create an event ?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel className={styles['AccordionPanel']}>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                You need to connect with the team on social channels 
+                like Twitter and Discord and give us details about 
+                your event with a NFT avatar and list of addresses who
+                attended the event. We will take care of the
+                rest.
               </p>
             </AccordionItemPanel>
           </AccordionItem>
           <AccordionItem className={styles['AccordionItem']}>
             <AccordionItemHeading>
               <AccordionItemButton className={styles['AccordionItemButton']}>
-                Accordion Item #1
+               How can I claim my NFT ?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel className={styles['AccordionPanel']}>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Go to the event page and click on CLAIM button to
+                claim your free NFT 
+                
               </p>
             </AccordionItemPanel>
           </AccordionItem>
@@ -80,36 +69,28 @@ function Faqs(): ReactElement {
           <AccordionItem className={styles['AccordionItem']}>
             <AccordionItemHeading>
               <AccordionItemButton className={styles['AccordionItemButton']}>
-                Accordion Item #1
+                Why am I not able to claim my NFT ?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel className={styles['AccordionPanel']}>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                NFTs can only be claimed by people who attended the event.
+                If you have attended the event and still you are not able 
+                claim then connect with event creators and verify if your
+                wallet address is eligible.
               </p>
             </AccordionItemPanel>
           </AccordionItem>
           <AccordionItem className={styles['AccordionItem']}>
             <AccordionItemHeading>
               <AccordionItemButton className={styles['AccordionItemButton']}>
-                Accordion Item #1
+                Where can I see my claimed NFT ?
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel className={styles['AccordionPanel']}>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                All your NFTs can be found on MY COLLECTION PAGE,
+                you can also verify them on celo block explorer.
               </p>
             </AccordionItemPanel>
           </AccordionItem>
