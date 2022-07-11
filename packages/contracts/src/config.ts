@@ -46,7 +46,8 @@ export const CONFIGS: {
     },
     server: {
       static: 'https://static.sway.community/celo/',
-      subgraph: '',
+      subgraph:
+        'https://api.thegraph.com/subgraphs/name/ashutoshvarma/sway-celo',
     },
     deployments: {
       sway: SwayCelo,
