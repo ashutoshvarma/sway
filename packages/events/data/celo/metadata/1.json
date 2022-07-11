@@ -1,0 +1,46 @@
+{
+  "eventId": "1",
+  "description": "Moola Early Adopters",
+  "external_url": "https://static.sway.community/celo/metadata/1",
+  "home_url": "https://www.sway.community/",
+  "image_url": "https://static.sway.community/celo/badges/1",
+  "image": "https://static.sway.community/celo/badges/1",
+  "name": "Moola Early Adopters",
+  "year": 2022,
+  "tags": [
+    "Moola",
+    "Early Adpoters"
+  ],
+  "start_date": "2022-06-01",
+  "end_date": "2022-06-01",
+  "virtual_event": true,
+  "city": "None",
+  "country": "Global",
+  "event_url": "https://www.sway.community/event/1",
+  "attributes": [
+    {
+      "trait_type": "start_date",
+      "value": "2022-06-01"
+    },
+    {
+      "trait_type": "end_date",
+      "value": "2022-06-01"
+    },
+    {
+      "trait_type": "virtual_event",
+      "value": "true"
+    },
+    {
+      "trait_type": "city",
+      "value": "None"
+    },
+    {
+      "trait_type": "country",
+      "value": "Global"
+    },
+    {
+      "trait_type": "event_url",
+      "value": "https://www.sway.community/event/1"
+    }
+  ]
+}
