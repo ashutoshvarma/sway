@@ -3637,7 +3637,7 @@ __metadata:
     cross-env: 7.0.3
     dotenv: 16.0.0
     eslint: 7.32.0
-    eslint-config-prettier: 8.3.0
+    eslint-config-prettier: 8.8.0
     ethers: 5.5.4
     fs-extra: 10.0.1
     glob: 7.2.0
@@ -3676,7 +3676,7 @@ __metadata:
     class-transformer: ^0.5.1
     class-validator: ^0.13.2
     eslint: 8.7.0
-    eslint-config-prettier: 8.3.0
+    eslint-config-prettier: 8.8.0
     eslint-plugin-prettier: 4.0.0
     glob: ^7.2.0
     node-fetch: 2
@@ -9912,14 +9912,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:8.3.0":
-  version: 8.3.0
-  resolution: "eslint-config-prettier@npm:8.3.0"
+"eslint-config-prettier@npm:8.8.0":
+  version: 8.8.0
+  resolution: "eslint-config-prettier@npm:8.8.0"
   peerDependencies:
     eslint: ">=7.0.0"
   bin:
     eslint-config-prettier: bin/cli.js
-  checksum: df4cea3032671995bb5ab07e016169072f7fa59f44a53251664d9ca60951b66cdc872683b5c6a3729c91497c11490ca44a79654b395dd6756beb0c3903a37196
+  checksum: 1e94c3882c4d5e41e1dcfa2c368dbccbfe3134f6ac7d40101644d3bfbe3eb2f2ffac757f3145910b5eacf20c0e85e02b91293d3126d770cbf3dc390b3564681c
   languageName: node
   linkType: hard
 
@@ -22309,7 +22309,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": 5.10.2
     "@typescript-eslint/parser": 5.10.2
     eslint: 7.32.0
-    eslint-config-prettier: 8.3.0
+    eslint-config-prettier: 8.8.0
     eslint-plugin-prettier: 4.0.0
     prettier: 2.5.1
     ts-node: 10.4.0
