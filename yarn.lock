@@ -3633,7 +3633,7 @@ __metadata:
     "@typechain/hardhat": 4.0.0
     "@types/chai": 4.3.0
     "@types/mocha": 9.1.1
-    "@types/node": 16.11.26
+    "@types/node": 16.11.68
     "@typescript-eslint/eslint-plugin": 5.10.2
     "@typescript-eslint/parser": 5.10.2
     "@ubeswap/hardhat-celo": 0.9.0
@@ -3675,7 +3675,7 @@ __metadata:
   dependencies:
     "@ethersproject/address": ^5.5.0
     "@sway/contracts": ^0.1.0
-    "@types/node": 16.11.26
+    "@types/node": 16.11.68
     "@types/node-fetch": 2
     "@typescript-eslint/eslint-plugin": 5.10.2
     "@typescript-eslint/parser": 5.10.2
@@ -3711,7 +3711,7 @@ __metadata:
     "@types/canvas-confetti": 1.4.3
     "@types/flexsearch": 0.7.3
     "@types/jest": 26.0.24
-    "@types/node": 16.11.26
+    "@types/node": 16.11.68
     "@types/react": 17.0.44
     "@types/react-dom": 17.0.15
     "@types/react-helmet": 6.1.5
@@ -4335,10 +4335,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:16.11.26":
-  version: 16.11.26
-  resolution: "@types/node@npm:16.11.26"
-  checksum: 57757caaba3f0d95de82198cb276a1002c49b710108c932a1d02d7c91ff2fa57cfe2dd19fde60853b6dd90b0964b3cf35557981d2628e20aed6a909057aedfe6
+"@types/node@npm:16.11.68":
+  version: 16.11.68
+  resolution: "@types/node@npm:16.11.68"
+  checksum: a35293b6b8867e10ab9e10b6cd5f0e4224a86256d5ef102581dcb9f79f35f255ad87443e8584ddf8dce1229ee28885c58187e41822cf8d1e82495e7897c47c3f
   languageName: node
   linkType: hard
 
@@ -22291,7 +22291,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "sway@workspace:."
   dependencies:
-    "@types/node": 16.11.26
+    "@types/node": 16.11.68
     "@typescript-eslint/eslint-plugin": 5.10.2
     "@typescript-eslint/parser": 5.10.2
     eslint: 7.32.0
