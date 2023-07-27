@@ -3642,7 +3642,7 @@ __metadata:
     class-transformer: 0.5.1
     class-validator: 0.13.2
     cross-env: 7.0.3
-    dotenv: 16.0.0
+    dotenv: 16.0.3
     eslint: 7.32.0
     eslint-config-prettier: 8.8.0
     ethers: 5.5.4
@@ -9491,10 +9491,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:16.0.0":
-  version: 16.0.0
-  resolution: "dotenv@npm:16.0.0"
-  checksum: 664cebb51f0a9a1d1b930f51f0271e72e26d62feaecc9dc03df39453dd494b4e724809ca480fb3ec3213382b1ed3f791aaeb83569a137f9329ce58efd4853dbf
+"dotenv@npm:16.0.3":
+  version: 16.0.3
+  resolution: "dotenv@npm:16.0.3"
+  checksum: afcf03f373d7a6d62c7e9afea6328e62851d627a4e73f2e12d0a8deae1cd375892004f3021883f8aec85932cd2834b091f568ced92b4774625b321db83b827f8
   languageName: node
   linkType: hard
 
