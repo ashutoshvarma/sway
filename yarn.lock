@@ -4132,7 +4132,7 @@ __metadata:
     fs-extra: 10.0.1
     glob: 7.2.0
     hardhat: 2.17.0
-    hardhat-contract-sizer: 2.4.0
+    hardhat-contract-sizer: 2.10.0
     hardhat-deploy: 0.10.6
     hardhat-gas-reporter: 1.0.9
     hardhat-tracer: 1.0.0-alpha.6
@@ -12859,15 +12859,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hardhat-contract-sizer@npm:2.4.0":
-  version: 2.4.0
-  resolution: "hardhat-contract-sizer@npm:2.4.0"
+"hardhat-contract-sizer@npm:2.10.0":
+  version: 2.10.0
+  resolution: "hardhat-contract-sizer@npm:2.10.0"
   dependencies:
     chalk: ^4.0.0
     cli-table3: ^0.6.0
+    strip-ansi: ^6.0.0
   peerDependencies:
     hardhat: ^2.0.0
-  checksum: 813111c3ae27264a1e50feecd0c2670421e9c77eb08ac474ab9b88b1c5cc7578cf3a7f0778f583d684e127084de9ca81be9412eeb02c593aa8acc7e6a42bde89
+  checksum: 870e7cad5d96ad7288b64da0faec7962a9a18e1eaaa02ed474e4f9285cd4b1a0fc6f66326e6a7476f7063fdf99aee57f227084519b1fb3723700a2d65fc65cfa
   languageName: node
   linkType: hard
 
