@@ -4212,7 +4212,7 @@ __metadata:
     cross-env: 7.0.3
     eslint-config-react-app: 7.0.1
     flexsearch: 0.7.21
-    formik: 2.2.9
+    formik: 2.2.10
     gh-pages: 3.2.3
     graphql-request: 4.0.0
     history: 5.2.0
@@ -12082,9 +12082,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"formik@npm:2.2.9":
-  version: 2.2.9
-  resolution: "formik@npm:2.2.9"
+"formik@npm:2.2.10":
+  version: 2.2.10
+  resolution: "formik@npm:2.2.10"
   dependencies:
     deepmerge: ^2.1.1
     hoist-non-react-statics: ^3.3.0
@@ -12095,7 +12095,7 @@ __metadata:
     tslib: ^1.10.0
   peerDependencies:
     react: ">=16.8.0"
-  checksum: f07f80eee8423b4c5560546c48c4093c47530dae7d931a4e0d947d68ae1aab94291b1bf2e99ecaa5854ee50593b415fb5724c624c787338f0577f066009e8812
+  checksum: cb19b8726be261262b6614694f2180288131bd75d283b3b561dc74c44c824f68d8f8cb8241d4a8906ff685d79dd22bb8295c518d27658ada17daf03e1ab07e62
   languageName: node
   linkType: hard
 
