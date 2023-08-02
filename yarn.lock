@@ -3539,10 +3539,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@openzeppelin/contracts-upgradeable@npm:4.5.2":
-  version: 4.5.2
-  resolution: "@openzeppelin/contracts-upgradeable@npm:4.5.2"
-  checksum: bd6a12eb83d8e3194e0847ffb248a1063668e2bf723afd21066316090de9b02e95af6057086a95fa21b0d09a2ef0ea057459bb5f5645dfff298e59e8c3267692
+"@openzeppelin/contracts-upgradeable@npm:4.9.1":
+  version: 4.9.1
+  resolution: "@openzeppelin/contracts-upgradeable@npm:4.9.1"
+  checksum: 4dff468b7de51701da8f46ca16e44831109e2602e80c96d68e3fba8ea1ae4ac498e60d38829e0d2d8494bb8cfc274adc7adc2dab566b929319dfe76a5c3af017
   languageName: node
   linkType: hard
 
@@ -4118,7 +4118,7 @@ __metadata:
     "@ethersproject/bignumber": 5.7.0
     "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@0.3.0-beta.13"
     "@openzeppelin/contracts": 4.9.3
-    "@openzeppelin/contracts-upgradeable": 4.5.2
+    "@openzeppelin/contracts-upgradeable": 4.9.1
     "@openzeppelin/hardhat-upgrades": 1.28.0
     "@sway/events": ^0.1.0
     "@typechain/ethers-v5": 9.0.0
