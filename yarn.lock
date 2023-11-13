@@ -4132,7 +4132,7 @@ __metadata:
     chai: 4.3.7
     chai-ethers: 0.0.1
     class-transformer: 0.5.1
-    class-validator: 0.13.2
+    class-validator: 0.14.0
     cross-env: 7.0.3
     dotenv: 16.0.3
     eslint: 7.32.0
@@ -4173,7 +4173,7 @@ __metadata:
     "@typescript-eslint/parser": 5.10.2
     "@vercel/node": 1.13.0
     class-transformer: ^0.5.1
-    class-validator: ^0.13.2
+    class-validator: ^0.14.0
     eslint: 8.7.0
     eslint-config-prettier: 8.8.0
     eslint-plugin-prettier: 4.0.0
@@ -5044,6 +5044,13 @@ __metadata:
   version: 2.1.6
   resolution: "@types/utf8@npm:2.1.6"
   checksum: 49c1804296e94fb25f07150c5a2fb9ece40de846bbf5ec1e35afc95e245fd7b6a069e55ffe43fc4eee2b5d0cb07f0562caf19d9c385fd1e2c239dfcbef5b2541
+  languageName: node
+  linkType: hard
+
+"@types/validator@npm:^13.7.10":
+  version: 13.9.0
+  resolution: "@types/validator@npm:13.9.0"
+  checksum: ff766e3241225b8e2dc06c90bf3a789bd24e44eb3b4cf534fdf67110615668e2bbf5d461ea42c6aec80bb0fe1dcd9624bcb3af699e3190a5e0a50b4ac24a3d9f
   languageName: node
   linkType: hard
 
@@ -8212,13 +8219,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"class-validator@npm:0.13.2, class-validator@npm:^0.13.2":
-  version: 0.13.2
-  resolution: "class-validator@npm:0.13.2"
+"class-validator@npm:0.14.0, class-validator@npm:^0.14.0":
+  version: 0.14.0
+  resolution: "class-validator@npm:0.14.0"
   dependencies:
-    libphonenumber-js: ^1.9.43
+    "@types/validator": ^13.7.10
+    libphonenumber-js: ^1.10.14
     validator: ^13.7.0
-  checksum: 0deb4c29faa18345f6989fd7eaaaa07b05caae5298603fcd6485531c6daad503e5d2b24cc1342e4fc88ae5ba0acffdc24d0fc333110ef3f21a667cd8a79e1258
+  checksum: f62e4a0ad24cee68f4b2bc70d32b96de90cb598f96bde362b4dbf4234151af8eb6ae225458312a38fc49fa3959844cf61c60e731a8205e9a570454cff8de2710
   languageName: node
   linkType: hard
 
@@ -15942,10 +15950,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"libphonenumber-js@npm:^1.9.43":
-  version: 1.9.49
-  resolution: "libphonenumber-js@npm:1.9.49"
-  checksum: 5c9ba82e69a985716dea722a28509eef77b4b0f96159ccd50089fa2d0cde8b778c77526d26104ca25ec40b148b7a0a588a998e1014ebedc353ff214b7f7e918f
+"libphonenumber-js@npm:^1.10.14":
+  version: 1.10.38
+  resolution: "libphonenumber-js@npm:1.10.38"
+  checksum: dc7adb8e081d525b4ef7589aea97a8f620eafa5a5d8a64987f696e20262e8bd40bd91ff3282cf5798148ebfcd158fd55cdcb377328438f05513e5430fe9605a1
   languageName: node
   linkType: hard
 
