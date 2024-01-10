@@ -4201,7 +4201,7 @@ __metadata:
     "@testing-library/react": 12.1.5
     "@testing-library/user-event": 13.5.0
     "@types/canvas-confetti": 1.4.3
-    "@types/flexsearch": 0.7.3
+    "@types/flexsearch": 0.7.6
     "@types/jest": 26.0.24
     "@types/node": 16.11.68
     "@types/react": 17.0.62
@@ -4211,7 +4211,7 @@ __metadata:
     canvas-confetti: 1.5.1
     cross-env: 7.0.3
     eslint-config-react-app: 7.0.1
-    flexsearch: 0.7.21
+    flexsearch: 0.7.43
     formik: 2.2.10
     gh-pages: 3.2.3
     graphql-request: 4.0.0
@@ -4596,10 +4596,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/flexsearch@npm:0.7.3":
-  version: 0.7.3
-  resolution: "@types/flexsearch@npm:0.7.3"
-  checksum: fac365e6d6f7f251c49b22530635a7042523b00a45dcb5591372782125f5e5e97b0508c71e08c8d1b3fbef0e01c504027271df5d60698b1e26caf7d067cc2ef0
+"@types/flexsearch@npm:0.7.6":
+  version: 0.7.6
+  resolution: "@types/flexsearch@npm:0.7.6"
+  checksum: 77a728e13b770cd2a0efc7f6334374ee0525018c95397700e351f5ac1c0ab6392b16c39abd11f7e6168449bff2d19c00f99951eb6bdac692dbd9380fc61d8aef
   languageName: node
   linkType: hard
 
@@ -11963,10 +11963,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flexsearch@npm:0.7.21":
-  version: 0.7.21
-  resolution: "flexsearch@npm:0.7.21"
-  checksum: ae77c6ebba6f02660bf28a36b56427ec2d737dcb9bd03564db27801484be2dd943fc7350e60a6f0aed47ab1b85af7fd5b33e27e84fd2fcbb241d9c5d21c8d068
+"flexsearch@npm:0.7.43":
+  version: 0.7.43
+  resolution: "flexsearch@npm:0.7.43"
+  checksum: 6ed78060ab530de52bda02ba736cb93f37fdf8ad33d1cc88c2b15cdf575eec33873485dc81ca693d1dee31160d3d1bf33fe2c7656db56a579bb3f33ea8664d29
   languageName: node
   linkType: hard
 
