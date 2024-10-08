@@ -38,7 +38,7 @@
     "node-fetch": "2"
   },
   "devDependencies": {
-    "@types/node": "16.11.68",
+    "@types/node": "16.18.113",
     "@typescript-eslint/eslint-plugin": "5.10.2",
     "@typescript-eslint/parser": "5.10.2",
     "@vercel/node": "1.13.0",
